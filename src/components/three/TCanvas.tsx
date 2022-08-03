@@ -3,6 +3,7 @@ import { OrbitControls, Stats } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Lights } from './Light';
 import { Objects } from './Objects';
+import { Neon } from './Neon';
 
 export const TCanvas: VFC = () => {
 	return (
@@ -24,6 +25,7 @@ export const TCanvas: VFC = () => {
 			<Lights />
 			{/* objects */}
 			<Objects />
+			{/* <Neon/> */}
 			{/* helper */}
 			<Stats />
 		</Canvas>
