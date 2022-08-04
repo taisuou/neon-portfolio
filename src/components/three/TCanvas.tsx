@@ -2,7 +2,7 @@ import React, { VFC } from 'react';
 import { OrbitControls, Stats } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Lights } from './Light';
-import { Objects } from './Objects';
+import  {Objects}  from './Objects';
 import { Neon } from './Neon';
 
 export const TCanvas: VFC = () => {
