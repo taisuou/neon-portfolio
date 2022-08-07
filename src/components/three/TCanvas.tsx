@@ -1,9 +1,10 @@
-import React, { VFC } from 'react';
+import React, { Suspense, VFC } from 'react';
 import { OrbitControls, Stats } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Lights } from './Light';
 import  {Objects}  from './Objects';
-import { Neon } from './Neon';
+import { NeonGLTF } from './NeonGLTF';
+import * as THREE from 'three';
 
 export const TCanvas: VFC = () => {
 	return (
@@ -21,13 +22,18 @@ export const TCanvas: VFC = () => {
 			<color attach="background" args={['#000']} />
 			{/* camera controller */}
 			<OrbitControls attach="orbitControls" />
+			<ambientLight />
+			{/* shows Axis Helper */}
+			{/* <primitive object={new THREE.AxesHelper(10)} /> */}
 			{/* lights */}
-			<Lights />
-			{/* objects */}
-			<Objects />
-			{/* <Neon/> */}
-			{/* helper */}
-			<Stats />
+			{/* <Lights /> */}
+			<Suspense fallback={null}>
+				{/* objects */}
+				{/* <Objects /> */}
+				<NeonGLTF/>
+				{/* helper */}
+				<Stats />
+			</Suspense>
 		</Canvas>
 	)
 }
