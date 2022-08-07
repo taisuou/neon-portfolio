@@ -40,13 +40,13 @@ export function NeonGLTF(props: JSX.IntrinsicElements["group"]) {
     
 
   useFrame(()=>{
-    const glassMaterial = glassRef.current!.material as THREE.MeshPhysicalMaterial
-	glassMaterial.color.set(glassState.color)
-	glassMaterial.thickness = glassState.thickness
-	glassMaterial.roughness = glassState.roughness
+    // const glassMaterial = glassRef.current!.material as THREE.MeshPhysicalMaterial
+	// glassMaterial.color.set(glassState.color)
+	// glassMaterial.thickness = glassState.thickness
+	// glassMaterial.roughness = glassState.roughness
   })
   return (
-    <group {...props} dispose={null} scale={0.01}>
+    <group {...props} dispose={null} scale={0.01} >
       <group
         name="logo"
         position={[0, 0, 0]}
@@ -55,7 +55,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements["group"]) {
         <mesh
           name="light_fd"
           geometry={nodes.light_fd.geometry}
-          material={nodes.light_fd.material}
+        //   material={nodes.light_fd.material}
           position={[-285.43, 0, 298.68]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
@@ -77,7 +77,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements["group"]) {
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
         />
-        <mesh
+        {/* <mesh
           name="glass"
           ref={glassRef}
           geometry={nodes.glass.geometry}
@@ -87,7 +87,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements["group"]) {
           scale={265.42}
         >
             <meshPhysicalMaterial />
-        </mesh>
+        </mesh> */}
       </group>
       
       

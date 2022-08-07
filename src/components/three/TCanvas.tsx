@@ -5,6 +5,9 @@ import { Lights } from './Light';
 import  {Objects}  from './Objects';
 import { NeonGLTF } from './NeonGLTF';
 import * as THREE from 'three';
+import { Ground } from './Ground';
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
+import { KernelSize } from 'postprocessing'
 
 export const TCanvas: VFC = () => {
 	return (
@@ -31,6 +34,11 @@ export const TCanvas: VFC = () => {
 				{/* objects */}
 				{/* <Objects /> */}
 				<NeonGLTF/>
+				<Ground />
+				<EffectComposer multisampling={8}>
+					<Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+					<Bloom kernelSize={KernelSize.HUGE} luminanceThreshold={0} luminanceSmoothing={0} intensity={0.5} />
+				</EffectComposer>
 				{/* helper */}
 				<Stats />
 			</Suspense>
