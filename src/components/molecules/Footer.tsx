@@ -23,22 +23,15 @@ export const Footer: VFC = () => {
 
 const Logo = styled.a`
 `
-const Slidemenu = styled.button`
-display: inline-block;
-width: 30px;
-height: 30px;
-vertical-align: middle;
-`
 
 const Container = styled.div`
-    max-width:1108px;
-    margin:0 auto;
     top:0;
     display:flex;
     align-items: center;
-    padding:0 36px;
+    padding:0 32px;
     z-index:${zIndex.elevation.ev4};
     background:#1d1d1d;
+    border-top:2px solid #505050;
 `
 const MenuContainer = styled.div`
     display:flex;
@@ -47,12 +40,23 @@ const MenuContainer = styled.div`
 `
 
 const Menu = styled.p`
+display:flex;
+font-size:24px;
+text-decoration:underline;
+margin-bottom:16px;
+img{
+    margin-right:16px;
+    align-items: center;
+}
     color:${color.content.HighEmphasis}
+
 `
 
 const CopyRight = styled.p`
 width:100%;
+font-size:12px;
 text-align:center;
+padding:32px 0;
     color:${color.content.HighEmphasis}
 `
 
