@@ -11,7 +11,7 @@ export const Header: VFC = () => {
             <ul>
                 <li><a href=''>WORKS</a></li>
                 <li><a href=''>ABOUT</a></li>
-                <li><a href=''>CONTACT</a></li>
+                <li><a href=''>CONTACTT</a></li>
             </ul>
             </MenuContainer>
             <Slidemenu>
