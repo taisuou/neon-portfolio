@@ -11,8 +11,8 @@ import {Footer} from './molecules/Footer'
 export const App: VFC = () => {
 	return (
 		<div className={styles.container}>
-			<Header/>
 			<Loader/>
+			<Header/>
 			<Body/>
 			<Footer/>
 			{/* <Neon/> */}

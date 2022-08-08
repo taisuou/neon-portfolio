@@ -4,10 +4,9 @@ import {color, zIndex,} from '../../utils/style'
 
 export const Loader: VFC = () => {
 	return (
-	<App>
-      <div className="ui">
-        <div className="elec">
-          <ol className="elec__list">
+	<LoaderAnim>
+      <LoaderLogo>
+        <LogoInner>
             <li className="front">
               <div className="elec__item glass__front"></div>
               <div className="elec__item mica__front"></div>
@@ -30,75 +29,26 @@ export const Loader: VFC = () => {
                 </svg>
               </li>
             </li>
-          </ol>
-        </div>
-      </div>
-      <p className="loaderNum">100</p>
-    </App>
+        </LogoInner>
+      </LoaderLogo>
+      <LoaderNum>100</LoaderNum>
+    </LoaderAnim>
 	)
 }
 
-const App = styled.div`
-.ui {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-  }
-  
-  .ui .elec {
-	perspective: 100px;
-  }
-  
-  .ui .elec__list {
-	transform: translateY(-60px) translateZ(-60px);
-  }
-  
-  .ui .elec__item {
-	position: absolute;
-	width: 120px;
-	height: 120px;
-	border: 2px solid #fff;
-	transform-style: preserve-3d;
-  }
-  
-  .ui .glass__front {
-	border-radius: 120px;
-	transform: translateX(-60px);
-  }
-  .ui .mica__front {
-	width: 86px;
-	height: 86px;
-	border-radius: 86px;
-	transform: translateX(-43px) translateY(17px) translateZ(60px);
-  }
-
-  .ui .glass__side {
-	border-radius: 0 120px 120px 0;
-	border-left: none;
-  }
-  
-  .ui .mica__side {
-	width: 70px;
-	height: 86px;
-	transform: translateY(17px) translateZ(23px);
-  }
-  
-  .ui .plate__side {
-	border: none;
-	stroke: #ffffff;
-	stroke-width: 1;
-	transform: rotateZ(90deg) translateY(8px);
-  }
-  
+const LoaderAnim = styled.div`
+width:100%;
+height:100vh;
+position:absolute;
+background:#000;
   .front {
-	animation: rotateFront 5000ms linear infinite;
+  animation: rotateFront 5000ms linear infinite;
   }
   .sideY {
 	animation: rotateSideY 5000ms linear infinite;
 	transform-origin: 0 60px;
 	transform: translateZ(60px);
   }
-  
   .sideX {
 	animation: rotateSideX 5000ms linear infinite;
 	transform-origin: 0 60px;
@@ -130,8 +80,67 @@ const App = styled.div`
 	  transform: rotateY(449deg) rotateX(449deg);
 	}
   }
-  
 `
 
+const LoaderLogo = styled.div`
+  position: absolute;
+	top: 50%;
+	left: 50%;
+  perspective: 400px;
+  margin-left: -40px;
+  margin-top: -40px;
+
+    .elec__item {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #fff;
+    transform-style: preserve-3d;
+    }
+    
+    .glass__front {
+    border-radius: 120px;
+    transform: translateX(-60px);
+    }
+    .mica__front {
+    width: 86px;
+    height: 86px;
+    border-radius: 86px;
+    transform: translateX(-43px) translateY(17px) translateZ(60px);
+    }
+  
+    .glass__side {
+    border-radius: 0 120px 120px 0;
+    border-left: none;
+    }
+    
+    .mica__side {
+    width: 70px;
+    height: 86px;
+    transform: translateY(17px) translateZ(23px);
+    }
+    
+    .plate__side {
+    border: none;
+    stroke: #ffffff;
+    stroke-width: 1;
+    transform: rotateZ(90deg) translateY(8px)  translateX(38px);
+    }
+`
+
+const LogoInner = styled.ol`
+  list-style-type:none;
+  transform: translateY(-60px) translateZ(-60px);
+`
+
+const LoaderNum = styled.p`
+position: absolute;
+top: 50%;
+margin-top: 50px;
+color: #fff;
+width: 100%;
+text-align: center;
+font-size:18px;
+`
 
 
