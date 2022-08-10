@@ -16,7 +16,7 @@ export const App: VFC = () => {
 			<Body/>
 			<Footer/>
 			{/* <Neon/> */}
-			{/* <TCanvas /> */}
+			<TCanvas />
 		</div>
 	)
 }
