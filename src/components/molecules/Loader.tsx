@@ -13,21 +13,25 @@ export const Loader: VFC = () => {
             </li>
             <li className="sideY">
               <div className="elec__item glass__side"></div>
-              <li className="elec__item mica__side"></li>
-              <li className="elec__item plate__side">
-                <svg width="44" height="84">
-                  <path d="M22 0 L1 84 L43 84 Z" fill-opacity="0"></path>
-                </svg>
-              </li>
+              <ul>
+                <li className="elec__item mica__side"></li>
+                <li className="elec__item plate__side">
+                  <svg width="44" height="84">
+                    <path d="M22 0 L1 84 L43 84 Z" fillOpacity="0"></path>
+                  </svg>
+                </li>
+              </ul>
             </li>
             <li className="sideX">
               <div className="elec__item glass__side"></div>
-              <li className="elec__item mica__side"></li>
-              <li className="elec__item plate__side">
-                <svg width="44" height="84">
-                  <path d="M22 0 L1 84 L43 84 Z" fill-opacity="0"></path>
-                </svg>
-              </li>
+              <ul>  
+                <li className="elec__item mica__side"></li>
+                <li className="elec__item plate__side">
+                  <svg width="44" height="84">
+                    <path d="M22 0 L1 84 L43 84 Z" fillOpacity="0"></path>
+                  </svg>
+                </li>
+              </ul>
             </li>
         </LogoInner>
       </LoaderLogo>

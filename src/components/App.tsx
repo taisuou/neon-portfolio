@@ -13,10 +13,10 @@ export const App: VFC = () => {
 		<div className={styles.container}>
 			<Loader/>
 			<Header/>
-			<Body/>
-			<Footer/>
+			{/* <Body/> */}
 			{/* <Neon/> */}
-			{/* <TCanvas /> */}
+			<TCanvas />
+			<Footer/>
 		</div>
 	)
 }
