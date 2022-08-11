@@ -1,8 +1,10 @@
-import useSpline from '@splinetool/r3f-spline'
+import useSpline from '@splinetool/r3f-spline';
 import { useRef, VFC } from 'react';
 
 export const Neon: VFC = () => {
-  const { nodes, materials } = useSpline('https://prod.spline.design/MZRuLxdgFXODE2vc/scene.splinecode')
+  const { nodes, materials } = useSpline(
+    'https://prod.spline.design/MZRuLxdgFXODE2vc/scene.splinecode',
+  );
   return (
     <>
       {/* <color attach="background" args={['#4b4d52']} /> */}
@@ -49,5 +51,5 @@ export const Neon: VFC = () => {
         />
       </group>
     </>
-  )
-}
+  );
+};

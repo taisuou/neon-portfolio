@@ -1,5 +1,5 @@
-import { proxy, useSnapshot } from 'valtio'
+import { proxy, useSnapshot } from 'valtio';
 
 export const sceneState = proxy({
-  height: 0
-})
+  height: 0,
+});
