@@ -5,7 +5,6 @@ import { TCanvas } from './three/TCanvas';
 import {Body} from './molecules/Body';
 import {Loader} from './molecules/Loader';
 import {Header} from './molecules/Header'
-import {Footer} from './molecules/Footer'
 
 
 export const App: VFC = () => {
@@ -16,7 +15,6 @@ export const App: VFC = () => {
 			{/* <Body/> */}
 			{/* <Neon/> */}
 			<TCanvas />
-			<Footer/>
 		</div>
 	)
 }
