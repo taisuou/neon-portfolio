@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 export const color = {
-  primary: '#298990',
+  primary: '#ffffff',
   secondary: '#CBA4A0',
   white: '#fff',
   subColor: {
@@ -11,7 +11,7 @@ export const color = {
     red: '#B6645E',
   },
   background: {
-    dark: '#151717',
+    dark: '#1d1d1d',
     white: '#fff',
   },
   utils: {

@@ -19,7 +19,7 @@ import { KernelSize } from 'postprocessing';
 import { color } from '../../utils/style';
 import styled from '@emotion/styled';
 import { Flex, Box, useReflow } from '@react-three/flex';
-import { Body } from '../molecules/Body';
+import { Body } from '../organisms/Body';
 import { Footer } from '../molecules/Footer';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
