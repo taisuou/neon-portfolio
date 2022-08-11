@@ -76,7 +76,6 @@ function Contents() {
 }
 
 export const TCanvas: VFC = () => {
-  // const [height, setHeight] = useState(0);
 
   return (
     <Canvas

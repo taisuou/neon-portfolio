@@ -4,6 +4,8 @@ import { color, zIndex } from '../../utils/style';
 
 export const Body: VFC = () => {
   return (
+    <>
+    <Hero></Hero>
     <Container>
       <MainTitle>Glass and Virtual Neon Arts</MainTitle>
       <Item>
@@ -191,8 +193,15 @@ export const Body: VFC = () => {
         </Text>
       </SectionContainer>
     </Container>
+    </>
   );
 };
+
+
+const Hero = styled.div`
+  height:100vh;
+  width:100%;
+`
 
 const Container = styled.div`
   background: #1d1d1d;

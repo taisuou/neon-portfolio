@@ -11,8 +11,6 @@ export const App: VFC = () => {
     <div className={styles.container}>
       <Loader />
       <Header />
-      {/* <Body/> */}
-      {/* <Neon/> */}
       <TCanvas />
     </div>
   );
