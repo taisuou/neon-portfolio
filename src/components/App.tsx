@@ -13,13 +13,13 @@ export const App: VFC = () => {
       <Global styles={css`
           /* TIPS:ページ全体へのCSSはここで定義 */
 
-          ${emotionReset}
-
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
           @font-face {
             font-family: 'replica';
             src: url('/fonts/ReplicaLLWeb-Bold.woff') format('woff');
           }
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+          ${emotionReset}
+
 
           *, *::after, *::before {
             box-sizing: border-box;

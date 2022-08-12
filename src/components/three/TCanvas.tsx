@@ -45,8 +45,7 @@ function Contents() {
       horizontal={false} // Can also scroll horizontally (default: false)
       infinite={false} // Can also scroll infinitely (default: false)
     >
-      {/* You can have components in here, they are not scrolled, but they can still
-			react to scroll by using useScroll! */}
+      {/* ▼後でFlex式のHTMLに変更する場合にこちらを使用 */}
       {/* <Scroll> */}
       {/* <Flex
 				flexDirection="column"
@@ -68,7 +67,8 @@ function Contents() {
 			</Flex> */}
       {/* </Scroll> */}
       <Scroll html ref={elementRef}>
-        <Home />
+        {/* TIPS : ↓ページを変更する場合にここを変更 */}
+        <Home /> 
         <Footer />
       </Scroll>
     </ScrollControls>

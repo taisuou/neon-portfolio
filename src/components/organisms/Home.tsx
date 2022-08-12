@@ -1,6 +1,7 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, zIndex } from '../../utils/style';
+import { color, font, media, zIndex } from '../../utils/style';
+import { contents } from '../../utils/store';
 
 export const Home: VFC = () => {
   return (
@@ -8,16 +9,21 @@ export const Home: VFC = () => {
     <Hero></Hero>
     <Container>
       <MainTitle>Glass and Virtual Neon Arts</MainTitle>
-      <Item>
-        <Picture>
-          <img src="images/posts/202206_kawakyu/202206_kawakyu_00.jpg" alt="202206_kawakyu_00" />
-        </Picture>
-        <Info>
-          <TitleEN>Kawakyu Art Exibition 2022 ”In a Dream”</TitleEN>
-          <TitleJP>Kawakyu Art Exibition 2022 「夢中」</TitleJP>
-          <Tag>Art</Tag>
-        </Info>
-      </Item>
+      {/* TIPS map文 */}
+      {contents.works.map((work) => (
+           <Item>
+           <Picture>
+             <img src={`${work.thumb}`} />
+           </Picture>
+           <Info>
+             <TitleEN>{work.titleEn}</TitleEN>
+             <TitleJP>{work.titleJp}</TitleJP>
+             {/* TIPS : インラインの条件分岐記法  A?B:C */}
+             <Tag>{work.tag===0? 'ART': 'Client'}</Tag>
+           </Info>
+         </Item>       
+      ))}
+      
       <Item>
         <Picture>
           <img
@@ -26,7 +32,7 @@ export const Home: VFC = () => {
           />
         </Picture>
         <Info>
-          <TitleEN>36 Days softype”</TitleEN>
+          <TitleEN>36 Days softype</TitleEN>
           <TitleJP>36 Days softype</TitleJP>
           <Tag>Art</Tag>
         </Info>
@@ -208,8 +214,16 @@ const Container = styled.div`
   background: ${color.background.dark};
   color: ${color.content.HighEmphasis};
 `;
+
 const Item = styled.div`
+  display:flex;
   padding-bottom: 64px;
+  // TIPS メディクエリのやり方
+  // lg:Desktopの場合 /mdsp:tablet, mobileの場合, / sp: mobileの場合
+
+  ${media.lg`
+    flex-direction:row;
+  `}
 `;
 const Picture = styled.div`
   & img {

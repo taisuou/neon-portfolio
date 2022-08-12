@@ -9,7 +9,6 @@ export const Header: VFC = () => {
         <img src="images/header_logo.svg" alt="electrode" width={105} />
       </Logo>
       <MenuContainer id="menuContents" className="menuContents">
-        <ul>
           <li>
             <a href="">WORKS</a>
           </li>
@@ -19,7 +18,6 @@ export const Header: VFC = () => {
           <li>
             <a href="">CONTACTT</a>
           </li>
-        </ul>
       </MenuContainer>
       <Slidemenu>
         <input id="menuTrigger" className="triggerBox" type="checkbox"></input>
@@ -103,7 +101,7 @@ const Container = styled.div`
   color: #fff;
   font-size: 14px;
 `;
-const MenuContainer = styled.div`
+const MenuContainer = styled.ul`
   position: fixed;
   top: 0;
   left: 0;
@@ -116,11 +114,7 @@ const MenuContainer = styled.div`
   overflow: auto;
   transition: 0.3s ease-in-out;
   transform: translateX(-105%);
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+  
   li {
     border-bottom: solid 1px white;
   }
