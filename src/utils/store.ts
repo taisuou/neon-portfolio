@@ -36,6 +36,13 @@ export const contents = {
       // ART:0, Client:1
       tag:1,
       thumb:'images/posts/202104_36softype/202104_36softype_00.jpg'
+    },
+    {
+      titleEn:'36 Days softype',
+      titleJp:'36 Days softype',
+      // ART:0, Client:1
+      tag:1,
+      thumb:'images/posts/202104_36softype/202104_36softype_00.jpg'
     }
   ]
 }

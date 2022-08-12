@@ -10,18 +10,18 @@ export const Home: VFC = () => {
     <Container>
       <MainTitle>Glass and Virtual Neon Arts</MainTitle>
       {/* TIPS map文 */}
-      {contents.works.map((work) => (
-           <Item>
-           <Picture>
-             <img src={`${work.thumb}`} />
-           </Picture>
-           <Info>
-             <TitleEN>{work.titleEn}</TitleEN>
-             <TitleJP>{work.titleJp}</TitleJP>
-             {/* TIPS : インラインの条件分岐記法  A?B:C */}
-             <Tag>{work.tag===0? 'ART': 'Client'}</Tag>
-           </Info>
-         </Item>       
+      {contents.works.map((work, index) => (
+           <Item isOdd={index%2===0?true:false}>
+            <Picture>
+              <img src={`${work.thumb}`} />
+            </Picture>
+            <Info>
+              <TitleEN>{work.titleEn}</TitleEN>
+              <TitleJP>{work.titleJp}</TitleJP>
+              {/* TIPS : インラインの条件分岐記法  A?B:C */}
+              <Tag>{work.tag===0? 'ART': 'Client'}</Tag>
+            </Info>
+          </Item>       
       ))}
       
       <ButtonMore>
@@ -75,8 +75,8 @@ export const Home: VFC = () => {
           </li>
         </ul>
       </UiCategory>
-      {contents.works.map((work) => (
-           <Item>
+      {contents.works.map((work, index) => (
+           <Item isOdd={index%2===0?true:false}>
            <Picture>
              <img src={`${work.thumb}`} />
            </Picture>
@@ -129,7 +129,7 @@ export const Home: VFC = () => {
         </ColInfobox>
       </SectionContainer>
 
-      <Item>
+      <Item isOdd={true}>
         <Info>
           <TitleEN>Kawakyu Art Exibition 2022 ”In a Dream”</TitleEN>
           <TitleJP>Kawakyu Art Exibition 2022 「夢中」</TitleJP>
@@ -205,16 +205,18 @@ const Container = styled.div`
   color: ${color.content.HighEmphasis};
 `;
 
-const Item = styled.div`
+const Item = styled.div<{isOdd:boolean}>`
   display:flex;
   padding-bottom: 64px;
+  flex-direction:column;
   // TIPS メディクエリのやり方
   // lg:Desktopの場合 /mdsp:tablet, mobileの場合, / sp: mobileの場合
-
+  ${(props)=>props.isOdd?`flex-direction:row;`:`flex-flow: row-reverse;`}};
+  
   ${media.lg`
     flex-direction:row;
   `}
-`;
+`
 const Picture = styled.div`
   & img {
     width: 100%;
