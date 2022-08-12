@@ -115,7 +115,7 @@ export const TCanvas: VFC = () => {
         <Contents />
       </Suspense>
       {/* helper */}
-      <Stats />
+      {/* <Stats /> */}
     </Canvas>
   );
 };

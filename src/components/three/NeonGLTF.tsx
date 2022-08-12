@@ -25,17 +25,17 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
   const glassRef = useRef<THREE.Mesh>(null);
 
   // add controller
-  const gui = GUIController.instance.setFolder('Glass');
-  gui.addNumericSlider(glassState, 'thickness', 0, 20, 1);
-  gui.addNumericSlider(glassState, 'roughness', 0, 1, 0.1);
-  gui.addNumericSlider(glassState, 'clearcoat', 0, 1, 0.1);
-  gui.addNumericSlider(glassState, 'clearcoatRoughness', 0, 1, 0.1);
-  gui.addNumericSlider(glassState, 'transmission', 0.9, 1, 0.01);
-  gui.addNumericSlider(glassState, 'ior', 1, 2.3, 0.05);
-  gui.addNumericSlider(glassState, 'envMapIntensity', 0, 100, 1);
-  gui.addColor(glassState, 'color');
-  gui.addColor(glassState, 'attenuationTint');
-  gui.addNumericSlider(glassState, 'attenuationDistance', 0, 1, 0.1);
+  // const gui = GUIController.instance.setFolder('Glass');
+  // gui.addNumericSlider(glassState, 'thickness', 0, 20, 1);
+  // gui.addNumericSlider(glassState, 'roughness', 0, 1, 0.1);
+  // gui.addNumericSlider(glassState, 'clearcoat', 0, 1, 0.1);
+  // gui.addNumericSlider(glassState, 'clearcoatRoughness', 0, 1, 0.1);
+  // gui.addNumericSlider(glassState, 'transmission', 0.9, 1, 0.01);
+  // gui.addNumericSlider(glassState, 'ior', 1, 2.3, 0.05);
+  // gui.addNumericSlider(glassState, 'envMapIntensity', 0, 100, 1);
+  // gui.addColor(glassState, 'color');
+  // gui.addColor(glassState, 'attenuationTint');
+  // gui.addNumericSlider(glassState, 'attenuationDistance', 0, 1, 0.1);
 
   useFrame(() => {
     // const glassMaterial = glassRef.current!.material as THREE.MeshPhysicalMaterial
