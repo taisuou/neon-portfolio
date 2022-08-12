@@ -24,19 +24,6 @@ export const Home: VFC = () => {
          </Item>       
       ))}
       
-      <Item>
-        <Picture>
-          <img
-            src="images/posts/202104_36softype/202104_36softype_00.jpg"
-            alt="202104_36softype_00"
-          />
-        </Picture>
-        <Info>
-          <TitleEN>36 Days softype</TitleEN>
-          <TitleJP>36 Days softype</TitleJP>
-          <Tag>Art</Tag>
-        </Info>
-      </Item>
       <ButtonMore>
         <a href="">view all works</a>
       </ButtonMore>
@@ -88,16 +75,19 @@ export const Home: VFC = () => {
           </li>
         </ul>
       </UiCategory>
-      <Item>
-        <Picture>
-          <img src="images/posts/202206_kawakyu/202206_kawakyu_00.jpg" alt="" />
-        </Picture>
-        <Info>
-          <TitleEN>Kawakyu Art Exibition 2022 ”In a Dream”</TitleEN>
-          <TitleJP>川久アート</TitleJP>
-          <Tag>Art</Tag>
-        </Info>
-      </Item>
+      {contents.works.map((work) => (
+           <Item>
+           <Picture>
+             <img src={`${work.thumb}`} />
+           </Picture>
+           <Info>
+             <TitleEN>{work.titleEn}</TitleEN>
+             <TitleJP>{work.titleJp}</TitleJP>
+             {/* TIPS : インラインの条件分岐記法  A?B:C */}
+             <Tag>{work.tag===0? 'ART': 'Client'}</Tag>
+           </Info>
+         </Item>       
+      ))}
 
       <PageTitle>
         <h1>CONTACT</h1>
