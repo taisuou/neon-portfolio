@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
 const MAX_MOBILE_WIDTH_PX = 479;
 const MAX_TABLET_WIDTH_PX = 1039;
@@ -13,9 +13,9 @@ export const useMedia = () => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", resizeEvent);
+    window.addEventListener('resize', resizeEvent);
     return () => {
-      window.removeEventListener("resize", resizeEvent);
+      window.removeEventListener('resize', resizeEvent);
     };
   }, []);
 
@@ -23,7 +23,7 @@ export const useMedia = () => {
 };
 
 function isMobileWindowSize() {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     if (window.matchMedia(`(max-width: ${MAX_MOBILE_WIDTH_PX}px)`).matches) {
       return true;
     }
@@ -33,7 +33,7 @@ function isMobileWindowSize() {
 }
 
 function isTabletWindowSize() {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     if (window.matchMedia(`(max-width: ${MAX_TABLET_WIDTH_PX}px)`).matches) {
       return true;
     }

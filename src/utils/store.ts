@@ -22,27 +22,27 @@ export const glassState = {
 };
 
 export const contents = {
-  works:[
+  works: [
     {
-      titleEn:'Kawakyu Art Exibition 2022 ”In a Dream”',
-      titleJp:'Kawakyu Art Exibition 2022 「夢中」',
+      titleEn: 'Kawakyu Art Exibition 2022 ”In a Dream”',
+      titleJp: 'Kawakyu Art Exibition 2022 「夢中」',
       // ART:0, Client:1
-      tag:0,
-      thumb:'images/posts/202206_kawakyu/202206_kawakyu_00.jpg'
+      tag: 0,
+      thumb: 'images/posts/202206_kawakyu/202206_kawakyu_00.jpg',
     },
     {
-      titleEn:'36 Days softype',
-      titleJp:'36 Days softype',
+      titleEn: '36 Days softype',
+      titleJp: '36 Days softype',
       // ART:0, Client:1
-      tag:1,
-      thumb:'images/posts/202104_36softype/202104_36softype_00.jpg'
+      tag: 1,
+      thumb: 'images/posts/202104_36softype/202104_36softype_00.jpg',
     },
     {
-      titleEn:'36 Days softype',
-      titleJp:'36 Days softype',
+      titleEn: '36 Days softype',
+      titleJp: '36 Days softype',
       // ART:0, Client:1
-      tag:1,
-      thumb:'images/posts/202104_36softype/202104_36softype_00.jpg'
-    }
-  ]
-}
+      tag: 1,
+      thumb: 'images/posts/202104_36softype/202104_36softype_00.jpg',
+    },
+  ],
+};

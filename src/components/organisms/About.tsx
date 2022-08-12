@@ -7,18 +7,17 @@ export const About: VFC = () => {
     <Container>
       <p>this is about</p>
     </Container>
-    
   );
 };
 
 const Container = styled.div`
-  width:100vw;
-  height:100vh;
-  display:flex;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
-  p{
-    color:${color.content.HighEmphasis};
+  p {
+    color: ${color.content.HighEmphasis};
     ${font.replica.h1}
   }
-`
+`;

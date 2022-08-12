@@ -28,12 +28,14 @@ import { Footer } from '../molecules/Footer';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
-import { useLocation, Switch, Route } from "wouter"
+import { useLocation, Switch, Route } from 'wouter';
+import { contents } from '../../utils/store';
 
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
+
   useEffect(() => {
     //need to be fixed later. Triggered only when
 
@@ -73,11 +75,11 @@ function Contents() {
       {/* </Scroll> */}
       <Scroll html ref={elementRef}>
         <Switch>
-          <Route path="/" component={Home}/>
-          <Route path="/about" component={About}/>
-          <Route path="/works" component={Works}/>
-          <Route path="/contact" component={Contact}/>
-          <Route path="/works/:id" component={Detail}/>
+          <Route path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/works" component={Works} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/works/:id">{(params) => <Detail post={contents.works[0]} />}</Route>
           <Route>存在しないコンテンツです</Route>
         </Switch>
         <Footer />
@@ -87,7 +89,6 @@ function Contents() {
 }
 
 export const TCanvas: VFC = () => {
-
   return (
     <Canvas
       camera={{
