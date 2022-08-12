@@ -1,31 +1,52 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex, media } from '../../utils/style';
+import { Link } from "wouter";
+import { useMedia } from "../../utils/useMedia";
 
 export const Header: VFC = () => {
+  const isMobile = useMedia().isMobile;
   return (
     <Container>
       <Logo>
-        <img src="images/header_logo.svg" alt="electrode" width={105} />
+        <a href='/'><img src="images/header_logo.svg" alt="electrode" width={105} /></a>
       </Logo>
+
       <MenuContainer id="menuContents" className="menuContents">
           <li>
-            <a href="">WORKS</a>
+            <Link href='/about'><a>ABOUT</a></Link>
           </li>
           <li>
-            <a href="">ABOUT</a>
+            <Link href='/works'><a>WORKS</a></Link>
           </li>
           <li>
-            <a href="">CONTACTT</a>
+            <Link href='/contact'><a>CONTACT</a></Link>
           </li>
       </MenuContainer>
-      <Slidemenu>
-        <input id="menuTrigger" className="triggerBox" type="checkbox"></input>
-        <label className="iconMenu" htmlFor="menuTrigger">
-          <IconLine></IconLine>
-        </label>
-        <label id="menuBack" className="triggerBox" htmlFor="menuTrigger"></label>
-      </Slidemenu>
+      {
+        !isMobile?(
+          <DesktopMenuContainer>
+              <li>
+                <Link href='about'><a>ABOUT</a></Link>
+              </li>
+              <li>
+                <Link href='works'><a>WORKS</a></Link>
+              </li>
+              <li>
+                <Link href='contact'><a>CONTACT</a></Link>
+              </li>
+          </DesktopMenuContainer>
+        ):(
+          <Slidemenu>
+            <input id="menuTrigger" className="triggerBox" type="checkbox"></input>
+            <label className="iconMenu" htmlFor="menuTrigger">
+              <IconLine></IconLine>
+            </label>
+            <label id="menuBack" className="triggerBox" htmlFor="menuTrigger"></label>
+          </Slidemenu>
+        )
+      }
+      
     </Container>
   );
 };
@@ -105,7 +126,7 @@ const MenuContainer = styled.ul`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  /* z-index: ${zIndex.elevation.ev16}; */
   width: 100%;
   max-width: 320px;
   height: 100vh;
@@ -120,7 +141,7 @@ const MenuContainer = styled.ul`
   }
   a {
     display: block;
-    color: white;
+    color:${color.content.HighEmphasis};
     font-size: 14px;
     padding: 24px;
     text-decoration: none;
@@ -131,7 +152,14 @@ const MenuContainer = styled.ul`
   }
 `;
 
-const Menu = styled.p`
-  color: ${color.content.HighEmphasis};
-  margin-right: 12px;
-`;
+
+const DesktopMenuContainer = styled.ul`
+  display:flex;
+  li{
+    margin:0 8px 0 0;
+    a{
+      color:${color.content.HighEmphasis};
+      text-decoration:none;
+    }
+  }
+`

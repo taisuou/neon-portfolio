@@ -2,6 +2,8 @@ import React, { VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
 import { contents } from '../../utils/store';
+import { Item } from '../molecules/Item';
+import { WorkPost } from '../../../@types/schema';
 
 export const Home: VFC = () => {
   return (
@@ -10,18 +12,12 @@ export const Home: VFC = () => {
     <Container>
       <MainTitle>Glass and Virtual Neon Arts</MainTitle>
       {/* TIPS map文 */}
-      {contents.works.map((work, index) => (
-           <Item isOdd={index%2===0?true:false}>
-            <Picture>
-              <img src={`${work.thumb}`} />
-            </Picture>
-            <Info>
-              <TitleEN>{work.titleEn}</TitleEN>
-              <TitleJP>{work.titleJp}</TitleJP>
-              {/* TIPS : インラインの条件分岐記法  A?B:C */}
-              <Tag>{work.tag===0? 'ART': 'Client'}</Tag>
-            </Info>
-          </Item>       
+      {contents.works.map((work:WorkPost,index) => (
+           <Item 
+            post={work}
+            key={index}
+            indexNumber={index}
+            />
       ))}
       
       <ButtonMore>
@@ -75,18 +71,12 @@ export const Home: VFC = () => {
           </li>
         </ul>
       </UiCategory>
-      {contents.works.map((work, index) => (
-           <Item isOdd={index%2===0?true:false}>
-           <Picture>
-             <img src={`${work.thumb}`} />
-           </Picture>
-           <Info>
-             <TitleEN>{work.titleEn}</TitleEN>
-             <TitleJP>{work.titleJp}</TitleJP>
-             {/* TIPS : インラインの条件分岐記法  A?B:C */}
-             <Tag>{work.tag===0? 'ART': 'Client'}</Tag>
-           </Info>
-         </Item>       
+      {contents.works.map((work:WorkPost, index) => (
+           <Item  
+           post={work}
+            key={index}
+            indexNumber={index}
+            />
       ))}
 
       <PageTitle>
@@ -129,16 +119,7 @@ export const Home: VFC = () => {
         </ColInfobox>
       </SectionContainer>
 
-      <Item isOdd={true}>
-        <Info>
-          <TitleEN>Kawakyu Art Exibition 2022 ”In a Dream”</TitleEN>
-          <TitleJP>Kawakyu Art Exibition 2022 「夢中」</TitleJP>
-          <Tag>Art</Tag>
-        </Info>
-        <Picture>
-          <img src="images/posts/sample.jpg" alt="" />
-        </Picture>
-      </Item>
+      
       <SectionContainer>
         <ColInfobox>
           <ul>
@@ -157,12 +138,7 @@ export const Home: VFC = () => {
           </ul>
         </ColInfobox>
       </SectionContainer>
-      <Picture>
-        <img src="images/posts/202206_kawakyu/202206_kawakyu_01.jpg" alt="" />
-      </Picture>
-      <Picture>
-        <img src="images/posts/202206_kawakyu/202206_kawakyu_02.jpg" alt="" />
-      </Picture>
+      
       <SectionContainer>
         <Text>
           <p>
@@ -205,43 +181,6 @@ const Container = styled.div`
   color: ${color.content.HighEmphasis};
 `;
 
-const Item = styled.div<{isOdd:boolean}>`
-  display:flex;
-  padding-bottom: 64px;
-  flex-direction:column;
-  // TIPS メディクエリのやり方
-  // lg:Desktopの場合 /mdsp:tablet, mobileの場合, / sp: mobileの場合
-  ${(props)=>props.isOdd?`flex-direction:row;`:`flex-flow: row-reverse;`}};
-  
-  ${media.lg`
-    flex-direction:row;
-  `}
-`
-const Picture = styled.div`
-  & img {
-    width: 100%;
-  }
-`;
-const Info = styled.div`
-  padding: 0 32px;
-`;
-const TitleEN = styled.p`
-  font-size: 32px;
-  padding-bottom: 24px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #fff;
-`;
-const TitleJP = styled.p`
-  font-size: 16px;
-  margin-bottom: 24px;
-`;
-const Tag = styled.span`
-  display: inline-block;
-  padding: 2px 4px;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  font-size: 16px;
-`;
 
 const MainTitle = styled.p`
   text-align: center;

@@ -20,10 +20,15 @@ import { color } from '../../utils/style';
 import styled from '@emotion/styled';
 import { Flex, Box, useReflow } from '@react-three/flex';
 import { Home } from '../organisms/Home';
+import { About } from '../organisms/About';
+import { Works } from '../organisms/Works';
+import { Contact } from '../organisms/Contact';
+import { Detail } from '../organisms/Detail';
 import { Footer } from '../molecules/Footer';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
+import { useLocation, Switch, Route } from "wouter"
 
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -67,8 +72,14 @@ function Contents() {
 			</Flex> */}
       {/* </Scroll> */}
       <Scroll html ref={elementRef}>
-        {/* TIPS : ↓ページを変更する場合にここを変更 */}
-        <Home /> 
+        <Switch>
+          <Route path="/" component={Home}/>
+          <Route path="/about" component={About}/>
+          <Route path="/works" component={Works}/>
+          <Route path="/contact" component={Contact}/>
+          <Route path="/works/:id" component={Detail}/>
+          <Route>存在しないコンテンツです</Route>
+        </Switch>
         <Footer />
       </Scroll>
     </ScrollControls>
