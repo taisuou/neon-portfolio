@@ -26,7 +26,6 @@ export const color = {
 } as const;
 
 export const font = {
-  
   replica: {
     h1: 'font-family:replica; font-weight: 700; font-size: 48px; line-height: 1.3;',
     h2: 'font-family:replica; font-weight: 700; font-size: 32px; line-height: 1.3;',
@@ -57,7 +56,7 @@ export const font = {
     label: 'font-family:Inter; font-weight: 600; font-size: 12px; line-height: 1.5;',
     overline: 'font-family:Inter; font-weight: 400; font-size: 10px; line-height: 1.5;',
   },
-} as const
+} as const;
 
 export const media = {
   lg: (...args: any) => css`

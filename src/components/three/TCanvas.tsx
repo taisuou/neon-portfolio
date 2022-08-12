@@ -20,15 +20,22 @@ import { color } from '../../utils/style';
 import styled from '@emotion/styled';
 import { Flex, Box, useReflow } from '@react-three/flex';
 import { Home } from '../organisms/Home';
+import { About } from '../organisms/About';
+import { Works } from '../organisms/Works';
+import { Contact } from '../organisms/Contact';
+import { Detail } from '../organisms/Detail';
 import { Footer } from '../molecules/Footer';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
+import { useLocation, Switch, Route } from 'wouter';
+import { contents } from '../../utils/store';
 
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
+
   useEffect(() => {
     //need to be fixed later. Triggered only when
 
@@ -67,8 +74,14 @@ function Contents() {
 			</Flex> */}
       {/* </Scroll> */}
       <Scroll html ref={elementRef}>
-        {/* TIPS : ↓ページを変更する場合にここを変更 */}
-        <Home /> 
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/works" component={Works} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/works/:id">{(params) => <Detail post={contents.works[0]} />}</Route>
+          <Route>存在しないコンテンツです</Route>
+        </Switch>
         <Footer />
       </Scroll>
     </ScrollControls>
@@ -76,7 +89,6 @@ function Contents() {
 }
 
 export const TCanvas: VFC = () => {
-
   return (
     <Canvas
       camera={{

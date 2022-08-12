@@ -1,11 +1,18 @@
-import React, { VFC } from 'react';
+import React, { FC, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
+import { WorkPost } from '../../../@types/schema';
 
-export const About: VFC = () => {
+type DetailProps = {
+  post: WorkPost;
+};
+
+export const Detail: FC<DetailProps> = ({ post }) => {
   return (
     <Container>
-      <p>this is about</p>
+      <p>this is Detail</p>
+      <br />
+      <p>{post.titleEn}</p>
     </Container>
   );
 };
