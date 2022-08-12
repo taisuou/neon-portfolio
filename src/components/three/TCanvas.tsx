@@ -19,7 +19,7 @@ import { KernelSize } from 'postprocessing';
 import { color } from '../../utils/style';
 import styled from '@emotion/styled';
 import { Flex, Box, useReflow } from '@react-three/flex';
-import { Body } from '../organisms/Body';
+import { Home } from '../organisms/Home';
 import { Footer } from '../molecules/Footer';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
@@ -68,7 +68,7 @@ function Contents() {
 			</Flex> */}
       {/* </Scroll> */}
       <Scroll html ref={elementRef}>
-        <Body />
+        <Home />
         <Footer />
       </Scroll>
     </ScrollControls>

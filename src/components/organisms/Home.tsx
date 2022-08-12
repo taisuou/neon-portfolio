@@ -1,8 +1,8 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex } from '../../utils/style';
+import { color, font, zIndex } from '../../utils/style';
 
-export const Body: VFC = () => {
+export const Home: VFC = () => {
   return (
     <>
     <Hero></Hero>
@@ -204,8 +204,9 @@ const Hero = styled.div`
 `
 
 const Container = styled.div`
-  background: #1d1d1d;
-  color: #fff;
+  /* TIPS : color, fontは極力一箇所に定義をまとめる */
+  background: ${color.background.dark};
+  color: ${color.content.HighEmphasis};
 `;
 const Item = styled.div`
   padding-bottom: 64px;
@@ -238,13 +239,10 @@ const Tag = styled.span`
 
 const MainTitle = styled.p`
   text-align: center;
-  font-size: 80px;
   padding: 0 36px;
-  @font-face {
-    font-family: 'replica';
-    src: url('../fonts/ReplicaLLWeb-Bold.woff') format('woff');
-  }
-  font-family: 'replica', sans-serif;
+  /* TIPS fontもこんな感じで一括定義した方が楽。上書きもできる */
+  ${font.replica.h1}
+  font-size: 80px;
 `;
 
 const ButtonMore = styled.div`
@@ -297,7 +295,8 @@ const SectionTitle = styled.div`
   }
 `;
 
-const Text = styled.p`
+const Text = styled.div`
+  display:inline;
   margin-bottom: 48px;
   text-align: justify;
   font-size: 16px;
