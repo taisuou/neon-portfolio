@@ -8,11 +8,11 @@ export const Header: VFC = () => {
   const isMobile = useMedia().isMobile;
   return (
     <Container>
-      <Logo>
-        <a href="/">
+      <Link href="/">
+      <Logo>  
           <img src="images/header_logo.svg" alt="electrode" width={105} />
-        </a>
       </Logo>
+      </Link>
 
       <MenuContainer id="menuContents" className="menuContents">
         <li>
