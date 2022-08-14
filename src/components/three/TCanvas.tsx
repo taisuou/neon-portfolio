@@ -1,10 +1,5 @@
-import { Suspense, useEffect, useRef,  VFC } from 'react';
-import {
-  OrbitControls,
-  Scroll,
-  ScrollControls,
-  Stats,
-} from '@react-three/drei';
+import { Suspense, useEffect, useRef, VFC } from 'react';
+import { OrbitControls, Scroll, ScrollControls, Stats } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';

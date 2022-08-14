@@ -1,14 +1,15 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex, media } from '../../utils/style';
+import { Link } from 'wouter';
 
 export const Footer: VFC = () => {
   return (
     <Container>
       <MenuContainer>
-        <Menu>WORKS</Menu>
-        <Menu>ABOUT</Menu>
-        <Menu>CONTACT</Menu>
+        <Menu><Link href='works'>WORKS</Link></Menu>
+        <Menu><Link href='about'>ABOUT</Link></Menu>
+        <Menu><Link href='contact'>CONTACT</Link></Menu>
         <Menu>hellow@electrodeart.com</Menu>
         <Menu>
           <img src="images/header_sns_instagram.svg" alt="" />

@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font  } from '../../utils/style';
+import { color, font } from '../../utils/style';
 
 export const Works: VFC = () => {
   return (
