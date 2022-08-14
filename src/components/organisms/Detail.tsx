@@ -12,19 +12,35 @@ export const Detail: FC<DetailProps> = ({ post }) => {
     <Container>
       <p>this is Detail</p>
       <br />
-      <p>{post.titleEn}</p>
+      <Title>{post.titleEn}</Title>
+      <p>{post.descriptionEn}</p>
+      <PictureWrap>
+        {post.images.map((image, index) => (
+          <Picture src={image} key={index} />
+        ))}
+      </PictureWrap>
     </Container>
   );
 };
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  padding: 64px 0 0 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   p {
     color: ${color.content.HighEmphasis};
-    ${font.replica.h1}
+    ${font.Inter.article2}
   }
+`;
+const Title = styled.h1`
+  ${font.replica.h1}
+`;
+const PictureWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Picture = styled.img`
+  width: 100%;
 `;

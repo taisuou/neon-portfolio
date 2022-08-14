@@ -1,24 +1,17 @@
-import React, { Suspense, useEffect, useRef, useState, VFC } from 'react';
+import { Suspense, useEffect, useRef,  VFC } from 'react';
 import {
   OrbitControls,
   Scroll,
   ScrollControls,
   Stats,
-  Image,
-  Text,
-  useAspect,
 } from '@react-three/drei';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Lights } from './Light';
-import { Objects } from './Objects';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
-import * as THREE from 'three';
 import { Ground } from './Ground';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize } from 'postprocessing';
 import { color } from '../../utils/style';
 import styled from '@emotion/styled';
-import { Flex, Box, useReflow } from '@react-three/flex';
 import { Home } from '../organisms/Home';
 import { About } from '../organisms/About';
 import { Works } from '../organisms/Works';
@@ -28,7 +21,7 @@ import { Footer } from '../molecules/Footer';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
-import { useLocation, Switch, Route } from 'wouter';
+import { Switch, Route } from 'wouter';
 import { contents } from '../../utils/store';
 
 function Contents() {
@@ -131,7 +124,3 @@ export const TCanvas: VFC = () => {
     </Canvas>
   );
 };
-
-const H1 = styled.h1`
-  color: ${color.content.HighEmphasis};
-`;

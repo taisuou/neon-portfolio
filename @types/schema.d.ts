@@ -4,4 +4,8 @@ export type WorkPost = {
     titleJp: string
     tag: number
     thumb: string
+    year:string
+    descriptionEn:string
+    descriptionJp:string
+    images:string[]
 }
