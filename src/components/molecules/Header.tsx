@@ -128,7 +128,7 @@ export const Header: VFC = () => {
         },
       })
       .set(overlayPathParent.current, {
-        visibility: 'visible',
+        autoAlpha: 1,
       })
       .set(overlayPath.current, {
         attr: { d: paths.step1.unfilled },
@@ -156,8 +156,7 @@ export const Header: VFC = () => {
           duration: 0.2,
           ease: 'sine.in',
           attr: { d: paths.step2.inBetween.curve },
-        },
-        0,
+        }
       )
       .to(overlayPath.current, {
         duration: 1,
@@ -165,12 +164,12 @@ export const Header: VFC = () => {
         attr: { d: paths.step2.unfilled },
       })
       .set(overlayPathParent.current, {
-        visibility: 'hidden',
+        autoAlpha: 0,
       });
   };
 
   useEffect(() => {
-    // transitionAnimation()
+    transitionAnimation()
     console.log('location changed');
   }, [location]);
 
