@@ -140,7 +140,6 @@ const Logo = styled.a`
 const SlidemenuButton = styled.div<{isOpen:boolean}>`
   width:32px;
   height:32px;
-  background:${color.content.MiddleEmphasis};
   z-index:${zIndex.elevation.ev8};
   display: flex;
   flex-direction: column;
@@ -150,7 +149,7 @@ const SlidemenuButton = styled.div<{isOpen:boolean}>`
     height:1px;
     width:100%;
     background-color:${color.content.HighEmphasis};
-    transition: all 0.3s linear;
+    transition: all 0.3s ease;
     transform-origin: 1px;
     &:first-of-type{
       transform: ${({ isOpen }) => isOpen ? 'rotate(45deg)' : 'rotate(0)'};
