@@ -269,7 +269,7 @@ const SlideMenuContents = styled.ul`
   li {
     /* initial state of menu */
     opacity: 0;
-    visiblity:hidden;
+    visibility:hidden;
     text-align: center;
   }
   a {
@@ -309,6 +309,7 @@ const DesktopMenuContainer = styled.ul`
 
 const SVG = styled.svg`
   position: absolute;
+  visibility:hidden;
   top: 0;
   left: 0;
 `;
