@@ -12,10 +12,8 @@ export const Header: VFC = () => {
   const [location] = useLocation();
   // overlay (SVG path element)
   // TODO : to be refined
-  const overlayPath = useRef({
-    elem: document.querySelector('#overlay__path'),
-    parent: document.querySelector('#overlay'),
-  });
+  const overlayPath = useRef(null)
+  const overlayPathParent = useRef(null)
   let spMenuList = useRef<HTMLElement[] | null[]>([]);
 
   const menus = ['about', 'works', 'contact'];
@@ -42,8 +40,8 @@ export const Header: VFC = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setMenuOpen(true);
-    overlayPath.current.elem = document.querySelector('#overlay__path');
-    overlayPath.current.parent = document.querySelector('#overlay');
+    
+    if (!overlayPath.current || !overlayPathParent.current) return
     console.log('open');
     gsap
       .timeline()
@@ -55,14 +53,14 @@ export const Header: VFC = () => {
           setIsAnimating(false);
         },
       })
-      .set(overlayPath.current.elem, {
+      .set(overlayPath.current, {
         attr: { d: paths.step1.unfilled },
       })
-      .set(overlayPath.current.parent, {
+      .set(overlayPathParent.current, {
         visibility:"visible"
       })
       .to(
-        overlayPath.current.elem,
+        overlayPath.current,
         {
           duration: 0.8,
           ease: 'power4.in',
@@ -70,7 +68,7 @@ export const Header: VFC = () => {
         },
         0,
       )
-      .to(overlayPath.current.elem, {
+      .to(overlayPath.current, {
         duration: 0.2,
         ease: 'power1',
         attr: { d: paths.step1.filled },
@@ -80,8 +78,7 @@ export const Header: VFC = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setMenuOpen(false);
-    overlayPath.current.elem = document.querySelector('#overlay__path');
-    overlayPath.current.parent = document.querySelector('#overlay');
+    if (!overlayPath.current || !overlayPathParent.current) return
     console.log('close');
     gsap
       .timeline()
@@ -97,14 +94,14 @@ export const Header: VFC = () => {
           setIsAnimating(false);
         },
       })
-      .set(overlayPath.current.elem, {
+      .set(overlayPath.current, {
         attr: { d: paths.step1.filled },
       })
-      .set(overlayPath.current.parent, {
+      .set(overlayPathParent.current, {
         visibility:"visible"
       })
       .to(
-        overlayPath.current.elem,
+        overlayPath.current,
         {
           duration: 0.8,
           ease: 'power4.in',
@@ -112,28 +109,33 @@ export const Header: VFC = () => {
         },
         0,
       )
-      .to(overlayPath.current.elem, {
+      .to(overlayPath.current, {
         duration: 0.2,
         ease: 'power1',
         attr: { d: paths.step1.unfilled },
       })
-      .set(overlayPath.current.parent, {
+      .set(overlayPathParent.current, {
         visibility:"hidden"
       })
   };
   const transitionAnimation = ()=>{
-    // setIsAnimating(true);
-    
+    if (isAnimating) return;
+    setIsAnimating(true);
+    if (!overlayPath.current || !overlayPathParent.current) return
     gsap
-      .timeline()
-      .set(overlayPath.current.elem, {
-        attr: { d: paths.step1.unfilled },
+      .timeline({
+        onComplete: () => {
+          setIsAnimating(false);
+        },
       })
-      .set(overlayPath.current.parent, {
+      .set(overlayPathParent.current, {
         visibility:"visible"
       })
+      .set(overlayPath.current, {
+        attr: { d: paths.step1.unfilled },
+      })
       .to(
-        overlayPath.current.elem,
+        overlayPath.current,
         {
           duration: 0.8,
           ease: 'power4.in',
@@ -141,16 +143,16 @@ export const Header: VFC = () => {
         },
         0,
       )
-      .to(overlayPath.current.elem, {
+      .to(overlayPath.current, {
         duration: 0.2,
         ease: 'power1',
         attr: { d: paths.step1.filled }
       })
-      .set(overlayPath.current.elem, {
+      .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
       })
       .to(
-        overlayPath.current.elem,
+        overlayPath.current,
         {
           duration: 0.2,
           ease: 'sine.in',
@@ -158,26 +160,21 @@ export const Header: VFC = () => {
         },
         0,
       )
-      .to(overlayPath.current.elem, {
+      .to(overlayPath.current, {
         duration: 1,
         ease: 'power4',
         attr: { d: paths.step2.unfilled },
       })
-      .set(overlayPath.current.parent, {
+      .set(overlayPathParent.current, {
         visibility:"hidden"
       })
   }
   
   useEffect(()=>{
-    transitionAnimation()
+    // transitionAnimation()
     console.log('location changed')
   },[location])
 
-  useEffect(()=>{
-    console.log('useEffect called!')
-    overlayPath.current.elem = document.querySelector('#overlay__path');
-    overlayPath.current.parent = document.querySelector('#overlay');
-  })
   return (
     <Container>
       <SVG
@@ -186,12 +183,14 @@ export const Header: VFC = () => {
         height="100vh"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
+        ref={overlayPathParent}
       >
         <path
           fill={color.background.middleDark}
           id="overlay__path"
           vectorEffect="non-scaling-stroke"
           d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
+          ref={overlayPath}
         />
       </SVG>
       <Link href="/" onClick={()=>{isMenuOpen&&menuClose()}}>
