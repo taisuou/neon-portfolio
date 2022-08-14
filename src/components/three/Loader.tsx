@@ -9,11 +9,16 @@ export const Loader: VFC = () => {
 
   const loaderPath = useRef(null);
   const loaderPathParent = useRef(null);
+  const counter = useRef<HTMLDivElement|null>(null);
 
   const [isLoaderOpen, setLoaderOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const [hidden, setOcclude] = useState(false)
+
+
+
+  
 
   const paths = {
     step1: {
@@ -22,14 +27,7 @@ export const Loader: VFC = () => {
         curve: 'M 0 0 V 50 Q 50 100 100 50 V 0 z',
       },
       filled: 'M 0 0 V 100 Q 50 100 100 100 V 0 z',
-    },
-    step2: {
-      filled: 'M 0 100 V 0 Q 50 0 100 0 V 100 z',
-      inBetween: {
-        curve: 'M 0 100 V 0 Q 50 50 100 0 V 100 z',
-      },
-      unfilled: 'M 0 100 V 100 Q 50 100 100 100 V 100 z',
-    },
+    }
   };
 
   const loaderEnd = () => {
@@ -38,7 +36,7 @@ export const Loader: VFC = () => {
     setLoaderOpen(true);
 
     if (!loaderPath.current || !loaderPathParent.current) return;
-    console.log('loader open');
+    
     gsap
       .timeline({
         onComplete: () => {
@@ -56,6 +54,7 @@ export const Loader: VFC = () => {
         loaderPath.current,
         {
           duration: 0.8,
+          delay:3.0,
           ease: 'power4.in',
           attr: { d: paths.step1.inBetween.curve },
         },
@@ -70,6 +69,10 @@ export const Loader: VFC = () => {
         visibility: 'hidden',
       })
   };
+
+  
+  
+  
   //   return <Html center>{progress} % loaded</Html>
   useEffect(()=>{
     if(progress===100){loaderEnd()}
@@ -128,7 +131,8 @@ export const Loader: VFC = () => {
             </li>
           </LogoInner>
         </LoaderLogo>
-        <LoaderNum>{progress}% Loaded</LoaderNum>
+        <LoaderNum ref={counter} data-from="0" data-to="4096">{progress}</LoaderNum>
+
       </LoaderAnim>
       
     </Html>
@@ -236,7 +240,7 @@ const LogoInner = styled.ol`
   transform: translateY(-60px) translateZ(-60px);
 `;
 
-const LoaderNum = styled.p`
+const LoaderNum = styled.div`
   position: absolute;
   top: 50%;
   margin-top: 50px;
