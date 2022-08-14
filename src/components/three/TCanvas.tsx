@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useRef, VFC } from 'react';
-import { OrbitControls, Scroll, ScrollControls, Stats } from '@react-three/drei';
+import { OrbitControls, Scroll, ScrollControls, Stats, useProgress } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
@@ -16,7 +16,7 @@ import { Footer } from '../molecules/Footer';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
-import { Switch, Route } from 'wouter';
+import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
 import { Loader } from './Loader';
 import { useMedia } from '../../utils/useMedia';
@@ -26,14 +26,18 @@ function Contents() {
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
   const isMobile = useMedia().isMobile;
+  const { active } = useProgress()
+  const [location] = useLocation();
+
   useEffect(() => {
     //need to be fixed later. Triggered only when
 
     sceneState.height = elementRef.current!.getBoundingClientRect().height;
-  }, [size.height]);
-  useFrame(() => {
-    sceneState.height = elementRef.current!.getBoundingClientRect().height;
-  });
+  }, [size.height, elementRef, location]);
+  
+  // useFrame(() => {
+  //   sceneState.height = elementRef.current!.getBoundingClientRect().height;
+  // });
   return (
     <ScrollControls
       pages={height / size.height} // Each page takes 100% of the height of the canvas
