@@ -42,7 +42,6 @@ export const App: VFC = () => {
         `}
       />
       <Container>
-        <Loader />
         <Header />
         <TCanvas />
       </Container>

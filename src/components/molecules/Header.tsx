@@ -269,6 +269,7 @@ const SlideMenuContents = styled.ul`
   li {
     /* initial state of menu */
     opacity: 0;
+    visiblity:hidden;
     text-align: center;
   }
   a {

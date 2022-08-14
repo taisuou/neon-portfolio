@@ -18,6 +18,7 @@ import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { Switch, Route } from 'wouter';
 import { contents } from '../../utils/store';
+import { Loader } from './Loader';
 
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -98,7 +99,7 @@ export const TCanvas: VFC = () => {
       {/* <primitive object={new THREE.AxesHelper(10)} /> */}
       {/* lights */}
       {/* <Lights /> */}
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader/>}>
         {/* objects */}
         {/* <Objects /> */}
         <NeonGLTF />
