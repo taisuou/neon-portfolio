@@ -1,38 +1,106 @@
-import React, { VFC } from 'react';
+import React, { useEffect, useRef, useState, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex, media } from '../../utils/style';
 import { Link } from 'wouter';
 import { useMedia } from '../../utils/useMedia';
+import { gsap } from "gsap";
 
 export const Header: VFC = () => {
+  const [isMenuOpen, setMenuOpen] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false)
   const isMobile = useMedia().isMobile;
+  
+  // overlay (SVG path element)
+// TODO : to be refined
+const overlayPath = useRef({
+  elem: document.querySelector('#overlay__path')
+});
+
+
+
+  // paths
+// edit here: https://yqnn.github.io/svg-path-editor/
+const paths = {
+  step1: {
+      unfilled: 'M 0 0 V 0 Q 50 0 100 0 V 0 z',
+      inBetween: {
+          curve1: 'M 0 0 V 50 Q 50 0 100 50 V 0 z',
+          curve2: 'M 0 0 V 50 Q 50 100 100 50 V 0 z'
+      },
+      filled: 'M 0 0 V 100 Q 50 100 100 100 V 0 z',
+  },
+  step2: {
+      filled: 'M 0 100 V 0 Q 50 0 100 0 V 100 z',
+      inBetween: {
+          curve1: 'M 0 0 V 50 Q 50 0 100 50 V 0 z',
+          // curve2: 'M 0 0 V 50 Q 50 100 100 50 V 0 z'
+      },
+      unfilled: 'M 0 0 V 0 Q 50 0 100 0 V 0 z',
+  }
+};
+useEffect(()=>{
+  overlayPath.current.elem = document.querySelector('#overlay__path')
+})
+
+const menuOpen = ()  => {
+  if(isAnimating) return
+  setIsAnimating(true)
+  console.log('open');
+  gsap.timeline({
+          onComplete: () => setIsAnimating(false)
+      })
+      .set(overlayPath.current.elem, {
+          attr: { d: paths.step1.unfilled }
+      })
+      .to(overlayPath.current.elem, { 
+          duration: 0.8,
+          ease: 'power4.in',
+          attr: { d: paths.step1.inBetween.curve2 }
+      }, 0)
+      .to(overlayPath.current.elem, { 
+          duration: 0.2,
+          ease: 'power1',
+          attr: { d: paths.step1.filled },
+          onComplete: () => setMenuOpen(true)
+      })
+}
+const menuClose = ()  => {
+  if(isAnimating) return
+  setIsAnimating(true)
+  console.log('close');
+  gsap.timeline({
+          onComplete: () => setIsAnimating(false)
+      })
+      .set(overlayPath.current.elem, {
+          attr: { d: paths.step1.filled }
+      })
+      .to(overlayPath.current.elem, { 
+          duration: 0.8,
+          ease: 'power4.in',
+          attr: { d: paths.step1.inBetween.curve2 }
+      }, 0)
+      .to(overlayPath.current.elem, { 
+          duration: 0.2,
+          ease: 'power1',
+          attr: { d: paths.step1.unfilled },
+          onComplete: () => setMenuOpen(false)
+      })
+}
+
   return (
     <Container>
+      <SVG id="overlay" width="100vw" height="100vh" viewBox="0 0 100 100" preserveAspectRatio="none">
+				<path fill={color.background.middleDark} id="overlay__path" vectorEffect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z" />
+			</SVG>
       <Link href="/">
-      <Logo>  
-          <img src="images/header_logo.svg" alt="electrode" width={105} />
-      </Logo>
+        <Logo>  
+            <img src="images/header_logo.svg" alt="electrode" width={105} />
+        </Logo>
       </Link>
 
-      <MenuContainer id="menuContents" className="menuContents">
-        <li>
-          <Link href="/about">
-            <a>ABOUT</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/works">
-            <a>WORKS</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/contact">
-            <a>CONTACT</a>
-          </Link>
-        </li>
-      </MenuContainer>
+      
       {!isMobile ? (
-        <DesktopMenuContainer>
+        <DesktopMenuContainer >
           <li>
             <Link href="about">
               <a>ABOUT</a>
@@ -50,39 +118,28 @@ export const Header: VFC = () => {
           </li>
         </DesktopMenuContainer>
       ) : (
-        <Slidemenu>
-          <input id="menuTrigger" className="triggerBox" type="checkbox"></input>
-          <label className="iconMenu" htmlFor="menuTrigger">
-            <IconLine></IconLine>
-          </label>
-          <label id="menuBack" className="triggerBox" htmlFor="menuTrigger"></label>
+        <Slidemenu
+          onClick={()=>{
+            isMenuOpen?menuClose():menuOpen()
+            
+          }}
+        >
+          
         </Slidemenu>
       )}
+      
     </Container>
   );
 };
 
-const Logo = styled.a``;
+const Logo = styled.a`
+  z-index: ${zIndex.elevation.ev8};
+`;
 const Slidemenu = styled.div`
-  .iconMenu {
-    position: relative;
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    vertical-align: middle;
-  }
-  .triggerBox {
-    display: none;
-    position: fixed;
-    z-index: 98;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    opacity: 0;
-    transition: 0.7s ease-in-out;
-  }
+  width:44px;
+  height:44px;
+  background:${color.content.MiddleEmphasis};
+  z-index:${zIndex.elevation.ev8}
 `;
 const IconLine = styled.span`
   content: '';
@@ -129,24 +186,13 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 16px 32px 0 32px;
   z-index: ${zIndex.elevation.ev4};
-  background: #1d1d1d;
-  color: #fff;
+  color: ${color.content.HighEmphasis};
   font-size: 14px;
 `;
 const MenuContainer = styled.ul`
-  position: fixed;
-  top: 0;
-  left: 0;
-  /* z-index: ${zIndex.elevation.ev16}; */
-  width: 100%;
-  max-width: 320px;
-  height: 100vh;
-  padding: 53px 16px 16px;
-  background: #1f2c37;
-  overflow: auto;
-  transition: 0.3s ease-in-out;
-  transform: translateX(-105%);
-
+  
+  z-index: ${zIndex.elevation.ev8};
+  
   li {
     border-bottom: solid 1px white;
   }
@@ -165,6 +211,7 @@ const MenuContainer = styled.ul`
 
 const DesktopMenuContainer = styled.ul`
   display: flex;
+  z-index: ${zIndex.elevation.ev8};
   li {
     margin: 0 8px 0 0;
     a {
@@ -173,3 +220,10 @@ const DesktopMenuContainer = styled.ul`
     }
   }
 `;
+
+const SVG = styled.svg`
+  position:absolute;
+  top:0;
+  left:0;
+
+`

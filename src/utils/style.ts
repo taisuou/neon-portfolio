@@ -12,6 +12,7 @@ export const color = {
   },
   background: {
     dark: '#1d1d1d',
+    middleDark: '#333333',
     white: '#fff',
   },
   utils: {
