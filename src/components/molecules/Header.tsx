@@ -24,16 +24,14 @@ export const Header: VFC = () => {
     step1: {
       unfilled: 'M 0 0 V 0 Q 50 0 100 0 V 0 z',
       inBetween: {
-        curve1: 'M 0 0 V 50 Q 50 0 100 50 V 0 z',
-        curve2: 'M 0 0 V 50 Q 50 100 100 50 V 0 z',
+        curve: 'M 0 0 V 50 Q 50 100 100 50 V 0 z',
       },
       filled: 'M 0 0 V 100 Q 50 100 100 100 V 0 z',
     },
     step2: {
       filled: 'M 0 100 V 0 Q 50 0 100 0 V 100 z',
       inBetween: {
-        curve1: 'M 0 100 V 0 Q 50 50 100 0 V 100 z',
-        curve2: 'M 0 0 V 50 Q 50 100 100 50 V 0 z',
+        curve: 'M 0 100 V 0 Q 50 50 100 0 V 100 z',
       },
       unfilled: 'M 0 100 V 100 Q 50 100 100 100 V 100 z',
     },
@@ -68,7 +66,7 @@ export const Header: VFC = () => {
         {
           duration: 0.8,
           ease: 'power4.in',
-          attr: { d: paths.step1.inBetween.curve2 },
+          attr: { d: paths.step1.inBetween.curve },
         },
         0,
       )
@@ -76,9 +74,6 @@ export const Header: VFC = () => {
         duration: 0.2,
         ease: 'power1',
         attr: { d: paths.step1.filled },
-      })
-      .set(overlayPath.current.parent, {
-        visibility:"hidden"
       })
   };
   const menuClose = () => {
@@ -113,7 +108,7 @@ export const Header: VFC = () => {
         {
           duration: 0.8,
           ease: 'power4.in',
-          attr: { d: paths.step1.inBetween.curve2 },
+          attr: { d: paths.step1.inBetween.curve },
         },
         0,
       )
@@ -128,8 +123,7 @@ export const Header: VFC = () => {
   };
   const transitionAnimation = ()=>{
     // setIsAnimating(true);
-    overlayPath.current.elem = document.querySelector('#overlay__path');
-    overlayPath.current.parent = document.querySelector('#overlay');
+    
     gsap
       .timeline()
       .set(overlayPath.current.elem, {
@@ -143,7 +137,7 @@ export const Header: VFC = () => {
         {
           duration: 0.8,
           ease: 'power4.in',
-          attr: { d: paths.step1.inBetween.curve2 },
+          attr: { d: paths.step1.inBetween.curve },
         },
         0,
       )
@@ -160,7 +154,7 @@ export const Header: VFC = () => {
         {
           duration: 0.2,
           ease: 'sine.in',
-          attr: { d: paths.step2.inBetween.curve1 },
+          attr: { d: paths.step2.inBetween.curve },
         },
         0,
       )
@@ -179,6 +173,11 @@ export const Header: VFC = () => {
     console.log('location changed')
   },[location])
 
+  useEffect(()=>{
+    console.log('useEffect called!')
+    overlayPath.current.elem = document.querySelector('#overlay__path');
+    overlayPath.current.parent = document.querySelector('#overlay');
+  })
   return (
     <Container>
       <SVG

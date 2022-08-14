@@ -7,9 +7,9 @@ export const Footer: VFC = () => {
   return (
     <Container>
       <MenuContainer>
-        <Menu><Link href='works'>WORKS</Link></Menu>
-        <Menu><Link href='about'>ABOUT</Link></Menu>
-        <Menu><Link href='contact'>CONTACT</Link></Menu>
+        <Menu><Link href='/works'>WORKS</Link></Menu>
+        <Menu><Link href='/about'>ABOUT</Link></Menu>
+        <Menu><Link href='/contact'>CONTACT</Link></Menu>
         <Menu>hellow@electrodeart.com</Menu>
         <Menu>
           <img src="images/header_sns_instagram.svg" alt="" />
