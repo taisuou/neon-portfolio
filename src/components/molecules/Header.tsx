@@ -12,8 +12,8 @@ export const Header: VFC = () => {
   const [location] = useLocation();
   // overlay (SVG path element)
   // TODO : to be refined
-  const overlayPath = useRef(null)
-  const overlayPathParent = useRef(null)
+  const overlayPath = useRef(null);
+  const overlayPathParent = useRef(null);
   let spMenuList = useRef<HTMLElement[] | null[]>([]);
 
   const menus = ['about', 'works', 'contact'];
@@ -34,14 +34,13 @@ export const Header: VFC = () => {
       unfilled: 'M 0 100 V 100 Q 50 100 100 100 V 100 z',
     },
   };
-  
 
   const menuOpen = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setMenuOpen(true);
-    
-    if (!overlayPath.current || !overlayPathParent.current) return
+
+    if (!overlayPath.current || !overlayPathParent.current) return;
     console.log('open');
     gsap
       .timeline()
@@ -57,7 +56,7 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.unfilled },
       })
       .set(overlayPathParent.current, {
-        visibility:"visible"
+        visibility: 'visible',
       })
       .to(
         overlayPath.current,
@@ -72,13 +71,13 @@ export const Header: VFC = () => {
         duration: 0.2,
         ease: 'power1',
         attr: { d: paths.step1.filled },
-      })
+      });
   };
   const menuClose = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setMenuOpen(false);
-    if (!overlayPath.current || !overlayPathParent.current) return
+    if (!overlayPath.current || !overlayPathParent.current) return;
     console.log('close');
     gsap
       .timeline()
@@ -98,7 +97,7 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.filled },
       })
       .set(overlayPathParent.current, {
-        visibility:"visible"
+        visibility: 'visible',
       })
       .to(
         overlayPath.current,
@@ -115,13 +114,13 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.unfilled },
       })
       .set(overlayPathParent.current, {
-        visibility:"hidden"
-      })
+        visibility: 'hidden',
+      });
   };
-  const transitionAnimation = ()=>{
+  const transitionAnimation = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    if (!overlayPath.current || !overlayPathParent.current) return
+    if (!overlayPath.current || !overlayPathParent.current) return;
     gsap
       .timeline({
         onComplete: () => {
@@ -129,7 +128,7 @@ export const Header: VFC = () => {
         },
       })
       .set(overlayPathParent.current, {
-        visibility:"visible"
+        visibility: 'visible',
       })
       .set(overlayPath.current, {
         attr: { d: paths.step1.unfilled },
@@ -146,7 +145,7 @@ export const Header: VFC = () => {
       .to(overlayPath.current, {
         duration: 0.2,
         ease: 'power1',
-        attr: { d: paths.step1.filled }
+        attr: { d: paths.step1.filled },
       })
       .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
@@ -166,14 +165,14 @@ export const Header: VFC = () => {
         attr: { d: paths.step2.unfilled },
       })
       .set(overlayPathParent.current, {
-        visibility:"hidden"
-      })
-  }
-  
-  useEffect(()=>{
+        visibility: 'hidden',
+      });
+  };
+
+  useEffect(() => {
     // transitionAnimation()
-    console.log('location changed')
-  },[location])
+    console.log('location changed');
+  }, [location]);
 
   return (
     <Container>
@@ -193,7 +192,12 @@ export const Header: VFC = () => {
           ref={overlayPath}
         />
       </SVG>
-      <Link href="/" onClick={()=>{isMenuOpen&&menuClose()}}>
+      <Link
+        href="/"
+        onClick={() => {
+          isMenuOpen && menuClose();
+        }}
+      >
         <Logo>
           <img src="images/header_logo.svg" alt="electrode" width={105} />
         </Logo>
@@ -221,7 +225,13 @@ export const Header: VFC = () => {
           </SlidemenuButton>
           <SlideMenuContents>
             {menus.map((menu, index) => (
-              <li ref={(e) => (spMenuList.current[index] = e)} key={index} onClick={()=>{menuClose()}}>
+              <li
+                ref={(e) => (spMenuList.current[index] = e)}
+                key={index}
+                onClick={() => {
+                  menuClose();
+                }}
+              >
                 <Link href={menu}>{menu.toUpperCase()}</Link>
               </li>
             ))}
@@ -269,7 +279,7 @@ const SlideMenuContents = styled.ul`
   li {
     /* initial state of menu */
     opacity: 0;
-    visibility:hidden;
+    visibility: hidden;
     text-align: center;
   }
   a {
@@ -294,7 +304,6 @@ const Container = styled.div`
   font-size: 14px;
 `;
 
-
 const DesktopMenuContainer = styled.ul`
   display: flex;
   z-index: ${zIndex.elevation.ev8};
@@ -309,7 +318,7 @@ const DesktopMenuContainer = styled.ul`
 
 const SVG = styled.svg`
   position: absolute;
-  visibility:hidden;
+  visibility: hidden;
   top: 0;
   left: 0;
 `;

@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useRef, VFC } from 'react';
-import { OrbitControls, Scroll, ScrollControls, Stats, useProgress } from '@react-three/drei';
+import { OrbitControls, Scroll, ScrollControls, Stats } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
@@ -26,7 +26,6 @@ function Contents() {
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
   const isMobile = useMedia().isMobile;
-  const { active } = useProgress()
   const [location] = useLocation();
 
   useEffect(() => {
@@ -34,7 +33,7 @@ function Contents() {
 
     sceneState.height = elementRef.current!.getBoundingClientRect().height;
   }, [size.height, elementRef, location]);
-  
+
   // useFrame(() => {
   //   sceneState.height = elementRef.current!.getBoundingClientRect().height;
   // });
@@ -42,7 +41,7 @@ function Contents() {
     <ScrollControls
       pages={height / size.height} // Each page takes 100% of the height of the canvas
       distance={1} // A factor that increases scroll bar travel (default: 1)
-      damping={isMobile?100:4} // Friction, higher is faster (default: 4)
+      damping={4} // Friction, higher is faster (default: 4)
       horizontal={false} // Can also scroll horizontally (default: false)
       infinite={false} // Can also scroll infinitely (default: false)
     >
@@ -104,11 +103,14 @@ export const TCanvas: VFC = () => {
       {/* <primitive object={new THREE.AxesHelper(10)} /> */}
       {/* lights */}
       {/* <Lights /> */}
-      <Suspense fallback={<Loader/>}>
+      <Suspense fallback={null}>
         {/* objects */}
         {/* <Objects /> */}
+        
         <NeonGLTF />
+
         <Ground />
+        <Loader />
         <EffectComposer multisampling={8}>
           <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
           <Bloom
