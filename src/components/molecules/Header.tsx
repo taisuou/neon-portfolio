@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex, media } from '../../utils/style';
+import { color, zIndex, media, font } from '../../utils/style';
 import { Link } from 'wouter';
 import { useMedia } from '../../utils/useMedia';
 import { gsap } from "gsap";
@@ -15,10 +15,11 @@ export const Header: VFC = () => {
 const overlayPath = useRef({
   elem: document.querySelector('#overlay__path')
 });
+let spMenuList = useRef<HTMLElement[]|null[]>([]);
 
 
 
-  // paths
+const menus = ['about','works','contact']
 // edit here: https://yqnn.github.io/svg-path-editor/
 const paths = {
   step1: {
@@ -28,14 +29,6 @@ const paths = {
           curve2: 'M 0 0 V 50 Q 50 100 100 50 V 0 z'
       },
       filled: 'M 0 0 V 100 Q 50 100 100 100 V 0 z',
-  },
-  step2: {
-      filled: 'M 0 100 V 0 Q 50 0 100 0 V 100 z',
-      inBetween: {
-          curve1: 'M 0 0 V 50 Q 50 0 100 50 V 0 z',
-          // curve2: 'M 0 0 V 50 Q 50 100 100 50 V 0 z'
-      },
-      unfilled: 'M 0 0 V 0 Q 50 0 100 0 V 0 z',
   }
 };
 useEffect(()=>{
@@ -45,9 +38,14 @@ useEffect(()=>{
 const menuOpen = ()  => {
   if(isAnimating) return
   setIsAnimating(true)
+  setMenuOpen(true)
   console.log('open');
+  gsap.timeline().set(spMenuList.current,{autoAlpha: 0, y:-30}).to(spMenuList.current, 0.2, { autoAlpha: 1,y:0, stagger: 0.05, ease: 'power1.in' },0.8);
   gsap.timeline({
-          onComplete: () => setIsAnimating(false)
+          onComplete: () => {
+            setIsAnimating(false)
+            
+          }
       })
       .set(overlayPath.current.elem, {
           attr: { d: paths.step1.unfilled }
@@ -63,13 +61,19 @@ const menuOpen = ()  => {
           attr: { d: paths.step1.filled },
           onComplete: () => setMenuOpen(true)
       })
+  
 }
 const menuClose = ()  => {
   if(isAnimating) return
   setIsAnimating(true)
+  setMenuOpen(false)
   console.log('close');
+  gsap.timeline().to(spMenuList.current, 0.2, { autoAlpha: 0, y:-30,stagger: 0.05, ease: 'power4.out' },0.6);
   gsap.timeline({
-          onComplete: () => setIsAnimating(false)
+          onComplete: () => {
+            setIsAnimating(false)
+            
+          }
       })
       .set(overlayPath.current.elem, {
           attr: { d: paths.step1.filled }
@@ -83,7 +87,6 @@ const menuClose = ()  => {
           duration: 0.2,
           ease: 'power1',
           attr: { d: paths.step1.unfilled },
-          onComplete: () => setMenuOpen(false)
       })
 }
 
@@ -101,31 +104,30 @@ const menuClose = ()  => {
       
       {!isMobile ? (
         <DesktopMenuContainer >
-          <li>
-            <Link href="about">
-              <a>ABOUT</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="works">
-              <a>WORKS</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="contact">
-              <a>CONTACT</a>
-            </Link>
-          </li>
+          {menus.map((menu, index)=>(
+            <li key={index}>
+              <Link href={menu}>{menu.toUpperCase()}</Link>
+            </li>
+          ))}
         </DesktopMenuContainer>
       ) : (
-        <Slidemenu
-          onClick={()=>{
-            isMenuOpen?menuClose():menuOpen()
-            
-          }}
-        >
-          
-        </Slidemenu>
+        <>
+          <SlidemenuButton
+            onClick={()=>{
+              isMenuOpen?menuClose():menuOpen()
+            }}
+            isOpen={isMenuOpen}
+          >
+            <span/><span/><span/>
+          </SlidemenuButton>
+            <SlideMenuContents>
+              {menus.map((menu, index)=>(
+                <li ref={e => (spMenuList.current[index] = e)} key={index}>
+                  <Link href={menu}>{menu.toUpperCase()}</Link>
+                </li>
+              ))}
+            </SlideMenuContents>
+          </>
       )}
       
     </Container>
@@ -135,12 +137,52 @@ const menuClose = ()  => {
 const Logo = styled.a`
   z-index: ${zIndex.elevation.ev8};
 `;
-const Slidemenu = styled.div`
-  width:44px;
-  height:44px;
+const SlidemenuButton = styled.div<{isOpen:boolean}>`
+  width:32px;
+  height:32px;
   background:${color.content.MiddleEmphasis};
-  z-index:${zIndex.elevation.ev8}
+  z-index:${zIndex.elevation.ev8};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  span{
+    display:block;
+    height:1px;
+    width:100%;
+    background-color:${color.content.HighEmphasis};
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+    &:first-of-type{
+      transform: ${({ isOpen }) => isOpen ? 'rotate(45deg)' : 'rotate(0)'};
+    }
+    &:nth-of-type(2){
+      opacity: ${({ isOpen }) => isOpen ? '0' : '1'};
+      transform: ${({ isOpen }) => isOpen ? 'translateX(20px)' : 'translateX(0)'};
+    }
+    &:nth-of-type(3){
+      transform: ${({ isOpen }) => isOpen ? 'rotate(-45deg)' : 'rotate(0)'};
+    }
+  }
 `;
+const SlideMenuContents = styled.ul`
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  li{
+    /* initial state of menu */
+    opacity:0;
+    text-align:center;
+  }
+  a{
+    ${font.replica.h1};
+    color:${color.content.HighEmphasis};
+    text-decoration:none ;
+    padding:8 32px;
+    text-align: center;
+
+  }
+`
 const IconLine = styled.span`
   content: '';
   display: block;
