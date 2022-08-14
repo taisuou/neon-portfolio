@@ -19,12 +19,13 @@ import { sceneState } from '../../utils/sceneState';
 import { Switch, Route } from 'wouter';
 import { contents } from '../../utils/store';
 import { Loader } from './Loader';
+import { useMedia } from '../../utils/useMedia';
 
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
-
+  const isMobile = useMedia().isMobile;
   useEffect(() => {
     //need to be fixed later. Triggered only when
 
@@ -37,7 +38,7 @@ function Contents() {
     <ScrollControls
       pages={height / size.height} // Each page takes 100% of the height of the canvas
       distance={1} // A factor that increases scroll bar travel (default: 1)
-      damping={4} // Friction, higher is faster (default: 4)
+      damping={isMobile?100:4} // Friction, higher is faster (default: 4)
       horizontal={false} // Can also scroll horizontally (default: false)
       infinite={false} // Can also scroll infinitely (default: false)
     >
