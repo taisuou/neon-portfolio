@@ -168,10 +168,10 @@ export const Header: VFC = () => {
       });
   };
 
-  useEffect(() => {
-    transitionAnimation()
-    console.log('location changed');
-  }, [location]);
+  // useEffect(() => {
+  //   transitionAnimation()
+  //   console.log('location changed');
+  // }, [location]);
 
   return (
     <Container>
