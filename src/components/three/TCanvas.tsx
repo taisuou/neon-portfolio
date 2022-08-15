@@ -21,6 +21,7 @@ import { contents } from '../../utils/store';
 import { Loader } from './Loader';
 import { useMedia } from '../../utils/useMedia';
 
+
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
