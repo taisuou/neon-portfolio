@@ -98,7 +98,7 @@ export const TCanvas: VFC = () => {
       {/* scene */}
       <color attach="background" args={['#000']} />
       {/* camera controller */}
-      {/* <OrbitControls attach="orbitControls" /> */}
+      <OrbitControls attach="orbitControls" />
       <ambientLight />
       {/* shows Axis Helper */}
       {/* <primitive object={new THREE.AxesHelper(10)} /> */}

@@ -45,9 +45,9 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     // glassMaterial.thickness = glassState.thickness
     // glassMaterial.roughness = glassState.roughness
   });
-  const materialProps = useControls({
-    thickness: { value: 5, min: 0, max: 20 },
-    roughness: { value: 0, min: 0, max: 1, step: 0.1 },
+  const materialProps = useControls('GlassMaterial',{
+    thickness: { value: 0.2, min: 0, max: 20 },
+    roughness: { value: 0.6, min: 0, max: 1, step: 0.1 },
     clearcoat: { value: 1, min: 0, max: 1, step: 0.1 },
     clearcoatRoughness: { value: 0, min: 0, max: 1, step: 0.1 },
     transmission: { value: 1, min: 0.9, max: 1, step: 0.01 },
@@ -55,7 +55,8 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     envMapIntensity: { value: 25, min: 0, max: 100, step: 1 },
     color: '#ffffff',
     attenuationTint: '#ffe79e',
-    attenuationDistance: { value: 0, min: 0, max: 1 }
+    attenuationDistance: { value: 0, min: 0, max: 1 },
+    toggleVisible: true,
   })
   return (
     <group {...props} dispose={null} scale={0.01}>
@@ -80,22 +81,25 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
         <mesh
           name="light_ar"
           geometry={nodes.light_ar.geometry}
-          material={nodes.light_ar.material}
+          // material={nodes.light_ar.material}
           position={[-285.43, 0, 298.68]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
+          material-color="#3adff8"
         />
-        <mesh
-          name="glass"
-          ref={glassRef}
-          geometry={nodes.glass.geometry}
-        //   material={nodes.glass.material}
-          position={[-285.43, 0, 298.68]}
-          rotation={[-Math.PI / 2, 0, 0]}
-          scale={265.42}
-        >
-            <meshPhysicalMaterial {...materialProps}/>
-        </mesh>
+        {materialProps.toggleVisible&&(
+          <mesh
+            name="glass"
+            ref={glassRef}
+            geometry={nodes.glass.geometry}
+          //   material={nodes.glass.material}
+            position={[-285.43, 0, 298.68]}
+            rotation={[-Math.PI / 2, 0, 0]}
+            scale={265.42}
+          >
+              <meshPhysicalMaterial {...materialProps}/>
+          </mesh>
+        )}
       </group>
     </group>
   );
