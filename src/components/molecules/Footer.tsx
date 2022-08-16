@@ -17,9 +17,15 @@ export const Footer: VFC = () => {
           <Link href="/contact">CONTACT</Link>
         </Menu>
         <SnsBox>
-          <a href="https://www.instagram.com/electrode_taisho/"><img src="images/header_sns_instagram.svg" alt="" /></a>
-          <a href="https://medium.com/@electrodeart"><img src="images/header_sns_medium.svg" alt="" /></a>
-          <a href="https://twitter.com/electrodeart"><img src="images/header_sns_twitter.svg" alt="" /></a>
+          <a href="https://www.instagram.com/electrode_taisho/">
+            <img src="images/header_sns_instagram.svg" alt="" />
+          </a>
+          <a href="https://medium.com/@electrodeart">
+            <img src="images/header_sns_medium.svg" alt="" />
+          </a>
+          <a href="https://twitter.com/electrodeart">
+            <img src="images/header_sns_twitter.svg" alt="" />
+          </a>
         </SnsBox>
       </MenuContainer>
       <CopyRight>©️ 2022 electrode </CopyRight>
@@ -30,33 +36,34 @@ export const Footer: VFC = () => {
 const Logo = styled.a``;
 
 const Container = styled.div`
+  width: 100vw;
   top: 0;
   display: flex;
-  flex-direction:column;
-  justify-content:center;
+  flex-direction: column;
+  justify-content: center;
   padding: 32px;
   z-index: ${zIndex.elevation.ev4};
-  background: #1d1d1d;
-  border-top: 2px solid #505050;
-  a{
-    color:#fff;
-    text-decoration:none;
+  background: ${color.background.dark};
+  border-top: 2px solid ${color.content.Disable};
+  a {
+    color: #fff;
+    text-decoration: none;
   }
 `;
 const MenuContainer = styled.div`
   width: 100%;
-  text-align:center;
+  text-align: center;
 `;
 
 const Menu = styled.p`
-  width:100%;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   font-size: 24px;
   text-decoration: underline;
   margin-bottom: 16px;
-  a{
+  a {
   }
   color: ${color.content.HighEmphasis};
 `;
@@ -64,9 +71,9 @@ const Menu = styled.p`
 const SnsBox = styled.p`
   display: flex;
   align-items: center;
-  justify-content:center;
-  a{
-    margin:0 8px;
+  justify-content: center;
+  a {
+    margin: 0 8px;
   }
 `;
 

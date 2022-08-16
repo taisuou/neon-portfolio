@@ -27,14 +27,12 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   );
 };
 
-
-
 const Container = styled.a<{ isOdd: boolean }>`
-  display:flex;
+  display: flex;
   padding-bottom: 64px;
-  flex-direction:column;
-  color:#fff;
-  text-decoration:none;
+  flex-direction: column;
+  color: #fff;
+  text-decoration: none;
   // lg:Desktop /mdsp:tablet, mobile, / sp: mobile
   // ${(props) => (props.isOdd ? `flex-direction:row;` : `flex-flow: row-reverse;`)}};
   // cursor:pointer;
@@ -44,7 +42,7 @@ const Container = styled.a<{ isOdd: boolean }>`
     padding:0 32px 64px 32px;
     //justify-content:center;
     flex-direction:row-reverse;
-    :nth-child(2n){
+    :nth-of-type(2n){
       flex-direction: row;
     }
   `}
@@ -52,7 +50,7 @@ const Container = styled.a<{ isOdd: boolean }>`
 const Picture = styled.div`
   & img {
     width: 100%;
-    margin-bottom:24px;
+    margin-bottom: 24px;
   }
   ${media.lg`
   width:60%;
@@ -60,7 +58,7 @@ const Picture = styled.div`
   `}
 `;
 const Info = styled.div`
-padding:0 32px;
+  padding: 0 32px;
   ${media.lg`
   width:40%;
   padding: 0 2%;

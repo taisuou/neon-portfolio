@@ -10,9 +10,8 @@ export const Home: VFC = () => {
     <>
       <Hero></Hero>
       <Container>
+        <MainTitle>Glass and Virtual Neon Arts</MainTitle>
 
-      <MainTitle>Glass and Virtual Neon Arts</MainTitle>
-        
         {/* TIPS map文 */}
         {contents.works.map((work: WorkPost, index) => (
           <Item post={work} key={index} indexNumber={index} />
@@ -41,7 +40,7 @@ const Container = styled.div`
 `;
 
 const MainTitle = styled.p`
-display:block;
+  display: block;
   text-align: center;
   padding: 36px 36px;
   /* TIPS fontもこんな感じで一括定義した方が楽。上書きもできる */
@@ -56,7 +55,7 @@ display:block;
 
 const ButtonMore = styled.div`
   text-align: center;
-  padding: 0 32px 64px 32px; 
+  padding: 0 32px 64px 32px;
   ${font.Inter.button}
   & a {
     display: block;
@@ -163,4 +162,3 @@ const ColInfobox = styled.div`
     font-size: 16px;
   }
 `;
-

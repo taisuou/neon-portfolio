@@ -9,30 +9,30 @@ export const Works: VFC = () => {
   return (
     <Container>
       <PageTitle>
-          <h1>WORKS</h1>
-        </PageTitle>
-        <UiCategory>
-          <ul>
-            <li>
-              <a href="">All</a>
-            </li>
-            <li>
-              <a href="">Art</a>
-            </li>
-            <li>
-              <a href="">Client</a>
-            </li>
-          </ul>
-        </UiCategory>
-        {contents.works.map((work: WorkPost, index) => (
-          <Item post={work} key={index} indexNumber={index} />
-        ))}
+        <h1>WORKS</h1>
+      </PageTitle>
+      <UiCategory>
+        <ul>
+          <li>
+            <a href="">All</a>
+          </li>
+          <li>
+            <a href="">Art</a>
+          </li>
+          <li>
+            <a href="">Client</a>
+          </li>
+        </ul>
+      </UiCategory>
+      {contents.works.map((work: WorkPost, index) => (
+        <Item post={work} key={index} indexNumber={index} />
+      ))}
     </Container>
   );
 };
 
 const Container = styled.div`
-background: ${color.background.dark};
+  background: ${color.background.dark};
 `;
 
 const PageTitle = styled.div`

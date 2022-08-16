@@ -12,8 +12,8 @@ export const Detail: FC<DetailProps> = ({ post }) => {
   return (
     <Container>
       <Helmet>
-            <title>{post.titleEn}</title>
-            <meta name="description" content={post.descriptionEn} />
+        <title>{post.titleEn}</title>
+        <meta name="description" content={post.descriptionEn} />
       </Helmet>
       <Title>{post.titleEn}</Title>
       <PictureWrap>
@@ -28,14 +28,14 @@ export const Detail: FC<DetailProps> = ({ post }) => {
 };
 
 const Container = styled.div`
-background: ${color.background.dark};
-padding:32px;
-p{
-  margin-bottom:24px;
-}
-img{
-  margin-bottom:24px;
-}
+  background: ${color.background.dark};
+  padding: 32px;
+  p {
+    margin-bottom: 24px;
+  }
+  img {
+    margin-bottom: 24px;
+  }
 `;
 
 const Title = styled.h1`
@@ -45,9 +45,8 @@ const Title = styled.h1`
 const PictureWrap = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom:24px;
+  margin-bottom: 24px;
 `;
-
 
 const Picture = styled.img`
   width: 100%;

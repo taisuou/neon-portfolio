@@ -4,24 +4,19 @@ import { useEffect, useRef, useState, VFC } from 'react';
 import { color, zIndex } from '../../utils/style';
 import { gsap } from 'gsap';
 
-type LoaderProps={
-  isReady:boolean
-}
+type LoaderProps = {
+  isReady: boolean;
+};
 export const Loader: VFC<LoaderProps> = (props) => {
   // const { progress, item } = useProgress();
 
   const loaderPath = useRef(null);
   const loader = useRef(null);
-  const electrode = useRef(null)
-  const counter = useRef<HTMLDivElement|null>(null);
+  const electrode = useRef(null);
+  const counter = useRef<HTMLDivElement | null>(null);
 
   const [isLoaderOpen, setLoaderOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-
-
-
-
-  
 
   const paths = {
     step1: {
@@ -30,7 +25,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
         curve: 'M 0 0 V 50 Q 50 100 100 50 V 0 z',
       },
       filled: 'M 0 0 V 100 Q 50 100 100 100 V 0 z',
-    }
+    },
   };
 
   const loaderEnd = () => {
@@ -39,17 +34,19 @@ export const Loader: VFC<LoaderProps> = (props) => {
     setLoaderOpen(true);
 
     if (!loaderPath.current || !loader.current || !electrode.current) return;
-    gsap.timeline().fromTo(electrode.current, {
-      opacity:1
-    },{
-      duration: 0.2,
-      ease: 'power1',
-      y:-30,
-      opacity:0,
-      delay:0.5
-    }
-      
-    )
+    gsap.timeline().fromTo(
+      electrode.current,
+      {
+        opacity: 1,
+      },
+      {
+        duration: 0.2,
+        ease: 'power1',
+        y: -30,
+        opacity: 0,
+        delay: 0.5,
+      },
+    );
     gsap
       .timeline({
         onComplete: () => {
@@ -62,15 +59,12 @@ export const Loader: VFC<LoaderProps> = (props) => {
       .set(loader.current, {
         visibility: 'visible',
       })
-      
-      .to(
-        loaderPath.current,
-        {
-          duration: 0.5,
-          ease: 'power4.in',
-          attr: { d: paths.step1.inBetween.curve },
-        },
-      )
+
+      .to(loaderPath.current, {
+        duration: 0.5,
+        ease: 'power4.in',
+        attr: { d: paths.step1.inBetween.curve },
+      })
       .to(loaderPath.current, {
         duration: 0.1,
         ease: 'power1',
@@ -78,27 +72,17 @@ export const Loader: VFC<LoaderProps> = (props) => {
       })
       .set(loader.current, {
         visibility: 'hidden',
-      })
+      });
   };
 
-  
-  
-  
   //   return <Html center>{progress} % loaded</Html>
-  useEffect(()=>{
-    
-    props.isReady&&loaderEnd()
-  },[props.isReady])
-  
+  useEffect(() => {
+    props.isReady && loaderEnd();
+  }, [props.isReady]);
+
   return (
     <Container ref={loader}>
-      <SVG
-        width="100vw"
-        height="100vh"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        
-      >
+      <SVG width="100vw" height="100vh" viewBox="0 0 100 100" preserveAspectRatio="none">
         <path
           fill={color.background.middleDark}
           vectorEffect="non-scaling-stroke"
@@ -138,27 +122,23 @@ export const Loader: VFC<LoaderProps> = (props) => {
           </LogoInner>
         </LoaderLogo>
         {/* <LoaderNum ref={counter} data-from="0" data-to="4096">{progress}</LoaderNum> */}
-
       </LoaderAnim>
-      
     </Container>
   );
 };
 
 const Container = styled.div`
-  width:100vw;
-  height:100vh;
-  position:absolute;
-  z-index:${zIndex.elevation.ev16};
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: ${zIndex.elevation.ev16};
+`;
 
-`
-
-const SVG=styled.svg`
-    position: absolute;
-    top: 0;
-    left: 0;
-
-`
+const SVG = styled.svg`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
 const LoaderAnim = styled.div`
   width: 100%;
   height: 100vh;

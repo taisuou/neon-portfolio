@@ -150,14 +150,11 @@ export const Header: VFC = () => {
       .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
       })
-      .to(
-        overlayPath.current,
-        {
-          duration: 0.2,
-          ease: 'sine.in',
-          attr: { d: paths.step2.inBetween.curve },
-        }
-      )
+      .to(overlayPath.current, {
+        duration: 0.2,
+        ease: 'sine.in',
+        attr: { d: paths.step2.inBetween.curve },
+      })
       .to(overlayPath.current, {
         duration: 1,
         ease: 'power4',
@@ -198,7 +195,7 @@ export const Header: VFC = () => {
         }}
       >
         <Logo>
-          <img src="images/header_logo.svg" alt="electrode" width={105} />
+          <img src="/images/header_logo.svg" alt="electrode" width={105} />
         </Logo>
       </Link>
 
