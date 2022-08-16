@@ -63,6 +63,7 @@ export const App: VFC = () => {
             <meta property="og:site_name" content={contents.meta.title} />
             <meta property="og:image" content={contents.meta.ogp} />
       </Helmet>
+      <Loader/>
       <Container>
         <Header />
         <TCanvas />

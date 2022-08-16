@@ -18,7 +18,6 @@ import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
-import { Loader } from './Loader';
 import { useMedia } from '../../utils/useMedia';
 import * as THREE from 'three'
 import {  useControls } from 'leva'
@@ -137,7 +136,6 @@ export const TCanvas: VFC = () => {
           <NeonGLTF/>
           <Ground/>
         </Rig>
-        <Loader />
         <EffectComposer multisampling={8}>
           <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
           <Bloom
