@@ -35,7 +35,7 @@ export const Loader: VFC = () => {
           </li>
         </LogoInner>
       </LoaderLogo>
-      <LoaderNum>100</LoaderNum>
+      <LoaderNum></LoaderNum>
     </LoaderAnim>
   );
 };
@@ -43,8 +43,6 @@ export const Loader: VFC = () => {
 const LoaderAnim = styled.div`
   width: 100%;
   height: 100vh;
-  position: absolute;
-  background: #000;
   .front {
     animation: rotateFront 5000ms linear infinite;
   }
@@ -91,8 +89,8 @@ const LoaderLogo = styled.div`
   top: 50%;
   left: 50%;
   perspective: 400px;
-  margin-left: -40px;
-  margin-top: -40px;
+  position: absolute;
+  background: #000;
 
   .elec__item {
     position: absolute;

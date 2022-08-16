@@ -297,7 +297,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 32px 0 32px;
+  padding: 16px 32px;
   z-index: ${zIndex.elevation.ev4};
   color: ${color.content.HighEmphasis};
   font-size: 14px;

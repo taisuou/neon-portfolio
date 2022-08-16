@@ -29,6 +29,11 @@ export const App: VFC = () => {
             -webkit-font-smoothing: antialiased;
             font-smoothing: antialiased;
           }
+
+          html{
+            font-size: calc(100vw * 16 / 375);
+          }
+
           body {
             margin: 0;
             padding: 0;

@@ -94,7 +94,7 @@ export const Loader: VFC = () => {
         ref={loaderPathParent}
       >
         <path
-          fill={color.background.middleDark}
+          fill={color.background.dark}
           vectorEffect="non-scaling-stroke"
           d="M 0 0 V 100 Q 50 100 100 100 V 0 z"
           ref={loaderPath}
@@ -194,7 +194,6 @@ const LoaderLogo = styled.div`
   top: 50%;
   left: 50%;
   perspective: 400px;
-  margin-left: -40px;
   margin-top: -40px;
 
   .elec__item {
