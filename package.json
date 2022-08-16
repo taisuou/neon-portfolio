@@ -23,6 +23,7 @@
     "framer-motion-3d": "^7.0.0",
     "gsap": "^3.10.4",
     "i": "^0.3.7",
+    "leva": "^0.9.30",
     "lil-gui": "^0.16.0",
     "npm": "^8.17.0",
     "postprocessing": "^6.28.5",
@@ -64,8 +65,10 @@
     ]
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.5",
     "@types/three": "^0.137.0",
     "prettier": "^2.7.1",
+    "react-helmet": "^6.1.0",
     "troika-three-text": "^0.46.4"
   }
 }

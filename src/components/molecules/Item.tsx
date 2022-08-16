@@ -28,24 +28,42 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
 };
 
 const Container = styled.a<{ isOdd: boolean }>`
-  display:flex;
+  display: flex;
   padding-bottom: 64px;
-  flex-direction:column;
-  // TIPS メディクエリのやり方
-  // lg:Desktopの場合 /mdsp:tablet, mobileの場合, / sp: mobileの場合
-  ${(props) => (props.isOdd ? `flex-direction:row;` : `flex-flow: row-reverse;`)}};
-  cursor:pointer;
+  flex-direction: column;
+  color: #fff;
+  text-decoration: none;
+  // lg:Desktop /mdsp:tablet, mobile, / sp: mobile
+  // ${(props) => (props.isOdd ? `flex-direction:row;` : `flex-flow: row-reverse;`)}};
+  // cursor:pointer;
   ${media.lg`
-    flex-direction:row;
+    width:100%;
+    align-items: center;
+    padding:0 32px 64px 32px;
+    //justify-content:center;
+    flex-direction:row-reverse;
+    :nth-of-type(2n){
+      flex-direction: row;
+    }
   `}
 `;
 const Picture = styled.div`
   & img {
     width: 100%;
+    margin-bottom: 24px;
   }
+  ${media.lg`
+  width:60%;
+    }
+  `}
 `;
 const Info = styled.div`
   padding: 0 32px;
+  ${media.lg`
+  width:40%;
+  padding: 0 2%;
+    }
+  `}
 `;
 const TitleEN = styled.p`
   font-size: 32px;

@@ -22,6 +22,12 @@ export const glassState = {
 };
 
 export const contents = {
+  meta: {
+    title: 'electrode',
+    description: `electrode's portfolio`,
+    ogp: `/OGP.jpg`,
+    favicon: '/favicon.png',
+  },
   works: [
     {
       titleEn: 'Kawakyu Art Exibition 2022 ”In a Dream”',

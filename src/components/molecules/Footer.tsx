@@ -1,22 +1,34 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex, media } from '../../utils/style';
+import { Link } from 'wouter';
 
 export const Footer: VFC = () => {
   return (
     <Container>
       <MenuContainer>
-        <Menu>WORKS</Menu>
-        <Menu>ABOUT</Menu>
-        <Menu>CONTACT</Menu>
-        <Menu>hellow@electrodeart.com</Menu>
         <Menu>
-          <img src="images/header_sns_instagram.svg" alt="" />
-          <img src="images/header_sns_medium.svg" alt="" />
-          <img src="images/header_sns_twitter.svg" alt="" />
+          <Link href="/works">WORKS</Link>
         </Menu>
-        <CopyRight>©️ 2022 electrode </CopyRight>
+        <Menu>
+          <Link href="/about">ABOUT</Link>
+        </Menu>
+        <Menu>
+          <Link href="/contact">CONTACT</Link>
+        </Menu>
+        <SnsBox>
+          <a href="https://www.instagram.com/electrode_taisho/">
+            <img src="images/header_sns_instagram.svg" alt="" />
+          </a>
+          <a href="https://medium.com/@electrodeart">
+            <img src="images/header_sns_medium.svg" alt="" />
+          </a>
+          <a href="https://twitter.com/electrodeart">
+            <img src="images/header_sns_twitter.svg" alt="" />
+          </a>
+        </SnsBox>
       </MenuContainer>
+      <CopyRight>©️ 2022 electrode </CopyRight>
     </Container>
   );
 };
@@ -24,30 +36,45 @@ export const Footer: VFC = () => {
 const Logo = styled.a``;
 
 const Container = styled.div`
+  width: 100vw;
   top: 0;
   display: flex;
-  align-items: center;
-  padding: 0 32px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
   z-index: ${zIndex.elevation.ev4};
-  background: #1d1d1d;
-  border-top: 2px solid #505050;
+  background: ${color.background.dark};
+  border-top: 2px solid ${color.content.Disable};
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
 `;
 const MenuContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 100%;
+  text-align: center;
 `;
 
 const Menu = styled.p`
+  width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 24px;
   text-decoration: underline;
   margin-bottom: 16px;
-  img {
-    margin-right: 16px;
-    align-items: center;
+  a {
   }
   color: ${color.content.HighEmphasis};
+`;
+
+const SnsBox = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    margin: 0 8px;
+  }
 `;
 
 const CopyRight = styled.p`

@@ -1,11 +1,6 @@
-import { Suspense, useEffect, useRef,  VFC } from 'react';
-import {
-  OrbitControls,
-  Scroll,
-  ScrollControls,
-  Stats,
-} from '@react-three/drei';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { FC, Suspense, useEffect, useRef, VFC } from 'react';
+import { OrbitControls, Scroll, ScrollControls, Stats } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
@@ -21,22 +16,28 @@ import { Footer } from '../molecules/Footer';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
-import { Switch, Route } from 'wouter';
+import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
+import { useMedia } from '../../utils/useMedia';
+import * as THREE from 'three';
+import { useControls } from 'leva';
+import { isReturnStatement } from 'typescript';
 
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
+  const [location] = useLocation();
 
   useEffect(() => {
     //need to be fixed later. Triggered only when
 
     sceneState.height = elementRef.current!.getBoundingClientRect().height;
-  }, [size.height]);
-  useFrame(() => {
-    sceneState.height = elementRef.current!.getBoundingClientRect().height;
-  });
+  }, [size.height, elementRef, location]);
+
+  // useFrame(() => {
+  //   sceneState.height = elementRef.current!.getBoundingClientRect().height;
+  // });
   return (
     <ScrollControls
       pages={height / size.height} // Each page takes 100% of the height of the canvas
@@ -80,12 +81,35 @@ function Contents() {
     </ScrollControls>
   );
 }
+type RigProps = {
+  children: React.ReactNode;
+};
+const Rig: FC<RigProps> = ({ children }) => {
+  const ref = useRef<THREE.Group>();
+  const vec = new THREE.Vector3();
+  const { camera, mouse } = useThree();
+  useFrame(() => {
+    if (!ref.current || !sceneState.isReady) return;
+    camera.position.lerp(vec.set(mouse.x * 2, 0, 8.5), 0.05);
+    ref.current!.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0), 0.1);
+    ref.current!.rotation.y = THREE.MathUtils.lerp(
+      ref.current.rotation.y,
+      (-mouse.x * Math.PI) / 20,
+      0.1,
+    );
+  });
+  return <group ref={ref}>{children}</group>;
+};
 
 export const TCanvas: VFC = () => {
+  const helperControl = useControls('helperControl', {
+    orbit: false,
+    axis: false,
+  });
   return (
     <Canvas
       camera={{
-        position: [0, 3, 8],
+        position: [0, 0, 20],
         fov: 50,
         aspect: window.innerWidth / window.innerHeight,
         near: 0.1,
@@ -97,17 +121,19 @@ export const TCanvas: VFC = () => {
       {/* scene */}
       <color attach="background" args={['#000']} />
       {/* camera controller */}
-      {/* <OrbitControls attach="orbitControls" /> */}
+
+      {helperControl.orbit ? (
+        <OrbitControls attach="orbitControls" enableZoom={true} enablePan={true} />
+      ) : null}
       <ambientLight />
-      {/* shows Axis Helper */}
-      {/* <primitive object={new THREE.AxesHelper(10)} /> */}
-      {/* lights */}
-      {/* <Lights /> */}
+      {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
         {/* objects */}
         {/* <Objects /> */}
-        <NeonGLTF />
-        <Ground />
+        <Rig>
+          <NeonGLTF />
+          <Ground />
+        </Rig>
         <EffectComposer multisampling={8}>
           <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
           <Bloom

@@ -9,6 +9,7 @@ import { GLTF } from 'three-stdlib';
 import { GUIController } from '../../utils/gui';
 import { useFrame } from '@react-three/fiber';
 import { glassState } from '../../utils/store';
+import { useControls } from 'leva';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -24,27 +25,48 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('/sign.gltf') as GLTFResult;
   const glassRef = useRef<THREE.Mesh>(null);
 
-  // add controller
-  // const gui = GUIController.instance.setFolder('Glass');
-  // gui.addNumericSlider(glassState, 'thickness', 0, 20, 1);
-  // gui.addNumericSlider(glassState, 'roughness', 0, 1, 0.1);
-  // gui.addNumericSlider(glassState, 'clearcoat', 0, 1, 0.1);
-  // gui.addNumericSlider(glassState, 'clearcoatRoughness', 0, 1, 0.1);
-  // gui.addNumericSlider(glassState, 'transmission', 0.9, 1, 0.01);
-  // gui.addNumericSlider(glassState, 'ior', 1, 2.3, 0.05);
-  // gui.addNumericSlider(glassState, 'envMapIntensity', 0, 100, 1);
-  // gui.addColor(glassState, 'color');
-  // gui.addColor(glassState, 'attenuationTint');
-  // gui.addNumericSlider(glassState, 'attenuationDistance', 0, 1, 0.1);
-
-  useFrame(() => {
-    // const glassMaterial = glassRef.current!.material as THREE.MeshPhysicalMaterial
-    // glassMaterial.color.set(glassState.color)
-    // glassMaterial.thickness = glassState.thickness
-    // glassMaterial.roughness = glassState.roughness
+  const materialProps = useControls('GlassMaterial', {
+    thickness: { value: 0.2, min: 0, max: 20 },
+    roughness: { value: 0.3, min: 0, max: 1, step: 0.1 },
+    clearcoat: { value: 1, min: 0, max: 1, step: 0.1 },
+    clearcoatRoughness: { value: 0, min: 0, max: 1, step: 0.1 },
+    transmission: { value: 1, min: 0.9, max: 1, step: 0.01 },
+    ior: { value: 1.25, min: 1, max: 2.3, step: 0.05 },
+    envMapIntensity: { value: 25, min: 0, max: 100, step: 1 },
+    color: '#ffffff',
+    attenuationTint: '#584b25',
+    attenuationDistance: { value: 0, min: 0, max: 1 },
+    toggleVisible: true,
   });
+
+  const lightProps = useControls('LightMaterial', {
+    color: '#c4b072',
+  });
+  const argonProps = useControls('ArgonMaterial', {
+    color: '#3ad1e8',
+  });
+  const neonControl = useControls('Neon', {
+    rotateX: { value: 0, min: -180, max: 180, step: 1 },
+    rotateY: { value: 0, min: -180, max: 180, step: 1 },
+    rotateZ: { value: 0, min: -180, max: 180, step: 1 },
+    posX: { value: 0, min: -5, max: 5, step: 0.1 },
+    posY: { value: 0, min: -5, max: 5, step: 0.1 },
+    posZ: { value: 0, min: -5, max: 5, step: 0.1 },
+    scale: { value: 1, min: 0, max: 5, step: 0.1 },
+  });
+
   return (
-    <group {...props} dispose={null} scale={0.01}>
+    <group
+      {...props}
+      dispose={null}
+      scale={0.01 * neonControl.scale}
+      position={[neonControl.posX, neonControl.posY, neonControl.posZ]}
+      rotation={[
+        (Math.PI * neonControl.rotateX) / 180,
+        (neonControl.rotateY * Math.PI) / 180,
+        (neonControl.rotateZ * Math.PI) / 180,
+      ]}
+    >
       <group name="logo" position={[0, 0, 0]} rotation={[1.58, -0.01, -0.02]}>
         <mesh
           name="light_fd"
@@ -53,7 +75,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
           position={[-285.43, 0, 298.68]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
-          material-color="#ffe79e"
+          material-color={lightProps.color}
         />
         <mesh
           name="root"
@@ -66,22 +88,25 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
         <mesh
           name="light_ar"
           geometry={nodes.light_ar.geometry}
-          material={nodes.light_ar.material}
+          // material={nodes.light_ar.material}
           position={[-285.43, 0, 298.68]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
+          material-color={argonProps.color}
         />
-        {/* <mesh
-          name="glass"
-          ref={glassRef}
-          geometry={nodes.glass.geometry}
-        //   material={nodes.glass.material}
-          position={[-285.43, 0, 298.68]}
-          rotation={[-Math.PI / 2, 0, 0]}
-          scale={265.42}
-        >
-            <meshPhysicalMaterial />
-        </mesh> */}
+        {materialProps.toggleVisible && (
+          <mesh
+            name="glass"
+            ref={glassRef}
+            geometry={nodes.glass.geometry}
+            //   material={nodes.glass.material}
+            position={[-285.43, 0, 298.68]}
+            rotation={[-Math.PI / 2, 0, 0]}
+            scale={265.42}
+          >
+            <meshPhysicalMaterial {...materialProps} />
+          </mesh>
+        )}
       </group>
     </group>
   );

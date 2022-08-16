@@ -2,6 +2,7 @@ import React, { FC, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
+import { Helmet } from 'react-helmet';
 
 type DetailProps = {
   post: WorkPost;
@@ -10,35 +11,41 @@ type DetailProps = {
 export const Detail: FC<DetailProps> = ({ post }) => {
   return (
     <Container>
-      <p>this is Detail</p>
-      <br />
+      <Helmet>
+        <title>{post.titleEn}</title>
+        <meta name="description" content={post.descriptionEn} />
+      </Helmet>
       <Title>{post.titleEn}</Title>
-      <p>{post.descriptionEn}</p>
       <PictureWrap>
         {post.images.map((image, index) => (
           <Picture src={image} key={index} />
         ))}
       </PictureWrap>
+      <p>{post.descriptionEn}</p>
+      <p>{post.descriptionJp}</p>
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100vw;
-  padding: 64px 0 0 0;
-  display: flex;
-  flex-direction: column;
+  background: ${color.background.dark};
+  padding: 32px;
   p {
-    color: ${color.content.HighEmphasis};
-    ${font.Inter.article2}
+    margin-bottom: 24px;
+  }
+  img {
+    margin-bottom: 24px;
   }
 `;
+
 const Title = styled.h1`
-  ${font.replica.h1}
+  ${font.replica.h2}
+  margin:24px 0;
 `;
 const PictureWrap = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 24px;
 `;
 
 const Picture = styled.img`
