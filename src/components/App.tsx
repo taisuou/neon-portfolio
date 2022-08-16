@@ -8,6 +8,8 @@ import { Global, css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { color } from '../utils/style';
 import { Leva } from 'leva';
+import {Helmet} from "react-helmet";
+import { contents } from '../utils/store';
 
 export const App: VFC = () => {
   return (
@@ -42,6 +44,25 @@ export const App: VFC = () => {
           }
         `}
       />
+      <Helmet
+            title={ contents.meta.title }
+            meta={[
+                { name: 'description', content: contents.meta.description }
+            ]}
+      >
+        <link
+          rel="icon"
+          type="image/png"
+          href={contents.meta.favicon}
+          sizes="16x16"
+        />
+        <meta property="og:url" content="OGPに掲載するページのURL" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={contents.meta.title} />
+            <meta property="og:description" content={contents.meta.description} />
+            <meta property="og:site_name" content={contents.meta.title} />
+            <meta property="og:image" content={contents.meta.ogp} />
+      </Helmet>
       <Container>
         <Header />
         <TCanvas />
