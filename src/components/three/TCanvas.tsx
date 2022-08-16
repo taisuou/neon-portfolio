@@ -20,13 +20,13 @@ import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
 import { Loader } from './Loader';
 import { useMedia } from '../../utils/useMedia';
+import { useControls } from 'leva'
 
 
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
-  const isMobile = useMedia().isMobile;
   const [location] = useLocation();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function Contents() {
 
     sceneState.height = elementRef.current!.getBoundingClientRect().height;
   }, [size.height, elementRef, location]);
-
+  
   // useFrame(() => {
   //   sceneState.height = elementRef.current!.getBoundingClientRect().height;
   // });
@@ -83,6 +83,9 @@ function Contents() {
 }
 
 export const TCanvas: VFC = () => {
+  const orbitControl = useControls('orbitControl',{
+    zoom: false,
+  })
   return (
     <Canvas
       camera={{
@@ -98,7 +101,7 @@ export const TCanvas: VFC = () => {
       {/* scene */}
       <color attach="background" args={['#000']} />
       {/* camera controller */}
-      <OrbitControls attach="orbitControls" />
+      <OrbitControls attach="orbitControls" enableZoom={orbitControl.zoom}/>
       <ambientLight />
       {/* shows Axis Helper */}
       {/* <primitive object={new THREE.AxesHelper(10)} /> */}
