@@ -2,6 +2,7 @@ import React, { FC, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
+import { Helmet } from 'react-helmet';
 
 type DetailProps = {
   post: WorkPost;
@@ -10,6 +11,10 @@ type DetailProps = {
 export const Detail: FC<DetailProps> = ({ post }) => {
   return (
     <Container>
+      <Helmet>
+            <title>{post.titleEn}</title>
+            <meta name="description" content={post.descriptionEn} />
+      </Helmet>
       <p>this is Detail</p>
       <br />
       <Title>{post.titleEn}</Title>
