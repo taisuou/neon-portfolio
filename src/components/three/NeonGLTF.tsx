@@ -29,23 +29,23 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
 
   const materialProps = useControls('GlassMaterial',{
     thickness: { value: 0.2, min: 0, max: 20 },
-    roughness: { value: 0.6, min: 0, max: 1, step: 0.1 },
+    roughness: { value: 0.3, min: 0, max: 1, step: 0.1 },
     clearcoat: { value: 1, min: 0, max: 1, step: 0.1 },
     clearcoatRoughness: { value: 0, min: 0, max: 1, step: 0.1 },
     transmission: { value: 1, min: 0.9, max: 1, step: 0.01 },
     ior: { value: 1.25, min: 1, max: 2.3, step: 0.05 },
     envMapIntensity: { value: 25, min: 0, max: 100, step: 1 },
     color: '#ffffff',
-    attenuationTint: '#ffe79e',
+    attenuationTint: '#584b25',
     attenuationDistance: { value: 0, min: 0, max: 1 },
     toggleVisible: true,
   })
 
   const lightProps = useControls('LightMaterial',{
-    color: '#ffe79e'
+    color: '#c4b072'
   })
   const argonProps = useControls('ArgonMaterial',{
-    color: '#3adff8'
+    color: '#3ad1e8'
   })
   const neonControl = useControls('Neon',{
     rotateX: { value: 0, min: -180, max: 180, step:1 },

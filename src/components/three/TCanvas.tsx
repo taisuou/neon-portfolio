@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useRef, VFC } from 'react';
 import { OrbitControls, Scroll, ScrollControls, Stats } from '@react-three/drei';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
@@ -21,7 +21,9 @@ import { contents } from '../../utils/store';
 import { Loader } from './Loader';
 import { useMedia } from '../../utils/useMedia';
 import * as THREE from 'three'
-import { Leva, useControls } from 'leva'
+import {  useControls } from 'leva'
+import { isReturnStatement } from 'typescript';
+
 
 
 
@@ -84,9 +86,23 @@ function Contents() {
   );
 }
 
+// function Rig({ props }) {
+//   const ref = useRef(null)
+//   const vec = new THREE.Vector3()
+//   const { camera, mouse } = useThree()
+//   useFrame(() => {
+//     camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)
+//     if(!ref.current) return
+//     ref.current!.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0), 0.1)
+//     ref.current!.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
+    
+//   })
+//   return <group ref={ref}>{props.children}</group>
+// }
+
 export const TCanvas: VFC = () => {
   const helperControl = useControls('helperControl',{
-    zoom: false,
+    orbit: false,
     axis: false,
   })
   return (
@@ -104,8 +120,10 @@ export const TCanvas: VFC = () => {
       {/* scene */}
       <color attach="background" args={['#000']} />
       {/* camera controller */}
-      <OrbitControls attach="orbitControls" enableZoom={helperControl.zoom}/>
       
+      {
+        helperControl.orbit ? <OrbitControls attach="orbitControls" enableZoom={true} enablePan={true}/> : null
+      }
       <ambientLight />
       {
         helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null
