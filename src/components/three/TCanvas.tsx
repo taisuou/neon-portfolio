@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, VFC } from 'react';
+import { FC, Suspense, useEffect, useRef, VFC } from 'react';
 import { OrbitControls, Scroll, ScrollControls, Stats } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
@@ -85,20 +85,22 @@ function Contents() {
     </ScrollControls>
   );
 }
-
-// function Rig({ props }) {
-//   const ref = useRef(null)
-//   const vec = new THREE.Vector3()
-//   const { camera, mouse } = useThree()
-//   useFrame(() => {
-//     camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)
-//     if(!ref.current) return
-//     ref.current!.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0), 0.1)
-//     ref.current!.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
+type RigProps = {
+  children: React.ReactNode;
+};
+const Rig: FC<RigProps>=({ children }) =>{
+  const ref = useRef<THREE.Group>()
+  const vec = new THREE.Vector3()
+  const { camera, mouse } = useThree()
+  useFrame(() => {
+    camera.position.lerp(vec.set(mouse.x * 2, 0, 8.5), 0.05)
+    if(!ref.current) return
+    ref.current!.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0), 0.1)
+    ref.current!.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
     
-//   })
-//   return <group ref={ref}>{props.children}</group>
-// }
+  })
+  return <group ref={ref}>{children}</group>
+}
 
 export const TCanvas: VFC = () => {
   const helperControl = useControls('helperControl',{
@@ -108,7 +110,7 @@ export const TCanvas: VFC = () => {
   return (
     <Canvas
       camera={{
-        position: [0, 3, 8],
+        position: [0, 0, 8],
         fov: 50,
         aspect: window.innerWidth / window.innerHeight,
         near: 0.1,
@@ -131,10 +133,10 @@ export const TCanvas: VFC = () => {
       <Suspense fallback={null}>
         {/* objects */}
         {/* <Objects /> */}
-        
-        <NeonGLTF />
-
-        <Ground />
+        <Rig>
+          <NeonGLTF/>
+          <Ground/>
+        </Rig>
         <Loader />
         <EffectComposer multisampling={8}>
           <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
