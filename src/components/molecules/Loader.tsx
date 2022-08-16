@@ -160,7 +160,8 @@ const SVG=styled.svg`
 
 `
 const LoaderAnim = styled.div`
-    
+  width: 100%;
+  height: 100vh;
   .front {
     animation: rotateFront 5000ms linear infinite;
   }
@@ -207,8 +208,8 @@ const LoaderLogo = styled.div`
   top: 50%;
   left: 50%;
   perspective: 400px;
-  margin-left: -40px;
-  margin-top: -40px;
+  position: absolute;
+  background: #000;
 
   .elec__item {
     position: absolute;
