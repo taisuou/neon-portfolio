@@ -92,8 +92,8 @@ const Rig: FC<RigProps>=({ children }) =>{
   const vec = new THREE.Vector3()
   const { camera, mouse } = useThree()
   useFrame(() => {
+    if(!ref.current||!sceneState.isReady) return
     camera.position.lerp(vec.set(mouse.x * 2, 0, 8.5), 0.05)
-    if(!ref.current) return
     ref.current!.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0), 0.1)
     ref.current!.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
     
@@ -109,7 +109,7 @@ export const TCanvas: VFC = () => {
   return (
     <Canvas
       camera={{
-        position: [0, 0, 8],
+        position: [0, 0, 20],
         fov: 50,
         aspect: window.innerWidth / window.innerHeight,
         near: 0.1,

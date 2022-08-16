@@ -1,4 +1,4 @@
-import React, { VFC } from 'react';
+import React, { useEffect, useState, VFC } from 'react';
 import { TCanvas } from './three/TCanvas';
 // import { Neon } from './three/Neon';
 import { Loader } from './molecules/Loader';
@@ -10,8 +10,17 @@ import { color } from '../utils/style';
 import { Leva } from 'leva';
 import {Helmet} from "react-helmet";
 import { contents } from '../utils/store';
+import { useSnapshot } from 'valtio';
+import { sceneState } from '../utils/sceneState';
 
 export const App: VFC = () => {
+  const [isReady, setIsReady] = useState(false)
+  useEffect(()=>{
+    setTimeout(() => {setIsReady(true)}, 3000);
+  },[])
+  useEffect(()=>{
+    sceneState.isReady = isReady
+  },[isReady])
   return (
     <>
       <Global
@@ -63,7 +72,7 @@ export const App: VFC = () => {
             <meta property="og:site_name" content={contents.meta.title} />
             <meta property="og:image" content={contents.meta.ogp} />
       </Helmet>
-      <Loader/>
+      <Loader isReady={isReady}/>
       <Container>
         <Header />
         <TCanvas />
