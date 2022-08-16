@@ -20,7 +20,9 @@ import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
 import { Loader } from './Loader';
 import { useMedia } from '../../utils/useMedia';
-import { useControls } from 'leva'
+import * as THREE from 'three'
+import { Leva, useControls } from 'leva'
+
 
 
 function Contents() {
@@ -83,8 +85,9 @@ function Contents() {
 }
 
 export const TCanvas: VFC = () => {
-  const orbitControl = useControls('orbitControl',{
+  const helperControl = useControls('helperControl',{
     zoom: false,
+    axis: false,
   })
   return (
     <Canvas
@@ -101,12 +104,12 @@ export const TCanvas: VFC = () => {
       {/* scene */}
       <color attach="background" args={['#000']} />
       {/* camera controller */}
-      <OrbitControls attach="orbitControls" enableZoom={orbitControl.zoom}/>
+      <OrbitControls attach="orbitControls" enableZoom={helperControl.zoom}/>
+      
       <ambientLight />
-      {/* shows Axis Helper */}
-      {/* <primitive object={new THREE.AxesHelper(10)} /> */}
-      {/* lights */}
-      {/* <Lights /> */}
+      {
+        helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null
+      }
       <Suspense fallback={null}>
         {/* objects */}
         {/* <Objects /> */}

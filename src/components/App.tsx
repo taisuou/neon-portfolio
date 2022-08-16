@@ -7,6 +7,7 @@ import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { color } from '../utils/style';
+import { Leva } from 'leva';
 
 export const App: VFC = () => {
   return (
@@ -45,6 +46,7 @@ export const App: VFC = () => {
         <Header />
         <TCanvas />
       </Container>
+      <Leva hidden={false}/>
     </>
   );
 };
