@@ -30,10 +30,6 @@ export const App: VFC = () => {
             font-smoothing: antialiased;
           }
 
-          html{
-            font-size: calc(100vw * 16 / 375);
-          }
-
           body {
             margin: 0;
             padding: 0;

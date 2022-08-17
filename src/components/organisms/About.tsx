@@ -15,7 +15,7 @@ export const About: VFC = () => {
           </SectionTitle>
           <TextBox>
             <Text>
-            <p>Taisho Ichikawa</p>
+            <TextTitle>Taisho Ichikawa</TextTitle>
             <p>
               Born in 1991, graduated from the School of Social Sciences at Waseda University.
               Graduated from Waseda University, School of Social Sciences, and while working as an
@@ -28,7 +28,7 @@ export const About: VFC = () => {
             </p>
             </Text>
             <Text>
-            <p>市川大翔</p>
+            <TextTitle>市川大翔</TextTitle>
             <p>
               1991年生まれ。早稲田大学社会科学部卒業。IT企業にてインハウスデザイナーとして勤めるかたわら、ネオンサインのデザイン、バーナーワークを行う。「メディウムとしての光」「手工芸の技術」を軸に、ネオンサインの特性を活かしたアート作品を手がける。表現手法として、ガラス管だけでなく、3DCGを用いるなど、アナログ・デジタル双方に重点をおき制作を行なっている。受賞歴：LUMINE
               meets ART AWARD 2020-2021
@@ -51,27 +51,37 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  height: 50vh;
-  padding: 0 32px;
+  height: 40vh;
+  padding: 59px 32px 0;
   background-image: url('../images/bg_about.png');
   background-size: cover;
   background-position: center;
   padding-bottom:48px;
   h1 {
     width: 100%;
-    ${font.replica.h2};
+    ${font.replica.h1};
   }
 `;
 
 const SectionContainer = styled.div`
-  padding: 32px;
+  display:flex;
+  flex-direction:column;
+  padding: 64px 32px;
+  ${media.lg`
+    max-width:1108px;
+    margin:0 auto;
+    flex-direction:row;
+  `}
 `;
 
 const SectionTitle = styled.div`
   h2 {
-    ${font.replica.h3};
+    ${font.replica.h2};
   }
   margin-bottom:24px;
+  ${media.lg`
+    margin-right:72px;
+  `}
 `;
 
 const TextBox = styled.div`
@@ -82,11 +92,21 @@ p{
 }
   display: inline;
   text-align: justify;
-  padding-bottom:24px;
+  ${media.lg`
+    margin-top:6px;
+  `}
 `;
 
 const Text = styled.div`
+margin-bottom:40px;
 p{
   margin-bottom:16px;
 }
 `;
+
+const TextTitle = styled.div`
+${font.Inter.subtitle1};
+margin-bottom:16px;
+`;
+
+

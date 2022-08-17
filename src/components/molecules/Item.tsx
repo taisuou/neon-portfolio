@@ -41,15 +41,23 @@ const Container = styled.a<{ isOdd: boolean }>`
   ${media.lg`
     width:100%;
     align-items: center;
-    padding:0 32px 64px 32px;
+    padding:64px; 32px;
     //justify-content:center;
     flex-direction:row-reverse;
     :nth-child(2n){
       flex-direction: row;
     }
+    img{
+      transition: 0.5s ease-in-out;
+    }
+    &:hover img{
+      transform:scale(1.1,1.1);
+    }
   `}
+
 `;
 const Picture = styled.div`
+  overflow:hidden; 
   & img {
     width: 100%;
     margin-bottom:24px;

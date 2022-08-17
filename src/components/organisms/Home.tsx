@@ -8,18 +8,21 @@ import { WorkPost } from '../../../@types/schema';
 export const Home: VFC = () => {
   return (
     <>
-      <Hero></Hero>
-      <Container>
-
+      <Hero>
       <MainTitle>Glass and Virtual Neon Arts</MainTitle>
-        
+      <ScrollArrow>
+        <p>Scroll</p>
+        <img src="images/arrow_scroll.svg" alt="" />
+      </ScrollArrow>
+      </Hero>
+      <Container>
         {/* TIPS map文 */}
         {contents.works.map((work: WorkPost, index) => (
           <Item post={work} key={index} indexNumber={index} />
         ))}
 
         <ButtonMore>
-          <a href="">view all works</a>
+          <a href="/works">view all works</a>
         </ButtonMore>
       </Container>
     </>
@@ -27,28 +30,31 @@ export const Home: VFC = () => {
 };
 
 const Hero = styled.div`
+  position:relative;
+  display: flex;
   height: 100vh;
   width: 100%;
-  display: flex;
   justify-content: center;
   align-items: center;
-`;
+  text-align:center;
+  `;
 
 const Container = styled.div`
-  /* TIPS : color, fontは極力一箇所に定義をまとめる */
   background: ${color.background.dark};
-  //color: ${color.content.HighEmphasis};
+  color: ${color.content.HighEmphasis};
+  
 `;
 
 const MainTitle = styled.p`
-display:block;
-  text-align: center;
-  padding: 36px 36px;
-  /* TIPS fontもこんな感じで一括定義した方が楽。上書きもできる */
+  display: flex;
+  padding:0 32px;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background:rgba(0,0,0,0.25);
   ${font.replica.h1}
   ${media.lg`
-   font-size:2rem;
-   line-height:2rem;
    width:70%;
    margin:0 auto;
   `}
@@ -69,6 +75,15 @@ const ButtonMore = styled.div`
     width:80%;
     margin:0 auto;
   `}
+  
+  & a {
+    transition: 0.3s ease-in-out;
+  }
+  & a:hover {
+    background: #fff;
+    color: #1d1d1d;
+    transition: 0.3s ease-in-out;
+  }
 `;
 
 const PageTitle = styled.div`
@@ -161,6 +176,16 @@ const ColInfobox = styled.div`
   }
   span {
     font-size: 16px;
+  }
+`;
+
+const ScrollArrow = styled.div`
+  position:absolute;
+  text-align:center;
+  bottom:32px;
+  right:32px;
+  p{
+    margin-bottom:8px;
   }
 `;
 
