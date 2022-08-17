@@ -198,7 +198,7 @@ export const Header: VFC = () => {
         }}
       >
         <Logo>
-          <img src="images/header_logo.svg" alt="electrode" width={105} />
+          <img src="/images/header_logo.svg" alt="electrode" width={105} />
         </Logo>
       </Link>
 

@@ -30,6 +30,7 @@ export const contents = {
       tag: 0,
       thumb: '/images/posts/202206_kawakyu/202206_kawakyu_00.jpg',
       year: '2022',
+      pjinfo:'test',
       descriptionEn:
         'Exhibition at Kawakyu Museum started on June 1KAWAKYU ART Exhibtion 2022 "Existential Dream" has started. Neon works are exhibited in accordance with the theme of this exhibition. In preparation for the exhibition, I was given the opportunity to stay at the Hotel Kawakyu for a week. I am spending a luxurious time in the gorgeous interior of Kawakyu Hotel. I am very glad that I was able to participate in this exhibition, as I had the opportunity to interact closely with the other artists participating in the residency and the curators. It is only an hour by plane from Tokyo, making it the perfect place for a short trip, so please come and visit us and stretch your legs.',
       descriptionJp:
@@ -47,6 +48,7 @@ export const contents = {
       tag: 1,
       thumb: '/images/posts/202104_36softype/202104_36softype_00.jpg',
       year: '2022',
+      pjinfo:'test',
       descriptionEn:
         'Exhibition at Kawakyu Museum started on June 1KAWAKYU ART Exhibtion 2022 "Existential Dream" has started. Neon works are exhibited in accordance with the theme of this exhibition. In preparation for the exhibition, I was given the opportunity to stay at the Hotel Kawakyu for a week. I am spending a luxurious time in the gorgeous interior of Kawakyu Hotel. I am very glad that I was able to participate in this exhibition, as I had the opportunity to interact closely with the other artists participating in the residency and the curators. It is only an hour by plane from Tokyo, making it the perfect place for a short trip, so please come and visit us and stretch your legs.',
       descriptionJp:
@@ -67,6 +69,7 @@ export const contents = {
       tag: 1,
       thumb: '/images/posts/202104_36softype/202104_36softype_00.jpg',
       year: '2022',
+      pjinfo:'test',
       descriptionEn:
         'Exhibition at Kawakyu Museum started on June 1KAWAKYU ART Exhibtion 2022 "Existential Dream" has started. Neon works are exhibited in accordance with the theme of this exhibition. In preparation for the exhibition, I was given the opportunity to stay at the Hotel Kawakyu for a week. I am spending a luxurious time in the gorgeous interior of Kawakyu Hotel. I am very glad that I was able to participate in this exhibition, as I had the opportunity to interact closely with the other artists participating in the residency and the curators. It is only an hour by plane from Tokyo, making it the perfect place for a short trip, so please come and visit us and stretch your legs.',
       descriptionJp:

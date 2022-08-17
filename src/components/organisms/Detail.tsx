@@ -26,7 +26,7 @@ export const Detail: FC<DetailProps> = ({ post }) => {
         </ul>
         <ul>
           <li>Project Info</li>
-          <li><span>{post.year}</span></li>
+          <li><span>{post.pjinfo}</span></li>
         </ul>
       </Caption>
       <p>{post.descriptionEn}</p>

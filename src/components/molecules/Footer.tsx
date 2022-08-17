@@ -17,9 +17,9 @@ export const Footer: VFC = () => {
           <Link href="/contact">CONTACT</Link>
         </Menu>
         <SnsBox>
-          <a href="https://www.instagram.com/electrode_taisho/" target="_blank"><img src="images/header_sns_instagram.svg" alt="" /></a>
-          <a href="https://medium.com/@electrodeart" target="_blank"><img src="images/header_sns_medium.svg" alt="" /></a>
-          <a href="https://twitter.com/electrodeart" target="_blank"><img src="images/header_sns_twitter.svg" alt="" /></a>
+          <a href="https://www.instagram.com/electrode_taisho/" target="_blank"><img src="/images/header_sns_instagram.svg" alt="" /></a>
+          <a href="https://medium.com/@electrodeart" target="_blank"><img src="/images/header_sns_medium.svg" alt="" /></a>
+          <a href="https://twitter.com/electrodeart" target="_blank"><img src="/images/header_sns_twitter.svg" alt="" /></a>
         </SnsBox>
       </MenuContainer>
       <CopyRight>©️ 2022 electrode </CopyRight>
