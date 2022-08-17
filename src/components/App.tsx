@@ -43,7 +43,7 @@ export const App: VFC = () => {
             font-smoothing: antialiased;
           }
 
-          html {
+          html{
             font-size: calc(100vw * 16 / 375);
           }
 
