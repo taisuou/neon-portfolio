@@ -6,15 +6,26 @@ import { Header } from './molecules/Header';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { color } from '../utils/style';
+import { color, media, zIndex } from '../utils/style';
 import { Leva } from 'leva';
 import { Helmet } from 'react-helmet';
 import { contents } from '../utils/store';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../utils/sceneState';
+import { Route, Switch } from 'wouter';
+import { Home } from './organisms/Home';
+import { About } from './organisms/About';
+import { Contact } from './organisms/Contact';
+import { Detail } from './organisms/Detail';
+import { Works } from './organisms/Works';
+import { useMedia } from '../utils/useMedia';
+import { Footer } from './molecules/Footer';
+import { Contents } from './organisms/Contents';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
+  const {isMobile, isTablet} = useMedia();
+  
   useEffect(() => {
     setTimeout(() => {
       setIsReady(true);
@@ -71,11 +82,18 @@ export const App: VFC = () => {
         <meta property="og:description" content={contents.meta.description} />
         <meta property="og:site_name" content={contents.meta.title} />
         <meta property="og:image" content={contents.meta.ogp} />
+        <meta name="google" content="notranslate" />
       </Helmet>
       <Loader isReady={isReady} />
       <Container>
         <Header />
-        <TCanvas />
+        <CanvasWrap>
+          <TCanvas />
+        </CanvasWrap>
+        {
+          (isMobile||isTablet)&&<Contents/>
+        }
+        
       </Container>
       <Leva hidden={true} />
     </>
@@ -84,6 +102,16 @@ export const App: VFC = () => {
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  ${media.lg`
+    height: 100vh;
+  `}
   // overflow: hidden;
 `;
+
+const CanvasWrap = styled.div`
+  position:fixed;
+  top:0;
+  width:100vw;
+  height:100vh;
+  z-index:${zIndex.behind};
+`
