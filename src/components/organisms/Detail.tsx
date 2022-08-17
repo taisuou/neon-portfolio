@@ -1,4 +1,4 @@
-import React, { FC, VFC } from 'react';
+import React, { FC, useEffect, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
@@ -9,6 +9,7 @@ type DetailProps = {
 };
 
 export const Detail: FC<DetailProps> = ({ post }) => {
+  
   return (
     <Container>
     <Helmet>
@@ -116,7 +117,7 @@ const PageCtl = styled.div`
   ul{
     display:flex;
   }
-  li:first-child{
+  li:first-of-type{
     margin-right:8px;
   }
 `;

@@ -73,7 +73,7 @@ function Contents() {
           <Route path="/about" component={About} />
           <Route path="/works" component={Works} />
           <Route path="/contact" component={Contact} />
-          <Route path="/works/:id">{(params) => <Detail post={contents.works[0]} />}</Route>
+          <Route path="/works/:id">{(params) => <Detail post={contents.works[Number(params.id)]} />}</Route>
           <Route>存在しないコンテンツです</Route>
         </Switch>
         <Footer />

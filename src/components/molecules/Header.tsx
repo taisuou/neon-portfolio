@@ -203,7 +203,7 @@ export const Header: VFC = () => {
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
             <li key={index}>
-              <Link href={menu}>{menu.toUpperCase()}</Link>
+              <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
             </li>
           ))}
         </DesktopMenuContainer>
@@ -228,7 +228,7 @@ export const Header: VFC = () => {
                   menuClose();
                 }}
               >
-                <Link href={menu}>{menu.toUpperCase()}</Link>
+                <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
               </li>
             ))}
           </SlideMenuContents>
