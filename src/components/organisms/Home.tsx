@@ -17,8 +17,10 @@ export const Home: VFC = () => {
       </Hero>
       <Container>
         {/* TIPS map文 */}
-        {contents.works.map((work: WorkPost, index) => (
-          <Item post={work} key={index} indexNumber={index} />
+        {contents.works
+        .filter((work:WorkPost, index) => (index < 4))
+        .map((work: WorkPost, index) => (
+            <Item post={work} key={index} indexNumber={index} />
         ))}
 
         <ButtonMore>
