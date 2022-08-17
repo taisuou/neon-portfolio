@@ -71,6 +71,7 @@ export const App: VFC = () => {
         <meta property="og:description" content={contents.meta.description} />
         <meta property="og:site_name" content={contents.meta.title} />
         <meta property="og:image" content={contents.meta.ogp} />
+        <meta name="google" content="notranslate" />
       </Helmet>
       <Loader isReady={isReady} />
       <Container>
