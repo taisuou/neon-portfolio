@@ -22,7 +22,6 @@ export const Home: VFC = () => {
         .map((work: WorkPost, index) => (
           <Item post={work} key={index} indexNumber={index} />
         ))}
-
         <ButtonMore>
           <a href="/works">view all works</a>
         </ButtonMore>
