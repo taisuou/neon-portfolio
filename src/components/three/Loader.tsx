@@ -88,7 +88,7 @@ export const Loader: VFC = () => {
     >
       <SVG
         width="100vw"
-        height="100vh"
+        height="100%"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         ref={loaderPathParent}
@@ -192,8 +192,8 @@ const LoaderAnim = styled.div`
 
 const LoaderLogo = styled.div`
   position: absolute;
-  top: 50vh;
-  left: 50vw;
+  top: 50%;
+  left: 50%;
   perspective: 400px;
   margin-top: -40px;
 

@@ -82,7 +82,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
 
   return (
     <Container ref={loader}>
-      <SVG width="100vw" height="100vh" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <SVG width="100vw" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
         <path
           fill={color.background.middleDark}
           vectorEffect="non-scaling-stroke"
@@ -130,7 +130,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   z-index: ${zIndex.elevation.ev16};
 `;
@@ -142,7 +142,7 @@ const SVG = styled.svg`
 `;
 const LoaderAnim = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   .front {
     animation: rotateFront 5000ms linear infinite;
   }
@@ -186,8 +186,8 @@ const LoaderAnim = styled.div`
 
 const LoaderLogo = styled.div`
   position: absolute;
-  top: 50vh;
-  left: 50vw;
+  top: 50%;
+  left: 50%;
   perspective: 400px;
   position: absolute;
   background: #000;
