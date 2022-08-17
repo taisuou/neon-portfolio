@@ -34,26 +34,25 @@ const Hero = styled.div`
   position:relative;
   display: flex;
   height: 100vh;
+  min-height: -webkit-fill-available;
   width: 100%;
   justify-content: center;
   align-items: center;
   text-align:center;
+  background:rgba(0,0,0,0.25);
   `;
 
 const Container = styled.div`
   background: ${color.background.dark};
   color: ${color.content.HighEmphasis};
-  
 `;
 
 const MainTitle = styled.p`
   display: flex;
   padding:0 32px;
-  height: 100vh;
   width: 100%;
   justify-content: center;
   align-items: center;
-  background:rgba(0,0,0,0.25);
   ${font.replica.h1}
   ${media.lg`
    width:70%;

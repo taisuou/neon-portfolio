@@ -42,7 +42,6 @@ export const App: VFC = () => {
             -webkit-font-smoothing: antialiased;
             font-smoothing: antialiased;
           }
-
           body {
             margin: 0;
             padding: 0;
@@ -53,6 +52,7 @@ export const App: VFC = () => {
             font-size: 62.5%;
             overscroll-behavior: none;
             color: ${color.content.HighEmphasis};
+            height:100%;
           }
         `}
       />
