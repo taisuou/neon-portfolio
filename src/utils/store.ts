@@ -78,9 +78,9 @@ export const contents = {
       descriptionJp:
         '6/1より川久ミュージアムでの展示会 KAWAKYU ART Exhibtion 2022「実在する夢」がスタートしました。 ⁡ 本展のテーマに合わせたネオンの作品を出展しています。出展にあたって1週間、ホテル川久への滞在の機会もいただきました。川久ホテルの絢爛なしつらえのなかで、贅沢な時間を過ごさせてもらっています。 ⁡ レジデンスに参加されている他の作家さんや、キュレーターの皆さんとの密な交流もあり、本当に参加できてよかったです。 ⁡ 東京からは飛行機で1時間、小旅行にぴったりの場所ですので是非はねを伸ばしに遊びにきてください。',
       images: [
-        'images/posts/202206_kawakyu/202206_kawakyu_00.jpg',
-        'images/posts/202206_kawakyu/202206_kawakyu_01.jpg',
-        'images/posts/202206_kawakyu/202206_kawakyu_02.jpg',
+        '/images/posts/202206_kawakyu/202206_kawakyu_00.jpg',
+        '/images/posts/202206_kawakyu/202206_kawakyu_01.jpg',
+        '/images/posts/202206_kawakyu/202206_kawakyu_02.jpg',
       ],
     },
     {
