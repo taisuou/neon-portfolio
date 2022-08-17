@@ -16,7 +16,6 @@ export const Home: VFC = () => {
       </ScrollArrow>
       </Hero>
       <Container>
-        {/* TIPS map文 */}
         {contents.works
         .filter((work:WorkPost, index) => (index < 4))
         .map((work: WorkPost, index) => (

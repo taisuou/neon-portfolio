@@ -5,14 +5,8 @@ import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize } from 'postprocessing';
-import { color } from '../../utils/style';
-import styled from '@emotion/styled';
-import { Home } from '../organisms/Home';
-import { About } from '../organisms/About';
-import { Works } from '../organisms/Works';
-import { Contact } from '../organisms/Contact';
-import { Detail } from '../organisms/Detail';
-import { Footer } from '../molecules/Footer';
+import { Contents as PageContents } from '../organisms/Contents';
+
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
@@ -28,6 +22,7 @@ function Contents() {
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
   const [location] = useLocation();
+  
 
   useEffect(() => {
     //need to be fixed later. Triggered only when
@@ -42,7 +37,7 @@ function Contents() {
     <ScrollControls
       pages={height / size.height} // Each page takes 100% of the height of the canvas
       distance={1} // A factor that increases scroll bar travel (default: 1)
-      damping={4} // Friction, higher is faster (default: 4)
+      damping={6} // Friction, higher is faster (default: 4)
       horizontal={false} // Can also scroll horizontally (default: false)
       infinite={false} // Can also scroll infinitely (default: false)
     >
@@ -68,15 +63,7 @@ function Contents() {
 			</Flex> */}
       {/* </Scroll> */}
       <Scroll html ref={elementRef}>
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/works" component={Works} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/works/:id">{(params) => <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)}/>}</Route>
-          <Route>存在しないコンテンツです</Route>
-        </Switch>
-        <Footer />
+        <PageContents/>
       </Scroll>
     </ScrollControls>
   );
@@ -102,6 +89,7 @@ const Rig: FC<RigProps> = ({ children }) => {
 };
 
 export const TCanvas: VFC = () => {
+  const {isMobile, isTablet} = useMedia();
   const helperControl = useControls('helperControl', {
     orbit: false,
     axis: false,
@@ -143,7 +131,7 @@ export const TCanvas: VFC = () => {
             intensity={0.5}
           />
         </EffectComposer>
-        <Contents />
+        {!(isMobile||isTablet)&&<Contents />}
       </Suspense>
       {/* helper */}
       {/* <Stats /> */}
