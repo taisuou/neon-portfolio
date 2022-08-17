@@ -192,8 +192,8 @@ const LoaderAnim = styled.div`
 
 const LoaderLogo = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50vh;
+  left: 50vw;
   perspective: 400px;
   margin-top: -40px;
 

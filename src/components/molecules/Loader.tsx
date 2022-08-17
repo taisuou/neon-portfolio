@@ -122,6 +122,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
           </LogoInner>
         </LoaderLogo>
         {/* <LoaderNum ref={counter} data-from="0" data-to="4096">{progress}</LoaderNum> */}
+        <LoaderNum>Loading...</LoaderNum>
       </LoaderAnim>
     </Container>
   );
@@ -185,8 +186,8 @@ const LoaderAnim = styled.div`
 
 const LoaderLogo = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50vh;
+  left: 50vw;
   perspective: 400px;
   position: absolute;
   background: #000;
@@ -237,9 +238,9 @@ const LogoInner = styled.ol`
 const LoaderNum = styled.div`
   position: absolute;
   top: 50%;
-  margin-top: 50px;
+  margin-top: 80px;
   color: #fff;
   width: 100%;
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
 `;
