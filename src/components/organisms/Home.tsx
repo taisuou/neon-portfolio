@@ -17,8 +17,10 @@ export const Home: VFC = () => {
       </Hero>
       <Container>
         {/* TIPS map文 */}
-        {contents.works.map((work: WorkPost, index) => (
-          <Item post={work} key={index} indexNumber={index} />
+        {contents.works
+        .filter((work:WorkPost, index) => (index < 4))
+        .map((work: WorkPost, index) => (
+            <Item post={work} key={index} indexNumber={index} />
         ))}
 
         <ButtonMore>
@@ -62,7 +64,7 @@ const MainTitle = styled.p`
 
 const ButtonMore = styled.div`
   text-align: center;
-  padding: 0 32px 64px 32px; 
+  padding: 0 32px 64px 32px;
   ${font.Inter.button}
   & a {
     display: block;
@@ -179,6 +181,10 @@ const ColInfobox = styled.div`
   }
 `;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3c0a08df4ee376e2fec95031a66b20be6da5c2f5
 const ScrollArrow = styled.div`
   position:absolute;
   text-align:center;
@@ -187,5 +193,9 @@ const ScrollArrow = styled.div`
   p{
     margin-bottom:8px;
   }
+<<<<<<< HEAD
 `;
 
+=======
+`;
+>>>>>>> 3c0a08df4ee376e2fec95031a66b20be6da5c2f5

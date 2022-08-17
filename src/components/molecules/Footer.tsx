@@ -32,31 +32,31 @@ const Logo = styled.a``;
 const Container = styled.div`
   width:100vw;
   display: flex;
-  flex-direction:column;
-  justify-content:center;
+  flex-direction: column;
+  justify-content: center;
   padding: 32px;
   z-index: ${zIndex.elevation.ev4};
-  background: #1d1d1d;
-  border-top: 2px solid #505050;
-  a{
-    color:#fff;
-    text-decoration:none;
+  background: ${color.background.dark};
+  border-top: 2px solid ${color.content.Disable};
+  a {
+    color: #fff;
+    text-decoration: none;
   }
 `;
 const MenuContainer = styled.div`
   width: 100%;
-  text-align:center;
+  text-align: center;
 `;
 
 const Menu = styled.p`
-  width:100%;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   font-size: 24px;
   text-decoration: underline;
   margin-bottom: 16px;
-  a{
+  a {
   }
   color: ${color.content.HighEmphasis};
 `;
@@ -64,9 +64,9 @@ const Menu = styled.p`
 const SnsBox = styled.p`
   display: flex;
   align-items: center;
-  justify-content:center;
-  a{
-    margin:0 8px;
+  justify-content: center;
+  a {
+    margin: 0 8px;
   }
 `;
 

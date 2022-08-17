@@ -6,8 +6,8 @@ export const About: VFC = () => {
   return (
     <Container>
       <PageTitle>
-          <h1>ABOUT</h1>
-        </PageTitle>
+        <h1>ABOUT</h1>
+      </PageTitle>
 
         <SectionContainer>
           <SectionTitle>
@@ -35,16 +35,15 @@ export const About: VFC = () => {
               オーディエンス賞、近年の展示：SICF23、オーダーワーク:Chim↑Pom from Smappa! Group
               ロゴサイン。
             </p>
-            </Text>
-          </TextBox>
-        </SectionContainer>
-
+          </Text>
+        </TextBox>
+      </SectionContainer>
     </Container>
   );
 };
 
 const Container = styled.div`
-background: ${color.background.dark};
+  background: ${color.background.dark};
 `;
 
 const PageTitle = styled.div`
@@ -56,7 +55,7 @@ const PageTitle = styled.div`
   background-image: url('../images/bg_about.png');
   background-size: cover;
   background-position: center;
-  padding-bottom:48px;
+  padding-bottom: 48px;
   h1 {
     width: 100%;
     ${font.replica.h1};
@@ -85,11 +84,11 @@ const SectionTitle = styled.div`
 `;
 
 const TextBox = styled.div`
-p{
-  ${font.Inter.body2};
-  font-size:12px;
-  line-height:1.5;
-}
+  p {
+    ${font.Inter.body2};
+    font-size: 12px;
+    line-height: 1.5;
+  }
   display: inline;
   text-align: justify;
   ${media.lg`

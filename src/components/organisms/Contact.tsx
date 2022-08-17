@@ -6,8 +6,8 @@ export const Contact: VFC = () => {
   return (
     <Container>
       <PageTitle>
-          <h1>CONTACT</h1>
-        </PageTitle>
+        <h1>CONTACT</h1>
+      </PageTitle>
 
         <SectionContainer>
           <SectionTitle>
@@ -69,7 +69,7 @@ const PageTitle = styled.div`
   background-image: url('../images/bg_about.png');
   background-size: cover;
   background-position: center;
-  padding-bottom:48px;
+  padding-bottom: 48px;
   h1 {
     width: 100%;
     ${font.replica.h1};
@@ -104,14 +104,14 @@ const SectionTitle = styled.div`
 `;
 
 const TextBox = styled.div`
-p{
-  ${font.Inter.body2};
-  font-size:12px;
-  line-height:1.5;
-}
+  p {
+    ${font.Inter.body2};
+    font-size: 12px;
+    line-height: 1.5;
+  }
   display: inline;
   text-align: justify;
-  padding-bottom:24px;
+  padding-bottom: 24px;
 `;
 
 const TextDec = styled.div`
@@ -149,3 +149,4 @@ const ColInfobox = styled.div`
   }
 `}
 `;
+

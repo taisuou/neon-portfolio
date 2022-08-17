@@ -150,14 +150,11 @@ export const Header: VFC = () => {
       .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
       })
-      .to(
-        overlayPath.current,
-        {
-          duration: 0.2,
-          ease: 'sine.in',
-          attr: { d: paths.step2.inBetween.curve },
-        }
-      )
+      .to(overlayPath.current, {
+        duration: 0.2,
+        ease: 'sine.in',
+        attr: { d: paths.step2.inBetween.curve },
+      })
       .to(overlayPath.current, {
         duration: 1,
         ease: 'power4',
@@ -206,7 +203,7 @@ export const Header: VFC = () => {
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
             <li key={index}>
-              <Link href={menu}>{menu.toUpperCase()}</Link>
+              <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
             </li>
           ))}
         </DesktopMenuContainer>
@@ -231,7 +228,7 @@ export const Header: VFC = () => {
                   menuClose();
                 }}
               >
-                <Link href={menu}>{menu.toUpperCase()}</Link>
+                <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
               </li>
             ))}
           </SlideMenuContents>

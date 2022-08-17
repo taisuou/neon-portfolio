@@ -1,4 +1,4 @@
-import React, { VFC } from 'react';
+import React, { useEffect, useState, VFC } from 'react';
 import { TCanvas } from './three/TCanvas';
 // import { Neon } from './three/Neon';
 import { Loader } from './molecules/Loader';
@@ -8,8 +8,21 @@ import { Global, css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { color } from '../utils/style';
 import { Leva } from 'leva';
+import { Helmet } from 'react-helmet';
+import { contents } from '../utils/store';
+import { useSnapshot } from 'valtio';
+import { sceneState } from '../utils/sceneState';
 
 export const App: VFC = () => {
+  const [isReady, setIsReady] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsReady(true);
+    }, 3000);
+  }, []);
+  useEffect(() => {
+    sceneState.isReady = isReady;
+  }, [isReady]);
   return (
     <>
       <Global
@@ -43,11 +56,25 @@ export const App: VFC = () => {
           }
         `}
       />
+      <Helmet
+        title={contents.meta.title}
+        meta={[{ name: 'description', content: contents.meta.description }]}
+      >
+        <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
+        <meta property="og:url" content="OGPに掲載するページのURL" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={contents.meta.title} />
+        <meta property="og:description" content={contents.meta.description} />
+        <meta property="og:site_name" content={contents.meta.title} />
+        <meta property="og:image" content={contents.meta.ogp} />
+        <meta name="google" content="notranslate" />
+      </Helmet>
+      <Loader isReady={isReady} />
       <Container>
         <Header />
         <TCanvas />
       </Container>
-      <Leva hidden={false}/>
+      <Leva hidden={true} />
     </>
   );
 };

@@ -1,17 +1,28 @@
-import React, { FC, VFC } from 'react';
+import React, { FC, useEffect, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
+import { Helmet } from 'react-helmet';
+import { Link } from 'wouter';
+import {contents} from '../../utils/store'
 
 type DetailProps = {
-  post: WorkPost;
+  post: WorkPost
+  pageIndex: number
 };
 
-export const Detail: FC<DetailProps> = ({ post }) => {
+export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
+  
   return (
     <Container>
+
+    <Helmet>
+        <title>{post.titleEn}</title>
+        <meta name="description" content={post.descriptionEn} />
+    </Helmet>
     <SectionContainer>
       <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
+      
       <TitleEn>{post.titleEn}</TitleEn>
       <TitleJp>{post.titleJp}</TitleJp>
       <PictureWrap>
@@ -35,8 +46,8 @@ export const Detail: FC<DetailProps> = ({ post }) => {
     <PageCtl>
       <CtlTag>{post.tag === 0 ? 'ART' : 'Client'}</CtlTag>
       <ul>
-        <li><a href=""></a><img src="../images/arrow_left.svg" alt="" /></li>
-        <li><a href=""></a><img src="../images/arrow_right.svg" alt="" /></li>
+        <li><Link href={pageIndex===0 ? `/works/${contents.works.length-1}` :`/works/${pageIndex-1}`}><img src="../images/arrow_left.svg" alt="" /></Link></li>
+        <li><Link href={pageIndex===contents.works.length-1? `/works/0`:`/works/${pageIndex+1}`}><img src="../images/arrow_right.svg" alt="" /></Link></li>
       </ul>
     </PageCtl>
     </SectionContainer>
@@ -75,9 +86,8 @@ const TitleJp = styled.h1`
 const PictureWrap = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom:24px;
+  margin-bottom: 24px;
 `;
-
 
 const Picture = styled.img`
   width: 100%;
@@ -111,8 +121,11 @@ const PageCtl = styled.div`
   ul{
     display:flex;
   }
-  li:first-child{
+  li:first-of-type{
     margin-right:8px;
+  }
+  li{
+    cursor:pointer;
   }
 `;
 

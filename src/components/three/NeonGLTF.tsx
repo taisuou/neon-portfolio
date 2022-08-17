@@ -9,8 +9,7 @@ import { GLTF } from 'three-stdlib';
 import { GUIController } from '../../utils/gui';
 import { useFrame } from '@react-three/fiber';
 import { glassState } from '../../utils/store';
-import { useControls } from 'leva'
-
+import { useControls } from 'leva';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -26,8 +25,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('/sign.gltf') as GLTFResult;
   const glassRef = useRef<THREE.Mesh>(null);
 
-
-  const materialProps = useControls('GlassMaterial',{
+  const materialProps = useControls('GlassMaterial', {
     thickness: { value: 0.2, min: 0, max: 20 },
     roughness: { value: 0.3, min: 0, max: 1, step: 0.1 },
     clearcoat: { value: 1, min: 0, max: 1, step: 0.1 },
@@ -39,27 +37,36 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     attenuationTint: '#584b25',
     attenuationDistance: { value: 0, min: 0, max: 1 },
     toggleVisible: true,
-  })
+  });
 
-  const lightProps = useControls('LightMaterial',{
-    color: '#c4b072'
-  })
-  const argonProps = useControls('ArgonMaterial',{
-    color: '#3ad1e8'
-  })
-  const neonControl = useControls('Neon',{
-    rotateX: { value: 0, min: -180, max: 180, step:1 },
-    rotateY: { value: 0, min: -180, max: 180, step:1 },
-    rotateZ: { value: 0, min: -180, max: 180, step:1 },
-    posX: { value: 0, min: -5, max: 5, step:0.1 },
-    posY: { value: 0, min: -5, max: 5, step:0.1 },
-    posZ: { value: 0, min: -5, max: 5, step:0.1 },
-    scale: { value: 1, min: 0, max: 5, step:0.1 },
-  })
-  
+  const lightProps = useControls('LightMaterial', {
+    color: '#c4b072',
+  });
+  const argonProps = useControls('ArgonMaterial', {
+    color: '#3ad1e8',
+  });
+  const neonControl = useControls('Neon', {
+    rotateX: { value: 0, min: -180, max: 180, step: 1 },
+    rotateY: { value: 0, min: -180, max: 180, step: 1 },
+    rotateZ: { value: 0, min: -180, max: 180, step: 1 },
+    posX: { value: 0, min: -5, max: 5, step: 0.1 },
+    posY: { value: 0, min: -5, max: 5, step: 0.1 },
+    posZ: { value: 0, min: -5, max: 5, step: 0.1 },
+    scale: { value: 1, min: 0, max: 5, step: 0.1 },
+  });
+
   return (
-    <group {...props} dispose={null} scale={0.01*neonControl.scale} position={[neonControl.posX, neonControl.posY, neonControl.posZ]} rotation={[Math.PI*neonControl.rotateX/180
-    , neonControl.rotateY*Math.PI/180, neonControl.rotateZ*Math.PI/180]}>
+    <group
+      {...props}
+      dispose={null}
+      scale={0.01 * neonControl.scale}
+      position={[neonControl.posX, neonControl.posY, neonControl.posZ]}
+      rotation={[
+        (Math.PI * neonControl.rotateX) / 180,
+        (neonControl.rotateY * Math.PI) / 180,
+        (neonControl.rotateZ * Math.PI) / 180,
+      ]}
+    >
       <group name="logo" position={[0, 0, 0]} rotation={[1.58, -0.01, -0.02]}>
         <mesh
           name="light_fd"
@@ -87,17 +94,17 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
           scale={265.42}
           material-color={argonProps.color}
         />
-        {materialProps.toggleVisible&&(
+        {materialProps.toggleVisible && (
           <mesh
             name="glass"
             ref={glassRef}
             geometry={nodes.glass.geometry}
-          //   material={nodes.glass.material}
+            //   material={nodes.glass.material}
             position={[-285.43, 0, 298.68]}
             rotation={[-Math.PI / 2, 0, 0]}
             scale={265.42}
           >
-              <meshPhysicalMaterial {...materialProps}/>
+            <meshPhysicalMaterial {...materialProps} />
           </mesh>
         )}
       </group>
