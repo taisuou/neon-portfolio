@@ -114,4 +114,7 @@ const CanvasWrap = styled.div`
   width:100vw;
   height:100vh;
   z-index:${zIndex.behind};
+  ${media.lg`
+    z-index:${zIndex.base};
+  `}
 `
