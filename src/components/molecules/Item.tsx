@@ -11,8 +11,8 @@ type ItemCardProps = {
 
 export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   return (
-    <Link href={`/works/${indexNumber}`}>
-      <Container isOdd={indexNumber % 2 === 0 ? true : false}>
+    
+      <Container href={`/works/${indexNumber}`} isOdd={indexNumber % 2 === 0 ? true : false}>
         <Picture>
           <img src={`${post.thumb}`} />
         </Picture>
@@ -23,7 +23,7 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
           <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
         </Info>
       </Container>
-    </Link>
+    
   );
 };
 

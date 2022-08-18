@@ -25,7 +25,6 @@ function Contents() {
 
   useEffect(() => {
     //need to be fixed later. Triggered only when
-
     sceneState.height = elementRef.current!.getBoundingClientRect().height;
   }, [size.height, elementRef, location]);
 

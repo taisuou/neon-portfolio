@@ -49,7 +49,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
           <CtlTag>{post.tag === 0 ? 'ART' : 'Client'}</CtlTag>
           <ul>
             <li>
-              <Link
+              <a
                 href={
                   pageIndex === 0
                     ? `/works/${contents.works.length - 1}`
@@ -57,16 +57,16 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
                 }
               >
                 <img src="../images/arrow_left.svg" alt="" />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
+              <a
                 href={
                   pageIndex === contents.works.length - 1 ? `/works/0` : `/works/${pageIndex + 1}`
                 }
               >
                 <img src="../images/arrow_right.svg" alt="" />
-              </Link>
+              </a>
             </li>
           </ul>
         </PageCtl>

@@ -8,13 +8,13 @@ export const Footer: VFC = () => {
     <Container>
       <MenuContainer>
         <Menu>
-          <Link href="/works">WORKS</Link>
+          <a href="/works">WORKS</a>
         </Menu>
         <Menu>
-          <Link href="/about">ABOUT</Link>
+          <a href="/about">ABOUT</a>
         </Menu>
         <Menu>
-          <Link href="/contact">CONTACT</Link>
+          <a href="/contact">CONTACT</a>
         </Menu>
         <SnsBox>
           <a href="https://www.instagram.com/electrode_taisho/">

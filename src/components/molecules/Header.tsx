@@ -188,7 +188,7 @@ export const Header: VFC = () => {
           ref={overlayPath}
         />
       </SVG>
-      <Link
+      <a
         href="/"
         onClick={() => {
           isMenuOpen && menuClose();
@@ -197,13 +197,13 @@ export const Header: VFC = () => {
         <Logo>
           <img src="/images/header_logo.svg" alt="electrode" width={105} />
         </Logo>
-      </Link>
+      </a>
 
       {!isMobile ? (
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
             <li key={index}>
-              <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
+              <a href={`/${menu}`}>{menu.toUpperCase()}</a>
             </li>
           ))}
         </DesktopMenuContainer>
@@ -228,7 +228,7 @@ export const Header: VFC = () => {
                   menuClose();
                 }}
               >
-                <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
+                <a href={`/${menu}`}>{menu.toUpperCase()}</a>
               </li>
             ))}
           </SlideMenuContents>
