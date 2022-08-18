@@ -131,7 +131,7 @@ export const TCanvas: VFC = () => {
             intensity={0.5}
           />
         </EffectComposer>
-        {!(isMobile||isTablet)&&<Contents />}
+        {(!isMobile&&!isTablet)&&<Contents />}
       </Suspense>
       {/* helper */}
       {/* <Stats /> */}
