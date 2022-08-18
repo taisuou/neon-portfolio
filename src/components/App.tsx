@@ -24,8 +24,8 @@ import { Contents } from './organisms/Contents';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
-  const {isMobile, isTablet} = useMedia();
-  
+  const { isMobile, isTablet } = useMedia();
+
   useEffect(() => {
     setTimeout(() => {
       setIsReady(true);
@@ -54,7 +54,7 @@ export const App: VFC = () => {
             font-smoothing: antialiased;
           }
 
-          html{
+          html {
             font-size: calc(100vw * 16 / 375);
           }
 
@@ -90,10 +90,7 @@ export const App: VFC = () => {
         <CanvasWrap>
           <TCanvas />
         </CanvasWrap>
-        {
-          (isMobile||isTablet)&&<Contents/>
-        }
-        
+        {(isMobile || isTablet) && <Contents />}
       </Container>
       <Leva hidden={true} />
     </>
@@ -104,17 +101,16 @@ const Container = styled.div`
   width: 100vw;
   ${media.lg`
     height: 100vh;
-  `}
-  // overflow: hidden;
+  `}// overflow: hidden;
 `;
 
 const CanvasWrap = styled.div`
-  position:fixed;
-  top:0;
-  width:100vw;
-  height:100vh;
-  z-index:${zIndex.behind};
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: ${zIndex.behind};
   ${media.lg`
     z-index:${zIndex.base};
   `}
-`
+`;

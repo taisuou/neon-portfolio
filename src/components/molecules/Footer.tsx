@@ -36,7 +36,7 @@ export const Footer: VFC = () => {
 const Logo = styled.a``;
 
 const Container = styled.div`
-  width:100vw;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;

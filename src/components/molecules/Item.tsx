@@ -52,10 +52,9 @@ const Container = styled.a<{ isOdd: boolean }>`
       transform:scale(1.1,1.1);
     }
   `}
-
 `;
 const Picture = styled.div`
-  overflow:hidden; 
+  overflow: hidden;
   & img {
     width: 100%;
     margin-bottom: 24px;

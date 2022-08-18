@@ -22,7 +22,6 @@ function Contents() {
   const size = useWindowSize();
   const { height } = useSnapshot(sceneState);
   const [location] = useLocation();
-  
 
   useEffect(() => {
     //need to be fixed later. Triggered only when
@@ -63,7 +62,7 @@ function Contents() {
 			</Flex> */}
       {/* </Scroll> */}
       <Scroll html ref={elementRef}>
-        <PageContents/>
+        <PageContents />
       </Scroll>
     </ScrollControls>
   );
@@ -89,7 +88,7 @@ const Rig: FC<RigProps> = ({ children }) => {
 };
 
 export const TCanvas: VFC = () => {
-  const {isMobile, isTablet} = useMedia();
+  const { isMobile, isTablet } = useMedia();
   const helperControl = useControls('helperControl', {
     orbit: false,
     axis: false,
@@ -131,7 +130,7 @@ export const TCanvas: VFC = () => {
             intensity={0.5}
           />
         </EffectComposer>
-        {(!isMobile&&!isTablet)&&<Contents />}
+        {!isMobile && !isTablet && <Contents />}
       </Suspense>
       {/* helper */}
       {/* <Stats /> */}
