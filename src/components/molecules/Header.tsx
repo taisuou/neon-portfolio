@@ -289,6 +289,7 @@ const SlideMenuContents = styled.ul`
 
 const Container = styled.div`
   position: fixed;
+  top:0;
   width: 100%;
   margin: 0 auto;
   display: flex;

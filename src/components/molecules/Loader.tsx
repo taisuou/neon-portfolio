@@ -131,6 +131,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
+  top:0;
   z-index: ${zIndex.elevation.ev16};
 `;
 

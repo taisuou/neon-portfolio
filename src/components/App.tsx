@@ -55,10 +55,18 @@ export const App: VFC = () => {
           }
 
           html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
             font-size: calc(100vw * 16 / 375);
+            
           }
 
           body {
+            width: 100%;
+            height: 100%;
+            
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
@@ -68,6 +76,14 @@ export const App: VFC = () => {
             font-size: 62.5%;
             overscroll-behavior: none;
             color: ${color.content.HighEmphasis};
+ 
+          }
+          #root {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color:cyan;
           }
         `}
       />
@@ -84,14 +100,12 @@ export const App: VFC = () => {
         <meta property="og:image" content={contents.meta.ogp} />
         <meta name="google" content="notranslate" />
       </Helmet>
+      <TCanvas />
+      <Header/>
       <Loader isReady={isReady} />
-      <Container>
-        <Header />
-        <CanvasWrap>
-          <TCanvas />
-        </CanvasWrap>
-        {(isMobile || isTablet) && <Contents />}
-      </Container>
+      
+      
+      
       <Leva hidden={true} />
     </>
   );
@@ -99,16 +113,17 @@ export const App: VFC = () => {
 
 const Container = styled.div`
   width: 100vw;
+  height: 100vh;
   ${media.lg`
     height: 100vh;
   `}// overflow: hidden;
 `;
 
 const CanvasWrap = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: ${zIndex.behind};
   ${media.lg`
     z-index:${zIndex.base};
