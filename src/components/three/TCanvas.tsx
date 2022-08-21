@@ -36,7 +36,7 @@ function Contents() {
   return (
     <ScrollControls
     
-      pages={10} // Each page takes 100% of the height of the canvas
+      pages={height / size.height} // Each page takes 100% of the height of the canvas
       distance={1} // A factor that increases scroll bar travel (default: 1)
       damping={10} // Friction, higher is faster (default: 4)
       horizontal={false} // Can also scroll horizontally (default: false)
