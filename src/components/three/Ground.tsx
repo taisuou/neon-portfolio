@@ -20,12 +20,16 @@ export const Ground: VFC = () => {
     posX: { value: 0, min: -5, max: 5, step: 0.1 },
     posY: { value: -2, min: -5, max: 5, step: 0.1 },
     posZ: { value: -4.5, min: -5, max: 5, step: 0.1 },
-    blur: { value: 60, min: 0, max: 1000, step: 1 },
+    blur: { value: 400, min: 0, max: 1000, step: 1 },
     mixBlur: { value: 93, min: 0, max: 500, step: 1 },
     scale: { value: 6, min: 0, max: 10, step: 1 },
-    mixStrength: { value: -0.7, min: -5, max: 5, step: 0.1 },
-    color:'#f0f0f0',
+    mixStrength: { value: 0.5, min: -5, max: 5, step: 0.1 },
+    color:'#aaaaaa',
     resolution: { value: 1024, min: 0, max: 2048, step: 1 },
+    metalness: { value: 0.1, min: 0, max: 1, step: 0.1 },
+    roughness: { value: 2, min: 0, max: 100, step: 1 },
+    transparent: false,
+    opacity: { value: 0, min: 0, max: 1, step: 0.1 },
   });
 
   return (
@@ -48,8 +52,10 @@ export const Ground: VFC = () => {
           mixStrength={groundProps.mixStrength}
           color={groundProps.color}
           mirror={1}
-          metalness={0}
-          
+          metalness={groundProps.metalness}
+          roughness={groundProps.roughness}
+          transparent={groundProps.transparent}
+          opacity={groundProps.opacity}
         />
       </mesh>
     </>
