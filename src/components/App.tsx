@@ -60,13 +60,12 @@ export const App: VFC = () => {
             margin: 0;
             padding: 0;
             font-size: calc(100vw * 16 / 375);
-            
           }
 
           body {
             width: 100%;
             height: 100%;
-            
+
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
@@ -76,14 +75,13 @@ export const App: VFC = () => {
             font-size: 62.5%;
             overscroll-behavior: none;
             color: ${color.content.HighEmphasis};
- 
           }
           #root {
             width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color:cyan;
+            background-color: cyan;
           }
         `}
       />
@@ -101,11 +99,9 @@ export const App: VFC = () => {
         <meta name="google" content="notranslate" />
       </Helmet>
       <TCanvas />
-      <Header/>
+      <Header />
       <Loader isReady={isReady} />
-      
-      
-      
+
       <Leva hidden={true} />
     </>
   );

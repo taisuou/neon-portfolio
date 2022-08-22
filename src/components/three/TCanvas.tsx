@@ -1,5 +1,14 @@
 import { FC, Suspense, useEffect, useRef, VFC } from 'react';
-import { OrbitControls, Scroll, ScrollControls, Stats, Preload, Image, Text, useScroll } from '@react-three/drei';
+import {
+  OrbitControls,
+  Scroll,
+  ScrollControls,
+  Stats,
+  Preload,
+  Image,
+  Text,
+  useScroll,
+} from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
@@ -32,28 +41,26 @@ function Contents() {
 
   return (
     <ScrollControls
-    
       pages={height / size.height} // Each page takes 100% of the height of the canvas
       distance={1} // A factor that increases scroll bar travel (default: 1)
       damping={10} // Friction, higher is faster (default: 4)
       horizontal={false} // Can also scroll horizontally (default: false)
       infinite={false} // Can also scroll infinitely (default: false)
     >
-      
       <Rig>
-              <NeonGLTF />
-              <Ground />
-            </Rig>
-            <EffectComposer multisampling={8}>
-              <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
-              <Bloom
-                kernelSize={KernelSize.HUGE}
-                luminanceThreshold={0}
-                luminanceSmoothing={0}
-                intensity={0.5}
-              />
-            </EffectComposer>  
-      
+        <NeonGLTF />
+        <Ground />
+      </Rig>
+      <EffectComposer multisampling={8}>
+        <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+        <Bloom
+          kernelSize={KernelSize.HUGE}
+          luminanceThreshold={0}
+          luminanceSmoothing={0}
+          intensity={0.5}
+        />
+      </EffectComposer>
+
       <Scroll html ref={elementRef}>
         <PageContents />
       </Scroll>
@@ -68,16 +75,18 @@ const Rig: FC<RigProps> = ({ children }) => {
   const vec = new THREE.Vector3();
   const { camera, mouse } = useThree();
   const { isMobile, isTablet } = useMedia();
-  const scroll = useScroll()
+  const scroll = useScroll();
   useFrame(() => {
-    const offset = (1 - scroll.offset)
-    if (!ref.current || !sceneState.isReady ) return;
-    camera.position.lerp(vec.set(Math.sin(offset * Math.PI * 2) * 12, 0, Math.cos(offset * Math.PI * 2) * 12), 0.05);
-    
-    camera.lookAt(0, 0, 0)
+    const offset = 1 - scroll.offset;
+    if (!ref.current || !sceneState.isReady) return;
+    camera.position.lerp(
+      vec.set(Math.sin(offset * Math.PI * 2) * 12, 0, Math.cos(offset * Math.PI * 2) * 12),
+      0.05,
+    );
+
+    camera.lookAt(0, 0, 0);
     //Objectを動かすと簡略に表現はできるz
     // ref.current!.rotation.y = offset
-    
   });
   return <group ref={ref}>{children}</group>;
 };
@@ -114,7 +123,7 @@ export const TCanvas: VFC = () => {
       <Suspense fallback={null}>
         {/* objects */}
         {/* <Objects /> */}
-        
+
         <Contents />
         <Preload all />
       </Suspense>
