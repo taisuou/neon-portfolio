@@ -102,26 +102,7 @@ export const App: VFC = () => {
       <Header />
       <Loader isReady={isReady} />
 
-      <Leva hidden={true} />
+      <Leva hidden={false} />
     </>
   );
 };
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  ${media.lg`
-    height: 100vh;
-  `}// overflow: hidden;
-`;
-
-const CanvasWrap = styled.div`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: ${zIndex.behind};
-  ${media.lg`
-    z-index:${zIndex.base};
-  `}
-`;

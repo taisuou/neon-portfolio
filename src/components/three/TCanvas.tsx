@@ -34,6 +34,16 @@ function Contents() {
   const { height } = useSnapshot(sceneState);
   const [location] = useLocation();
 
+  const ambientProps = useControls('AmbientLight', {
+    intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
+  });
+  const postprocessingBloom1Props = useControls('Bloom1', {
+    intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
+  });
+  const postprocessingBloom2Props = useControls('Bloom2', {
+    intensity: { value: 0.5, min: 0, max: 1, step: 0.1 },
+  });
+
   useEffect(() => {
     //need to be fixed later. Triggered only when
     sceneState.height = elementRef.current!.getBoundingClientRect().height;
@@ -47,17 +57,23 @@ function Contents() {
       horizontal={false} // Can also scroll horizontally (default: false)
       infinite={false} // Can also scroll infinitely (default: false)
     >
+      <ambientLight intensity={ambientProps.intensity} />
       <Rig>
         <NeonGLTF />
         <Ground />
       </Rig>
       <EffectComposer multisampling={8}>
-        <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+        <Bloom
+          kernelSize={3}
+          luminanceThreshold={0}
+          luminanceSmoothing={0.4}
+          intensity={postprocessingBloom1Props.intensity}
+        />
         <Bloom
           kernelSize={KernelSize.HUGE}
           luminanceThreshold={0}
           luminanceSmoothing={0}
-          intensity={0.5}
+          intensity={postprocessingBloom2Props.intensity}
         />
       </EffectComposer>
 
@@ -118,7 +134,7 @@ export const TCanvas: VFC = () => {
       {helperControl.orbit ? (
         <OrbitControls attach="orbitControls" enableZoom={true} enablePan={true} />
       ) : null}
-      <ambientLight />
+
       {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
         {/* objects */}
