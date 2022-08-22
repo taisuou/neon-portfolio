@@ -1,5 +1,5 @@
 import { FC, Suspense, useEffect, useRef, VFC } from 'react';
-import { OrbitControls, Scroll, ScrollControls, Stats, Preload, Image, Text } from '@react-three/drei';
+import { OrbitControls, Scroll, ScrollControls, Stats, Preload, Image, Text, useScroll } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
@@ -30,9 +30,6 @@ function Contents() {
     sceneState.height = elementRef.current!.getBoundingClientRect().height;
   }, [size.height, elementRef, location]);
 
-  // useFrame(() => {
-  //   sceneState.height = elementRef.current!.getBoundingClientRect().height;
-  // });
   return (
     <ScrollControls
     
@@ -42,56 +39,21 @@ function Contents() {
       horizontal={false} // Can also scroll horizontally (default: false)
       infinite={false} // Can also scroll infinitely (default: false)
     >
-      {/* ▼後でFlex式のHTMLに変更する場合にこちらを使用 */}
-      {/* <Scroll>
-      <Flex
-				flexDirection="column"
-				size={[size.width, size.height, 0]}
-			>
-				<Box
-					flexDirection="row"
-				>
-
-					<Box centerAnchor>
-						<Image position={[0, 0, 0]} url="/images/posts/sample.jpg"/>
-					</Box>
-					<Box centerAnchor flexGrow={1}>
-						<Text color="white" anchorX="center" anchorY="middle">
-							hello world!
-							</Text>
-					</Box>
-				</Box>
-        <Box
-					flexDirection="row"
-				>
-
-					<Box centerAnchor>
-						<Image position={[0, 0, 0]} url="/images/posts/sample.jpg"/>
-					</Box>
-					<Box centerAnchor flexGrow={1}>
-						<Text color="white" anchorX="center" anchorY="middle">
-							hello world!
-							</Text>
-					</Box>
-				</Box>
-			</Flex>
-      </Scroll> */}
-      <Scroll>
-
-        {/* <Rig> */}
-          <NeonGLTF />
-          <Ground />
-        {/* </Rig> */}
-        <EffectComposer multisampling={8}>
-          <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
-          <Bloom
-            kernelSize={KernelSize.HUGE}
-            luminanceThreshold={0}
-            luminanceSmoothing={0}
-            intensity={0.5}
-          />
-        </EffectComposer>
-      </Scroll>
+      
+      <Rig>
+              <NeonGLTF />
+              <Ground />
+            </Rig>
+            <EffectComposer multisampling={8}>
+              <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+              <Bloom
+                kernelSize={KernelSize.HUGE}
+                luminanceThreshold={0}
+                luminanceSmoothing={0}
+                intensity={0.5}
+              />
+            </EffectComposer>  
+      
       <Scroll html ref={elementRef}>
         <PageContents />
       </Scroll>
@@ -106,15 +68,16 @@ const Rig: FC<RigProps> = ({ children }) => {
   const vec = new THREE.Vector3();
   const { camera, mouse } = useThree();
   const { isMobile, isTablet } = useMedia();
+  const scroll = useScroll()
   useFrame(() => {
-    if (!ref.current || !sceneState.isReady || isMobile || isTablet) return;
-    camera.position.lerp(vec.set(mouse.x * 2, 0, 8.5), 0.05);
-    ref.current!.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0), 0.1);
-    ref.current!.rotation.y = THREE.MathUtils.lerp(
-      ref.current.rotation.y,
-      (-mouse.x * Math.PI) / 20,
-      0.1,
-    );
+    const offset = (1 - scroll.offset)
+    if (!ref.current || !sceneState.isReady ) return;
+    camera.position.lerp(vec.set(Math.sin(offset * Math.PI * 2) * 12, 0, Math.cos(offset * Math.PI * 2) * 12), 0.05);
+    
+    camera.lookAt(0, 0, 0)
+    //Objectを動かすと簡略に表現はできるz
+    // ref.current!.rotation.y = offset
+    
   });
   return <group ref={ref}>{children}</group>;
 };
@@ -125,6 +88,7 @@ export const TCanvas: VFC = () => {
     orbit: false,
     axis: false,
   });
+  // const [location] = useLocation();
   return (
     <Canvas
       camera={{
@@ -150,6 +114,7 @@ export const TCanvas: VFC = () => {
       <Suspense fallback={null}>
         {/* objects */}
         {/* <Objects /> */}
+        
         <Contents />
         <Preload all />
       </Suspense>

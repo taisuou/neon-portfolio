@@ -41,7 +41,7 @@ const Hero = styled.div`
 `;
 
 const Container = styled.div`
-  background: ${color.background.dark};
+  /* background: ${color.background.dark}; */
   color: ${color.content.HighEmphasis};
 `;
 
@@ -52,7 +52,7 @@ const MainTitle = styled.p`
   width: 100%;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.25);
+  /* background: rgba(0, 0, 0, 0.25); */
   ${font.replica.h1}
   ${media.lg`
    width:70%;
