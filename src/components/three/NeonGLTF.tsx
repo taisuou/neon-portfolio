@@ -115,6 +115,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
   const flicker =()=>{
     const frColor = frLightRef.current!.color
     const frOffValue = new THREE.Color(Number(lightProps.offColor.replace('#','0x')))
+    const frInActiveValue = new THREE.Color(Number(lightProps.inActiveColor.replace('#','0x')))
     const frActiveValue = new THREE.Color(Number(lightProps.activeColor.replace('#','0x')))
     gsap.timeline()
     .set(frColor, {
@@ -123,32 +124,18 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
       b:frOffValue.b,
     })
     .to(frColor, { //ON
-      r:frActiveValue.r,
-      g:frActiveValue.g,
-      b:frActiveValue.b,
-      duration: 0.2,
-      delay:1.5, //DELAY
+      r:frInActiveValue.r,
+      g:frInActiveValue.g,
+      b:frInActiveValue.b,
+      duration: 0.05,
+      delay:1.5,//DELAY
       ease: 'power3.out',
     })
     .to(frColor, { //OFF
       r:frOffValue.r,
       g:frOffValue.g,
       b:frOffValue.b,
-      duration: 0.1,
-      ease: 'power3.out',
-    })
-    .to(frColor, { //ON
-      r:frActiveValue.r,
-      g:frActiveValue.g,
-      b:frActiveValue.b,
-      duration: 0.1,
-      ease: 'power3.out',
-    })
-    .to(frColor, { //OFF
-      r:frOffValue.r,
-      g:frOffValue.g,
-      b:frOffValue.b,
-      duration: 0.1,
+      duration: 0.05,
       ease: 'power3.out',
     })
     .to(frColor, { //ON
@@ -166,10 +153,10 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
       setIsInitAnimDone(true)
     }
     if (offset < 0.85) {
-      isLightOn&&lightOff()
+      isReady&&isLightOn&&lightOff()
       setLightOn(false);
     } else if (offset >= 0.85) {
-      !isLightOn&&lightOn()
+      isReady&&!isLightOn&&lightOn()
       setLightOn(true);
     }
   });
@@ -195,7 +182,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
         >
-          <meshBasicMaterial ref={frLightRef} color={`${lightProps.activeColor}`} />
+          <meshBasicMaterial ref={frLightRef} color={`${lightProps.offColor}`} />
         </mesh>
         <mesh
           name="root"
@@ -213,7 +200,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
         >
-          <meshBasicMaterial ref={arLightRef} color={`${argonProps.activeColor}`} />
+          <meshBasicMaterial ref={arLightRef} color={`${argonProps.offColor}`} />
         </mesh>
         {materialProps.toggleVisible && (
           <mesh
