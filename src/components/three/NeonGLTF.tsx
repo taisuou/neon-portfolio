@@ -12,7 +12,7 @@ import { glassState } from '../../utils/store';
 import { useControls } from 'leva';
 import { animate, useMotionValue } from 'framer-motion';
 import { MeshBasicMaterial } from 'three';
-import { motion } from 'framer-motion-3d';
+import gsap from 'gsap'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -27,6 +27,8 @@ type GLTFResult = GLTF & {
 export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('/sign.gltf') as GLTFResult;
   const glassRef = useRef<THREE.Mesh>(null);
+  const frLightRef= useRef<THREE.MeshBasicMaterial>(null);
+  const arLightRef= useRef<THREE.MeshBasicMaterial>(null);
   const materialProps = useControls('GlassMaterial', {
     thickness: { value: 0.2, min: 0, max: 20 },
     roughness: { value: 0.3, min: 0, max: 1, step: 0.1 },
@@ -41,13 +43,16 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     toggleVisible: true,
   });
 
-  const [lightProps, set] = useControls(() => ({
+  const lightProps = useControls('LightMaterial', {
     color: '#c4b072',
     opacity: { value: 0.3, min: 0, max: 1, step: 0.1 },
     emissive: '#c4b072',
-  }));
+    activeColor: '#6d5b27',
+    inActiveColor: '#2e2815',
+  });
   const argonProps = useControls('ArgonMaterial', {
-    color: '#3ad1e8',
+    activeColor: '#258291',
+    inActiveColor: '#0b2a2f',
   });
   const neonControl = useControls('Neon', {
     rotateX: { value: 0, min: -180, max: 180, step: 1 },
@@ -57,24 +62,59 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     posY: { value: 0, min: -5, max: 5, step: 0.1 },
     posZ: { value: 0, min: -5, max: 5, step: 0.1 },
     scale: { value: 1, min: 0, max: 5, step: 0.1 },
+    
   });
 
   const scroll = useScroll();
-  const [isLightOn, setLightOn] = useState(true);
-  const colorVariants = {
-    on: { color: '#6d5b27' },
-    off: { color: '#2e2815' },
+  const [isLightOn, setLightOn] = useState(false);
+  
+  const lightOff = () => {
+    const frColor = frLightRef.current!.color
+    const arColor = arLightRef.current!.color
+    const frValue = new THREE.Color(Number(lightProps.inActiveColor.replace('#','0x')))
+    const arValue = new THREE.Color(Number(argonProps.inActiveColor.replace('#','0x')))
+    gsap.to(frColor, {
+      r:frValue.r,
+      g:frValue.g,
+      b:frValue.b,
+      duration: 1,
+      ease: 'power3.out',
+    })
+    gsap.to(arColor, {
+      r:arValue.r,
+      g:arValue.g,
+      b:arValue.b,
+      duration: 1,
+      ease: 'power3.out',
+    })
   };
-  const argonColorVariants = {
-    on: { color: '#258291' },
-    off: { color: '#0b2a2f' },
+  const lightOn = () => {
+    const frColor = frLightRef.current!.color
+    const arColor = arLightRef.current!.color
+    const frValue = new THREE.Color(Number(lightProps.activeColor.replace('#','0x')))
+    const arValue = new THREE.Color(Number(argonProps.activeColor.replace('#','0x')))
+    gsap.to(frColor, {
+      r:frValue.r,
+      g:frValue.g,
+      b:frValue.b,
+      duration: 1,
+      ease: 'power3.out',
+    })
+    gsap.to(arColor, {
+      r:arValue.r,
+      g:arValue.g,
+      b:arValue.b,
+      duration: 1,
+      ease: 'power3.out',
+    })
   };
-
   useFrame(() => {
     const offset = 1 - scroll.offset;
     if (offset < 0.85) {
+      isLightOn&&lightOff()
       setLightOn(false);
     } else if (offset >= 0.85) {
+      !isLightOn&&lightOn()
       setLightOn(true);
     }
   });
@@ -92,17 +132,16 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
       ]}
     >
       <group name="logo" position={[0, 0, 0]} rotation={[1.58, -0.01, -0.02]}>
-        <motion.mesh
+        <mesh
           name="light_fd"
           geometry={nodes.light_fd.geometry}
           //   material={nodes.light_fd.material}
           position={[-285.43, 0, 298.68]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
-          animate={isLightOn ? 'on' : 'off'}
         >
-          <motion.meshBasicMaterial variants={colorVariants} />
-        </motion.mesh>
+          <meshBasicMaterial ref={frLightRef} color={`${lightProps.activeColor}`} />
+        </mesh>
         <mesh
           name="root"
           geometry={nodes.root.geometry}
@@ -111,17 +150,16 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
           rotation={[-Math.PI / 2, Math.PI / 2, 0]}
           scale={[0.65, 0.65, 1.7]}
         />
-        <motion.mesh
+        <mesh
           name="light_ar"
           geometry={nodes.light_ar.geometry}
           // material={nodes.light_ar.material}
           position={[-285.43, 0, 298.68]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={265.42}
-          animate={isLightOn ? 'on' : 'off'}
         >
-          <motion.meshBasicMaterial variants={argonColorVariants} />
-        </motion.mesh>
+          <meshBasicMaterial ref={arLightRef} color={`${argonProps.activeColor}`} />
+        </mesh>
         {materialProps.toggleVisible && (
           <mesh
             name="glass"
