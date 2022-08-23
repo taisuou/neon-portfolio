@@ -21,6 +21,7 @@ import { Works } from './organisms/Works';
 import { useMedia } from '../utils/useMedia';
 import { Footer } from './molecules/Footer';
 import { Contents } from './organisms/Contents';
+import { Cursor } from './atoms/Cursor';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
@@ -101,7 +102,7 @@ export const App: VFC = () => {
       <TCanvas />
       <Header />
       <Loader isReady={isReady} />
-
+      <Cursor/>
       <Leva hidden={true} />
     </>
   );

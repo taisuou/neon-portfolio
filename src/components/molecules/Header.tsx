@@ -205,7 +205,7 @@ export const Header: VFC = () => {
       {!isMobile ? (
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
-            <li key={index}>
+            <li key={index} className={'cursor-scale'}>
               <a href={`/${menu}`}>{menu.toUpperCase()}</a>
             </li>
           ))}
