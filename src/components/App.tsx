@@ -102,7 +102,7 @@ export const App: VFC = () => {
       <Header />
       <Loader isReady={isReady} />
 
-      <Leva hidden={false} />
+      <Leva hidden={true} />
     </>
   );
 };
