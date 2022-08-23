@@ -11,8 +11,9 @@ import { useFrame } from '@react-three/fiber';
 import { glassState } from '../../utils/store';
 import { useControls } from 'leva';
 import { animate, useMotionValue } from 'framer-motion';
-import { MeshBasicMaterial } from 'three';
 import gsap from 'gsap'
+import { sceneState } from '../../utils/sceneState';
+import { useSnapshot } from 'valtio';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -47,10 +48,12 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     color: '#c4b072',
     opacity: { value: 0.3, min: 0, max: 1, step: 0.1 },
     emissive: '#c4b072',
+    offColor: '#0d0c08',
     activeColor: '#6d5b27',
     inActiveColor: '#2e2815',
   });
   const argonProps = useControls('ArgonMaterial', {
+    offColor: '#0d0c08',
     activeColor: '#258291',
     inActiveColor: '#0b2a2f',
   });
@@ -64,9 +67,10 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     scale: { value: 1, min: 0, max: 5, step: 0.1 },
     
   });
-
+  const { isReady } = useSnapshot(sceneState);
   const scroll = useScroll();
   const [isLightOn, setLightOn] = useState(false);
+  const [isInitAnimDone, setIsInitAnimDone] = useState(false);
   
   const lightOff = () => {
     const frColor = frLightRef.current!.color
@@ -87,7 +91,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
       duration: 1,
       ease: 'power3.out',
     })
-  };
+  }
   const lightOn = () => {
     const frColor = frLightRef.current!.color
     const arColor = arLightRef.current!.color
@@ -107,9 +111,60 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
       duration: 1,
       ease: 'power3.out',
     })
-  };
+  }
+  const flicker =()=>{
+    const frColor = frLightRef.current!.color
+    const frOffValue = new THREE.Color(Number(lightProps.offColor.replace('#','0x')))
+    const frActiveValue = new THREE.Color(Number(lightProps.activeColor.replace('#','0x')))
+    gsap.timeline()
+    .set(frColor, {
+      r:frOffValue.r,
+      g:frOffValue.g,
+      b:frOffValue.b,
+    })
+    .to(frColor, { //ON
+      r:frActiveValue.r,
+      g:frActiveValue.g,
+      b:frActiveValue.b,
+      duration: 0.2,
+      delay:1.5, //DELAY
+      ease: 'power3.out',
+    })
+    .to(frColor, { //OFF
+      r:frOffValue.r,
+      g:frOffValue.g,
+      b:frOffValue.b,
+      duration: 0.1,
+      ease: 'power3.out',
+    })
+    .to(frColor, { //ON
+      r:frActiveValue.r,
+      g:frActiveValue.g,
+      b:frActiveValue.b,
+      duration: 0.1,
+      ease: 'power3.out',
+    })
+    .to(frColor, { //OFF
+      r:frOffValue.r,
+      g:frOffValue.g,
+      b:frOffValue.b,
+      duration: 0.1,
+      ease: 'power3.out',
+    })
+    .to(frColor, { //ON
+      r:frActiveValue.r,
+      g:frActiveValue.g,
+      b:frActiveValue.b,
+      duration: 0.1,
+      ease: 'power3.out',
+    })
+  }
   useFrame(() => {
     const offset = 1 - scroll.offset;
+    if(isReady&&!isInitAnimDone) {
+      flicker()
+      setIsInitAnimDone(true)
+    }
     if (offset < 0.85) {
       isLightOn&&lightOff()
       setLightOn(false);
