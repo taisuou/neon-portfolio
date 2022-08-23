@@ -32,9 +32,8 @@ export const Cursor: VFC = () => {
         })
         cursorScale.forEach(link => {
             link.addEventListener('mousemove', ()=> {
-                console.log("mouse In")
               gsap.to(cursorElem.current!,{
-                scale:2,
+                scale:10,
                 duration: 0.2,
                 ease: 'power1',
               })
@@ -42,7 +41,6 @@ export const Cursor: VFC = () => {
             })
             
             link.addEventListener('mouseleave', ()=> {
-                console.log("mouse Out")
                 gsap.to(cursorElem.current!,{
                     scale:1,
                     duration: 0.2,
@@ -69,5 +67,5 @@ const Elem = styled.div`
     z-index:${zIndex.elevation.ev16};
     pointer-events:none;
     user-select: none;
-    mix-blend-mode:different;
+    mix-blend-mode:difference;
 `;

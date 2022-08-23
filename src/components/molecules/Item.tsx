@@ -27,7 +27,7 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
 
 const Container = styled.a<{ isOdd: boolean }>`
   display: flex;
-  padding-bottom: 64px;
+  margin-bottom: 64px;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
@@ -37,7 +37,8 @@ const Container = styled.a<{ isOdd: boolean }>`
   ${media.lg`
     width:100%;
     align-items: center;
-    padding:64px; 32px;
+    padding:0px 64px;
+    margin-bottom: 128px;
     //justify-content:center;
     flex-direction:row-reverse;
     :nth-of-type(2n){
@@ -59,6 +60,9 @@ const Picture = styled.div`
   }
   ${media.lg`
   width:60%;
+  &img{
+    margin-bottom: 0px;
+  }
     }
   `}
 `;
