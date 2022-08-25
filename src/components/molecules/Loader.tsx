@@ -91,36 +91,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
         />
       </SVG>
       <LoaderAnim ref={electrode}>
-        <LoaderLogo>
-          <LogoInner>
-            <li className="front">
-              <div className="elec__item glass__front"></div>
-              <div className="elec__item mica__front"></div>
-            </li>
-            <li className="sideY">
-              <div className="elec__item glass__side"></div>
-              <ul>
-                <li className="elec__item mica__side"></li>
-                <li className="elec__item plate__side">
-                  <svg width="44" height="84">
-                    <path d="M22 0 L1 84 L43 84 Z" fillOpacity="0"></path>
-                  </svg>
-                </li>
-              </ul>
-            </li>
-            <li className="sideX">
-              <div className="elec__item glass__side"></div>
-              <ul>
-                <li className="elec__item mica__side"></li>
-                <li className="elec__item plate__side">
-                  <svg width="44" height="84">
-                    <path d="M22 0 L1 84 L43 84 Z" fillOpacity="0"></path>
-                  </svg>
-                </li>
-              </ul>
-            </li>
-          </LogoInner>
-        </LoaderLogo>
+        <Electrode src='/loader_anim.png'/>
         {/* <LoaderNum ref={counter} data-from="0" data-to="4096">{progress}</LoaderNum> */}
         <LoaderNum>Loading...</LoaderNum>
       </LoaderAnim>
@@ -132,6 +103,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100%;
   position: absolute;
+  top: 0;
   z-index: ${zIndex.elevation.ev16};
 `;
 
@@ -140,6 +112,16 @@ const SVG = styled.svg`
   top: 0;
   left: 0;
 `;
+
+const Electrode = styled.img`
+  width:calc(240px * 2 / 3);
+  height:calc(320px * 2 /3);
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+`
+
 const LoaderAnim = styled.div`
   width: 100%;
   height: 100%;

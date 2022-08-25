@@ -26,8 +26,8 @@ export const About: VFC = () => {
               meets ART AWARD 2020-2021 Audience Award, recent exhibitions: SICF23, order work:
               Chim↑Pom from Smappa! Group logo sign.
             </p>
-            </Text>
-            <Text>
+          </Text>
+          <Text>
             <TextTitle>市川大翔</TextTitle>
             <p>
               1991年生まれ。早稲田大学社会科学部卒業。IT企業にてインハウスデザイナーとして勤めるかたわら、ネオンサインのデザイン、バーナーワークを行う。「メディウムとしての光」「手工芸の技術」を軸に、ネオンサインの特性を活かしたアート作品を手がける。表現手法として、ガラス管だけでなく、3DCGを用いるなど、アナログ・デジタル双方に重点をおき制作を行なっている。受賞歴：LUMINE
@@ -63,8 +63,8 @@ const PageTitle = styled.div`
 `;
 
 const SectionContainer = styled.div`
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   padding: 64px 32px;
   ${media.lg`
     max-width:1108px;
@@ -77,7 +77,7 @@ const SectionTitle = styled.div`
   h2 {
     ${font.replica.h2};
   }
-  margin-bottom:24px;
+  margin-bottom: 24px;
   ${media.lg`
     margin-right:72px;
   `}
@@ -97,15 +97,13 @@ const TextBox = styled.div`
 `;
 
 const Text = styled.div`
-margin-bottom:40px;
-p{
-  margin-bottom:16px;
-}
+  margin-bottom: 40px;
+  p {
+    margin-bottom: 16px;
+  }
 `;
 
 const TextTitle = styled.div`
-${font.Inter.subtitle1};
-margin-bottom:16px;
+  ${font.Inter.subtitle1};
+  margin-bottom: 16px;
 `;
-
-

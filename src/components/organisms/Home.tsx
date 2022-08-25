@@ -9,19 +9,19 @@ export const Home: VFC = () => {
   return (
     <>
       <Hero>
-      <MainTitle>Glass and Virtual Neon Arts</MainTitle>
-      <ScrollArrow>
-        <p>Scroll</p>
-        <img src="images/arrow_scroll.svg" alt="" />
-      </ScrollArrow>
+        <MainTitle>Glass and Virtual Neon Arts</MainTitle>
+        <ScrollArrow>
+          <p>Scroll</p>
+          <img src="images/arrow_scroll.svg" alt="" />
+        </ScrollArrow>
       </Hero>
       <Container>
-        {/* TIPS map文 */}
         {contents.works
-        .filter((work:WorkPost, index) => (index < 4))
-        .map((work: WorkPost, index) => (
-          <Item post={work} key={index} indexNumber={index} />
-        ))}
+          .filter((work: WorkPost, index) => index < 4)
+          .map((work: WorkPost, index) => (
+            <Item post={work} key={index} indexNumber={index} />
+          ))}
+
         <ButtonMore>
           <a href="/works">view all works</a>
         </ButtonMore>
@@ -31,28 +31,29 @@ export const Home: VFC = () => {
 };
 
 const Hero = styled.div`
-  position:relative;
+  position: relative;
   display: flex;
   height: 100vh;
   min-height: -webkit-fill-available;
   width: 100%;
   justify-content: center;
   align-items: center;
-  text-align:center;
-  background:rgba(0,0,0,0.25);
-  `;
+  text-align: center;
+`;
 
 const Container = styled.div`
-  background: ${color.background.dark};
+  /* background: ${color.background.dark}; */
   color: ${color.content.HighEmphasis};
 `;
 
 const MainTitle = styled.p`
   display: flex;
-  padding:0 32px;
+  padding: 0 32px;
+  height: 100vh;
   width: 100%;
   justify-content: center;
   align-items: center;
+  /* background: rgba(0, 0, 0, 0.25); */
   ${font.replica.h1}
   ${media.lg`
    width:70%;
@@ -75,7 +76,7 @@ const ButtonMore = styled.div`
     width:80%;
     margin:0 auto;
   `}
-  
+
   & a {
     transition: 0.3s ease-in-out;
   }
@@ -179,13 +180,12 @@ const ColInfobox = styled.div`
   }
 `;
 
-
 const ScrollArrow = styled.div`
-  position:absolute;
-  text-align:center;
-  bottom:32px;
-  right:32px;
-  p{
-    margin-bottom:8px;
+  position: absolute;
+  text-align: center;
+  bottom: 32px;
+  right: 32px;
+  p {
+    margin-bottom: 8px;
   }
 `;

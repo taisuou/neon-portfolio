@@ -1,18 +1,21 @@
 import { FC, Suspense, useEffect, useRef, VFC } from 'react';
-import { OrbitControls, Scroll, ScrollControls, Stats } from '@react-three/drei';
+import {
+  OrbitControls,
+  Scroll,
+  ScrollControls,
+  Stats,
+  Preload,
+  Image,
+  Text,
+  useScroll,
+} from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize } from 'postprocessing';
-import { color } from '../../utils/style';
-import styled from '@emotion/styled';
-import { Home } from '../organisms/Home';
-import { About } from '../organisms/About';
-import { Works } from '../organisms/Works';
-import { Contact } from '../organisms/Contact';
-import { Detail } from '../organisms/Detail';
-import { Footer } from '../molecules/Footer';
+import { Contents as PageContents } from '../organisms/Contents';
+
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
@@ -22,6 +25,8 @@ import { useMedia } from '../../utils/useMedia';
 import * as THREE from 'three';
 import { useControls } from 'leva';
 import { isReturnStatement } from 'typescript';
+import { Header } from '../molecules/Header';
+import { Box, Flex } from '@react-three/flex';
 
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -29,54 +34,51 @@ function Contents() {
   const { height } = useSnapshot(sceneState);
   const [location] = useLocation();
 
+  const ambientProps = useControls('AmbientLight', {
+    intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
+  });
+  const postprocessingBloom1Props = useControls('Bloom1', {
+    intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
+  });
+  const postprocessingBloom2Props = useControls('Bloom2', {
+    intensity: { value: 0.5, min: 0, max: 1, step: 0.1 },
+  });
+
   useEffect(() => {
     //need to be fixed later. Triggered only when
-
     sceneState.height = elementRef.current!.getBoundingClientRect().height;
   }, [size.height, elementRef, location]);
 
-  // useFrame(() => {
-  //   sceneState.height = elementRef.current!.getBoundingClientRect().height;
-  // });
   return (
     <ScrollControls
       pages={height / size.height} // Each page takes 100% of the height of the canvas
       distance={1} // A factor that increases scroll bar travel (default: 1)
-      damping={4} // Friction, higher is faster (default: 4)
+      damping={10} // Friction, higher is faster (default: 4)
       horizontal={false} // Can also scroll horizontally (default: false)
       infinite={false} // Can also scroll infinitely (default: false)
     >
-      {/* ▼後でFlex式のHTMLに変更する場合にこちらを使用 */}
-      {/* <Scroll> */}
-      {/* <Flex
-				flexDirection="column"
-				size={[vpWidth, vpHeight, 0]}
-			>
-				<Box
-					flexDirection="row"
-				>
+      <ambientLight intensity={ambientProps.intensity} />
+      <Rig>
+        <NeonGLTF />
+        <Ground />
+      </Rig>
+      <EffectComposer multisampling={8}>
+        <Bloom
+          kernelSize={3}
+          luminanceThreshold={0}
+          luminanceSmoothing={0.4}
+          intensity={postprocessingBloom1Props.intensity}
+        />
+        <Bloom
+          kernelSize={KernelSize.HUGE}
+          luminanceThreshold={0}
+          luminanceSmoothing={0}
+          intensity={postprocessingBloom2Props.intensity}
+        />
+      </EffectComposer>
 
-					<Box centerAnchor>
-						<Image position={[0, 0, 0]} url="/images/posts/sample.jpg"/>
-					</Box>
-					<Box centerAnchor flexGrow={1}>
-						<Text color="black" anchorX="center" anchorY="middle">
-							hello world!
-							</Text>
-					</Box>
-				</Box>
-			</Flex> */}
-      {/* </Scroll> */}
       <Scroll html ref={elementRef}>
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/works" component={Works} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/works/:id">{(params) => <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)}/>}</Route>
-          <Route>存在しないコンテンツです</Route>
-        </Switch>
-        <Footer />
+        <PageContents />
       </Scroll>
     </ScrollControls>
   );
@@ -88,24 +90,30 @@ const Rig: FC<RigProps> = ({ children }) => {
   const ref = useRef<THREE.Group>();
   const vec = new THREE.Vector3();
   const { camera, mouse } = useThree();
+  const { isMobile, isTablet } = useMedia();
+  const scroll = useScroll();
   useFrame(() => {
+    const offset = 1 - scroll.offset;
     if (!ref.current || !sceneState.isReady) return;
-    camera.position.lerp(vec.set(mouse.x * 2, 0, 8.5), 0.05);
-    ref.current!.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.1, 0), 0.1);
-    ref.current!.rotation.y = THREE.MathUtils.lerp(
-      ref.current.rotation.y,
-      (-mouse.x * Math.PI) / 20,
-      0.1,
+    camera.position.lerp(
+      vec.set(Math.sin(offset * Math.PI * 2) * 12, 0, Math.cos(offset * Math.PI * 2) * 12),
+      0.05,
     );
+
+    camera.lookAt(0, 0, 0);
+    //Objectを動かすと簡略に表現はできるz
+    // ref.current!.rotation.y = offset
   });
   return <group ref={ref}>{children}</group>;
 };
 
 export const TCanvas: VFC = () => {
+  const { isMobile, isTablet } = useMedia();
   const helperControl = useControls('helperControl', {
     orbit: false,
     axis: false,
   });
+  // const [location] = useLocation();
   return (
     <Canvas
       camera={{
@@ -116,7 +124,8 @@ export const TCanvas: VFC = () => {
         far: 2000,
       }}
       dpr={window.devicePixelRatio}
-      shadows
+      gl={{ antialias: false }}
+      // shadows
     >
       {/* scene */}
       <color attach="background" args={['#000']} />
@@ -125,25 +134,14 @@ export const TCanvas: VFC = () => {
       {helperControl.orbit ? (
         <OrbitControls attach="orbitControls" enableZoom={true} enablePan={true} />
       ) : null}
-      <ambientLight />
+
       {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
         {/* objects */}
         {/* <Objects /> */}
-        <Rig>
-          <NeonGLTF />
-          <Ground />
-        </Rig>
-        <EffectComposer multisampling={8}>
-          <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
-          <Bloom
-            kernelSize={KernelSize.HUGE}
-            luminanceThreshold={0}
-            luminanceSmoothing={0}
-            intensity={0.5}
-          />
-        </EffectComposer>
+
         <Contents />
+        <Preload all />
       </Suspense>
       {/* helper */}
       {/* <Stats /> */}

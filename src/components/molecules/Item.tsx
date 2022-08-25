@@ -11,25 +11,23 @@ type ItemCardProps = {
 
 export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   return (
-    <Link href={`/works/${indexNumber}`}>
-      <Container isOdd={indexNumber % 2 === 0 ? true : false}>
-        <Picture>
-          <img src={`${post.thumb}`} />
-        </Picture>
-        <Info>
-          <TitleEN>{post.titleEn}</TitleEN>
-          <TitleJP>{post.titleJp}</TitleJP>
-          {/* TIPS : インラインの条件分岐記法  A?B:C */}
-          <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
-        </Info>
-      </Container>
-    </Link>
+    <Container href={`/works/${indexNumber}`} isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
+      <Picture>
+        <img src={`${post.thumb}`} />
+      </Picture>
+      <Info>
+        <TitleEN>{post.titleEn}</TitleEN>
+        <TitleJP>{post.titleJp}</TitleJP>
+        {/* TIPS : インラインの条件分岐記法  A?B:C */}
+        <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
+      </Info>
+    </Container>
   );
 };
 
 const Container = styled.a<{ isOdd: boolean }>`
   display: flex;
-  padding-bottom: 64px;
+  margin-bottom: 64px;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
@@ -39,7 +37,8 @@ const Container = styled.a<{ isOdd: boolean }>`
   ${media.lg`
     width:100%;
     align-items: center;
-    padding:64px; 32px;
+    padding:0px 64px;
+    margin-bottom: 128px;
     //justify-content:center;
     flex-direction:row-reverse;
     :nth-of-type(2n){
@@ -52,16 +51,18 @@ const Container = styled.a<{ isOdd: boolean }>`
       transform:scale(1.1,1.1);
     }
   `}
-
 `;
 const Picture = styled.div`
-  overflow:hidden; 
+  overflow: hidden;
   & img {
     width: 100%;
     margin-bottom: 24px;
   }
   ${media.lg`
   width:60%;
+  &img{
+    margin-bottom: 0px;
+  }
     }
   `}
 `;

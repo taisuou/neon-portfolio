@@ -6,15 +6,27 @@ import { Header } from './molecules/Header';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { color } from '../utils/style';
+import { color, media, zIndex } from '../utils/style';
 import { Leva } from 'leva';
 import { Helmet } from 'react-helmet';
 import { contents } from '../utils/store';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../utils/sceneState';
+import { Route, Switch } from 'wouter';
+import { Home } from './organisms/Home';
+import { About } from './organisms/About';
+import { Contact } from './organisms/Contact';
+import { Detail } from './organisms/Detail';
+import { Works } from './organisms/Works';
+import { useMedia } from '../utils/useMedia';
+import { Footer } from './molecules/Footer';
+import { Contents } from './organisms/Contents';
+import { Cursor } from './atoms/Cursor';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
+  const { isMobile, isTablet } = useMedia();
+
   useEffect(() => {
     setTimeout(() => {
       setIsReady(true);
@@ -42,7 +54,17 @@ export const App: VFC = () => {
             -webkit-font-smoothing: antialiased;
             font-smoothing: antialiased;
           }
+          html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: calc(100vw * 16 / 375);
+          }
           body {
+            width: 100%;
+            height: 100%;
+
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
@@ -53,6 +75,13 @@ export const App: VFC = () => {
             overscroll-behavior: none;
             color: ${color.content.HighEmphasis};
             height:100%;
+          }
+          #root {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: cyan;
           }
         `}
       />
@@ -69,18 +98,11 @@ export const App: VFC = () => {
         <meta property="og:image" content={contents.meta.ogp} />
         <meta name="google" content="notranslate" />
       </Helmet>
+      <TCanvas />
+      <Header />
       <Loader isReady={isReady} />
-      <Container>
-        <Header />
-        <TCanvas />
-      </Container>
+      <Cursor/>
       <Leva hidden={true} />
     </>
   );
 };
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  // overflow: hidden;
-`;

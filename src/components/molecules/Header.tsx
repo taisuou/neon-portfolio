@@ -15,6 +15,7 @@ export const Header: VFC = () => {
   const overlayPath = useRef(null);
   const overlayPathParent = useRef(null);
   let spMenuList = useRef<HTMLElement[] | null[]>([]);
+  const spMenuListParent = useRef(null);
 
   const menus = ['about', 'works', 'contact'];
   // edit here: https://yqnn.github.io/svg-path-editor/
@@ -44,6 +45,7 @@ export const Header: VFC = () => {
     console.log('open');
     gsap
       .timeline()
+      .set(spMenuListParent.current, { autoAlpha: 1 })
       .set(spMenuList.current, { autoAlpha: 0, y: -30 })
       .to(spMenuList.current, 0.2, { autoAlpha: 1, y: 0, stagger: 0.05, ease: 'power1.in' }, 0.8);
     gsap
@@ -115,7 +117,8 @@ export const Header: VFC = () => {
       })
       .set(overlayPathParent.current, {
         visibility: 'hidden',
-      });
+      })
+      .set(spMenuListParent.current, { autoAlpha: 0 });
   };
   const transitionAnimation = () => {
     if (isAnimating) return;
@@ -188,7 +191,7 @@ export const Header: VFC = () => {
           ref={overlayPath}
         />
       </SVG>
-      <Link
+      <a
         href="/"
         onClick={() => {
           isMenuOpen && menuClose();
@@ -197,13 +200,13 @@ export const Header: VFC = () => {
         <Logo>
           <img src="/images/header_logo.svg" alt="electrode" width={105} />
         </Logo>
-      </Link>
+      </a>
 
       {!isMobile ? (
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
-            <li key={index}>
-              <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
+            <li key={index} className={'cursor-scale'}>
+              <a href={`/${menu}`}>{menu.toUpperCase()}</a>
             </li>
           ))}
         </DesktopMenuContainer>
@@ -219,7 +222,7 @@ export const Header: VFC = () => {
             <span />
             <span />
           </SlidemenuButton>
-          <SlideMenuContents>
+          <SlideMenuContents ref={spMenuListParent}>
             {menus.map((menu, index) => (
               <li
                 ref={(e) => (spMenuList.current[index] = e)}
@@ -228,7 +231,7 @@ export const Header: VFC = () => {
                   menuClose();
                 }}
               >
-                <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
+                <a href={`/${menu}`}>{menu.toUpperCase()}</a>
               </li>
             ))}
           </SlideMenuContents>
@@ -272,6 +275,8 @@ const SlideMenuContents = styled.ul`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
   li {
     /* initial state of menu */
     opacity: 0;
@@ -289,6 +294,7 @@ const SlideMenuContents = styled.ul`
 
 const Container = styled.div`
   position: fixed;
+  top: 0;
   width: 100%;
   margin: 0 auto;
   display: flex;
