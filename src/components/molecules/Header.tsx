@@ -1,19 +1,25 @@
-import React, { useEffect, useRef, useState, VFC } from 'react';
+import React, { createRef, useEffect, useRef, useState, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex, media, font } from '../../utils/style';
 import { Link, useLocation } from 'wouter';
 import { useMedia } from '../../utils/useMedia';
 import { gsap } from 'gsap';
+import { useSnapshot } from 'valtio';
+import { sceneState } from '../../utils/sceneState';
+import { animConfig } from '../../utils/store';
 
 export const Header: VFC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const isMobile = useMedia().isMobile;
-  const [location] = useLocation();
+  const { isReady } = useSnapshot(sceneState);
   // overlay (SVG path element)
   // TODO : to be refined
   const overlayPath = useRef(null);
   const overlayPathParent = useRef(null);
+  const location = useLocation();
+  let desktopMenuRef = useRef([createRef<HTMLSpanElement>(),createRef<HTMLSpanElement>(),createRef<HTMLSpanElement>()])
+  let desktopLogoRef = useRef<HTMLImageElement|null>(null);
   let spMenuList = useRef<HTMLElement[] | null[]>([]);
   const spMenuListParent = useRef(null);
 
@@ -35,7 +41,23 @@ export const Header: VFC = () => {
       unfilled: 'M 0 100 V 100 Q 50 100 100 100 V 100 z',
     },
   };
-
+  const showDesktopMenuLogo = () =>{
+    let menus = [desktopLogoRef.current, desktopMenuRef.current.map(card => card.current)]
+    
+    gsap.timeline()
+    .set(menus,{
+      y:75,
+    })
+    
+    
+    .to(menus,{
+      y:0,
+      duratiuon:1,
+      delay:animConfig.DELAY_AFTER_READY,
+      ease:'power3.out',
+      stagger: 0.1
+    })
+  }
   const menuOpen = () => {
     if (isAnimating) return;
     setIsAnimating(true);
@@ -167,7 +189,18 @@ export const Header: VFC = () => {
         autoAlpha: 0,
       });
   };
-
+  useEffect(()=>{
+    if(location[0]!=='/') return
+    let menus = [desktopLogoRef.current, desktopMenuRef.current.map(card => card.current)]    
+    gsap.timeline()
+    .set(menus,{
+      y:75,
+    })
+  },[])
+  useEffect(()=>{
+    if(location[0]!=='/') return
+    isReady&&showDesktopMenuLogo()
+  },[isReady])
   // useEffect(() => {
   //   transitionAnimation()
   //   console.log('location changed');
@@ -197,8 +230,8 @@ export const Header: VFC = () => {
           isMenuOpen && menuClose();
         }}
       >
-        <Logo>
-          <img src="/images/header_logo.svg" alt="electrode" width={105} />
+        <Logo className={'cursor-scale'} >
+          <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef}/>
         </Logo>
       </a>
 
@@ -206,7 +239,9 @@ export const Header: VFC = () => {
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale'}>
-              <a href={`/${menu}`}>{menu.toUpperCase()}</a>
+              <a href={`/${menu}`}>
+                <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
+              </a>
             </li>
           ))}
         </DesktopMenuContainer>
@@ -243,6 +278,11 @@ export const Header: VFC = () => {
 
 const Logo = styled.a`
   z-index: ${zIndex.elevation.ev8};
+  overflow:hidden;
+  display:inline-block;
+  img{
+    display:inline-block;
+  }
 `;
 const SlidemenuButton = styled.div<{ isOpen: boolean }>`
   width: 32px;
@@ -310,10 +350,15 @@ const DesktopMenuContainer = styled.ul`
   display: flex;
   z-index: ${zIndex.elevation.ev8};
   li {
-    margin: 0 8px 0 0;
+    margin: 0 24px 0 0;
     a {
       color: ${color.content.HighEmphasis};
       text-decoration: none;
+      overflow:hidden ;
+      display:inline-block;
+      span{
+        display: inline-block;
+      }
     }
   }
 `;
