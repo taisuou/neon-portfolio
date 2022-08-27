@@ -202,10 +202,6 @@ export const Header: VFC = () => {
     if(location[0]!=='/') return
     isReady&&showDesktopMenuLogo()
   },[isReady])
-  // useEffect(() => {
-  //   transitionAnimation()
-  //   console.log('location changed');
-  // }, [location]);
 
   return (
     <Container>

@@ -22,16 +22,19 @@ import { useMedia } from '../utils/useMedia';
 import { Footer } from './molecules/Footer';
 import { Contents } from './organisms/Contents';
 import { Cursor } from './atoms/Cursor';
+import { useProgress } from '@react-three/drei';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
   const { isMobile, isTablet } = useMedia();
-
+  const { active, progress, errors, item, loaded, total } = useProgress()
   useEffect(() => {
     setTimeout(() => {
-      setIsReady(true);
+      //check if 3d canvas is active
+      !active&&setIsReady(true);
     }, 3000);
-  }, []);
+  }, [active]);
+
   useEffect(() => {
     sceneState.isReady = isReady;
   }, [isReady]);
