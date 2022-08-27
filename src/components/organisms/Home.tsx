@@ -75,6 +75,7 @@ const Hero = styled.div`
   position: relative;
   display: flex;
   height: 100vh;
+  min-height: -webkit-fill-available;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -111,7 +112,7 @@ const MainTitle = styled.div`
 
 const ButtonMore = styled.div`
   text-align: center;
-  padding: 0 32px 64px 32px;
+  padding: 0 32px 64px 32px; 
   ${font.Inter.button}
   & a {
     display: block;

@@ -153,3 +153,4 @@ const ColInfobox = styled.div`
   }
 `}
 `;
+

@@ -14,6 +14,7 @@ type DetailProps = {
 export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
   return (
     <Container>
+
       <Helmet>
         <title>{post.titleEn}</title>
         <meta name="description" content={post.descriptionEn} />

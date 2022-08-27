@@ -57,7 +57,6 @@ export const App: VFC = () => {
             -webkit-font-smoothing: antialiased;
             font-smoothing: antialiased;
           }
-
           html {
             width: 100%;
             height: 100%;
@@ -65,7 +64,6 @@ export const App: VFC = () => {
             padding: 0;
             font-size: calc(100vw * 16 / 375);
           }
-
           body {
             width: 100%;
             height: 100%;
@@ -79,6 +77,7 @@ export const App: VFC = () => {
             font-size: 62.5%;
             overscroll-behavior: none;
             color: ${color.content.HighEmphasis};
+            height:100%;
           }
           #root {
             width: 100%;

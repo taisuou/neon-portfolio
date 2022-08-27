@@ -9,12 +9,12 @@ export const About: VFC = () => {
         <h1>ABOUT</h1>
       </PageTitle>
 
-      <SectionContainer>
-        <SectionTitle>
-          <h2>Profile</h2>
-        </SectionTitle>
-        <TextBox>
-          <Text>
+        <SectionContainer>
+          <SectionTitle>
+            <h2>Profile</h2>
+          </SectionTitle>
+          <TextBox>
+            <Text>
             <TextTitle>Taisho Ichikawa</TextTitle>
             <p>
               Born in 1991, graduated from the School of Social Sciences at Waseda University.
