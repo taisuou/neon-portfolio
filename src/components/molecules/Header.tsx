@@ -223,16 +223,17 @@ export const Header: VFC = () => {
           ref={overlayPath}
         />
       </SVG>
-      <a
-        href="/"
-        onClick={() => {
-          isMenuOpen && menuClose();
-        }}
-      >
-        <Logo className={'cursor-scale'}>
-          <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
-        </Logo>
-      </a>
+      <Link href="/">
+        <a
+          onClick={() => {
+            isMenuOpen && menuClose();
+          }}
+        >
+          <Logo className={'cursor-scale'}>
+            <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
+          </Logo>
+        </a>
+      </Link>
 
       {!isMobile ? (
         <DesktopMenuContainer>
