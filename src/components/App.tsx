@@ -27,11 +27,11 @@ import { useProgress } from '@react-three/drei';
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
   const { isMobile, isTablet } = useMedia();
-  const { active, progress, errors, item, loaded, total } = useProgress()
+  const { active, progress, errors, item, loaded, total } = useProgress();
   useEffect(() => {
     setTimeout(() => {
       //check if 3d canvas is active
-      !active&&setIsReady(true);
+      !active && setIsReady(true);
     }, 3000);
   }, [active]);
 
@@ -105,7 +105,7 @@ export const App: VFC = () => {
       <TCanvas />
       <Header />
       <Loader isReady={isReady} />
-      <Cursor/>
+      <Cursor />
       <Leva hidden={true} />
     </>
   );

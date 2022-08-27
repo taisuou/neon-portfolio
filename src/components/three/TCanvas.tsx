@@ -1,12 +1,6 @@
 import { FC, Suspense, useEffect, useRef, VFC } from 'react';
-import {
-  OrbitControls,
-  Stats,
-  Preload,
-  Image,
-  Text
-} from '@react-three/drei';
-import {Scroll, ScrollControls, useScroll} from './ScrollControls'
+import { OrbitControls, Stats, Preload, Image, Text } from '@react-three/drei';
+import { Scroll, ScrollControls, useScroll } from './ScrollControls';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
@@ -31,8 +25,7 @@ import { Header } from '../molecules/Header';
 import { Box, Flex } from '@react-three/flex';
 import { Footer } from '../molecules/Footer';
 
-function NeonScene(){
-  
+function NeonScene() {
   const ambientProps = useControls('AmbientLight', {
     intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
   });
@@ -42,29 +35,31 @@ function NeonScene(){
   const postprocessingBloom2Props = useControls('Bloom2', {
     intensity: { value: 0.5, min: 0, max: 1, step: 0.1 },
   });
-  return(
+  return (
     <group>
       <ambientLight intensity={ambientProps.intensity} />
-        <Rig>
-          <Route path="/"><NeonGLTF /></Route>
-          <Ground />
-        </Rig>
-        <EffectComposer multisampling={8}>
-          <Bloom
-            kernelSize={3}
-            luminanceThreshold={0}
-            luminanceSmoothing={0.4}
-            intensity={postprocessingBloom1Props.intensity}
-          />
-          <Bloom
-            kernelSize={KernelSize.HUGE}
-            luminanceThreshold={0}
-            luminanceSmoothing={0}
-            intensity={postprocessingBloom2Props.intensity}
-          />
-        </EffectComposer>
-      </group>
-  )
+      <Rig>
+        <Route path="/">
+          <NeonGLTF />
+        </Route>
+        <Ground />
+      </Rig>
+      <EffectComposer multisampling={8}>
+        <Bloom
+          kernelSize={3}
+          luminanceThreshold={0}
+          luminanceSmoothing={0.4}
+          intensity={postprocessingBloom1Props.intensity}
+        />
+        <Bloom
+          kernelSize={KernelSize.HUGE}
+          luminanceThreshold={0}
+          luminanceSmoothing={0}
+          intensity={postprocessingBloom2Props.intensity}
+        />
+      </EffectComposer>
+    </group>
+  );
 }
 
 function Contents() {
@@ -73,7 +68,7 @@ function Contents() {
   const { height } = useSnapshot(sceneState);
   const [location] = useLocation();
   // let offset = useScroll().offset
-  
+
   useEffect(() => {
     //need to be fixed later. Triggered only when
     setTimeout(() => {
@@ -85,34 +80,33 @@ function Contents() {
   return (
     <group>
       <ScrollControls
-            pages={height / size.height} // Each page takes 100% of the height of the canvas
-            damping={10} // Friction, higher is faster (default: 4)
-            locale={location}
-          >
-            
-            <NeonScene/>
-            <Scroll html ref={elementRef}>
-              <Switch location={location}>
-                <Route path="/">
-                    <Home/>
-                </Route>
-                <Route path="/about">
-                  <About/>
-                </Route>
-                <Route path="/works">
-                  <Works/>
-                </Route>
-                <Route path="/contact">
-                  <Contact/>
-                </Route>
-                <Route path="/works/:id">
-                  {(params) => (
-                    <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} />
-                  )}
-                </Route>
-              </Switch>
-              <Footer/>
-            </Scroll>
+        pages={height / size.height} // Each page takes 100% of the height of the canvas
+        damping={10} // Friction, higher is faster (default: 4)
+        locale={location}
+      >
+        <NeonScene />
+        <Scroll html ref={elementRef}>
+          <Switch location={location}>
+            <Route path="/">
+              <Home />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/works">
+              <Works />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/works/:id">
+              {(params) => (
+                <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} />
+              )}
+            </Route>
+          </Switch>
+          <Footer />
+        </Scroll>
       </ScrollControls>
     </group>
   );

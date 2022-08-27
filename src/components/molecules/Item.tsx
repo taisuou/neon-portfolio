@@ -12,17 +12,17 @@ type ItemCardProps = {
 export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   return (
     <Link href={`/works/${indexNumber}`}>
-    <Container  isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
-      <Picture>
-        <img src={`${post.thumb}`} />
-      </Picture>
-      <Info>
-        <TitleEN>{post.titleEn}</TitleEN>
-        <TitleJP>{post.titleJp}</TitleJP>
-        {/* TIPS : インラインの条件分岐記法  A?B:C */}
-        <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
-      </Info>
-    </Container>
+      <Container isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
+        <Picture>
+          <img src={`${post.thumb}`} />
+        </Picture>
+        <Info>
+          <TitleEN>{post.titleEn}</TitleEN>
+          <TitleJP>{post.titleJp}</TitleJP>
+          {/* TIPS : インラインの条件分岐記法  A?B:C */}
+          <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
+        </Info>
+      </Container>
     </Link>
   );
 };

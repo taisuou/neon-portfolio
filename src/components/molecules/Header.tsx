@@ -17,8 +17,12 @@ export const Header: VFC = () => {
   const overlayPath = useRef(null);
   const overlayPathParent = useRef(null);
   const location = useLocation();
-  let desktopMenuRef = useRef([createRef<HTMLSpanElement>(),createRef<HTMLSpanElement>(),createRef<HTMLSpanElement>()])
-  let desktopLogoRef = useRef<HTMLImageElement|null>(null);
+  let desktopMenuRef = useRef([
+    createRef<HTMLSpanElement>(),
+    createRef<HTMLSpanElement>(),
+    createRef<HTMLSpanElement>(),
+  ]);
+  let desktopLogoRef = useRef<HTMLImageElement | null>(null);
   let spMenuList = useRef<HTMLElement[] | null[]>([]);
   const spMenuListParent = useRef(null);
 
@@ -39,23 +43,23 @@ export const Header: VFC = () => {
       unfilled: 'M 0 100 V 100 Q 50 100 100 100 V 100 z',
     },
   };
-  const showDesktopMenuLogo = () =>{
-    let menus = [desktopLogoRef.current, desktopMenuRef.current.map(card => card.current)]
-    
-    gsap.timeline()
-    .set(menus,{
-      y:75,
-    })
-    
-    
-    .to(menus,{
-      y:0,
-      duratiuon:1,
-      delay:animConfig.DELAY_AFTER_READY,
-      ease:'power3.out',
-      stagger: 0.1
-    })
-  }
+  const showDesktopMenuLogo = () => {
+    let menus = [desktopLogoRef.current, desktopMenuRef.current.map((card) => card.current)];
+
+    gsap
+      .timeline()
+      .set(menus, {
+        y: 75,
+      })
+
+      .to(menus, {
+        y: 0,
+        duratiuon: 1,
+        delay: animConfig.DELAY_AFTER_READY,
+        ease: 'power3.out',
+        stagger: 0.1,
+      });
+  };
   const menuOpen = () => {
     if (isAnimating) return;
     setIsAnimating(true);
@@ -78,7 +82,7 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.unfilled },
       })
       .set(overlayPathParent.current, {
-        autoAlpha: 1
+        autoAlpha: 1,
       })
       .to(
         overlayPath.current,
@@ -119,7 +123,7 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.filled },
       })
       .set(overlayPathParent.current, {
-        autoAlpha: 1
+        autoAlpha: 1,
       })
       .to(
         overlayPath.current,
@@ -136,7 +140,7 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.unfilled },
       })
       .set(overlayPathParent.current, {
-        autoAlpha: 0
+        autoAlpha: 0,
       })
       .set(spMenuListParent.current, { autoAlpha: 0 });
   };
@@ -156,14 +160,11 @@ export const Header: VFC = () => {
       .set(overlayPath.current, {
         attr: { d: paths.step1.unfilled },
       })
-      .to(
-        overlayPath.current,
-        {
-          duration: 0.1,
-          ease: 'power4.in',
-          attr: { d: paths.step1.inBetween.curve },
-        }
-      )
+      .to(overlayPath.current, {
+        duration: 0.1,
+        ease: 'power4.in',
+        attr: { d: paths.step1.inBetween.curve },
+      })
       .to(overlayPath.current, {
         duration: 0.2,
         ease: 'power1',
@@ -171,7 +172,7 @@ export const Header: VFC = () => {
       })
       .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
-        delay:0.5
+        delay: 0.5,
       })
       .to(overlayPath.current, {
         duration: 0.2,
@@ -187,23 +188,22 @@ export const Header: VFC = () => {
         autoAlpha: 0,
       });
   };
-  useEffect(()=>{
+  useEffect(() => {
     //triggers only when page load
-    if(location[0]!=='/') return
-    let menus = [desktopLogoRef.current, desktopMenuRef.current.map(card => card.current)]    
-    gsap.timeline()
-    .set(menus,{
-      y:75,
-    })
-  },[])
-  useEffect(()=>{
+    if (location[0] !== '/') return;
+    let menus = [desktopLogoRef.current, desktopMenuRef.current.map((card) => card.current)];
+    gsap.timeline().set(menus, {
+      y: 75,
+    });
+  }, []);
+  useEffect(() => {
     //triggers only when routing
-    transitionAnimation()
-  },[location[0]])
-  useEffect(()=>{
-    if(location[0]!=='/') return
-    isReady&&showDesktopMenuLogo()
-  },[isReady])
+    transitionAnimation();
+  }, [location[0]]);
+  useEffect(() => {
+    if (location[0] !== '/') return;
+    isReady && showDesktopMenuLogo();
+  }, [isReady]);
 
   return (
     <Container>
@@ -229,8 +229,8 @@ export const Header: VFC = () => {
           isMenuOpen && menuClose();
         }}
       >
-        <Logo className={'cursor-scale'} >
-          <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef}/>
+        <Logo className={'cursor-scale'}>
+          <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
         </Logo>
       </a>
 
@@ -240,8 +240,7 @@ export const Header: VFC = () => {
             <li key={index} className={'cursor-scale'}>
               <Link href={`/${menu}`}>
                 <a>
-
-                <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
+                  <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
                 </a>
               </Link>
             </li>
@@ -280,10 +279,10 @@ export const Header: VFC = () => {
 
 const Logo = styled.a`
   z-index: ${zIndex.elevation.ev8};
-  overflow:hidden;
-  display:inline-block;
-  img{
-    display:inline-block;
+  overflow: hidden;
+  display: inline-block;
+  img {
+    display: inline-block;
   }
 `;
 const SlidemenuButton = styled.div<{ isOpen: boolean }>`
@@ -356,9 +355,9 @@ const DesktopMenuContainer = styled.ul`
     a {
       color: ${color.content.HighEmphasis};
       text-decoration: none;
-      overflow:hidden ;
-      display:inline-block;
-      span{
+      overflow: hidden;
+      display: inline-block;
+      span {
         display: inline-block;
       }
     }
