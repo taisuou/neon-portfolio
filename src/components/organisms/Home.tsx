@@ -29,12 +29,13 @@ export const Home: VFC = () => {
     })
   }
   useEffect(()=>{
+    //triggers only when page load
     const titles = heroTitle.current.map(card => card.current);
     gsap.timeline()
     .set(titles,{
       y:75,
     })
-  })
+  },[])
   useEffect(()=>{
     isReady&&showHero()
   },[isReady])

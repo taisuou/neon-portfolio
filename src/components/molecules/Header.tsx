@@ -190,6 +190,7 @@ export const Header: VFC = () => {
       });
   };
   useEffect(()=>{
+    //triggers only when page load
     if(location[0]!=='/') return
     let menus = [desktopLogoRef.current, desktopMenuRef.current.map(card => card.current)]    
     gsap.timeline()
