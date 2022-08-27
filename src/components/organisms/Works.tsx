@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font , media, zIndex} from '../../utils/style';
+import { color, font, media, zIndex } from '../../utils/style';
 import { Item } from '../molecules/Item';
 import { contents } from '../../utils/store';
 import { WorkPost } from '../../../@types/schema';
@@ -44,7 +44,7 @@ const PageTitle = styled.div`
   background-image: url('../images/bg_about.png');
   background-size: cover;
   background-position: center;
-  padding-bottom:48px;
+  padding-bottom: 48px;
   h1 {
     width: 100%;
     ${font.replica.h1};
@@ -59,7 +59,7 @@ const SectionTitle = styled.div`
   h2 {
     ${font.replica.h2};
   }
-  margin-bottom:24px;
+  margin-bottom: 24px;
   ${media.lg`
     margin-right:72px;
   `}
@@ -90,9 +90,9 @@ const UiCategory = styled.div`
     display: inline-block;
     color: #fff;
     text-decoration: none;
-    padding: 0 16px; 
+    padding: 0 16px;
   }
-  ul a{
+  ul a {
     transition: 0.3s ease-in-out;
   }
   ul a:hover {

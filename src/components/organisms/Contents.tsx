@@ -13,15 +13,19 @@ import { Footer } from '../molecules/Footer';
 export const Contents: VFC = () => {
   return (
     <>
-        <Switch>
-              <Route path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route path="/works" component={Works} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/works/:id">{(params) => <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)}/>}</Route>
-              <Route>存在しないコンテンツです</Route>
-        </Switch>
-        <Footer />
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/works" component={Works} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/works/:id">
+          {(params) => (
+            <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} />
+          )}
+        </Route>
+        <Route>存在しないコンテンツです</Route>
+      </Switch>
+      <Footer />
     </>
   );
 };
