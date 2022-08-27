@@ -34,8 +34,8 @@ export const Cursor: VFC = () => {
             link.addEventListener('mousemove', ()=> {
               gsap.to(cursorElem.current!,{
                 scale:10,
-                duration: 0.2,
-                ease: 'power1',
+                duration: 1,
+                ease: 'power3',
               })
               
             })
@@ -43,8 +43,8 @@ export const Cursor: VFC = () => {
             link.addEventListener('mouseleave', ()=> {
                 gsap.to(cursorElem.current!,{
                     scale:1,
-                    duration: 0.2,
-                    ease: 'power1',
+                    duration: 1,
+                    ease: 'power3',
                   })
             });
           })
@@ -60,10 +60,10 @@ const Elem = styled.div`
         display:block;
     `}
     position:absolute;
-    width:8px;
-    height:8px;
+    width:16px;
+    height:16px;
     border-radius:50% ;
-    background-color:${color.content.HighEmphasis};
+    background-color: ${color.content.HighEmphasis};
     z-index:${zIndex.elevation.ev16};
     pointer-events:none;
     user-select: none;

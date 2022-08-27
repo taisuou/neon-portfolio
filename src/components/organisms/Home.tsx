@@ -1,15 +1,51 @@
-import React, { VFC } from 'react';
+import React, { createRef, useEffect, useRef, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
 import { contents } from '../../utils/store';
 import { Item } from '../molecules/Item';
 import { WorkPost } from '../../../@types/schema';
+import { useMedia } from '../../utils/useMedia';
+import { useSnapshot } from 'valtio';
+import { sceneState } from '../../utils/sceneState';
+import { gsap } from 'gsap';
+import {animConfig} from '../../utils/store'
 
 export const Home: VFC = () => {
+  const {isMobile, isTablet} = useMedia()
+  let heroTitle = useRef([createRef<HTMLSpanElement>(),createRef<HTMLSpanElement>()])
+  const { isReady } = useSnapshot(sceneState);
+  const showHero = () =>{
+    const titles = heroTitle.current.map(card => card.current);
+    gsap.timeline()
+    .set(titles,{
+      y:75,
+    })
+    .to(titles,{
+      y:0,
+      duratiuon:1,
+      delay:animConfig.DELAY_AFTER_READY,
+      ease:'power3.out',
+      stagger: 0.1
+    })
+  }
+  useEffect(()=>{
+    //triggers only when page load
+    const titles = heroTitle.current.map(card => card.current);
+    gsap.timeline()
+    .set(titles,{
+      y:75,
+    })
+  },[])
+  useEffect(()=>{
+    isReady&&showHero()
+  },[isReady])
   return (
     <>
       <Hero>
-        <MainTitle>Glass and Virtual Neon Arts</MainTitle>
+        <MainTitle>
+          <p><span ref={heroTitle.current[0]}>Glass and Virtual</span></p>
+          <p><span ref={heroTitle.current[1]}>Neon Arts</span></p>
+        </MainTitle>
         <ScrollArrow>
           <p>Scroll</p>
           <img src="images/arrow_scroll.svg" alt="" />
@@ -46,19 +82,27 @@ const Container = styled.div`
   color: ${color.content.HighEmphasis};
 `;
 
-const MainTitle = styled.p`
+const MainTitle = styled.div`
   display: flex;
-  padding: 0 32px;
-  height: 100vh;
+  /* padding: 0 32px; */
+  /* height: 100vh; */
   width: 100%;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   /* background: rgba(0, 0, 0, 0.25); */
-  ${font.replica.h1}
+  ${font.replica.h2}
   ${media.lg`
    width:70%;
    margin:0 auto;
+   ${font.replica.h1}
   `}
+  p{
+    overflow:hidden;
+  }
+  span{
+    display:inline-block ;
+  }
 `;
 
 const ButtonMore = styled.div`

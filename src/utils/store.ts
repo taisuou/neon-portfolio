@@ -1,3 +1,7 @@
+export const animConfig = {
+  DELAY_AFTER_READY : 2
+}
+
 export const lightState = {
   helper: false,
 };
