@@ -6,6 +6,7 @@ import {gsap} from 'gsap'
 
 export const Cursor: VFC = () => {
     const cursorElem = useRef(null)
+    
     const cursorScale = document.querySelectorAll('.cursor-scale'); 
     const tl = gsap.timeline();
     let posX = 0;
@@ -33,7 +34,8 @@ export const Cursor: VFC = () => {
         cursorScale.forEach(link => {
             link.addEventListener('mousemove', ()=> {
               gsap.to(cursorElem.current!,{
-                scale:10,
+                width:82,
+                height:82,
                 duration: 1,
                 ease: 'power3',
               })
@@ -42,7 +44,8 @@ export const Cursor: VFC = () => {
             
             link.addEventListener('mouseleave', ()=> {
                 gsap.to(cursorElem.current!,{
-                    scale:1,
+                    width:16,
+                    height:16,
                     duration: 1,
                     ease: 'power3',
                   })
@@ -62,10 +65,21 @@ const Elem = styled.div`
     position:absolute;
     width:16px;
     height:16px;
-    border-radius:50% ;
-    background-color: ${color.content.HighEmphasis};
+    
     z-index:${zIndex.elevation.ev16};
     pointer-events:none;
     user-select: none;
     mix-blend-mode:difference;
+    &:after{
+        content:'' ;
+        position:absolute ;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        border-radius:50% ;
+        border: ${color.content.HighEmphasis} 1px solid;
+        z-index:${zIndex.elevation.ev16};
+        transform:translate(-50%,-50%);
+    }
 `;
