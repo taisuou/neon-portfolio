@@ -6,8 +6,7 @@ import { useMedia } from '../../utils/useMedia';
 import { gsap } from 'gsap';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
-import { animConfig } from '../../utils/store';
-
+import { animConfig, menus } from '../../utils/store';
 export const Header: VFC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -23,7 +22,6 @@ export const Header: VFC = () => {
   let spMenuList = useRef<HTMLElement[] | null[]>([]);
   const spMenuListParent = useRef(null);
 
-  const menus = ['about', 'works', 'contact'];
   // edit here: https://yqnn.github.io/svg-path-editor/
   const paths = {
     step1: {
@@ -80,12 +78,12 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.unfilled },
       })
       .set(overlayPathParent.current, {
-        visibility: 'visible',
+        autoAlpha: 1
       })
       .to(
         overlayPath.current,
         {
-          duration: 0.8,
+          duration: 0.5,
           ease: 'power4.in',
           attr: { d: paths.step1.inBetween.curve },
         },
@@ -121,12 +119,12 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.filled },
       })
       .set(overlayPathParent.current, {
-        visibility: 'visible',
+        autoAlpha: 1
       })
       .to(
         overlayPath.current,
         {
-          duration: 0.8,
+          duration: 0.5,
           ease: 'power4.in',
           attr: { d: paths.step1.inBetween.curve },
         },
@@ -138,7 +136,7 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.unfilled },
       })
       .set(overlayPathParent.current, {
-        visibility: 'hidden',
+        autoAlpha: 0
       })
       .set(spMenuListParent.current, { autoAlpha: 0 });
   };
@@ -161,11 +159,10 @@ export const Header: VFC = () => {
       .to(
         overlayPath.current,
         {
-          duration: 0.8,
+          duration: 0.1,
           ease: 'power4.in',
           attr: { d: paths.step1.inBetween.curve },
-        },
-        0,
+        }
       )
       .to(overlayPath.current, {
         duration: 0.2,
@@ -174,6 +171,7 @@ export const Header: VFC = () => {
       })
       .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
+        delay:0.5
       })
       .to(overlayPath.current, {
         duration: 0.2,
@@ -198,6 +196,10 @@ export const Header: VFC = () => {
       y:75,
     })
   },[])
+  useEffect(()=>{
+    //triggers only when routing
+    transitionAnimation()
+  },[location[0]])
   useEffect(()=>{
     if(location[0]!=='/') return
     isReady&&showDesktopMenuLogo()
@@ -236,9 +238,12 @@ export const Header: VFC = () => {
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale'}>
-              <a href={`/${menu}`}>
+              <Link href={`/${menu}`}>
+                <a>
+
                 <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
-              </a>
+                </a>
+              </Link>
             </li>
           ))}
         </DesktopMenuContainer>
@@ -263,7 +268,7 @@ export const Header: VFC = () => {
                   menuClose();
                 }}
               >
-                <a href={`/${menu}`}>{menu.toUpperCase()}</a>
+                <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
               </li>
             ))}
           </SlideMenuContents>

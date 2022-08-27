@@ -1,21 +1,23 @@
 import { FC, Suspense, useEffect, useRef, VFC } from 'react';
 import {
   OrbitControls,
-  Scroll,
-  ScrollControls,
   Stats,
   Preload,
   Image,
-  Text,
-  useScroll,
+  Text
 } from '@react-three/drei';
+import {Scroll, ScrollControls, useScroll} from './ScrollControls'
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize } from 'postprocessing';
 import { Contents as PageContents } from '../organisms/Contents';
-
+import { Home } from '../organisms/Home';
+import { About } from '../organisms/About';
+import { Works } from '../organisms/Works';
+import { Contact } from '../organisms/Contact';
+import { Detail } from '../organisms/Detail';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
@@ -27,13 +29,10 @@ import { useControls } from 'leva';
 import { isReturnStatement } from 'typescript';
 import { Header } from '../molecules/Header';
 import { Box, Flex } from '@react-three/flex';
+import { Footer } from '../molecules/Footer';
 
-function Contents() {
-  const elementRef = useRef<HTMLDivElement>(null);
-  const size = useWindowSize();
-  const { height } = useSnapshot(sceneState);
-  const [location] = useLocation();
-
+function NeonScene(){
+  
   const ambientProps = useControls('AmbientLight', {
     intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
   });
@@ -43,44 +42,79 @@ function Contents() {
   const postprocessingBloom2Props = useControls('Bloom2', {
     intensity: { value: 0.5, min: 0, max: 1, step: 0.1 },
   });
+  return(
+    <group>
+      <ambientLight intensity={ambientProps.intensity} />
+        <Rig>
+          <Route path="/"><NeonGLTF /></Route>
+          <Ground />
+        </Rig>
+        <EffectComposer multisampling={8}>
+          <Bloom
+            kernelSize={3}
+            luminanceThreshold={0}
+            luminanceSmoothing={0.4}
+            intensity={postprocessingBloom1Props.intensity}
+          />
+          <Bloom
+            kernelSize={KernelSize.HUGE}
+            luminanceThreshold={0}
+            luminanceSmoothing={0}
+            intensity={postprocessingBloom2Props.intensity}
+          />
+        </EffectComposer>
+      </group>
+  )
+}
 
+function Contents() {
+  const elementRef = useRef<HTMLDivElement>(null);
+  const size = useWindowSize();
+  const { height } = useSnapshot(sceneState);
+  const [location] = useLocation();
+  // let offset = useScroll().offset
+  
   useEffect(() => {
     //need to be fixed later. Triggered only when
-    sceneState.height = elementRef.current!.getBoundingClientRect().height;
+    setTimeout(() => {
+      //コンテンツ落ちを防ぐために僅かに遅くしてる
+      sceneState.height = elementRef.current!.getBoundingClientRect().height;
+    }, 500);
   }, [size.height, elementRef, location]);
 
   return (
-    <ScrollControls
-      pages={height / size.height} // Each page takes 100% of the height of the canvas
-      distance={1} // A factor that increases scroll bar travel (default: 1)
-      damping={10} // Friction, higher is faster (default: 4)
-      horizontal={false} // Can also scroll horizontally (default: false)
-      infinite={false} // Can also scroll infinitely (default: false)
-    >
-      <ambientLight intensity={ambientProps.intensity} />
-      <Rig>
-        <NeonGLTF />
-        <Ground />
-      </Rig>
-      <EffectComposer multisampling={8}>
-        <Bloom
-          kernelSize={3}
-          luminanceThreshold={0}
-          luminanceSmoothing={0.4}
-          intensity={postprocessingBloom1Props.intensity}
-        />
-        <Bloom
-          kernelSize={KernelSize.HUGE}
-          luminanceThreshold={0}
-          luminanceSmoothing={0}
-          intensity={postprocessingBloom2Props.intensity}
-        />
-      </EffectComposer>
-
-      <Scroll html ref={elementRef}>
-        <PageContents />
-      </Scroll>
-    </ScrollControls>
+    <group>
+      <ScrollControls
+            pages={height / size.height} // Each page takes 100% of the height of the canvas
+            damping={10} // Friction, higher is faster (default: 4)
+            locale={location}
+          >
+            
+            <NeonScene/>
+            <Scroll html ref={elementRef}>
+              <Switch location={location}>
+                <Route path="/">
+                    <Home/>
+                </Route>
+                <Route path="/about">
+                  <About/>
+                </Route>
+                <Route path="/works">
+                  <Works/>
+                </Route>
+                <Route path="/contact">
+                  <Contact/>
+                </Route>
+                <Route path="/works/:id">
+                  {(params) => (
+                    <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} />
+                  )}
+                </Route>
+              </Switch>
+              <Footer/>
+            </Scroll>
+      </ScrollControls>
+    </group>
   );
 }
 type RigProps = {

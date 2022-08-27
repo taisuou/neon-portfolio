@@ -9,6 +9,7 @@ import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { gsap } from 'gsap';
 import {animConfig} from '../../utils/store'
+import {Link} from 'wouter'
 
 export const Home: VFC = () => {
   const {isMobile, isTablet} = useMedia()
@@ -59,7 +60,7 @@ export const Home: VFC = () => {
           ))}
 
         <ButtonMore>
-          <a href="/works">view all works</a>
+          <Link href="/works">view all works</Link>
         </ButtonMore>
       </Container>
     </>
