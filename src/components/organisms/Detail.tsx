@@ -61,13 +61,13 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
               </a>
             </li>
             <li>
-              <a
+              <Link
                 href={
                   pageIndex === contents.works.length - 1 ? `/works/0` : `/works/${pageIndex + 1}`
                 }
               >
                 <img src="../images/arrow_right.svg" alt="" />
-              </a>
+              </Link>
             </li>
           </ul>
         </PageCtl>

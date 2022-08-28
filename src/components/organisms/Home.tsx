@@ -8,43 +8,48 @@ import { useMedia } from '../../utils/useMedia';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { gsap } from 'gsap';
-import {animConfig} from '../../utils/store'
+import { animConfig } from '../../utils/store';
+import { Link } from 'wouter';
 
 export const Home: VFC = () => {
-  const {isMobile, isTablet} = useMedia()
-  let heroTitle = useRef([createRef<HTMLSpanElement>(),createRef<HTMLSpanElement>()])
+  const { isMobile, isTablet } = useMedia();
+  let heroTitle = useRef([createRef<HTMLSpanElement>(), createRef<HTMLSpanElement>()]);
   const { isReady } = useSnapshot(sceneState);
-  const showHero = () =>{
-    const titles = heroTitle.current.map(card => card.current);
-    gsap.timeline()
-    .set(titles,{
-      y:75,
-    })
-    .to(titles,{
-      y:0,
-      duratiuon:1,
-      delay:animConfig.DELAY_AFTER_READY,
-      ease:'power3.out',
-      stagger: 0.1
-    })
-  }
-  useEffect(()=>{
+  const showHero = () => {
+    const titles = heroTitle.current.map((card) => card.current);
+    gsap
+      .timeline()
+      .set(titles, {
+        y: 75,
+      })
+      .to(titles, {
+        y: 0,
+        duratiuon: 1,
+        delay: animConfig.DELAY_AFTER_READY,
+        ease: 'power3.out',
+        stagger: 0.1,
+      });
+  };
+  useEffect(() => {
     //triggers only when page load
-    const titles = heroTitle.current.map(card => card.current);
-    gsap.timeline()
-    .set(titles,{
-      y:75,
-    })
-  },[])
-  useEffect(()=>{
-    isReady&&showHero()
-  },[isReady])
+    const titles = heroTitle.current.map((card) => card.current);
+    gsap.timeline().set(titles, {
+      y: 75,
+    });
+  }, []);
+  useEffect(() => {
+    isReady && showHero();
+  }, [isReady]);
   return (
     <>
       <Hero>
         <MainTitle>
-          <p><span ref={heroTitle.current[0]}>Glass and Virtual</span></p>
-          <p><span ref={heroTitle.current[1]}>Neon Arts</span></p>
+          <p>
+            <span ref={heroTitle.current[0]}>Glass and Virtual</span>
+          </p>
+          <p>
+            <span ref={heroTitle.current[1]}>Neon Arts</span>
+          </p>
         </MainTitle>
         <ScrollArrow>
           <p>Scroll</p>
@@ -59,7 +64,7 @@ export const Home: VFC = () => {
           ))}
 
         <ButtonMore>
-          <a href="/works">view all works</a>
+          <Link href="/works">view all works</Link>
         </ButtonMore>
       </Container>
     </>
@@ -97,11 +102,11 @@ const MainTitle = styled.div`
    margin:0 auto;
    ${font.replica.h1}
   `}
-  p{
-    overflow:hidden;
+  p {
+    overflow: hidden;
   }
-  span{
-    display:inline-block ;
+  span {
+    display: inline-block;
   }
 `;
 

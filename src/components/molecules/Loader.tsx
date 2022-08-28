@@ -91,9 +91,9 @@ export const Loader: VFC<LoaderProps> = (props) => {
         />
       </SVG>
       <LoaderAnim ref={electrode}>
-        <Electrode src='/loader_anim.png'/>
+        <Electrode src="/loader_anim.png" />
         {/* <LoaderNum ref={counter} data-from="0" data-to="4096">{progress}</LoaderNum> */}
-        <LoaderNum>Loading...</LoaderNum>
+        {/* <LoaderNum>Loading...</LoaderNum> */}
       </LoaderAnim>
     </Container>
   );
@@ -114,13 +114,13 @@ const SVG = styled.svg`
 `;
 
 const Electrode = styled.img`
-  width:calc(240px * 2 / 3);
-  height:calc(320px * 2 /3);
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-`
+  width: calc(240px * 2 / 3);
+  height: calc(320px * 2 / 3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
 const LoaderAnim = styled.div`
   width: 100%;

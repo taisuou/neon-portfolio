@@ -1,6 +1,7 @@
 export const animConfig = {
-  DELAY_AFTER_READY : 2
-}
+  DELAY_AFTER_READY: 2,
+};
+export const menus = ['about', 'works', 'contact'];
 
 export const lightState = {
   helper: false,
