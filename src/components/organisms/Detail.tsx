@@ -25,10 +25,18 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <TitleEn>{post.titleEn}</TitleEn>
         <TitleJp>{post.titleJp}</TitleJp>
         <PictureWrap>
+          <Picture src={post.images[0]}/>
+        </PictureWrap>
+        <DescriptionEn>{post.descriptionEn}</DescriptionEn>
+        <DescriptionJp>{post.descriptionJp}</DescriptionJp>
+
+        <PictureWrap>
+          
           {post.images.map((image, index) => (
             <Picture src={image} key={index} />
           ))}
         </PictureWrap>
+
         <Caption>
           <ul>
             <li>Year</li>
@@ -43,8 +51,6 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
             </li>
           </ul>
         </Caption>
-        <p>{post.descriptionEn}</p>
-        <p>{post.descriptionJp}</p>
 
         <PageCtl>
           <CtlTag>{post.tag === 0 ? 'ART' : 'Client'}</CtlTag>
@@ -79,12 +85,6 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
 const Container = styled.div`
   background: ${color.background.dark};
   padding: 91px 32px 64px 32px;
-  p {
-    margin-bottom: 24px;
-  }
-  img {
-    margin-bottom: 24px;
-  }
   font-size: ${font.Inter.body2};
 `;
 
@@ -109,8 +109,22 @@ const TitleJp = styled.h1`
 const PictureWrap = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;
+  img {
+    margin-bottom: 24px;
+  }
 `;
+
+const DescriptionEn = styled.p`
+  margin-top:6px;
+  &::after{
+    content:'-';
+    display:block;
+    margin:8px 0;
+  }
+`
+const DescriptionJp = styled.p`
+margin-bottom:32px;
+`
 
 const Picture = styled.img`
   width: 100%;

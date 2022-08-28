@@ -39,7 +39,7 @@ export const contents = {
       titleJp: 'Kawakyu Art Exibition 2022 「夢中」',
       // ART:0, Client:1
       tag: 0,
-      thumb: '/images/posts/2022_kawakyu/2022_kawakyu_00.jpg',
+      thumb: '/images/posts/2022_kawakyu/2022_kawakyu_01.jpg',
       year: '2022',
       pjinfo:'exhibition',
       descriptionEn:
@@ -47,27 +47,9 @@ export const contents = {
       descriptionJp:
         '「Kawakyu Art Exibition 2022 実在する夢」 の出展作品。和歌山県ホテル川久で行われたレジデンスプログラム。審査員推薦アーティスト。',
       images: [
-        '/images/posts/2022_kawakyu/2022_kawakyu_00.jpg',
         '/images/posts/2022_kawakyu/2022_kawakyu_01.jpg',
+        '/images/posts/2022_kawakyu/2022_kawakyu_00.jpg',
         '/images/posts/2022_kawakyu/2022_kawakyu_02.jpg',
-      ],
-    },
-    {
-      titleEn: '"Chim↑Pom from Smappa! Group" logo neon sign',
-      titleJp: '"Chim↑Pom from Smappa! Group" ロゴネオンサイン',
-      // ART:0, Client:1
-      tag: 1,
-      thumb: '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
-      year: '2022',
-      pjinfo:'order work',
-      descriptionEn:
-        'Chim↑Pom from Smappa! Group logo neon sign / @ ANOMALY Gallery / April 27, 2022 (Wed) - June 4, 2022 (Sat)',
-      descriptionJp:
-        'Chim↑Pom from Smappa! Group ロゴネオンサイン / 個展「Chim↑Pom from Smappa!Group」 / ＠ANOMALY Gallery / 2022年4月27日 (水) - 2022年6月4日 (土)',
-      images: [
-        '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
-        '/images/posts/2022_chimpom/2022_chimpom_01.jpg',
-        '/images/posts/2022_chimpom/2022_chimpom_02.jpg',
       ],
     },
     {
@@ -116,7 +98,7 @@ export const contents = {
       year: '2022',
       pjinfo:'private work',
       descriptionEn:
-        'toyneon',
+        'Toy neon / graphic works',
       descriptionJp:
         '',
       images: [
@@ -124,6 +106,24 @@ export const contents = {
         '/images/posts/2022_toyneon/2022_toyneon_01.jpg',
         '/images/posts/2022_toyneon/2022_toyneon_02.jpg',
         '/images/posts/2022_toyneon/2022_toyneon_03.jpg',
+      ],
+    },
+    {
+      titleEn: '"Chim↑Pom from Smappa! Group" logo neon sign',
+      titleJp: '"Chim↑Pom from Smappa! Group" ロゴネオンサイン',
+      // ART:0, Client:1
+      tag: 1,
+      thumb: '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
+      year: '2022',
+      pjinfo:'order work',
+      descriptionEn:
+        'Chim↑Pom from Smappa! Group logo neon sign / @ ANOMALY Gallery / April 27, 2022 (Wed) - June 4, 2022 (Sat)',
+      descriptionJp:
+        'Chim↑Pom from Smappa! Group ロゴネオンサイン / 個展「Chim↑Pom from Smappa!Group」 / ＠ANOMALY Gallery / 2022年4月27日 (水) - 2022年6月4日 (土)',
+      images: [
+        '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
+        '/images/posts/2022_chimpom/2022_chimpom_01.jpg',
+        '/images/posts/2022_chimpom/2022_chimpom_02.jpg',
       ],
     },
     {
@@ -170,7 +170,7 @@ export const contents = {
       year: '2021',
       pjinfo:'private work',
       descriptionEn:
-        '',
+        'No Description',
       descriptionJp:
         '',
       images: [
