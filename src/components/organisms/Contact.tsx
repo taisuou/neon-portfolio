@@ -119,7 +119,7 @@ const TextBox = styled.div`
 `;
 
 const TextDec = styled.div`
-  font-size: 1.5rem;
+  font-size: 24px;
 `;
 
 const ColInfobox = styled.div`
