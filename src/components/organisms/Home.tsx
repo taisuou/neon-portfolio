@@ -20,13 +20,15 @@ export const Home: VFC = () => {
     gsap
       .timeline()
       .set(titles, {
-        y: 75,
+        opacity: 0,
+        y:75,
       })
       .to(titles, {
-        y: 0,
+        opacity: 1,
+        y:0,
         duratiuon: 1,
         delay: animConfig.DELAY_AFTER_READY,
-        ease: 'power3.out',
+        ease: 'power4.out',
         stagger: 0.1,
       });
   };
@@ -34,7 +36,6 @@ export const Home: VFC = () => {
     //triggers only when page load
     const titles = heroTitle.current.map((card) => card.current);
     gsap.timeline().set(titles, {
-      y: 75,
     });
   }, []);
   useEffect(() => {
@@ -89,18 +90,16 @@ const Container = styled.div`
 
 const MainTitle = styled.div`
   display: flex;
-  /* padding: 0 32px; */
-  /* height: 100vh; */
   width: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background: rgba(0, 0, 0, 0.25); */
-  ${font.replica.h2}
+  ${font.replica.hero}
+  padding:0 24px;
   ${media.lg`
    width:70%;
    margin:0 auto;
-   ${font.replica.h1}
+   font-size: 5rem;
   `}
   p {
     overflow: hidden;

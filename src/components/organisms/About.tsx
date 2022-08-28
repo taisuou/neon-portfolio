@@ -50,7 +50,7 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  height: 40vh;
+  height: 30vh;
   padding: 59px 32px 0;
   background-image: url('../images/bg_about.png');
   background-size: cover;

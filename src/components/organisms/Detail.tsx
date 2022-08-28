@@ -96,8 +96,11 @@ const SectionContainer = styled.div`
 `;
 
 const TitleEn = styled.h1`
-  ${font.replica.h2}
+  ${font.replica.h1}
   margin-bottom:8px;
+  ${media.lg`
+  font-size: 3.2rem;
+  `}
 `;
 const TitleJp = styled.h1`
   ${font.Inter.subtitle1}

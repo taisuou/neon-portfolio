@@ -70,7 +70,7 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  height: 40vh;
+  height: 30vh;
   padding: 59px 32px 0;
   background-image: url('../images/bg_about.png');
   background-size: cover;
@@ -98,7 +98,7 @@ const SectionContainer = styled.div`
 
 const SectionTitle = styled.div`
   h2 {
-    ${font.replica.h3};
+    ${font.replica.h2};
   }
   margin-bottom: 24px;
   ${media.lg`
