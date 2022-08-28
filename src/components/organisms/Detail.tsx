@@ -39,7 +39,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
           <ul>
             <li>Project Info</li>
             <li>
-              <span>{post.year}</span>
+              <span>{post.pjinfo}</span>
             </li>
           </ul>
         </Caption>
