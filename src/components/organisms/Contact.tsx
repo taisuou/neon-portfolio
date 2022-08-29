@@ -72,7 +72,7 @@ const PageTitle = styled.div`
   text-align: center;
   height: 30vh;
   padding: 59px 32px 0;
-  background-image: url('../images/bg_about.png');
+  background-image: url('../images/bg_contact.jpg');
   background-size: cover;
   background-position: center;
   padding-bottom: 48px;
