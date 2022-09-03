@@ -4,8 +4,9 @@ import { Scroll, ScrollControls, useScroll } from './ScrollControls';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
+import {Item} from './Item'
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import { KernelSize } from 'postprocessing';
+
 import { Contents as PageContents } from '../organisms/Contents';
 import { Home } from '../organisms/Home';
 import { About } from '../organisms/About';
@@ -29,12 +30,7 @@ function NeonScene() {
   const ambientProps = useControls('AmbientLight', {
     intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
   });
-  const postprocessingBloom1Props = useControls('Bloom1', {
-    intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
-  });
-  const postprocessingBloom2Props = useControls('Bloom2', {
-    intensity: { value: 0.5, min: 0, max: 1, step: 0.1 },
-  });
+  
   return (
     <group>
       <ambientLight intensity={ambientProps.intensity} />
@@ -44,20 +40,6 @@ function NeonScene() {
         </Route>
         <Ground />
       </Rig>
-      <EffectComposer multisampling={8}>
-        <Bloom
-          kernelSize={3}
-          luminanceThreshold={0}
-          luminanceSmoothing={0.4}
-          intensity={postprocessingBloom1Props.intensity}
-        />
-        <Bloom
-          kernelSize={KernelSize.HUGE}
-          luminanceThreshold={0}
-          luminanceSmoothing={0}
-          intensity={postprocessingBloom2Props.intensity}
-        />
-      </EffectComposer>
     </group>
   );
 }
@@ -85,20 +67,24 @@ function Contents() {
         locale={location}
       >
         <NeonScene />
+        <Scroll>
+          <Switch location={location}>
+            <Route path="/" >
+            {contents.works
+              .filter((work, index) => index < 4)
+              .map((work, index) => (
+                <Item index={index} work={work}/>
+            ))}
+            </Route>
+            <Route>404, Not Found!</Route>
+          </Switch>
+        </Scroll>
         <Scroll html ref={elementRef}>
           <Switch location={location}>
-            <Route path="/">
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/works">
-              <Works />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
+            <Route path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/works" component={Works} />
+            <Route path="/contact" component={Contact} />
             <Route path="/works/:id">
               {(params) => (
                 <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} />
@@ -117,22 +103,19 @@ type RigProps = {
 const Rig: FC<RigProps> = ({ children }) => {
   const ref = useRef<THREE.Group>();
   const vec = new THREE.Vector3();
-  const { camera, mouse } = useThree();
   const { isMobile, isTablet } = useMedia();
   const scroll = useScroll();
+  let last = 0
   useFrame(() => {
-    const offset = 1 - scroll.offset;
     if (!ref.current || !sceneState.isReady) return;
-    camera.position.lerp(
-      vec.set(Math.sin(offset * Math.PI * 2) * 12, 0, Math.cos(offset * Math.PI * 2) * 12),
-      0.05,
-    );
+    ref.current!.position.lerp(vec.set(0, 0, -3),0.05,);
 
-    camera.lookAt(0, 0, 0);
-    //Objectを動かすと簡略に表現はできるz
-    // ref.current!.rotation.y = offset
+    // camera.lookAt(0, 0, 0);
+    //Objectを動かすsと簡略に表現はできるz
+
+    ref.current!.rotation.y = THREE.MathUtils.lerp(last=ref.current!.rotation.y, -scroll.offset * Math.PI*2, 0.05)
   });
-  return <group ref={ref}>{children}</group>;
+  return <group ref={ref} position={[0,0,-20]}>{children}</group>;
 };
 
 export const TCanvas: VFC = () => {
@@ -144,13 +127,6 @@ export const TCanvas: VFC = () => {
   // const [location] = useLocation();
   return (
     <Canvas
-      camera={{
-        position: [0, 0, 20],
-        fov: 50,
-        aspect: window.innerWidth / window.innerHeight,
-        near: 0.1,
-        far: 2000,
-      }}
       dpr={window.devicePixelRatio}
       gl={{ antialias: false }}
       // shadows
@@ -167,7 +143,7 @@ export const TCanvas: VFC = () => {
       <Suspense fallback={null}>
         {/* objects */}
         {/* <Objects /> */}
-
+        
         <Contents />
         <Preload all />
       </Suspense>

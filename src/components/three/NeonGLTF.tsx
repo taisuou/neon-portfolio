@@ -15,6 +15,8 @@ import { animate, useMotionValue } from 'framer-motion';
 import gsap from 'gsap';
 import { sceneState } from '../../utils/sceneState';
 import { useSnapshot } from 'valtio';
+import { Bloom, EffectComposer } from '@react-three/postprocessing';
+import { KernelSize } from 'postprocessing';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -66,6 +68,12 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     posY: { value: 0, min: -5, max: 5, step: 0.1 },
     posZ: { value: 0, min: -5, max: 5, step: 0.1 },
     scale: { value: 1, min: 0, max: 5, step: 0.1 },
+  });
+  const postprocessingBloom1Props = useControls('Bloom1', {
+    intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
+  });
+  const postprocessingBloom2Props = useControls('Bloom2', {
+    intensity: { value: 0.5, min: 0, max: 1, step: 0.1 },
   });
   const { isReady } = useSnapshot(sceneState);
   const scroll = useScroll();
@@ -177,6 +185,20 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
         (neonControl.rotateZ * Math.PI) / 180,
       ]}
     >
+      <EffectComposer multisampling={8}>
+        <Bloom
+          kernelSize={3}
+          luminanceThreshold={0}
+          luminanceSmoothing={0.4}
+          intensity={postprocessingBloom1Props.intensity}
+        />
+        <Bloom
+          kernelSize={KernelSize.HUGE}
+          luminanceThreshold={0}
+          luminanceSmoothing={0}
+          intensity={postprocessingBloom2Props.intensity}
+        />
+      </EffectComposer>
       <group name="logo" position={[0, 0, 0]} rotation={[1.58, -0.01, -0.02]}>
         <mesh
           name="light_fd"
