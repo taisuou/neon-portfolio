@@ -76,6 +76,7 @@ const Hero = styled.div`
   position: relative;
   display: flex;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   min-height: -webkit-fill-available;
   width: 100%;
   justify-content: center;
