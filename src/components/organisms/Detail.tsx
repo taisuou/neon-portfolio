@@ -31,10 +31,9 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <DescriptionJp>{post.descriptionJp}</DescriptionJp>
 
         <PictureWrap>
-          
-          {post.images.map((image, index) => (
-            <Picture src={image} key={index} />
-          ))}
+           {post.images.map((image, index) => (
+           <Picture src={image} key={index} />
+           ))}
         </PictureWrap>
 
         <Caption>
@@ -90,7 +89,7 @@ const Container = styled.div`
 
 const SectionContainer = styled.div`
   ${media.lg`
-    max-width:1108px;
+    max-width:980px;
     margin:0 auto;
   `}
 `;

@@ -39,8 +39,7 @@ const Container = styled.a<{ isOdd: boolean }>`
   ${media.lg`
     width:100%;
     align-items: center;
-    padding:0px 64px;
-    margin-bottom: 128px;
+    padding:0px 64px 128px 64px;
     //justify-content:center;
     flex-direction:row-reverse;
     :nth-of-type(2n){
