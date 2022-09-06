@@ -25,7 +25,14 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <TitleEn>{post.titleEn}</TitleEn>
         <TitleJp>{post.titleJp}</TitleJp>
         <PictureWrap>
-          {post.images.map((image, index) => (
+            <Picture src={post.images[0]}/>
+        </PictureWrap>
+        <p>{post.descriptionEn}</p>
+        <p>{post.descriptionJp}</p>
+        <PictureWrap>
+          {post.images
+          .filter((image, index) => 0 < index)
+          .map((image, index) => (
             <Picture src={image} key={index} />
           ))}
         </PictureWrap>
@@ -43,8 +50,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
             </li>
           </ul>
         </Caption>
-        <p>{post.descriptionEn}</p>
-        <p>{post.descriptionJp}</p>
+        
 
         <PageCtl>
           <CtlTag>{post.tag === 0 ? 'ART' : 'Client'}</CtlTag>
