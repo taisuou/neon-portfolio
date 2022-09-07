@@ -65,7 +65,7 @@ function NeonScene() {
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
-  const { height } = useSnapshot(sceneState);
+  const { height, isWorksFiltered, currentCategory } = useSnapshot(sceneState);
   const [location] = useLocation();
   // let offset = useScroll().offset
 
@@ -75,7 +75,7 @@ function Contents() {
       //コンテンツ落ちを防ぐために僅かに遅くしてる
       sceneState.height = elementRef.current!.getBoundingClientRect().height;
     }, 500);
-  }, [size.height, elementRef, location]);
+  }, [size.height, elementRef, location, isWorksFiltered, currentCategory]);
 
   return (
     <group>

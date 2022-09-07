@@ -50,6 +50,7 @@ export function ScrollControls({
   horizontal,
   pages = 1,
   distance = 1,
+  //for reset scroll position
   locale = '',
   damping = 4,
   style = {},
