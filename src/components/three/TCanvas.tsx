@@ -6,7 +6,6 @@ import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize } from 'postprocessing';
-import { Contents as PageContents } from '../organisms/Contents';
 import { Home } from '../organisms/Home';
 import { About } from '../organisms/About';
 import { Works } from '../organisms/Works';

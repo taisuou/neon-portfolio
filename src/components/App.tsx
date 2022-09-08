@@ -20,7 +20,6 @@ import { Detail } from './organisms/Detail';
 import { Works } from './organisms/Works';
 import { useMedia } from '../utils/useMedia';
 import { Footer } from './molecules/Footer';
-import { Contents } from './organisms/Contents';
 import { Cursor } from './atoms/Cursor';
 import { useProgress } from '@react-three/drei';
 
