@@ -14,7 +14,6 @@ type DetailProps = {
 export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
   return (
     <Container>
-
       <Helmet>
         <title>{post.titleEn}</title>
         <meta name="description" content={post.descriptionEn} />
@@ -25,9 +24,16 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <TitleEn>{post.titleEn}</TitleEn>
         <TitleJp>{post.titleJp}</TitleJp>
         <PictureWrap>
-          {post.images.map((image, index) => (
-            <Picture src={image} key={index} />
-          ))}
+          <Picture src={post.images[0]} />
+        </PictureWrap>
+        <p>{post.descriptionEn}</p>
+        <p>{post.descriptionJp}</p>
+        <PictureWrap>
+          {post.images
+            .filter((image, index) => 0 < index)
+            .map((image, index) => (
+              <Picture src={image} key={index} width="1980" height="1080" />
+            ))}
         </PictureWrap>
         <Caption>
           <ul>
@@ -43,14 +49,12 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
             </li>
           </ul>
         </Caption>
-        <p>{post.descriptionEn}</p>
-        <p>{post.descriptionJp}</p>
 
         <PageCtl>
           <CtlTag>{post.tag === 0 ? 'ART' : 'Client'}</CtlTag>
           <ul>
-            <li>
-              <a
+            <li className={'cursor-scale small'}>
+              <Link
                 href={
                   pageIndex === 0
                     ? `/works/${contents.works.length - 1}`
@@ -58,9 +62,9 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
                 }
               >
                 <img src="../images/arrow_left.svg" alt="" />
-              </a>
+              </Link>
             </li>
-            <li>
+            <li className={'cursor-scale small'}>
               <Link
                 href={
                   pageIndex === contents.works.length - 1 ? `/works/0` : `/works/${pageIndex + 1}`
@@ -111,6 +115,7 @@ const PictureWrap = styled.div`
 
 const Picture = styled.img`
   width: 100%;
+  height: auto;
 `;
 
 const Caption = styled.div`

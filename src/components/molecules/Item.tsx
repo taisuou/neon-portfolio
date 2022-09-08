@@ -11,10 +11,10 @@ type ItemCardProps = {
 
 export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   return (
-    <Link href={`/works/${indexNumber}`} className={'cursor-scale'}>
-      <Container isOdd={indexNumber % 2 === 0 ? true : false}>
+    <Link href={`/works/${indexNumber}`}>
+      <Container isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
         <Picture>
-          <img src={`${post.thumb}`} />
+          <img src={`${post.thumb}`} width="1920" height="1080" />
         </Picture>
         <Info>
           <TitleEN>{post.titleEn}</TitleEN>
@@ -58,6 +58,8 @@ const Picture = styled.div`
   overflow: hidden;
   & img {
     width: 100%;
+    height: auto;
+    object-fit: fill;
     margin-bottom: 24px;
   }
   ${media.lg`

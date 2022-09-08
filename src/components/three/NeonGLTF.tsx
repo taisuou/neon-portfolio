@@ -121,6 +121,7 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     });
   };
   const flicker = () => {
+    //frLight
     const frColor = frLightRef.current!.color;
     const frOffValue = new THREE.Color(Number(lightProps.offColor.replace('#', '0x')));
     const frInActiveValue = new THREE.Color(Number(lightProps.inActiveColor.replace('#', '0x')));
@@ -154,6 +155,44 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
         r: frActiveValue.r,
         g: frActiveValue.g,
         b: frActiveValue.b,
+        duration: 0.1,
+        ease: 'power3.out',
+      });
+
+    //arLight
+    const arColor = arLightRef.current!.color;
+    const arOffValue = new THREE.Color(Number(argonProps.offColor.replace('#', '0x')));
+    const arInActiveValue = new THREE.Color(Number(argonProps.inActiveColor.replace('#', '0x')));
+    const arActiveValue = new THREE.Color(Number(argonProps.activeColor.replace('#', '0x')));
+    gsap
+      .timeline()
+      .set(arColor, {
+        r: arOffValue.r,
+        g: arOffValue.g,
+        b: arOffValue.b,
+      })
+      .to(arColor, {
+        //ON
+        r: arInActiveValue.r,
+        g: arInActiveValue.g,
+        b: arInActiveValue.b,
+        duration: 0.05,
+        delay: 1.5, //DELAY
+        ease: 'power3.out',
+      })
+      .to(arColor, {
+        //OFF
+        r: arOffValue.r,
+        g: arOffValue.g,
+        b: arOffValue.b,
+        duration: 0.05,
+        ease: 'power3.out',
+      })
+      .to(arColor, {
+        //ON
+        r: arActiveValue.r,
+        g: arActiveValue.g,
+        b: arActiveValue.b,
         duration: 0.1,
         ease: 'power3.out',
       });

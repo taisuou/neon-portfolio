@@ -20,7 +20,6 @@ import { Detail } from './organisms/Detail';
 import { Works } from './organisms/Works';
 import { useMedia } from '../utils/useMedia';
 import { Footer } from './molecules/Footer';
-import { Contents } from './organisms/Contents';
 import { Cursor } from './atoms/Cursor';
 import { useProgress } from '@react-three/drei';
 
@@ -77,7 +76,7 @@ export const App: VFC = () => {
             font-size: 62.5%;
             overscroll-behavior: none;
             color: ${color.content.HighEmphasis};
-            height:100%;
+            height: 100%;
           }
           #root {
             width: 100%;

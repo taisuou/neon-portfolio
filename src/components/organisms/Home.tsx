@@ -65,7 +65,7 @@ export const Home: VFC = () => {
             </ImageWrap>
           ))}
 
-        <ButtonMore>
+        <ButtonMore className={'cursor-scale'}>
           <Link href="/works">view all works</Link>
         </ButtonMore>
       </Container>
@@ -114,7 +114,7 @@ const MainTitle = styled.div`
 
 const ButtonMore = styled.div`
   text-align: center;
-  padding: 0 32px 64px 32px; 
+  padding: 0 32px 64px 32px;
   ${font.Inter.button}
   & a {
     display: block;

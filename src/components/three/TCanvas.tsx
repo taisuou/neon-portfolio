@@ -6,8 +6,7 @@ import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import {Item} from './Item'
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-
-import { Contents as PageContents } from '../organisms/Contents';
+import { KernelSize } from 'postprocessing';
 import { Home } from '../organisms/Home';
 import { About } from '../organisms/About';
 import { Works } from '../organisms/Works';
@@ -47,7 +46,7 @@ function NeonScene() {
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
-  const { height } = useSnapshot(sceneState);
+  const { height, isWorksFiltered, currentCategory } = useSnapshot(sceneState);
   const [location] = useLocation();
   // let offset = useScroll().offset
 
@@ -57,7 +56,7 @@ function Contents() {
       //コンテンツ落ちを防ぐために僅かに遅くしてる
       sceneState.height = elementRef.current!.getBoundingClientRect().height;
     }, 500);
-  }, [size.height, elementRef, location]);
+  }, [size.height, elementRef, location, isWorksFiltered, currentCategory]);
 
   return (
     <group>

@@ -41,7 +41,7 @@ export const contents = {
       tag: 0,
       thumb: '/images/posts/2022_kawakyu/2022_kawakyu_00.jpg',
       year: '2022',
-      pjinfo:'Exhibition',
+      pjinfo: 'Exhibition',
       descriptionEn:
         'Works exhibited in "Kawakyu Art Exibition 2022: A Dream That Exists".Residence program at Hotel Kawakyu, Wakayama. Jury recommended artist.',
       descriptionJp:
@@ -59,11 +59,9 @@ export const contents = {
       tag: 0,
       thumb: '/images/posts/2021_argondance/2021_argondance_00.jpg',
       year: '2021',
-      pjinfo:'private work',
-      descriptionEn:
-        'No description',
-      descriptionJp:
-        '',
+      pjinfo: 'private work',
+      descriptionEn: 'No description',
+      descriptionJp: '',
       images: [
         '/images/posts/2021_argondance/2021_argondance_00.jpg',
         '/images/posts/2021_argondance/2021_argondance_01.jpg',
@@ -76,7 +74,7 @@ export const contents = {
       tag: 0,
       thumb: '/images/posts/2020_distortion/2020_distortion_00.jpg',
       year: '2022',
-      pjinfo:'private work',
+      pjinfo: 'private work',
       descriptionEn:
         'Neon tube viewed through a filter that detects distortion of the glass. Graphics are expressed through distortion',
       descriptionJp:
@@ -96,11 +94,9 @@ export const contents = {
       tag: 1,
       thumb: '/images/posts/2020_noname/2020_noname_00.jpg',
       year: '2020',
-      pjinfo:'order',
-      descriptionEn:
-        'Neon sign of cafe & bar "NONAME" / Utsunomiya, Tochigi',
-      descriptionJp:
-        'カフェ&バー「NONAME」のネオンサイン / 栃木県宇都宮市',
+      pjinfo: 'order',
+      descriptionEn: 'Neon sign of cafe & bar "NONAME" / Utsunomiya, Tochigi',
+      descriptionJp: 'カフェ&バー「NONAME」のネオンサイン / 栃木県宇都宮市',
       images: [
         '/images/posts/2020_noname/2020_noname_00.jpg',
         '/images/posts/2020_noname/2020_noname_01.jpg',
@@ -114,11 +110,9 @@ export const contents = {
       tag: 1,
       thumb: '/images/posts/2019_vase/2019_vase_00.jpg',
       year: '2019',
-      pjinfo:'order',
-      descriptionEn:
-        'Neon sign for select store “Vase“/ Kamimeguro, Meguro-ku, Tokyo',
-      descriptionJp:
-        'セレクトショップ 「Vase」のネオンサイン / 東京都目黒区上目黒',
+      pjinfo: 'order',
+      descriptionEn: 'Neon sign for select store “Vase“/ Kamimeguro, Meguro-ku, Tokyo',
+      descriptionJp: 'セレクトショップ 「Vase」のネオンサイン / 東京都目黒区上目黒',
       images: [
         '/images/posts/2019_vase/2019_vase_00.jpg',
         '/images/posts/2019_vase/2019_vase_01.jpg',
@@ -132,11 +126,9 @@ export const contents = {
       tag: 0,
       thumb: '/images/posts/2019_neonflower/2019_neonflower_00.jpg',
       year: '2019',
-      pjinfo:'exhibition',
-      descriptionEn:
-        'Neon and dried flower sign base',
-      descriptionJp:
-        '音楽イベント「岩壁音楽祭」のネオンサイン',
+      pjinfo: 'exhibition',
+      descriptionEn: 'Neon and dried flower sign base',
+      descriptionJp: '音楽イベント「岩壁音楽祭」のネオンサイン',
       images: [
         '/images/posts/2019_neonflower/2019_neonflower_00.jpg',
         '/images/posts/2019_neonflower/2019_neonflower_01.jpg',
@@ -152,11 +144,9 @@ export const contents = {
       tag: 1,
       thumb: '/images/posts/2019_gampeki/2019_gampeki_00.jpg',
       year: '2019',
-      pjinfo:'event',
-      descriptionEn:
-        'Neon sign for "Rock Wall Music Festival" music event',
-      descriptionJp:
-        '音楽イベント「岩壁音楽祭」のネオンサイン',
+      pjinfo: 'event',
+      descriptionEn: 'Neon sign for "Rock Wall Music Festival" music event',
+      descriptionJp: '音楽イベント「岩壁音楽祭」のネオンサイン',
       images: [
         '/images/posts/2019_gampeki/2019_gampeki_00.jpg',
         '/images/posts/2019_gampeki/2019_gampeki_01.jpg',
@@ -169,11 +159,9 @@ export const contents = {
       tag: 0,
       thumb: '/images/posts/2019_campbells/2019_campbells_00.jpg',
       year: '2019',
-      pjinfo:'exhibition',
-      descriptionEn:
-        'Works exhibited at the "Banana Night" art event',
-      descriptionJp:
-        'アートイベント「バナナナイト」出展作品',
+      pjinfo: 'exhibition',
+      descriptionEn: 'Works exhibited at the "Banana Night" art event',
+      descriptionJp: 'アートイベント「バナナナイト」出展作品',
       images: [
         '/images/posts/2019_campbells/2019_campbells_00.jpg',
         '/images/posts/2019_campbells/2019_campbells_01.jpg',
