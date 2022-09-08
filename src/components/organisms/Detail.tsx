@@ -55,7 +55,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <PageCtl>
           <CtlTag>{post.tag === 0 ? 'ART' : 'Client'}</CtlTag>
           <ul>
-            <li>
+            <li className={'cursor-scale small'}>
               <Link
                 href={
                   pageIndex === 0
@@ -66,7 +66,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
                 <img src="../images/arrow_left.svg" alt="" />
               </Link>
             </li>
-            <li>
+            <li className={'cursor-scale small'}>
               <Link
                 href={
                   pageIndex === contents.works.length - 1 ? `/works/0` : `/works/${pageIndex + 1}`

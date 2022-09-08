@@ -63,7 +63,7 @@ export const Home: VFC = () => {
             <Item post={work} key={index} indexNumber={index} />
           ))}
 
-        <ButtonMore>
+        <ButtonMore className={'cursor-scale'}>
           <Link href="/works">view all works</Link>
         </ButtonMore>
       </Container>

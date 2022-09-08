@@ -33,19 +33,25 @@ export const Works: VFC = () => {
             <UiCategoryBtn isActive={!isFiltered} onClick={()=>{
               setIsFiltered(false)
               setCurrentCategory(0)
-            }}>ALL</UiCategoryBtn>
+            }}
+            className={'cursor-scale small'}
+            >ALL</UiCategoryBtn>
           </li>
           <li>
             <UiCategoryBtn isActive={isFiltered&&currentCategory===0} onClick={()=>{
               setIsFiltered(true)
               setCurrentCategory(0)
-            }}>Art</UiCategoryBtn>
+            }}
+            className={'cursor-scale small'}
+            >Art</UiCategoryBtn>
           </li>
           <li>
             <UiCategoryBtn isActive={isFiltered&&currentCategory===1} onClick={()=>{
               setIsFiltered(true)
               setCurrentCategory(1)
-            }}>Client</UiCategoryBtn>
+            }}
+            className={'cursor-scale small'}
+            >Client</UiCategoryBtn>
           </li>
         </ul>
       </UiCategory>
