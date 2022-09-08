@@ -33,7 +33,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
           {post.images
           .filter((image, index) => 0 < index)
           .map((image, index) => (
-            <Picture src={image} key={index} />
+            <Picture src={image} key={index} width='1980' height='1080'/>
           ))}
         </PictureWrap>
         <Caption>
@@ -117,6 +117,7 @@ const PictureWrap = styled.div`
 
 const Picture = styled.img`
   width: 100%;
+  height:auto;
 `;
 
 const Caption = styled.div`
