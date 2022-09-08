@@ -76,7 +76,7 @@ export const App: VFC = () => {
             font-size: 62.5%;
             overscroll-behavior: none;
             color: ${color.content.HighEmphasis};
-            height:100%;
+            height: 100%;
           }
           #root {
             width: 100%;

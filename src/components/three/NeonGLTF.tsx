@@ -151,8 +151,8 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
         ease: 'power3.out',
       });
 
-      //arLight
-      const arColor = arLightRef.current!.color;
+    //arLight
+    const arColor = arLightRef.current!.color;
     const arOffValue = new THREE.Color(Number(argonProps.offColor.replace('#', '0x')));
     const arInActiveValue = new THREE.Color(Number(argonProps.inActiveColor.replace('#', '0x')));
     const arActiveValue = new THREE.Color(Number(argonProps.activeColor.replace('#', '0x')));

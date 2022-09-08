@@ -112,7 +112,7 @@ const MainTitle = styled.div`
 
 const ButtonMore = styled.div`
   text-align: center;
-  padding: 0 32px 64px 32px; 
+  padding: 0 32px 64px 32px;
   ${font.Inter.button}
   & a {
     display: block;
