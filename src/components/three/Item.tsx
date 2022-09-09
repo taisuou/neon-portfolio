@@ -24,15 +24,26 @@ export const Item: VFC<Props> = (props) => {
   const { isMobile, isTablet } = useMedia();
   const isMobTab = isMobile||isTablet
   const isOdd = props.index%2===0
+  
+
   useFrame((state, delta) => {
     // ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
     // ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, visible.current ? 1 : 1.5, 4, delta)
   })
   return (
     <group scale={1} position={[0,-height*(props.index*0.8+1),0]}>
-    {/* @ts-ignore */}
-    <Image ref={ref} scale={[isMobTab?width:width*0.6,height*0.6,1]} position={[isMobTab?0:(isOdd?width*0.35:-width*0.35), 0, 0]} url={props.work.thumb} />
-    <Html position ={[0,0,0.1]}>
+    <Image
+      // @ts-ignore
+      ref={ref} 
+      // @ts-ignore
+      scale={[isMobTab?width:width*0.6,3,1]} 
+      position={[isMobTab?0:(isOdd?width*0.35:-width*0.35), 0, 0]} 
+      url={props.work.thumb} 
+    />
+    <Html 
+      position ={[isMobTab?width:-(width*0.4+gap*0.5),0,0.1]}
+      style={{width:'40vw'}}
+    >
         <h2>{props.work.titleEn}</h2>
         <p>{props.work.titleJp}</p>
         <p style={{padding:'2px 4px', border:'solid 1px #ffffff', borderRadius:4}}>ART</p>
