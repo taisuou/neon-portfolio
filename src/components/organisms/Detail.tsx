@@ -30,7 +30,8 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <DescriptionJp>{post.descriptionJp}</DescriptionJp>
 
         <PictureWrap>
-           {post.images.map((image, index) => (
+           {post.images.filter((image, index) => 0 < index)
+           .map((image, index) => (
            <Picture src={image} key={index} />
            ))}
         </PictureWrap>

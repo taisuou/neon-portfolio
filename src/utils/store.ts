@@ -109,24 +109,6 @@ export const contents = {
       ],
     },
     {
-      titleEn: '"Chim↑Pom from Smappa! Group" logo neon sign',
-      titleJp: '"Chim↑Pom from Smappa! Group" ロゴネオンサイン',
-      // ART:0, Client:1
-      tag: 1,
-      thumb: '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
-      year: '2022',
-      pjinfo:'order work',
-      descriptionEn:
-        'Chim↑Pom from Smappa! Group logo neon sign / @ ANOMALY Gallery / April 27, 2022 (Wed) - June 4, 2022 (Sat)',
-      descriptionJp:
-        'Chim↑Pom from Smappa! Group ロゴネオンサイン / 個展「Chim↑Pom from Smappa!Group」 / ＠ANOMALY Gallery / 2022年4月27日 (水) - 2022年6月4日 (土)',
-      images: [
-        '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
-        '/images/posts/2022_chimpom/2022_chimpom_01.jpg',
-        '/images/posts/2022_chimpom/2022_chimpom_02.jpg',
-      ],
-    },
-    {
       titleEn: '3DCG Neon typography and graphics',
       titleJp: '3DCGネオンタイポグラフィ&グラフィックス',
       // ART:0, Client:1
@@ -162,44 +144,6 @@ export const contents = {
       ],
     },
     {
-      titleEn: 'Argon Dance',
-      titleJp: '',
-      // ART:0, Client:1
-      tag: 0,
-      thumb: '/images/posts/2022_distortion/2022_distortion_04.jpg',
-      year: '2022',
-      pjinfo:'exhibition',
-      descriptionEn:
-        'Distortion, twist, and strain. This is an experimental work that reveals the aesthetic and emotional qualities that reside in phenomena that would normally be overlooked.',
-      descriptionJp:
-        'ゆがみ、ねじれ、ひずみ。普段看過されてしまうような事象に宿る、審美性、情緒性を表出させる実験作品。',
-      images: [
-        '/images/posts/2022_distortion/2022_distortion_01.jpg',
-        '/images/posts/2022_distortion/2022_distortion_02.jpg',
-        '/images/posts/2022_distortion/2022_distortion_03.jpg',
-        '/images/posts/2022_distortion/2022_distortion_00.jpg',
-      ],
-    },
-    {
-      titleEn: '"Life Line"/ LUMINE meets ART AWARD2020-2021',
-      titleJp: '「Life Line」/ ルミネミーツアートアワード2020-2021',
-      // ART:0, Client:1
-      tag: 0,
-      thumb: '/images/posts/2021_lifeline/2021_lifeline_00.jpg',
-      year: '2021',
-      pjinfo:'private work',
-      descriptionEn:
-        'No Description',
-      descriptionJp:
-        '',
-      images: [
-        '/images/posts/2022_toyneon/2022_toyneon_00.jpg',
-        '/images/posts/2022_toyneon/2022_toyneon_01.jpg',
-        '/images/posts/2022_toyneon/2022_toyneon_02.jpg',
-        '/images/posts/2022_toyneon/2022_toyneon_03.jpg',
-      ],
-    },
-    {
       titleEn: '"Chim↑Pom from Smappa! Group" logo neon sign',
       titleJp: '"Chim↑Pom from Smappa! Group" ロゴネオンサイン',
       // ART:0, Client:1
@@ -215,41 +159,6 @@ export const contents = {
         '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
         '/images/posts/2022_chimpom/2022_chimpom_01.jpg',
         '/images/posts/2022_chimpom/2022_chimpom_02.jpg',
-      ],
-    },
-    {
-      titleEn: '3DCG Neon typography and graphics',
-      titleJp: '3DCGネオンタイポグラフィ&グラフィックス',
-      // ART:0, Client:1
-      tag: 0,
-      thumb: '/images/posts/2021_3dtypography/2021_3dtypography_00.jpg',
-      year: '2021',
-      pjinfo:'private work',
-      descriptionEn:
-        '3DCG Neon typography and graphics',
-      descriptionJp:
-        '3DCGネオンタイポグラフィ&グラフィック',
-      images: [
-        '/images/posts/2021_3dtypography/2021_3dtypography_00.jpg',
-        '/images/posts/2021_3dtypography/2021_3dtypography_01.jpg',
-        '/images/posts/2021_3dtypography/2021_3dtypography_02.jpg',
-      ],
-    },
-    {
-      titleEn: 'Ghost Neon Sign',
-      titleJp: '',
-      // ART:0, Client:1
-      tag: 1,
-      thumb: '/images/posts/2021_ghost/2021_ghost_00.jpg',
-      year: '2021',
-      pjinfo:'order work',
-      descriptionEn:
-        'Neon sign of shared atelier "Ghost" / Yotsugi, Katsushika-ku, Tokyo',
-      descriptionJp:
-        'シェアアトリエ「Ghost」のネオンサイン/ 東京都葛飾区四つ木',
-      images: [
-        '/images/posts/2021_ghost/2021_ghost_00.jpg',
-        '/images/posts/2021_ghost/2021_ghost_01.jpg',
       ],
     },
     {
@@ -332,7 +241,7 @@ export const contents = {
       descriptionEn:
         'Neon and dried flower sign base',
       descriptionJp:
-        'セレクトショップ 「Vase」のネオンサイン / 東京都目黒区上目黒',
+        '',
       images: [
         '/images/posts/2019_neonflower/2019_neonflower_00.jpg',
         '/images/posts/2019_neonflower/2019_neonflower_01.jpg',
