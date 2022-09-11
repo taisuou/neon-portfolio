@@ -57,7 +57,7 @@ export function ScrollControls({
   style = {},
   children,
 }: ScrollControlsProps) {
-  const { gl, size, invalidate, events, raycaster } = useThree();
+  const { gl, size, invalidate, events } = useThree();
   const get = useThree((state) => state.get);
   const setEvents = useThree((state) => state.setEvents);
   const [el] = React.useState(() => document.createElement('div'));
@@ -101,6 +101,7 @@ export function ScrollControls({
       },
     };
     return state;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eps, damping, horizontal, pages]);
 
   React.useEffect(() => {
@@ -159,6 +160,7 @@ export function ScrollControls({
       setEvents({ compute: oldComputeOffsets });
       events.connect?.(oldTarget);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pages, distance, horizontal, el, fill, fixed, target]);
 
   React.useEffect(() => {
@@ -207,6 +209,7 @@ export function ScrollControls({
       el.removeEventListener('scroll', onScroll);
       if (horizontal) el.removeEventListener('wheel', onWheel);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [el, size, infinite, state, invalidate, horizontal]);
 
   let last = 0;
@@ -247,6 +250,7 @@ const ScrollHtml = React.forwardRef(
       group.current.style.transform = `translate3d(${
         state.horizontal ? -width * (state.pages - 1) * state.offset : 0
       }px,${state.horizontal ? 0 : height * (state.pages - 1) * -state.offset}px,0)`;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.locale]);
 
     useFrame(() => {

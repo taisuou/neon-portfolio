@@ -1,18 +1,8 @@
-import gsap from 'gsap';
-import { useRef, VFC } from 'react';
-import { Plane, Reflector, useTexture } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { VFC } from 'react';
 import { MeshReflectorMaterial } from '@react-three/drei';
-import * as THREE from 'three';
 import { useControls } from 'leva';
 
 export const Ground: VFC = () => {
-  useFrame(() => {});
-
-  const [floor, normal] = useTexture([
-    '/SurfaceImperfections003_1K_var1.jpg',
-    '/SurfaceImperfections003_1K_Normal.jpg',
-  ]);
   const groundProps = useControls('GroundControl', {
     rotateX: { value: -75, min: -180, max: 180, step: 1 },
     rotateY: { value: 0, min: -180, max: 180, step: 1 },

@@ -5,28 +5,18 @@ import { Loader } from './molecules/Loader';
 import { Header } from './molecules/Header';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { color, media, zIndex } from '../utils/style';
+import { color } from '../utils/style';
 import { Leva } from 'leva';
 import { Helmet } from 'react-helmet';
 import { contents } from '../utils/store';
-import { useSnapshot } from 'valtio';
 import { sceneState } from '../utils/sceneState';
-import { Route, Switch } from 'wouter';
-import { Home } from './organisms/Home';
-import { About } from './organisms/About';
-import { Contact } from './organisms/Contact';
-import { Detail } from './organisms/Detail';
-import { Works } from './organisms/Works';
-import { useMedia } from '../utils/useMedia';
-import { Footer } from './molecules/Footer';
+
 import { Cursor } from './atoms/Cursor';
 import { useProgress } from '@react-three/drei';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
-  const { isMobile, isTablet } = useMedia();
-  const { active, progress, errors, item, loaded, total } = useProgress();
+  const { active } = useProgress();
   useEffect(() => {
     setTimeout(() => {
       //check if 3d canvas is active
@@ -43,7 +33,6 @@ export const App: VFC = () => {
         styles={css`
           /* TIPS:ページ全体へのCSSはここで定義 */
 
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
           @font-face {
             font-family: 'replica';
             src: url('/fonts/ReplicaLLWeb-Bold.woff') format('woff');
@@ -54,7 +43,7 @@ export const App: VFC = () => {
             box-sizing: border-box;
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            font-smoothing: antialiased;
+            /* font-smoothing: antialiased; */
           }
           html {
             width: 100%;
@@ -91,6 +80,12 @@ export const App: VFC = () => {
         title={contents.meta.title}
         meta={[{ name: 'description', content: contents.meta.description }]}
       >
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
         <meta property="og:url" content="OGPに掲載するページのURL" />
         <meta property="og:type" content="website" />
