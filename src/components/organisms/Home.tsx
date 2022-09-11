@@ -61,7 +61,7 @@ export const Home: VFC = () => {
           .filter((work: WorkPost, index) => index < 4)
           .map((work: WorkPost, index) => (
             // <ImageWrap>
-              <Item post={work} key={index} indexNumber={index} />
+            <Item post={work} key={index} indexNumber={index} />
             // </ImageWrap>
           ))}
 
@@ -138,10 +138,10 @@ const ButtonMore = styled.div`
   }
 `;
 const ImageWrap = styled.div`
-  height:80vh;
+  height: 80vh;
   display: flex;
-  align-items:center ;
-`
+  align-items: center;
+`;
 const ScrollArrow = styled.div`
   position: absolute;
   text-align: center;

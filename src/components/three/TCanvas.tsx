@@ -4,7 +4,7 @@ import { Scroll, ScrollControls, useScroll } from './ScrollControls';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
-import {Item} from './Item'
+import { Item } from './Item';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize } from 'postprocessing';
 import { Home } from '../organisms/Home';
@@ -29,7 +29,7 @@ function NeonScene() {
   const ambientProps = useControls('AmbientLight', {
     intensity: { value: 0.6, min: 0, max: 1, step: 0.1 },
   });
-  
+
   return (
     <group>
       <ambientLight intensity={ambientProps.intensity} />
@@ -68,11 +68,11 @@ function Contents() {
         <NeonScene />
         <Scroll>
           <Switch location={location}>
-            <Route path="/" >
-              <Item/>
+            <Route path="/">
+              <Item />
             </Route>
-            <Route path="/works" >
-              <Item/>
+            <Route path="/works">
+              <Item />
             </Route>
             <Route>404, Not Found!</Route>
           </Switch>
@@ -103,17 +103,25 @@ const Rig: FC<RigProps> = ({ children }) => {
   const vec = new THREE.Vector3();
   const { isMobile, isTablet } = useMedia();
   const scroll = useScroll();
-  let last = 0
+  let last = 0;
   useFrame(() => {
     if (!ref.current || !sceneState.isReady) return;
-    ref.current!.position.lerp(vec.set(0, 0, -3),0.05,);
+    ref.current!.position.lerp(vec.set(0, 0, -3), 0.05);
 
     // camera.lookAt(0, 0, 0);
     //Objectを動かすsと簡略に表現はできるz
 
-    ref.current!.rotation.y = THREE.MathUtils.lerp(last=ref.current!.rotation.y, -scroll.offset * Math.PI*2, 0.05)
+    ref.current!.rotation.y = THREE.MathUtils.lerp(
+      (last = ref.current!.rotation.y),
+      -scroll.offset * Math.PI * 2,
+      0.05,
+    );
   });
-  return <group ref={ref} position={[0,0,-20]}>{children}</group>;
+  return (
+    <group ref={ref} position={[0, 0, -20]}>
+      {children}
+    </group>
+  );
 };
 
 export const TCanvas: VFC = () => {
@@ -139,7 +147,6 @@ export const TCanvas: VFC = () => {
 
       {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
-        
         <Contents />
         <Preload all />
       </Suspense>
