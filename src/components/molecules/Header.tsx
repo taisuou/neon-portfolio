@@ -229,7 +229,7 @@ export const Header: VFC = () => {
             isMenuOpen && menuClose();
           }}
         >
-          <Logo className={'cursor-scale'}>
+          <Logo className={'cursor-scale small'}>
             <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
           </Logo>
         </a>
@@ -238,7 +238,7 @@ export const Header: VFC = () => {
       {!isMobile ? (
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
-            <li key={index} className={'cursor-scale'}>
+            <li key={index} className={'cursor-scale small'}>
               <Link href={`/${menu}`}>
                 <a>
                   <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
@@ -352,7 +352,7 @@ const DesktopMenuContainer = styled.ul`
   display: flex;
   z-index: ${zIndex.elevation.ev8};
   li {
-    margin: 0 24px 0 0;
+    margin: 0 48px 0 0;
     a {
       color: ${color.content.HighEmphasis};
       text-decoration: none;

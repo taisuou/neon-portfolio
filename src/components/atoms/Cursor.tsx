@@ -33,6 +33,15 @@ export const Cursor: VFC = () => {
     });
     cursorScale.forEach((link) => {
       link.addEventListener('mousemove', () => {
+        if (link.classList.contains('small')) {
+          gsap.to(cursorElem.current!, {
+            width: 44,
+            height: 44,
+            duration: 1,
+            ease: 'power3',
+          });
+          return;
+        }
         gsap.to(cursorElem.current!, {
           width: 82,
           height: 82,

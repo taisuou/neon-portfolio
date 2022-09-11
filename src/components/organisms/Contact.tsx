@@ -15,7 +15,9 @@ export const Contact: VFC = () => {
         </SectionTitle>
         <TextBox>
           <TextDec>
-            <a href="mailto:taisho@electrodeart">taisho@electrodeart.com</a>
+            <a href="mailto:taisho@electrodeart" className={'cursor-scale small'}>
+              taisho@electrodeart.com
+            </a>
           </TextDec>
         </TextBox>
       </SectionContainer>
@@ -30,7 +32,11 @@ export const Contact: VFC = () => {
               <p>
                 <span>instagram</span>
               </p>
-              <a href="https://www.instagram.com/electrode_taisho/" target="_blank">
+              <a
+                href="https://www.instagram.com/electrode_taisho/"
+                target="_blank"
+                className={'cursor-scale small'}
+              >
                 @electrode_taisho
               </a>
             </li>
@@ -38,7 +44,11 @@ export const Contact: VFC = () => {
               <p>
                 <span>Medium</span>
               </p>
-              <a href="https://medium.com/@electrodeart" target="_blank">
+              <a
+                href="https://medium.com/@electrodeart"
+                target="_blank"
+                className={'cursor-scale small'}
+              >
                 @electrodeart
               </a>
             </li>
@@ -46,7 +56,11 @@ export const Contact: VFC = () => {
               <p>
                 <span>twitter</span>
               </p>
-              <a href="https://twitter.com/electrodeart" target="_blank">
+              <a
+                href="https://twitter.com/electrodeart"
+                target="_blank"
+                className={'cursor-scale small'}
+              >
                 @electrodeart
               </a>
             </li>
@@ -153,4 +167,3 @@ const ColInfobox = styled.div`
   }
 `}
 `;
-
