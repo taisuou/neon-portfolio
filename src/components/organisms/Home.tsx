@@ -52,9 +52,16 @@ export const Home: VFC = () => {
             <span ref={heroTitle.current[1]}>Neon Arts</span>
           </p>
         </MainTitle>
-        <ScrollArrow>
+        <ScrollArrow className='scrollIcon'>
           <p>Scroll</p>
-          <img src="images/arrow_scroll.svg" alt="" />
+          <ScrollIcon>
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M35.5068 60.164L39.452 56.2188" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M35.5069 60.1641L31.5616 56.2189" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M35.5068 11.835V60.1637" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="36" cy="36" r="35" stroke="white" stroke-width="2"/>
+          </svg>
+          </ScrollIcon>
         </ScrollArrow>
       </Hero>
       <Container>
@@ -237,4 +244,18 @@ const ScrollArrow = styled.div`
   p {
     margin-bottom: 8px;
   }
+`;
+
+const ScrollIcon = styled.div`
+  animation: rotateFront 4000ms linear infinite;
+
+  @keyframes rotateFront {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-359deg);
+  }
+}
+
 `;

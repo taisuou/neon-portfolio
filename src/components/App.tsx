@@ -88,12 +88,25 @@ export const App: VFC = () => {
           }
         `}
       />
+      
+      {!!process.env.GA_MEASUREMENT_ID && (
       <Helmet
         title={contents.meta.title}
         meta={[{ name: 'description', content: contents.meta.description }]}
       >
+        <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}></script>
+        <script>
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.GA_MEASUREMENT_ID}');
+            `}
+        </script>
         <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
-        <meta property="og:url" content="OGPに掲載するページのURL" />
+        <meta property="og:url" content="https://www.electrodeart.com/" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={contents.meta.title} />
         <meta property="og:description" content={contents.meta.description} />
@@ -101,6 +114,8 @@ export const App: VFC = () => {
         <meta property="og:image" content={contents.meta.ogp} />
         <meta name="google" content="notranslate" />
       </Helmet>
+      )}
+
       <TCanvas />
       <Header />
       <Loader isReady={isReady} />
