@@ -259,17 +259,9 @@ export const contents = {
       tag: 0,
       thumb: '/images/posts/2021_argondance/2021_argondance_00.jpg',
       year: '2021',
-<<<<<<< HEAD
-      pjinfo:'private work',
-      descriptionEn:
-        'No Description',
-      descriptionJp:
-        '',
-=======
       pjinfo: 'private work',
       descriptionEn: 'No description',
       descriptionJp: '',
->>>>>>> 81fc8530ccfddd6c0aeb7423cea0c7fb24c52211
       images: [
         '/images/posts/2021_argondance/2021_argondance_00.jpg',
         '/images/posts/2021_argondance/2021_argondance_01.jpg',
