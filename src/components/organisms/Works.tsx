@@ -75,7 +75,7 @@ export const Works: VFC = () => {
 };
 
 const Container = styled.div`
-  background: ${color.background.dark};
+  /* background: ${color.background.dark}; */
 `;
 
 const PageTitle = styled.div`

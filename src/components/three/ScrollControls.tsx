@@ -1,8 +1,9 @@
 import * as THREE from 'three';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { context as fiberContext, useFrame, useThree } from '@react-three/fiber';
+import { context as fiberContext, useFrame, useThree, RootState } from '@react-three/fiber';
 import mergeRefs from 'react-merge-refs';
+import { DomEvent } from '@react-three/fiber/dist/declarations/src/core/events'
 
 export type ScrollControlsProps = {
   eps?: number;
@@ -57,6 +58,8 @@ export function ScrollControls({
   children,
 }: ScrollControlsProps) {
   const { gl, size, invalidate, events, raycaster } = useThree();
+   const get = useThree((state) => state.get)
+   const setEvents = useThree((state) => state.setEvents)
   const [el] = React.useState(() => document.createElement('div'));
   const [fill] = React.useState(() => document.createElement('div'));
   const [fixed] = React.useState(() => document.createElement('div'));
@@ -132,15 +135,25 @@ export function ScrollControls({
 
     const oldTarget = typeof events.connected !== 'boolean' ? events.connected : gl.domElement;
     requestAnimationFrame(() => events.connect?.(el));
-    const oldCompute = raycaster.computeOffsets;
-    raycaster.computeOffsets = ({ clientX, clientY }) => ({
-      offsetX: clientX - (target as HTMLElement).offsetLeft,
-      offsetY: clientY - (target as HTMLElement).offsetTop,
-    });
+    // const oldCompute = raycaster.computeOffsets;
+    // raycaster.computeOffsets = ({ clientX, clientY }) => ({
+    //   offsetX: clientX - (target as HTMLElement).offsetLeft,
+    //   offsetY: clientY - (target as HTMLElement).offsetTop,
+    // });
+    const oldComputeOffsets = get().events.compute
+    setEvents({
+      compute(event: DomEvent, state: RootState) {
+        const offsetX = state.size.width / 2
+        const offsetY = state.size.height / 2
+        state.pointer.set((offsetX / state.size.width) * 2 - 1, -(offsetY / state.size.height) * 2 + 1)
+        state.raycaster.setFromCamera(state.pointer, state.camera)
+      },
+    })
 
     return () => {
       target.removeChild(el);
-      raycaster.computeOffsets = oldCompute;
+      // raycaster.computeOffsets = oldCompute;
+      setEvents({ compute: oldComputeOffsets })
       events.connect?.(oldTarget);
     };
   }, [pages, distance, horizontal, el, fill, fixed, target]);
@@ -202,7 +215,7 @@ export function ScrollControls({
   return <context.Provider value={state}>{children}</context.Provider>;
 }
 
-const ScrollCanvas = React.forwardRef(({ children }, ref) => {
+const ScrollCanvas = React.forwardRef(({ children }:{children?:React.ReactNode}, ref) => {
   const group = React.useRef<THREE.Group>(null!);
   const state = useScroll();
   const { width, height } = useThree((state) => state.viewport);
@@ -252,6 +265,7 @@ const ScrollHtml = React.forwardRef(
       </div>,
       state.fixed,
     );
+    
     return null;
   },
 );

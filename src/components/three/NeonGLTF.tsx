@@ -11,7 +11,6 @@ import { GUIController } from '../../utils/gui';
 import { useFrame } from '@react-three/fiber';
 import { glassState } from '../../utils/store';
 import { useControls } from 'leva';
-import { animate, useMotionValue } from 'framer-motion';
 import gsap from 'gsap';
 import { sceneState } from '../../utils/sceneState';
 import { useSnapshot } from 'valtio';
@@ -51,12 +50,12 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     color: '#c4b072',
     opacity: { value: 0.3, min: 0, max: 1, step: 0.1 },
     emissive: '#c4b072',
-    offColor: '#0d0c08',
-    activeColor: '#6d5b27',
-    inActiveColor: '#2e2815',
+    offColor: '#3b3a38',
+    activeColor: '#968542',
+    inActiveColor: '#554c26',
   });
   const argonProps = useControls('ArgonMaterial', {
-    offColor: '#0d0c08',
+    offColor: '#3b3a38',
     activeColor: '#258291',
     inActiveColor: '#0b2a2f',
   });

@@ -1,53 +1,61 @@
 import gsap from 'gsap';
-import { useRef, VFC } from 'react';
-import { Plane, Reflector, useTexture, Image, Text, useIntersect, Html } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useEffect, useRef, VFC } from 'react';
+import { Plane, Reflector, useTexture, Image, Text, useIntersect, Html, RenderTexture } from '@react-three/drei';
+import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { MeshReflectorMaterialProps } from '@react-three/drei/materials/MeshReflectorMaterial';
 import * as THREE from 'three';
 import { useMedia } from '../../utils/useMedia';
 import { Flex, Box, useReflow } from '@react-three/flex';
 import { WorkPost } from '../../../@types/schema';
+import { useSnapshot } from 'valtio';
+import { sceneState } from '../../utils/sceneState';
 
 interface Props {
-  index:number
-  work:WorkPost
+  
 }
 
-
+type ImagePlane = {
+  src:string,
+  width:number, 
+  height:number,
+  x:number,
+  y:number
+}
 
 
 export const Item: VFC<Props> = (props) => {
   const { width, height } = useThree((state) => state.viewport);
-  const gap = width*0.1
-  const visible = useRef(false)
-  const ref = useIntersect((isVisible) => (visible.current = isVisible))
   const { isMobile, isTablet } = useMedia();
-  const isMobTab = isMobile||isTablet
-  const isOdd = props.index%2===0
   
+  
+  // const texture = useLoader(THREE.TextureLoader, props.work.thumb)
+  // @ts-ignore
+  const htmlImages = [...document.querySelectorAll('.mesh-image')];
+  const imagePlaneArray:ImagePlane[] = [];
+  htmlImages.forEach(img => {
+    
+    const rect = img.getBoundingClientRect();
+    console.log(img)
+    // @ts-ignore
+    const rectWidth = rect.width/window.innerWidth*width
+    const rectHeight = rect.height/window.innerHeight*height
+    const x = rect.left/window.innerWidth*width - width/2 + rectWidth/2
+    const y = -rect.top/window.innerHeight*height + height/2 - rectHeight/2
+    console.log(rect)
+    // @ts-ignore
+    const imagePlane:ImagePlane = {src:img.src, width:rectWidth, height:rectHeight, x:x, y:y}
+    imagePlaneArray.push(imagePlane)
+  })
 
   useFrame((state, delta) => {
-    // ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
-    // ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, visible.current ? 1 : 1.5, 4, delta)
+    
   })
   return (
-    <group scale={1} position={[0,-height*(props.index*0.8+1),0]}>
-    <Image
-      // @ts-ignore
-      ref={ref} 
-      // @ts-ignore
-      scale={[isMobTab?width:width*0.6,3,1]} 
-      position={[isMobTab?0:(isOdd?width*0.35:-width*0.35), 0, 0]} 
-      url={props.work.thumb} 
-    />
-    <Html 
-      position ={[isMobTab?width:-(width*0.4+gap*0.5),0,0.1]}
-      style={{width:'40vw'}}
-    >
-        <h2>{props.work.titleEn}</h2>
-        <p>{props.work.titleJp}</p>
-        <p style={{padding:'2px 4px', border:'solid 1px #ffffff', borderRadius:4}}>ART</p>
-    </Html>
+    <group>
+      {imagePlaneArray.map((img,index) => (
+        // @ts-ignore
+        <Image url={img.src} position={[img.x,img.y,0]} scale={[img.width,img.height,0]}/>
+      ))}  
     </group>
   );
 };

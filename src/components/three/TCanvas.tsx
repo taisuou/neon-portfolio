@@ -69,11 +69,10 @@ function Contents() {
         <Scroll>
           <Switch location={location}>
             <Route path="/" >
-            {contents.works
-              .filter((work, index) => index < 4)
-              .map((work, index) => (
-                <Item index={index} work={work}/>
-            ))}
+              <Item/>
+            </Route>
+            <Route path="/works" >
+              <Item/>
             </Route>
             <Route>404, Not Found!</Route>
           </Switch>
@@ -100,7 +99,7 @@ type RigProps = {
   children: React.ReactNode;
 };
 const Rig: FC<RigProps> = ({ children }) => {
-  const ref = useRef<THREE.Group>();
+  const ref = useRef<THREE.Group>(null);
   const vec = new THREE.Vector3();
   const { isMobile, isTablet } = useMedia();
   const scroll = useScroll();
@@ -140,8 +139,6 @@ export const TCanvas: VFC = () => {
 
       {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
-        {/* objects */}
-        {/* <Objects /> */}
         
         <Contents />
         <Preload all />
