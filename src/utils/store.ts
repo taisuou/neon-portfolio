@@ -35,6 +35,7 @@ export const contents = {
   },
   works: [
     {
+      id:0,
       titleEn: 'Kawakyu Art Exibition 2022 ”In a Dream”',
       titleJp: 'Kawakyu Art Exibition 2022 「夢中」',
       // ART:0, Client:1
@@ -53,6 +54,7 @@ export const contents = {
       ],
     },
     {
+      id:1,
       titleEn: 'Argon Dance',
       titleJp: '',
       // ART:0, Client:1
@@ -68,6 +70,7 @@ export const contents = {
       ],
     },
     {
+      id:2,
       titleEn: 'Distortion',
       titleJp: '',
       // ART:0, Client:1
@@ -88,6 +91,7 @@ export const contents = {
       ],
     },
     {
+      id:3,
       titleEn: 'NONAME neon sign',
       titleJp: 'NONAME ネオンサイン',
       // ART:0, Client:1
@@ -104,6 +108,7 @@ export const contents = {
       ],
     },
     {
+      id:4,
       titleEn: 'Vase neon sign',
       titleJp: 'Vase ネオンサイン',
       // ART:0, Client:1
@@ -120,6 +125,7 @@ export const contents = {
       ],
     },
     {
+      id:4,
       titleEn: 'Neon Flower',
       titleJp: '',
       // ART:0, Client:1
@@ -138,6 +144,7 @@ export const contents = {
       ],
     },
     {
+      id:5,
       titleEn: 'Gampeki Music Festival neon sign',
       titleJp: '「岩壁音楽祭」ネオンサイン',
       // ART:0, Client:1
@@ -153,6 +160,7 @@ export const contents = {
       ],
     },
     {
+      id:6,
       titleEn: 'Campbell’s Banana',
       titleJp: '',
       // ART:0, Client:1

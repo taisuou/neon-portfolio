@@ -11,7 +11,7 @@ type ItemCardProps = {
 
 export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   return (
-    <Link href={`/works/${indexNumber}`}>
+    <Link href={`/works/${post.id}`}>
       <Container isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
         <Picture>
           <img src={`${post.thumb}`} width="1920" height="1080" />
