@@ -43,12 +43,7 @@ export const Item: VFC<Props> = (props) => {
     <group>
       {imagePlaneArray.map((img, index) => (
         // @ts-ignore
-        <Image
-          url={img.src}
-          position={[img.x, img.y, 0]}
-          scale={[img.width, img.height, 0]}
-          key={index}
-        />
+        <Image url={img.src} position={[img.x, img.y, 0]} scale={[img.width, img.height, 0]} key={index}/>
       ))}
     </group>
   );
