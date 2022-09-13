@@ -1,12 +1,10 @@
 import { FC, Suspense, useEffect, useRef, VFC } from 'react';
-import { OrbitControls, Stats, Preload, Image, Text } from '@react-three/drei';
+import { OrbitControls,  Preload } from '@react-three/drei';
 import { Scroll, ScrollControls, useScroll } from './ScrollControls';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame} from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import {Item} from './Item'
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import { KernelSize } from 'postprocessing';
 import { Home } from '../organisms/Home';
 import { About } from '../organisms/About';
 import { Works } from '../organisms/Works';
@@ -17,12 +15,8 @@ import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
-import { useMedia } from '../../utils/useMedia';
 import * as THREE from 'three';
 import { useControls } from 'leva';
-import { isReturnStatement } from 'typescript';
-import { Header } from '../molecules/Header';
-import { Box, Flex } from '@react-three/flex';
 import { Footer } from '../molecules/Footer';
 
 function NeonScene() {
@@ -103,7 +97,6 @@ type RigProps = {
 const Rig: FC<RigProps> = ({ children }) => {
   const ref = useRef<THREE.Group>();
   const vec = new THREE.Vector3();
-  const { isMobile, isTablet } = useMedia();
   const scroll = useScroll();
   let last = 0
   useFrame(() => {
@@ -119,7 +112,6 @@ const Rig: FC<RigProps> = ({ children }) => {
 };
 
 export const TCanvas: VFC = () => {
-  const { isMobile, isTablet } = useMedia();
   const helperControl = useControls('helperControl', {
     orbit: false,
     axis: false,

@@ -1,10 +1,9 @@
 import React, { createRef, useEffect, useRef, VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font, media } from '../../utils/style';
 import { contents } from '../../utils/store';
 import { Item } from '../molecules/Item';
 import { WorkPost } from '../../../@types/schema';
-import { useMedia } from '../../utils/useMedia';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { gsap } from 'gsap';
@@ -12,7 +11,6 @@ import { animConfig } from '../../utils/store';
 import { Link } from 'wouter';
 
 export const Home: VFC = () => {
-  const { isMobile, isTablet } = useMedia();
   let heroTitle = useRef([createRef<HTMLSpanElement>(), createRef<HTMLSpanElement>()]);
   const { isReady } = useSnapshot(sceneState);
   const showHero = () => {
@@ -135,11 +133,7 @@ const ButtonMore = styled.div`
     transition: 0.3s ease-in-out;
   }
 `;
-const ImageWrap = styled.div`
-  height:80vh;
-  display: flex;
-  align-items:center ;
-`
+
 const ScrollArrow = styled.div`
   position: absolute;
   text-align: center;

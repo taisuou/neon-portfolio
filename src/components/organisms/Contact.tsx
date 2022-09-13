@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font, media } from '../../utils/style';
 
 export const Contact: VFC = () => {
   return (
@@ -15,7 +15,8 @@ export const Contact: VFC = () => {
         </SectionTitle>
         <TextBox>
           <TextDec>
-            <a href="mailto:taisho@electrodeart" className={'cursor-scale small'}>
+            <a href="mailto:taisho@electrodeart" className={'cursor-scale small'}
+            rel="noreferrer">
               taisho@electrodeart.com
             </a>
           </TextDec>
@@ -36,6 +37,7 @@ export const Contact: VFC = () => {
                 href="https://www.instagram.com/electrode_taisho/"
                 target="_blank"
                 className={'cursor-scale small'}
+                rel="noreferrer"
               >
                 @electrode_taisho
               </a>
@@ -48,6 +50,7 @@ export const Contact: VFC = () => {
                 href="https://medium.com/@electrodeart"
                 target="_blank"
                 className={'cursor-scale small'}
+                rel="noreferrer"
               >
                 @electrodeart
               </a>
@@ -60,6 +63,7 @@ export const Contact: VFC = () => {
                 href="https://twitter.com/electrodeart"
                 target="_blank"
                 className={'cursor-scale small'}
+                rel="noreferrer"
               >
                 @electrodeart
               </a>

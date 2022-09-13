@@ -1,6 +1,6 @@
-import React, { FC, useEffect, VFC } from 'react';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font, media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
 import { Helmet } from 'react-helmet';
 import { Link } from 'wouter';

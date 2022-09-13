@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex, media } from '../../utils/style';
-import { Link } from 'wouter';
 import { gsap } from 'gsap';
 
 export const Cursor: VFC = () => {

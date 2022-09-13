@@ -5,28 +5,19 @@ import { Loader } from './molecules/Loader';
 import { Header } from './molecules/Header';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { color, media, zIndex } from '../utils/style';
+import { color } from '../utils/style';
 import { Leva } from 'leva';
 import { Helmet } from 'react-helmet';
 import { contents } from '../utils/store';
-import { useSnapshot } from 'valtio';
 import { sceneState } from '../utils/sceneState';
-import { Route, Switch } from 'wouter';
-import { Home } from './organisms/Home';
-import { About } from './organisms/About';
-import { Contact } from './organisms/Contact';
-import { Detail } from './organisms/Detail';
-import { Works } from './organisms/Works';
-import { useMedia } from '../utils/useMedia';
-import { Footer } from './molecules/Footer';
+
+
 import { Cursor } from './atoms/Cursor';
 import { useProgress } from '@react-three/drei';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
-  const { isMobile, isTablet } = useMedia();
-  const { active, progress, errors, item, loaded, total } = useProgress();
+  const { active } = useProgress();
   useEffect(() => {
     setTimeout(() => {
       //check if 3d canvas is active

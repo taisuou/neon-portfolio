@@ -1,6 +1,6 @@
-import React, { FC, VFC } from 'react';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex, media } from '../../utils/style';
+import {media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
 import { Link } from 'wouter';
 
@@ -14,7 +14,7 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
     <Link href={`/works/${indexNumber}`}>
       <Container isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
         <Picture>
-          <img src={`${post.thumb}`} width="1920" height="1080" className={'mesh-image'}/>
+          <img src={`${post.thumb}`} width="1920" height="1080" className={'mesh-image'} alt={`${indexNumber}`}/>
         </Picture>
         <Info>
           <TitleEN>{post.titleEn}</TitleEN>

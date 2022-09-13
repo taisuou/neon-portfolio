@@ -1,8 +1,6 @@
 import { VFC } from 'react';
 import {Image,} from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
-import { useMedia } from '../../utils/useMedia';
-import {sceneState} from '../../utils/sceneState'
+import {  useThree } from '@react-three/fiber';
 import { ImagePlane } from '../../../@types/schema';
 
 interface Props {
@@ -13,7 +11,6 @@ interface Props {
 
 export const Item: VFC<Props> = () => {
   const { width, height } = useThree((state) => state.viewport);
-  const { isMobile, isTablet } = useMedia();
   // const {imageMesh} = sceneState().imageMesh
   
   

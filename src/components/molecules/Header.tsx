@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useRef, useState, VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex, media, font } from '../../utils/style';
+import { color, zIndex,  font } from '../../utils/style';
 import { Link, useLocation } from 'wouter';
 import { useMedia } from '../../utils/useMedia';
 import { gsap } from 'gsap';
@@ -224,15 +224,11 @@ export const Header: VFC = () => {
         />
       </SVG>
       <Link href="/">
-        <a
-          onClick={() => {
+          <Logo className={'cursor-scale small'} onClick={() => {
             isMenuOpen && menuClose();
-          }}
-        >
-          <Logo className={'cursor-scale small'}>
+          }}>
             <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
           </Logo>
-        </a>
       </Link>
 
       {!isMobile ? (
@@ -240,9 +236,8 @@ export const Header: VFC = () => {
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale small'}>
               <Link href={`/${menu}`}>
-                <a>
                   <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
-                </a>
+                
               </Link>
             </li>
           ))}

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-// import { Html, useProgress } from '@react-three/drei';
 import { useEffect, useRef, useState, VFC } from 'react';
 import { color, zIndex } from '../../utils/style';
 import { gsap } from 'gsap';
@@ -13,7 +12,6 @@ export const Loader: VFC<LoaderProps> = (props) => {
   const loaderPath = useRef(null);
   const loader = useRef(null);
   const electrode = useRef(null);
-  const counter = useRef<HTMLDivElement | null>(null);
 
   const [isLoaderOpen, setLoaderOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -164,65 +162,4 @@ const LoaderAnim = styled.div`
       transform: rotateY(449deg) rotateX(449deg);
     }
   }
-`;
-
-const LoaderLogo = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  perspective: 400px;
-  position: absolute;
-  background: #000;
-
-  .elec__item {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    border: 2px solid #fff;
-    transform-style: preserve-3d;
-  }
-
-  .glass__front {
-    border-radius: 120px;
-    transform: translateX(-60px);
-  }
-  .mica__front {
-    width: 86px;
-    height: 86px;
-    border-radius: 86px;
-    transform: translateX(-43px) translateY(17px) translateZ(60px);
-  }
-
-  .glass__side {
-    border-radius: 0 120px 120px 0;
-    border-left: none;
-  }
-
-  .mica__side {
-    width: 70px;
-    height: 86px;
-    transform: translateY(17px) translateZ(23px);
-  }
-
-  .plate__side {
-    border: none;
-    stroke: #ffffff;
-    stroke-width: 1;
-    transform: rotateZ(90deg) translateY(8px) translateX(38px);
-  }
-`;
-
-const LogoInner = styled.ol`
-  list-style-type: none;
-  transform: translateY(-60px) translateZ(-60px);
-`;
-
-const LoaderNum = styled.div`
-  position: absolute;
-  top: 50%;
-  margin-top: 80px;
-  color: #fff;
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
 `;
