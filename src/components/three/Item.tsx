@@ -29,6 +29,7 @@ export const Item: VFC<Props> = () => {
     // @ts-ignore
     const imagePlane:ImagePlane = {src:img.src, width:rectWidth, height:rectHeight, x:x, y:y}
     imagePlaneArray.push(imagePlane)
+    console.log(imagePlaneArray)
     // sceneState.imageMesh = imagePlaneArray
   })
   
@@ -39,7 +40,7 @@ export const Item: VFC<Props> = () => {
     <group>
       {imagePlaneArray.map((img,index) => (
         // @ts-ignore
-        <Image url={img.src} position={[img.x,img.y,0]} scale={[img.width,img.height,0]}/>
+        <Image url={img.src} position={[img.x,img.y,0]} scale={[img.width,img.height,0]} key={index}/>
       ))}  
     </group>
   );
