@@ -10,3 +10,12 @@ export type WorkPost = {
     descriptionJp:string
     images:string[]
 }
+
+export type ImagePlane = {
+    src:string,
+    width:number, 
+    height:number,
+    x:number,
+    y:number
+  }
+  

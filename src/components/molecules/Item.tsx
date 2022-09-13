@@ -14,7 +14,7 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
     <Link href={`/works/${indexNumber}`}>
       <Container isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
         <Picture>
-          <img src={`${post.thumb}`} width="1920" height="1080" />
+          <img src={`${post.thumb}`} width="1920" height="1080" className={'mesh-image'}/>
         </Picture>
         <Info>
           <TitleEN>{post.titleEn}</TitleEN>
@@ -60,14 +60,13 @@ const Picture = styled.div`
     width: 100%;
     height: auto;
     object-fit: fill;
-    margin-bottom: 24px;
+    ${media.lg`
+      opacity:0;      
+    `}
   }
   ${media.lg`
-  width:60%;
-  &img{
-    margin-bottom: 0px;
-  }
-    }
+    width:60%;
+  
   `}
 `;
 const Info = styled.div`

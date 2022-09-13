@@ -60,9 +60,7 @@ export const Home: VFC = () => {
         {contents.works
           .filter((work: WorkPost, index) => index < 4)
           .map((work: WorkPost, index) => (
-            <ImageWrap>
               <Item post={work} key={index} indexNumber={index} />
-            </ImageWrap>
           ))}
 
         <ButtonMore className={'cursor-scale'}>

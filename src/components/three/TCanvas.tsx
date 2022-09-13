@@ -69,11 +69,12 @@ function Contents() {
         <Scroll>
           <Switch location={location}>
             <Route path="/" >
-            {contents.works
-              .filter((work, index) => index < 4)
-              .map((work, index) => (
-                <Item index={index} work={work}/>
-            ))}
+            
+                <Item/>
+            </Route>
+            <Route path="/works" >
+
+                <Item/>
             </Route>
             <Route>404, Not Found!</Route>
           </Switch>
