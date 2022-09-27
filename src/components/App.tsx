@@ -49,7 +49,15 @@ export const App: VFC = () => {
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
           @font-face {
             font-family: 'replica';
+            src: url('/fonts/ReplicaLLSub-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: 'replica';
             src: url('/fonts/ReplicaLLWeb-Bold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
           }
           ${emotionReset}
 
@@ -70,7 +78,7 @@ export const App: VFC = () => {
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+            font-family: replica,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
               'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;

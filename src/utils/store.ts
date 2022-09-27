@@ -241,7 +241,7 @@ export const contents = {
       descriptionEn:
         'Neon and dried flower sign base',
       descriptionJp:
-        '',
+        'セレクトショップ 「Vase」のネオンサイン / 東京都目黒区上目黒',
       images: [
         '/images/posts/2019_neonflower/2019_neonflower_00.jpg',
         '/images/posts/2019_neonflower/2019_neonflower_01.jpg',

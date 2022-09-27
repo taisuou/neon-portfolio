@@ -95,7 +95,7 @@ const PageTitle = styled.div`
 `;
 
 const SectionContainer = styled.div`
-  padding: 0 32px;
+  padding: 0 24px;
 `;
 
 const SectionTitle = styled.div`
@@ -125,7 +125,7 @@ const UiCategory = styled.div`
   }
   ul li {
     margin: 0 16px;
-    ${font.Inter.button};
+    ${font.replica.button};
     border: 1px solid #fff;
     border-radius: 4px;
   }

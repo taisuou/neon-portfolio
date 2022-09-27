@@ -84,7 +84,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
 const Container = styled.div`
   background: ${color.background.dark};
   padding: 91px 32px 64px 32px;
-  font-size: ${font.Inter.body2};
+  font-size: ${font.replica.body2};
 `;
 
 const SectionContainer = styled.div`
@@ -102,7 +102,7 @@ const TitleEn = styled.h1`
   `}
 `;
 const TitleJp = styled.h1`
-  ${font.Inter.subtitle1}
+  ${font.replica.subtitle1}
   margin-bottom:32px;
 `;
 const PictureWrap = styled.div`

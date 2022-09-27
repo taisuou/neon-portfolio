@@ -85,7 +85,7 @@ const SectionTitle = styled.div`
 
 const TextBox = styled.div`
   p {
-    ${font.Inter.body2};
+    ${font.replica.body2};
     font-size: 12px;
     line-height: 1.5;
   }
@@ -104,6 +104,6 @@ const Text = styled.div`
 `;
 
 const TextTitle = styled.div`
-  ${font.Inter.subtitle1};
+  ${font.replica.subtitle1};
   margin-bottom: 16px;
 `;
