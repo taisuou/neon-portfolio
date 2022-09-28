@@ -363,6 +363,9 @@ const DesktopMenuContainer = styled.ul`
       }
     }
   }
+  li:last-child{
+    margin:0;
+  }
 `;
 
 const SVG = styled.svg`

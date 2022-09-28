@@ -50,9 +50,9 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  height: 40vh;
+  height: 30vh;
   padding: 59px 32px 0;
-  background-image: url('../images/bg_about.png');
+  background-image: url('../images/bg_about.jpg');
   background-size: cover;
   background-position: center;
   padding-bottom: 48px;
@@ -85,7 +85,7 @@ const SectionTitle = styled.div`
 
 const TextBox = styled.div`
   p {
-    ${font.Inter.body2};
+    ${font.replica.body2};
     font-size: 12px;
     line-height: 1.5;
   }
@@ -104,6 +104,6 @@ const Text = styled.div`
 `;
 
 const TextTitle = styled.div`
-  ${font.Inter.subtitle1};
+  ${font.replica.subtitle1};
   margin-bottom: 16px;
 `;

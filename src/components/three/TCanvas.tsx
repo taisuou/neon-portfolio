@@ -155,7 +155,7 @@ export const TCanvas: VFC = () => {
       // shadows
     >
       {/* scene */}
-      <color attach="background" args={['#000']} />
+      <color attach="background" args={['#040404']} />
       {/* camera controller */}
 
       {helperControl.orbit ? (

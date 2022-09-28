@@ -82,9 +82,9 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  height: 40vh;
+  height: 30vh;
   padding: 59px 32px 0;
-  background-image: url('../images/bg_about.png');
+  background-image: url('../images/bg_works.jpg');
   background-size: cover;
   background-position: center;
   padding-bottom: 48px;
@@ -95,7 +95,7 @@ const PageTitle = styled.div`
 `;
 
 const SectionContainer = styled.div`
-  padding: 0 32px;
+  padding: 0 24px;
 `;
 
 const SectionTitle = styled.div`
@@ -125,7 +125,7 @@ const UiCategory = styled.div`
   }
   ul li {
     margin: 0 16px;
-    ${font.Inter.button};
+    ${font.replica.button};
     border: 1px solid #fff;
     border-radius: 4px;
   }

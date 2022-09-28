@@ -34,6 +34,9 @@ export const App: VFC = () => {
     }, 3000);
   }, [active]);
 
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   useEffect(() => {
     sceneState.isReady = isReady;
   }, [isReady]);
@@ -46,7 +49,15 @@ export const App: VFC = () => {
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
           @font-face {
             font-family: 'replica';
+            src: url('/fonts/ReplicaLLSub-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: 'replica';
             src: url('/fonts/ReplicaLLWeb-Bold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
           }
           ${emotionReset}
 
@@ -61,19 +72,16 @@ export const App: VFC = () => {
             height: 100%;
             margin: 0;
             padding: 0;
-            font-size: calc(100vw * 16 / 375);
           }
           body {
             width: 100%;
             height: 100%;
-
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+            font-family: replica,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
               'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            font-size: 62.5%;
             overscroll-behavior: none;
             color: ${color.content.HighEmphasis};
             height: 100%;
@@ -87,12 +95,25 @@ export const App: VFC = () => {
           }
         `}
       />
+      
+      {!!process.env.GA_MEASUREMENT_ID && (
       <Helmet
         title={contents.meta.title}
         meta={[{ name: 'description', content: contents.meta.description }]}
       >
+        <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}></script>
+        <script>
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.GA_MEASUREMENT_ID}');
+            `}
+        </script>
         <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
-        <meta property="og:url" content="OGPに掲載するページのURL" />
+        <meta property="og:url" content="https://www.electrodeart.com/" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={contents.meta.title} />
         <meta property="og:description" content={contents.meta.description} />
@@ -100,6 +121,8 @@ export const App: VFC = () => {
         <meta property="og:image" content={contents.meta.ogp} />
         <meta name="google" content="notranslate" />
       </Helmet>
+      )}
+
       <TCanvas />
       <Header />
       <Loader isReady={isReady} />
