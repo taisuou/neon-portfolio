@@ -15,9 +15,9 @@ type DetailProps = {
 export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
   return (
     <Container
-      initial={{ opacity: 0, y:-50 }}
-      animate={{ opacity: 1, y:0, transition:{duration:0.5} }}
-      exit={{ opacity: 0, y:50, transition:{duration:0.5} }}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay:0.5 } }}
+      exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
     >
       <Helmet>
         <title>{post.titleEn}</title>
@@ -29,16 +29,17 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <TitleEn>{post.titleEn}</TitleEn>
         <TitleJp>{post.titleJp}</TitleJp>
         <PictureWrap>
-          <Picture src={post.images[0]}/>
+          <Picture src={post.images[0]} />
         </PictureWrap>
         <DescriptionEn>{post.descriptionEn}</DescriptionEn>
         <DescriptionJp>{post.descriptionJp}</DescriptionJp>
 
         <PictureWrap>
-           {post.images.filter((image, index) => 0 < index)
-           .map((image, index) => (
-           <Picture src={image} key={index} />
-           ))}
+          {post.images
+            .filter((image, index) => 0 < index)
+            .map((image, index) => (
+              <Picture src={image} key={index} />
+            ))}
         </PictureWrap>
 
         <Caption>
@@ -119,16 +120,16 @@ const PictureWrap = styled.div`
 `;
 
 const DescriptionEn = styled.p`
-  margin-top:6px;
-  &::after{
-    content:'-';
-    display:block;
-    margin:8px 0;
+  margin-top: 6px;
+  &::after {
+    content: '-';
+    display: block;
+    margin: 8px 0;
   }
-`
+`;
 const DescriptionJp = styled.p`
-margin-bottom:32px;
-`
+  margin-bottom: 32px;
+`;
 
 const Picture = styled.img`
   width: 100%;

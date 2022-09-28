@@ -1,5 +1,5 @@
 import { FC, Suspense, useEffect, useRef, VFC } from 'react';
-import { OrbitControls, Stats, Preload, Image, Text } from '@react-three/drei';
+import { OrbitControls, Preload } from '@react-three/drei';
 import { Scroll, ScrollControls, useScroll } from './ScrollControls';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
@@ -19,9 +19,6 @@ import { contents } from '../../utils/store';
 import { useMedia } from '../../utils/useMedia';
 import * as THREE from 'three';
 import { useControls } from 'leva';
-import { isReturnStatement } from 'typescript';
-import { Header } from '../molecules/Header';
-import { Box, Flex } from '@react-three/flex';
 import { Footer } from '../molecules/Footer';
 import { AnimatePresence } from 'framer-motion';
 
@@ -74,7 +71,7 @@ function Contents() {
     setTimeout(() => {
       //コンテンツ落ちを防ぐために僅かに遅くしてる
       sceneState.height = elementRef.current!.getBoundingClientRect().height;
-    }, 500);
+    }, 100);
   }, [size.height, elementRef, location, isWorksFiltered, currentCategory]);
 
   return (
@@ -102,11 +99,15 @@ function Contents() {
               </Route>
               <Route path="/works/:id">
                 {(params) => (
-                  <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} key={Number(params.id)}/>
+                  <Detail
+                    post={contents.works[Number(params.id)]}
+                    pageIndex={Number(params.id)}
+                    key={Number(params.id)}
+                  />
                 )}
               </Route>
             </Switch>
-            <Footer key = {location}/>
+            <Footer key={location} />
           </AnimatePresence>
         </Scroll>
       </ScrollControls>
@@ -119,8 +120,7 @@ type RigProps = {
 const Rig: FC<RigProps> = ({ children }) => {
   const ref = useRef<THREE.Group>();
   const vec = new THREE.Vector3();
-  const { camera, mouse } = useThree();
-  const { isMobile, isTablet } = useMedia();
+  const { camera } = useThree();
   const scroll = useScroll();
   useFrame(() => {
     const offset = 1 - scroll.offset;
@@ -131,13 +131,11 @@ const Rig: FC<RigProps> = ({ children }) => {
     );
 
     camera.lookAt(0, 0, 0);
-    
   });
   return <group ref={ref}>{children}</group>;
 };
 
 export const TCanvas: VFC = () => {
-  const { isMobile, isTablet } = useMedia();
   const helperControl = useControls('helperControl', {
     orbit: false,
     axis: false,
@@ -166,8 +164,6 @@ export const TCanvas: VFC = () => {
 
       {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
-        
-
         <Contents />
         <Preload all />
       </Suspense>

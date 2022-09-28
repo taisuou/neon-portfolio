@@ -78,8 +78,8 @@ export const App: VFC = () => {
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: replica,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-              'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            font-family: replica, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overscroll-behavior: none;
@@ -95,32 +95,33 @@ export const App: VFC = () => {
           }
         `}
       />
-      
+
       {!!process.env.GA_MEASUREMENT_ID && (
-      <Helmet
-        title={contents.meta.title}
-        meta={[{ name: 'description', content: contents.meta.description }]}
-      >
-        <script
+        <Helmet
+          title={contents.meta.title}
+          meta={[{ name: 'description', content: contents.meta.description }]}
+        >
+          <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}></script>
-        <script>
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}
+          ></script>
+          <script>
             {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${process.env.GA_MEASUREMENT_ID}');
             `}
-        </script>
-        <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
-        <meta property="og:url" content="https://www.electrodeart.com/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={contents.meta.title} />
-        <meta property="og:description" content={contents.meta.description} />
-        <meta property="og:site_name" content={contents.meta.title} />
-        <meta property="og:image" content={contents.meta.ogp} />
-        <meta name="google" content="notranslate" />
-      </Helmet>
+          </script>
+          <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
+          <meta property="og:url" content="https://www.electrodeart.com/" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={contents.meta.title} />
+          <meta property="og:description" content={contents.meta.description} />
+          <meta property="og:site_name" content={contents.meta.title} />
+          <meta property="og:image" content={contents.meta.ogp} />
+          <meta name="google" content="notranslate" />
+        </Helmet>
       )}
 
       <TCanvas />

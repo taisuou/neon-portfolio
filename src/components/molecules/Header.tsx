@@ -172,7 +172,7 @@ export const Header: VFC = () => {
       })
       .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
-        delay: 0.5,
+        delay: 0.1,
       })
       .to(overlayPath.current, {
         duration: 0.2,

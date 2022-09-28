@@ -38,17 +38,16 @@ export const Home: VFC = () => {
   useEffect(() => {
     //triggers only when page load
     const titles = heroTitle.current.map((card) => card.current);
-    gsap.timeline().set(titles, {
-    });
+    gsap.timeline().set(titles, {});
   }, []);
   useEffect(() => {
     isReady && showHero();
   }, [isReady]);
   return (
     <motion.div
-      initial={{ opacity: 0, y:-50 }}
-      animate={{ opacity: 1, y:0, transition:{duration:0.5} }}
-      exit={{ opacity: 0, y:50 , transition:{duration:0.5}}}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay:0.5 } }}
+      exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
     >
       <Hero>
         <MainTitle>
@@ -62,15 +61,31 @@ export const Home: VFC = () => {
             <span ref={shuffletext}>Glass and Virtual</span>
           </p> */}
         </MainTitle>
-        <ScrollArrow className='scrollIcon'>
+        <ScrollArrow className="scrollIcon">
           <p>Scroll</p>
           <ScrollIcon>
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M35.5068 60.164L39.452 56.2188" stroke="white" stroke-width="1" stroke-linecap="round"/>
-          {/* <path d="M35.5069 60.1641L31.5616 56.2189" stroke="white" stroke-width="1" stroke-linecap="round"/> */}
-          <path d="M35.5068 11.835V60.1637" stroke="white" stroke-width="1" stroke-linecap="round"/>
-          <circle cx="36" cy="36" r="35" stroke="white" stroke-width="1"/>
-          </svg>
+            <svg
+              width="72"
+              height="72"
+              viewBox="0 0 72 72"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M35.5068 60.164L39.452 56.2188"
+                stroke="white"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              {/* <path d="M35.5069 60.1641L31.5616 56.2189" stroke="white" stroke-width="1" stroke-linecap="round"/> */}
+              <path
+                d="M35.5068 11.835V60.1637"
+                stroke="white"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              <circle cx="36" cy="36" r="35" stroke="white" stroke-width="1" />
+            </svg>
           </ScrollIcon>
         </ScrollArrow>
       </Hero>
@@ -104,8 +119,8 @@ const Hero = styled.div`
 const Container = styled.div`
   /* background: ${color.background.dark}; */
   color: ${color.content.HighEmphasis};
-  img{
-    padding:0 24px;
+  img {
+    padding: 0 24px;
   }
 `;
 
@@ -255,26 +270,26 @@ const ScrollArrow = styled.div`
 `;
 
 const ScrollIcon = styled.div`
-  fill:none;
+  fill: none;
   stroke-dasharray: 220;
   animation: rotateCircle 3500ms infinite;
 
   @keyframes rotateCircle {
-  0% {
-    stroke-dashoffset: 220;
-    animation-timing-function:ease-out;
+    0% {
+      stroke-dashoffset: 220;
+      animation-timing-function: ease-out;
+    }
+    25% {
+      stroke-dashoffset: 0;
+      animation-timing-function: ease-in;
+    }
+    50% {
+      stroke-dashoffset: 0;
+      animation-timing-function: ease-out;
+    }
+    100% {
+      stroke-dashoffset: -220;
+      animation-timing-function: ease-out;
+    }
   }
-  25% {
-    stroke-dashoffset: 0;
-    animation-timing-function:ease-in;
-  }
-  50% {
-    stroke-dashoffset: 0;
-    animation-timing-function:ease-out;
-  }
-  100% {
-    stroke-dashoffset: -220;
-    animation-timing-function:ease-out;
-  }
-}
 `;

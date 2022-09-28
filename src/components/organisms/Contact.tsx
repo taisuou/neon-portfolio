@@ -6,10 +6,9 @@ import { motion } from 'framer-motion';
 export const Contact: VFC = () => {
   return (
     <Container
-      initial={{ opacity: 0, y:-50 }}
-      animate={{ opacity: 1, y:0 }}
-      exit={{ opacity: 0, y:-50, transition:{ duration: 2} }}
-      
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay:0.5 } }}
+      exit={{ opacity: 0, y: -50, transition: { duration: 0.5 } }}
     >
       <PageTitle>
         <h1>CONTACT</h1>
@@ -20,9 +19,9 @@ export const Contact: VFC = () => {
           <h2>Contact</h2>
         </SectionTitle>
         <ColInfobox>
-            <a href="mailto:taisho@electrodeart" className={'cursor-scale small'}>
-              taisho@electrodeart.com
-            </a>
+          <a href="mailto:taisho@electrodeart" className={'cursor-scale small'}>
+            taisho@electrodeart.com
+          </a>
         </ColInfobox>
       </SectionContainer>
 
@@ -127,7 +126,7 @@ const ColInfobox = styled.div`
   font-size: 24px;
   width: 80%;
   display: flex;
-  align-items:center;
+  align-items: center;
   ul {
     display: flex;
     flex-direction: column;
