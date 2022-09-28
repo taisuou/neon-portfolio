@@ -70,7 +70,7 @@ function Contents() {
     setTimeout(() => {
       //コンテンツ落ちを防ぐために僅かに遅くしてる
       sceneState.height = elementRef.current!.getBoundingClientRect().height;
-    }, 100);
+    }, 500);
   }, [size.height, elementRef, location, isWorksFiltered, currentCategory]);
 
   return (
