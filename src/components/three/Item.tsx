@@ -2,6 +2,7 @@ import { VFC } from 'react';
 import {Image,} from '@react-three/drei';
 import {  useThree } from '@react-three/fiber';
 import { ImagePlane } from '../../../@types/schema';
+import { ShaderMesh } from './ShaderMesh';
 
 interface Props {
   
@@ -39,9 +40,13 @@ export const Item: VFC<Props> = () => {
   return (
     <group>
       {imagePlaneArray.map((img,index) => (
-        // @ts-ignore
-        <Image url={img.src} position={[img.x,img.y,0]} scale={[img.width,img.height,0]} key={index}/>
-      ))}  
+        <>
+          {/* @ts-ignore */}
+          <Image url={img.src} position={[img.x,img.y,0]} scale={[img.width,img.height,0]} key={index}/>
+          <ShaderMesh url={img.src} width={img.width} height={img.height}/>
+        </>
+        ))}  
+      
     </group>
   );
 };
