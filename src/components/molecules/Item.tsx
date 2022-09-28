@@ -29,7 +29,7 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
 
 const Container = styled.a<{ isOdd: boolean }>`
   display: flex;
-  padding-bottom: 64px;
+  margin: 0 0 64px;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
@@ -42,7 +42,7 @@ const Container = styled.a<{ isOdd: boolean }>`
   ${media.lg`
     width:100%;
     align-items: center;
-    padding:0px 64px 128px 64px;
+    margin:0px 64px 128px 64px;
     //justify-content:center;
     flex-direction:row-reverse;
     :nth-of-type(2n){
