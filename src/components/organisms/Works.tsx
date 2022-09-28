@@ -1,18 +1,15 @@
-import React, { useCallback, useEffect, useState, VFC } from 'react';
+import React, { useEffect, useState, VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font } from '../../utils/style';
 import { Item } from '../molecules/Item';
 import { contents } from '../../utils/store';
 import { WorkPost } from '../../../@types/schema';
-import { Link, Route, Router, Switch, useLocation, useRouter } from 'wouter';
 import { sceneState } from '../../utils/sceneState';
 import { motion } from 'framer-motion';
 
 export const Works: VFC = () => {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [isFiltered, setIsFiltered] = useState(false);
-
-  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     sceneState.isWorksFiltered = isFiltered;
@@ -22,7 +19,7 @@ export const Works: VFC = () => {
   return (
     <Container
       initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay:0.5 } }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
       exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
     >
       <PageTitle>
@@ -99,27 +96,6 @@ const PageTitle = styled.div`
   }
 `;
 
-const SectionContainer = styled.div`
-  padding: 0 24px;
-`;
-
-const SectionTitle = styled.div`
-  h2 {
-    ${font.replica.h2};
-  }
-  margin-bottom: 24px;
-  ${media.lg`
-    margin-right:72px;
-  `}
-`;
-
-const Text = styled.div`
-  display: inline;
-  margin-bottom: 48px;
-  text-align: justify;
-  font-size: 16px;
-`;
-
 const UiCategory = styled.div`
   width: 100%;
   text-align: center;
@@ -150,23 +126,5 @@ const UiCategoryBtn = styled.p<{ isActive: boolean }>`
     color: ${color.background.dark};
     background: ${color.content.HighEmphasis};
     transition: 0.3s ease-in-out;
-  }
-`;
-const ColInfobox = styled.div`
-  font-size: 24px;
-  ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding: 0;
-  }
-  li {
-    width: 33%;
-  }
-  a {
-    color: #fff;
-  }
-  span {
-    font-size: 16px;
   }
 `;

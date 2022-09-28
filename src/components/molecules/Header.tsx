@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useRef, useState, VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex, media, font } from '../../utils/style';
+import { color, zIndex, font } from '../../utils/style';
 import { Link, useLocation } from 'wouter';
 import { useMedia } from '../../utils/useMedia';
 import { gsap } from 'gsap';
@@ -224,15 +224,14 @@ export const Header: VFC = () => {
         />
       </SVG>
       <Link href="/">
-        <a
+        <Logo
+          className={'cursor-scale small'}
           onClick={() => {
             isMenuOpen && menuClose();
           }}
         >
-          <Logo className={'cursor-scale small'}>
-            <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
-          </Logo>
-        </a>
+          <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
+        </Logo>
       </Link>
 
       {!isMobile ? (
@@ -240,9 +239,7 @@ export const Header: VFC = () => {
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale small'}>
               <Link href={`/${menu}`}>
-                <a>
-                  <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
-                </a>
+                <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
               </Link>
             </li>
           ))}
@@ -363,8 +360,8 @@ const DesktopMenuContainer = styled.ul`
       }
     }
   }
-  li:last-child{
-    margin:0;
+  li:last-child {
+    margin: 0;
   }
 `;
 

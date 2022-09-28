@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex, media } from '../../utils/style';
-import { Link } from 'wouter';
 import { gsap } from 'gsap';
 
 export const Cursor: VFC = () => {
@@ -9,11 +8,11 @@ export const Cursor: VFC = () => {
 
   const cursorScale = document.querySelectorAll('.cursor-scale');
   const tl = gsap.timeline();
-  let posX = 0;
-  let posY = 0;
-  let mouseX = 0;
-  let mouseY = 0;
   useEffect(() => {
+    let posX = 0;
+    let posY = 0;
+    let mouseX = 0;
+    let mouseY = 0;
     tl.to({}, 0.016, {
       repeat: -1,
       onRepeat: function () {

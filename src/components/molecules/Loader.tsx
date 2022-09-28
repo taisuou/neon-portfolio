@@ -13,9 +13,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
   const loaderPath = useRef(null);
   const loader = useRef(null);
   const electrode = useRef(null);
-  const counter = useRef<HTMLDivElement | null>(null);
 
-  const [isLoaderOpen, setLoaderOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const paths = {
@@ -31,7 +29,6 @@ export const Loader: VFC<LoaderProps> = (props) => {
   const loaderEnd = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setLoaderOpen(true);
 
     if (!loaderPath.current || !loader.current || !electrode.current) return;
     gsap.timeline().fromTo(
@@ -144,15 +141,6 @@ const SVG = styled.svg`
   left: 0;
 `;
 
-const Electrode = styled.img`
-  width: calc(240px * 2 / 3);
-  height: calc(320px * 2 / 3);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
 const LoaderLogo = styled.div`
   position: absolute;
   top: 50%;
@@ -202,7 +190,7 @@ const LoaderLogo = styled.div`
 const LoaderAnim = styled.div`
   width: 100%;
   height: 100%;
-  
+
   .front {
     animation: rotateFront 4000ms linear infinite;
   }
@@ -245,10 +233,10 @@ const LoaderAnim = styled.div`
 
   @keyframes flushLetter {
     from {
-      opacity:0.5;
+      opacity: 0.5;
     }
     to {
-      opacity:0.9;
+      opacity: 0.9;
     }
   }
 `;
@@ -266,16 +254,15 @@ const LoaderNum = styled.div`
   width: 100%;
   text-align: center;
   font-size: 14px;
-  font-weight:normal;
+  font-weight: normal;
   animation: flushLetter 200ms linear infinite;
 
   @keyframes flushLetter {
     from {
-      opacity:0.5;
+      opacity: 0.5;
     }
     to {
-      opacity:0.9;
+      opacity: 0.9;
     }
   }
-
 `;

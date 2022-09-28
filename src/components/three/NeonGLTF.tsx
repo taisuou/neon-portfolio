@@ -7,11 +7,8 @@ import React, { useRef, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useScroll } from './ScrollControls';
 import { GLTF } from 'three-stdlib';
-import { GUIController } from '../../utils/gui';
 import { useFrame } from '@react-three/fiber';
-import { glassState } from '../../utils/store';
 import { useControls } from 'leva';
-import { animate, useMotionValue } from 'framer-motion';
 import gsap from 'gsap';
 import { sceneState } from '../../utils/sceneState';
 import { useSnapshot } from 'valtio';
@@ -27,7 +24,7 @@ type GLTFResult = GLTF & {
 };
 
 export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/sign.gltf') as GLTFResult;
+  const { nodes } = useGLTF('/sign.gltf') as GLTFResult;
   const glassRef = useRef<THREE.Mesh>(null);
   const frLightRef = useRef<THREE.MeshBasicMaterial>(null);
   const arLightRef = useRef<THREE.MeshBasicMaterial>(null);

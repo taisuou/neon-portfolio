@@ -35,14 +35,14 @@ export const contents = {
   },
   works: [
     {
-      id:0,
+      id: 0,
       titleEn: 'Kawakyu Art Exibition 2022 ”In a Dream”',
       titleJp: 'Kawakyu Art Exibition 2022 「夢中」',
       // ART:0, Client:1
       tag: 0,
       thumb: '/images/posts/2022_kawakyu/2022_kawakyu_01.jpg',
       year: '2022',
-      pjinfo:'exhibition',
+      pjinfo: 'exhibition',
       descriptionEn:
         'Works exhibited in "Kawakyu Art Exibition 2022: A Dream That Exists".Residence program at Hotel Kawakyu, Wakayama. Jury recommended artist.',
       descriptionJp:
@@ -54,7 +54,7 @@ export const contents = {
       ],
     },
     {
-      id:1,
+      id: 1,
       titleEn: 'Argon Dance',
       titleJp: '',
       // ART:0, Client:1
@@ -70,7 +70,7 @@ export const contents = {
       ],
     },
     {
-      id:2,
+      id: 2,
       titleEn: 'Distortion',
       titleJp: '',
       // ART:0, Client:1
@@ -91,18 +91,16 @@ export const contents = {
       ],
     },
     {
-      id:3,
+      id: 3,
       titleEn: 'NONAME neon sign',
       titleJp: 'NONAME ネオンサイン',
       // ART:0, Client:1
       tag: 1,
       thumb: '/images/posts/2020_noname/2020_noname_00.jpg',
       year: '2020',
-      pjinfo:'order',
-      descriptionEn:
-        'Neon sign of cafe & bar "NONAME" / Utsunomiya, Tochigi / Logo Designing',
-      descriptionJp:
-        'カフェ&バー「NONAME」のネオンサイン / 栃木県宇都宮市 / ロゴデザイン設計',
+      pjinfo: 'order',
+      descriptionEn: 'Neon sign of cafe & bar "NONAME" / Utsunomiya, Tochigi / Logo Designing',
+      descriptionJp: 'カフェ&バー「NONAME」のネオンサイン / 栃木県宇都宮市 / ロゴデザイン設計',
       images: [
         '/images/posts/2020_noname/2020_noname_00.jpg',
         '/images/posts/2020_noname/2020_noname_01.jpg',
@@ -110,7 +108,7 @@ export const contents = {
       ],
     },
     {
-      id:4,
+      id: 4,
       titleEn: 'Vase neon sign',
       titleJp: 'Vase ネオンサイン',
       // ART:0, Client:1
@@ -127,18 +125,16 @@ export const contents = {
       ],
     },
     {
-      id:5,
+      id: 5,
       titleEn: 'Neon Flower',
       titleJp: '',
       // ART:0, Client:1
       tag: 0,
       thumb: '/images/posts/2019_neonflower/2019_neonflower_00.jpg',
       year: '2019',
-      pjinfo:'exhibition',
-      descriptionEn:
-        'Neon and dried flower sign base',
-      descriptionJp:
-        'セレクトショップ 「Vase」のネオンサイン / 東京都目黒区上目黒',
+      pjinfo: 'exhibition',
+      descriptionEn: 'Neon and dried flower sign base',
+      descriptionJp: 'セレクトショップ 「Vase」のネオンサイン / 東京都目黒区上目黒',
       images: [
         '/images/posts/2019_neonflower/2019_neonflower_00.jpg',
         '/images/posts/2019_neonflower/2019_neonflower_01.jpg',
@@ -148,7 +144,7 @@ export const contents = {
       ],
     },
     {
-      id:6,
+      id: 6,
       titleEn: 'Gampeki Music Festival neon sign',
       titleJp: '「岩壁音楽祭」ネオンサイン',
       // ART:0, Client:1
@@ -164,7 +160,7 @@ export const contents = {
       ],
     },
     {
-      id:7,
+      id: 7,
       titleEn: 'Campbell’s Banana',
       titleJp: '',
       // ART:0, Client:1

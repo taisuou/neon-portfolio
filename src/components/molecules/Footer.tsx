@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex, media } from '../../utils/style';
+import { color, zIndex } from '../../utils/style';
 import { Link } from 'wouter';
 import { menus } from '../../utils/store';
 
@@ -14,13 +14,13 @@ export const Footer: VFC = () => {
           </Menu>
         ))}
         <SnsBox className={'cursor-scale small'}>
-          <a href="https://www.instagram.com/electrode_taisho/" target="_blank">
+          <a href="https://www.instagram.com/electrode_taisho/" target="_blank" rel="noreferrer">
             <img src="/images/header_sns_instagram.svg" alt="" />
           </a>
-          <a href="https://medium.com/@electrodeart" target="_blank">
+          <a href="https://medium.com/@electrodeart" target="_blank" rel="noreferrer">
             <img src="/images/header_sns_medium.svg" alt="" />
           </a>
-          <a href="https://twitter.com/electrodeart" target="_blank">
+          <a href="https://twitter.com/electrodeart" target="_blank" rel="noreferrer">
             <img src="/images/header_sns_twitter.svg" alt="" />
           </a>
         </SnsBox>
@@ -29,8 +29,6 @@ export const Footer: VFC = () => {
     </Container>
   );
 };
-
-const Logo = styled.a``;
 
 const Container = styled.div`
   width: 100vw;

@@ -1,13 +1,13 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font, media } from '../../utils/style';
 import { motion } from 'framer-motion';
 
 export const About: VFC = () => {
   return (
     <Container
       initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay:0.5 } }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
       exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
     >
       <PageTitle>

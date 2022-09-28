@@ -1,6 +1,6 @@
-import React, { FC, VFC } from 'react';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex, media } from '../../utils/style';
+import { media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
 import { Link } from 'wouter';
 
@@ -14,7 +14,7 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
     <Link href={`/works/${post.id}`}>
       <Container isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
         <Picture>
-          <img src={`${post.thumb}`} width="1920" height="1080" />
+          <img src={`${post.thumb}`} width="1920" height="1080" alt={`${post.thumb}`} />
         </Picture>
         <Info>
           <TitleEN>{post.titleEn}</TitleEN>
@@ -36,8 +36,8 @@ const Container = styled.a<{ isOdd: boolean }>`
   // lg:Desktop /mdsp:tablet, mobile, / sp: mobile
   // ${(props) => (props.isOdd ? `flex-direction:row;` : `flex-flow: row-reverse;`)}};
   // cursor:pointer;
-  img{
-    padding:0 24px;
+  img {
+    padding: 0 24px;
   }
   ${media.lg`
     width:100%;
