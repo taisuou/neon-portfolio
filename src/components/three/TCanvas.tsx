@@ -131,8 +131,7 @@ const Rig: FC<RigProps> = ({ children }) => {
     );
 
     camera.lookAt(0, 0, 0);
-    //Objectを動かすと簡略に表現はできるz
-    // ref.current!.rotation.y = offset
+    
   });
   return <group ref={ref}>{children}</group>;
 };
@@ -167,8 +166,7 @@ export const TCanvas: VFC = () => {
 
       {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
-        {/* objects */}
-        {/* <Objects /> */}
+        
 
         <Contents />
         <Preload all />
