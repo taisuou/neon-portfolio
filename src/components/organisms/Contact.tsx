@@ -1,10 +1,16 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
+import { motion } from 'framer-motion';
 
 export const Contact: VFC = () => {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, y:-50 }}
+      animate={{ opacity: 1, y:0 }}
+      exit={{ opacity: 0, y:-50, transition:{ duration: 2} }}
+      
+    >
       <PageTitle>
         <h1>CONTACT</h1>
       </PageTitle>
@@ -69,7 +75,7 @@ export const Contact: VFC = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: relative;
   background: ${color.background.dark};
   width: 100%;

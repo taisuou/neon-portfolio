@@ -11,6 +11,7 @@ import { gsap } from 'gsap';
 import { animConfig } from '../../utils/store';
 import { Link } from 'wouter';
 import shuffle from 'shuffle-text';
+import { motion } from 'framer-motion';
 
 export const Home: VFC = () => {
   const { isMobile, isTablet } = useMedia();
@@ -44,7 +45,11 @@ export const Home: VFC = () => {
     isReady && showHero();
   }, [isReady]);
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, y:-50 }}
+      animate={{ opacity: 1, y:0, transition:{duration:0.5} }}
+      exit={{ opacity: 0, y:50 , transition:{duration:0.5}}}
+    >
       <Hero>
         <MainTitle>
           <p>
@@ -80,7 +85,7 @@ export const Home: VFC = () => {
           <Link href="/works">view all works</Link>
         </ButtonMore>
       </Container>
-    </>
+    </motion.div>
   );
 };
 

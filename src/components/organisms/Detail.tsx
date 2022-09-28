@@ -5,6 +5,7 @@ import { WorkPost } from '../../../@types/schema';
 import { Helmet } from 'react-helmet';
 import { Link } from 'wouter';
 import { contents } from '../../utils/store';
+import { motion } from 'framer-motion';
 
 type DetailProps = {
   post: WorkPost;
@@ -13,7 +14,11 @@ type DetailProps = {
 
 export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, y:-50 }}
+      animate={{ opacity: 1, y:0, transition:{duration:0.5} }}
+      exit={{ opacity: 0, y:50, transition:{duration:0.5} }}
+    >
       <Helmet>
         <title>{post.titleEn}</title>
         <meta name="description" content={post.descriptionEn} />
@@ -81,7 +86,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   background: ${color.background.dark};
   padding: 91px 32px 64px 32px;
   font-size: ${font.replica.body2};

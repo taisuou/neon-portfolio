@@ -1,10 +1,15 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media, zIndex } from '../../utils/style';
+import { motion } from 'framer-motion';
 
 export const About: VFC = () => {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, y:-50 }}
+      animate={{ opacity: 1, y:0, transition:{duration:0.5} }}
+      exit={{ opacity: 0, y:50, transition:{duration:0.5} }}
+    >
       <PageTitle>
         <h1>ABOUT</h1>
       </PageTitle>
@@ -42,7 +47,7 @@ export const About: VFC = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   background: ${color.background.dark};
 `;
 

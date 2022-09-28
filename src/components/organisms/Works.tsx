@@ -6,6 +6,7 @@ import { contents } from '../../utils/store';
 import { WorkPost } from '../../../@types/schema';
 import { Link, Route, Router, Switch, useLocation, useRouter } from 'wouter';
 import { sceneState } from '../../utils/sceneState';
+import { motion } from 'framer-motion';
 
 export const Works: VFC = () => {
   const [currentCategory, setCurrentCategory] = useState(0);
@@ -19,7 +20,11 @@ export const Works: VFC = () => {
   }, [isFiltered, currentCategory]);
 
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, y:-50 }}
+      animate={{ opacity: 1, y:0, transition:{duration:0.5} }}
+      exit={{ opacity: 0, y:50, transition:{duration:0.5} }}
+    >
       <PageTitle>
         <h1>WORKS</h1>
       </PageTitle>
@@ -74,7 +79,7 @@ export const Works: VFC = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   background: ${color.background.dark};
 `;
 

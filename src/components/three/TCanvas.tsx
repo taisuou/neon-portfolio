@@ -23,6 +23,7 @@ import { isReturnStatement } from 'typescript';
 import { Header } from '../molecules/Header';
 import { Box, Flex } from '@react-three/flex';
 import { Footer } from '../molecules/Footer';
+import { AnimatePresence } from 'framer-motion';
 
 function NeonScene() {
   const ambientProps = useControls('AmbientLight', {
@@ -85,26 +86,28 @@ function Contents() {
       >
         <NeonScene />
         <Scroll html ref={elementRef}>
-          <Switch location={location}>
-            <Route path="/">
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/works">
-              <Works />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/works/:id">
-              {(params) => (
-                <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} />
-              )}
-            </Route>
-          </Switch>
-          <Footer />
+          <AnimatePresence initial={false}>
+            <Switch location={location}>
+              <Route path="/">
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/works">
+                <Works />
+              </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/works/:id">
+                {(params) => (
+                  <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} key={Number(params.id)}/>
+                )}
+              </Route>
+            </Switch>
+            <Footer key = {location}/>
+          </AnimatePresence>
         </Scroll>
       </ScrollControls>
     </group>
