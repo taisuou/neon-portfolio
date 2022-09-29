@@ -1,10 +1,11 @@
-import React, { FC, useEffect, VFC } from 'react';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font, media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
 import { Helmet } from 'react-helmet';
 import { Link } from 'wouter';
 import { contents } from '../../utils/store';
+import { motion } from 'framer-motion';
 
 type DetailProps = {
   post: WorkPost;
@@ -13,8 +14,11 @@ type DetailProps = {
 
 export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
   return (
-    <Container>
-
+    <Container
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
+      exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
+    >
       <Helmet>
         <title>{post.titleEn}</title>
         <meta name="description" content={post.descriptionEn} />
@@ -25,17 +29,19 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <TitleEn>{post.titleEn}</TitleEn>
         <TitleJp>{post.titleJp}</TitleJp>
         <PictureWrap>
-            <Picture src={post.images[0]}/>
+          <Picture src={post.images[0]} width='1920' height='1080'/>
         </PictureWrap>
-        <p>{post.descriptionEn}</p>
-        <p>{post.descriptionJp}</p>
+        <DescriptionEn>{post.descriptionEn}</DescriptionEn>
+        <DescriptionJp>{post.descriptionJp}</DescriptionJp>
+
         <PictureWrap>
           {post.images
-          .filter((image, index) => 0 < index)
-          .map((image, index) => (
-            <Picture src={image} key={index} />
-          ))}
+            .filter((image, index) => 0 < index)
+            .map((image, index) => (
+              <Picture src={image} key={index} width='1920' height='1080'/>
+            ))}
         </PictureWrap>
+
         <Caption>
           <ul>
             <li>Year</li>
@@ -46,17 +52,16 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
           <ul>
             <li>Project Info</li>
             <li>
-              <span>{post.year}</span>
+              <span>{post.pjinfo}</span>
             </li>
           </ul>
         </Caption>
-        
 
         <PageCtl>
           <CtlTag>{post.tag === 0 ? 'ART' : 'Client'}</CtlTag>
           <ul>
-            <li>
-              <a
+            <li className={'cursor-scale small'}>
+              <Link
                 href={
                   pageIndex === 0
                     ? `/works/${contents.works.length - 1}`
@@ -64,9 +69,9 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
                 }
               >
                 <img src="../images/arrow_left.svg" alt="" />
-              </a>
+              </Link>
             </li>
-            <li>
+            <li className={'cursor-scale small'}>
               <Link
                 href={
                   pageIndex === contents.works.length - 1 ? `/works/0` : `/works/${pageIndex + 1}`
@@ -82,41 +87,53 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   background: ${color.background.dark};
   padding: 91px 32px 64px 32px;
-  p {
-    margin-bottom: 24px;
-  }
-  img {
-    margin-bottom: 24px;
-  }
-  font-size: ${font.Inter.body2};
+  font-size: ${font.replica.body2};
 `;
 
 const SectionContainer = styled.div`
   ${media.lg`
-    max-width:1108px;
+    max-width:980px;
     margin:0 auto;
   `}
 `;
 
 const TitleEn = styled.h1`
-  ${font.replica.h2}
+  ${font.replica.h1}
   margin-bottom:8px;
+  ${media.lg`
+  font-size: 3.2rem;
+  `}
 `;
 const TitleJp = styled.h1`
-  ${font.Inter.subtitle1}
+  ${font.replica.subtitle1}
   margin-bottom:32px;
 `;
 const PictureWrap = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;
+  img {
+    margin-bottom: 24px;
+  }
+`;
+
+const DescriptionEn = styled.p`
+  margin-top: 6px;
+  &::after {
+    content: '-';
+    display: block;
+    margin: 8px 0;
+  }
+`;
+const DescriptionJp = styled.p`
+  margin-bottom: 32px;
 `;
 
 const Picture = styled.img`
   width: 100%;
+  height: auto;
 `;
 
 const Caption = styled.div`

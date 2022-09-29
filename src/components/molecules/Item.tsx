@@ -1,6 +1,6 @@
-import React, { FC, VFC } from 'react';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex, media } from '../../utils/style';
+import { media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
 import { Link } from 'wouter';
 
@@ -11,10 +11,10 @@ type ItemCardProps = {
 
 export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   return (
-    <Link href={`/works/${indexNumber}`} className={'cursor-scale'}>
-      <Container isOdd={indexNumber % 2 === 0 ? true : false}>
+    <Link href={`/works/${post.id}`}>
+      <Container isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
         <Picture>
-          <img src={`${post.thumb}`} />
+          <img src={`${post.thumb}`} width="1920" height="1080" alt={`${post.thumb}`} />
         </Picture>
         <Info>
           <TitleEN>{post.titleEn}</TitleEN>
@@ -29,18 +29,20 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
 
 const Container = styled.a<{ isOdd: boolean }>`
   display: flex;
-  margin-bottom: 64px;
+  margin: 0 0 64px;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
   // lg:Desktop /mdsp:tablet, mobile, / sp: mobile
   // ${(props) => (props.isOdd ? `flex-direction:row;` : `flex-flow: row-reverse;`)}};
   // cursor:pointer;
+  img {
+    padding: 0 24px;
+  }
   ${media.lg`
     width:100%;
     align-items: center;
-    padding:0px 64px;
-    margin-bottom: 128px;
+    margin:0px 64px 128px 64px;
     //justify-content:center;
     flex-direction:row-reverse;
     :nth-of-type(2n){
@@ -58,6 +60,8 @@ const Picture = styled.div`
   overflow: hidden;
   & img {
     width: 100%;
+    height: auto;
+    //object-fit: fill;
     margin-bottom: 24px;
   }
   ${media.lg`
@@ -69,7 +73,7 @@ const Picture = styled.div`
   `}
 `;
 const Info = styled.div`
-  padding: 0 32px;
+  padding: 0 24px;
   ${media.lg`
   width:40%;
   padding: 0 2%;

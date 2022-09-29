@@ -1,37 +1,82 @@
-import React, { VFC } from 'react';
+import React, { useEffect, useState, VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font } from '../../utils/style';
 import { Item } from '../molecules/Item';
 import { contents } from '../../utils/store';
 import { WorkPost } from '../../../@types/schema';
+import { sceneState } from '../../utils/sceneState';
+import { motion } from 'framer-motion';
 
 export const Works: VFC = () => {
+  const [currentCategory, setCurrentCategory] = useState(0);
+  const [isFiltered, setIsFiltered] = useState(false);
+
+  useEffect(() => {
+    sceneState.isWorksFiltered = isFiltered;
+    sceneState.currentCategory = currentCategory;
+  }, [isFiltered, currentCategory]);
+
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
+      exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
+    >
       <PageTitle>
         <h1>WORKS</h1>
       </PageTitle>
       <UiCategory>
         <ul>
           <li>
-            <a href="">All</a>
+            <UiCategoryBtn
+              isActive={!isFiltered}
+              onClick={() => {
+                setIsFiltered(false);
+                setCurrentCategory(0);
+              }}
+              className={'cursor-scale small'}
+            >
+              ALL
+            </UiCategoryBtn>
           </li>
           <li>
-            <a href="">Art</a>
+            <UiCategoryBtn
+              isActive={isFiltered && currentCategory === 0}
+              onClick={() => {
+                setIsFiltered(true);
+                setCurrentCategory(0);
+              }}
+              className={'cursor-scale small'}
+            >
+              Art
+            </UiCategoryBtn>
           </li>
           <li>
-            <a href="">Client</a>
+            <UiCategoryBtn
+              isActive={isFiltered && currentCategory === 1}
+              onClick={() => {
+                setIsFiltered(true);
+                setCurrentCategory(1);
+              }}
+              className={'cursor-scale small'}
+            >
+              Client
+            </UiCategoryBtn>
           </li>
         </ul>
       </UiCategory>
-      {contents.works.map((work: WorkPost, index) => (
-        <Item post={work} key={index} indexNumber={index} />
-      ))}
+      {contents.works
+        .filter((work: WorkPost, childIndex) =>
+          isFiltered ? work.tag === currentCategory : work.tag >= 0,
+        )
+        .map((work: WorkPost, childIndex) => (
+          <Item post={work} key={childIndex} indexNumber={childIndex} />
+        ))}
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   background: ${color.background.dark};
 `;
 
@@ -39,9 +84,9 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  height: 40vh;
+  height: 30vh;
   padding: 59px 32px 0;
-  background-image: url('../images/bg_about.png');
+  background-image: url('../images/bg_works.jpg');
   background-size: cover;
   background-position: center;
   padding-bottom: 48px;
@@ -49,27 +94,6 @@ const PageTitle = styled.div`
     width: 100%;
     ${font.replica.h1};
   }
-`;
-
-const SectionContainer = styled.div`
-  padding: 0 32px;
-`;
-
-const SectionTitle = styled.div`
-  h2 {
-    ${font.replica.h2};
-  }
-  margin-bottom: 24px;
-  ${media.lg`
-    margin-right:72px;
-  `}
-`;
-
-const Text = styled.div`
-  display: inline;
-  margin-bottom: 48px;
-  text-align: justify;
-  font-size: 16px;
 `;
 
 const UiCategory = styled.div`
@@ -82,40 +106,25 @@ const UiCategory = styled.div`
   }
   ul li {
     margin: 0 16px;
-    ${font.Inter.button};
+    ${font.replica.button};
     border: 1px solid #fff;
     border-radius: 4px;
   }
-  ul li a {
-    display: inline-block;
-    color: #fff;
-    text-decoration: none;
-    padding: 0 16px;
-  }
-  ul a {
-    transition: 0.3s ease-in-out;
-  }
+
   ul a:hover {
-    color: #1d1d1d;
-    background: #fff;
-    transition: 0.3s ease-in-out;
   }
 `;
-const ColInfobox = styled.div`
-  font-size: 24px;
-  ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding: 0;
-  }
-  li {
-    width: 33%;
-  }
-  a {
-    color: #fff;
-  }
-  span {
-    font-size: 16px;
+const UiCategoryBtn = styled.p<{ isActive: boolean }>`
+  cursor: pointer;
+  display: inline-block;
+  color: ${(props) => (props.isActive ? color.background.dark : color.content.HighEmphasis)};
+  background-color: ${(props) => (props.isActive ? color.content.HighEmphasis : 'transparent')};
+  text-decoration: none;
+  padding: 0 16px;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    color: ${color.background.dark};
+    background: ${color.content.HighEmphasis};
+    transition: 0.3s ease-in-out;
   }
 `;

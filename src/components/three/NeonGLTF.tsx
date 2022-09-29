@@ -7,11 +7,8 @@ import React, { useRef, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useScroll } from './ScrollControls';
 import { GLTF } from 'three-stdlib';
-import { GUIController } from '../../utils/gui';
 import { useFrame } from '@react-three/fiber';
-import { glassState } from '../../utils/store';
 import { useControls } from 'leva';
-import { animate, useMotionValue } from 'framer-motion';
 import gsap from 'gsap';
 import { sceneState } from '../../utils/sceneState';
 import { useSnapshot } from 'valtio';
@@ -27,7 +24,7 @@ type GLTFResult = GLTF & {
 };
 
 export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/sign.gltf') as GLTFResult;
+  const { nodes } = useGLTF('/sign.gltf') as GLTFResult;
   const glassRef = useRef<THREE.Mesh>(null);
   const frLightRef = useRef<THREE.MeshBasicMaterial>(null);
   const arLightRef = useRef<THREE.MeshBasicMaterial>(null);
@@ -151,8 +148,8 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
         ease: 'power3.out',
       });
 
-      //arLight
-      const arColor = arLightRef.current!.color;
+    //arLight
+    const arColor = arLightRef.current!.color;
     const arOffValue = new THREE.Color(Number(argonProps.offColor.replace('#', '0x')));
     const arInActiveValue = new THREE.Color(Number(argonProps.inActiveColor.replace('#', '0x')));
     const arActiveValue = new THREE.Color(Number(argonProps.activeColor.replace('#', '0x')));

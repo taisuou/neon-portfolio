@@ -1,10 +1,15 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font, media } from '../../utils/style';
+import { motion } from 'framer-motion';
 
 export const Contact: VFC = () => {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
+      exit={{ opacity: 0, y: -50, transition: { duration: 0.5 } }}
+    >
       <PageTitle>
         <h1>CONTACT</h1>
       </PageTitle>
@@ -13,11 +18,11 @@ export const Contact: VFC = () => {
         <SectionTitle>
           <h2>Contact</h2>
         </SectionTitle>
-        <TextBox>
-          <TextDec>
-            <a href="mailto:taisho@electrodeart">taisho@electrodeart.com</a>
-          </TextDec>
-        </TextBox>
+        <ColInfobox>
+          <a href="mailto:taisho@electrodeart" className={'cursor-scale small'}>
+            taisho@electrodeart.com
+          </a>
+        </ColInfobox>
       </SectionContainer>
 
       <SectionContainer>
@@ -30,7 +35,12 @@ export const Contact: VFC = () => {
               <p>
                 <span>instagram</span>
               </p>
-              <a href="https://www.instagram.com/electrode_taisho/" target="_blank">
+              <a
+                href="https://www.instagram.com/electrode_taisho/"
+                target="_blank"
+                className={'cursor-scale small'}
+                rel="noreferrer"
+              >
                 @electrode_taisho
               </a>
             </li>
@@ -38,7 +48,12 @@ export const Contact: VFC = () => {
               <p>
                 <span>Medium</span>
               </p>
-              <a href="https://medium.com/@electrodeart" target="_blank">
+              <a
+                href="https://medium.com/@electrodeart"
+                target="_blank"
+                className={'cursor-scale small'}
+                rel="noreferrer"
+              >
                 @electrodeart
               </a>
             </li>
@@ -46,7 +61,12 @@ export const Contact: VFC = () => {
               <p>
                 <span>twitter</span>
               </p>
-              <a href="https://twitter.com/electrodeart" target="_blank">
+              <a
+                href="https://twitter.com/electrodeart"
+                target="_blank"
+                className={'cursor-scale small'}
+                rel="noreferrer"
+              >
                 @electrodeart
               </a>
             </li>
@@ -57,7 +77,7 @@ export const Contact: VFC = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: relative;
   background: ${color.background.dark};
   width: 100%;
@@ -70,9 +90,9 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  height: 40vh;
+  height: 30vh;
   padding: 59px 32px 0;
-  background-image: url('../images/bg_about.png');
+  background-image: url('../images/bg_contact.jpg');
   background-size: cover;
   background-position: center;
   padding-bottom: 48px;
@@ -85,7 +105,7 @@ const PageTitle = styled.div`
 const SectionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 64px 32px 0 32px;
+  padding: 64px 24px 0 24px;
   ${media.lg`
     max-width:1108px;
     margin:0 auto;
@@ -98,34 +118,18 @@ const SectionContainer = styled.div`
 
 const SectionTitle = styled.div`
   h2 {
-    ${font.replica.h3};
+    ${font.replica.h2};
   }
-  margin-bottom: 24px;
   ${media.lg`
-  width:10%;
-  margin-right:72px;
+  width:20%;
 `}
-`;
-
-const TextBox = styled.div`
-  p {
-    ${font.Inter.body2};
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  display: inline;
-  text-align: justify;
-  padding-bottom: 24px;
-`;
-
-const TextDec = styled.div`
-  font-size: 1.5rem;
 `;
 
 const ColInfobox = styled.div`
   font-size: 24px;
-  text-align: center;
-  width: 90%;
+  width: 80%;
+  display: flex;
+  align-items: center;
   ul {
     display: flex;
     flex-direction: column;
@@ -153,4 +157,3 @@ const ColInfobox = styled.div`
   }
 `}
 `;
-

@@ -1,12 +1,11 @@
 import { FC, Suspense, useEffect, useRef, VFC } from 'react';
-import { OrbitControls, Stats, Preload, Image, Text } from '@react-three/drei';
+import { OrbitControls, Preload } from '@react-three/drei';
 import { Scroll, ScrollControls, useScroll } from './ScrollControls';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { NeonGLTF } from './NeonGLTF';
 import { Ground } from './Ground';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize } from 'postprocessing';
-import { Contents as PageContents } from '../organisms/Contents';
 import { Home } from '../organisms/Home';
 import { About } from '../organisms/About';
 import { Works } from '../organisms/Works';
@@ -17,13 +16,10 @@ import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
-import { useMedia } from '../../utils/useMedia';
 import * as THREE from 'three';
 import { useControls } from 'leva';
-import { isReturnStatement } from 'typescript';
-import { Header } from '../molecules/Header';
-import { Box, Flex } from '@react-three/flex';
 import { Footer } from '../molecules/Footer';
+import { AnimatePresence } from 'framer-motion';
 
 function NeonScene() {
   const ambientProps = useControls('AmbientLight', {
@@ -65,7 +61,7 @@ function NeonScene() {
 function Contents() {
   const elementRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
-  const { height } = useSnapshot(sceneState);
+  const { height, isWorksFiltered, currentCategory } = useSnapshot(sceneState);
   const [location] = useLocation();
   // let offset = useScroll().offset
 
@@ -75,7 +71,7 @@ function Contents() {
       //コンテンツ落ちを防ぐために僅かに遅くしてる
       sceneState.height = elementRef.current!.getBoundingClientRect().height;
     }, 500);
-  }, [size.height, elementRef, location]);
+  }, [size.height, elementRef, location, isWorksFiltered, currentCategory]);
 
   return (
     <group>
@@ -86,26 +82,32 @@ function Contents() {
       >
         <NeonScene />
         <Scroll html ref={elementRef}>
-          <Switch location={location}>
-            <Route path="/">
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/works">
-              <Works />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/works/:id">
-              {(params) => (
-                <Detail post={contents.works[Number(params.id)]} pageIndex={Number(params.id)} />
-              )}
-            </Route>
-          </Switch>
-          <Footer />
+          <AnimatePresence initial={false}>
+            <Switch location={location}>
+              <Route path="/">
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/works">
+                <Works />
+              </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/works/:id">
+                {(params) => (
+                  <Detail
+                    post={contents.works[Number(params.id)]}
+                    pageIndex={Number(params.id)}
+                    key={Number(params.id)}
+                  />
+                )}
+              </Route>
+            </Switch>
+            <Footer key={location} />
+          </AnimatePresence>
         </Scroll>
       </ScrollControls>
     </group>
@@ -117,8 +119,7 @@ type RigProps = {
 const Rig: FC<RigProps> = ({ children }) => {
   const ref = useRef<THREE.Group>();
   const vec = new THREE.Vector3();
-  const { camera, mouse } = useThree();
-  const { isMobile, isTablet } = useMedia();
+  const { camera } = useThree();
   const scroll = useScroll();
   useFrame(() => {
     const offset = 1 - scroll.offset;
@@ -129,14 +130,11 @@ const Rig: FC<RigProps> = ({ children }) => {
     );
 
     camera.lookAt(0, 0, 0);
-    //Objectを動かすと簡略に表現はできるz
-    // ref.current!.rotation.y = offset
   });
   return <group ref={ref}>{children}</group>;
 };
 
 export const TCanvas: VFC = () => {
-  const { isMobile, isTablet } = useMedia();
   const helperControl = useControls('helperControl', {
     orbit: false,
     axis: false,
@@ -156,7 +154,7 @@ export const TCanvas: VFC = () => {
       // shadows
     >
       {/* scene */}
-      <color attach="background" args={['#000']} />
+      <color attach="background" args={['#040404']} />
       {/* camera controller */}
 
       {helperControl.orbit ? (
@@ -165,9 +163,6 @@ export const TCanvas: VFC = () => {
 
       {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
-        {/* objects */}
-        {/* <Objects /> */}
-
         <Contents />
         <Preload all />
       </Suspense>

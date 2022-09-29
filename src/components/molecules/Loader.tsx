@@ -13,9 +13,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
   const loaderPath = useRef(null);
   const loader = useRef(null);
   const electrode = useRef(null);
-  const counter = useRef<HTMLDivElement | null>(null);
 
-  const [isLoaderOpen, setLoaderOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const paths = {
@@ -31,7 +29,6 @@ export const Loader: VFC<LoaderProps> = (props) => {
   const loaderEnd = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setLoaderOpen(true);
 
     if (!loaderPath.current || !loader.current || !electrode.current) return;
     gsap.timeline().fromTo(
@@ -91,9 +88,40 @@ export const Loader: VFC<LoaderProps> = (props) => {
         />
       </SVG>
       <LoaderAnim ref={electrode}>
-        <Electrode src="/loader_anim.png" />
+        {/* <Electrode src="/loader_anim.png" /> */}
         {/* <LoaderNum ref={counter} data-from="0" data-to="4096">{progress}</LoaderNum> */}
-        {/* <LoaderNum>Loading...</LoaderNum> */}
+        <LoaderLogo>
+          <LogoInner>
+            <li className="front">
+              <div className="elec__item glass__front"></div>
+              <div className="elec__item mica__front"></div>
+            </li>
+            <li className="sideY">
+              <div className="elec__item glass__side"></div>
+              <ul>
+                <li className="elec__item mica__side"></li>
+                <li className="elec__item plate__side">
+                  <svg width="44" height="84">
+                    <path d="M22 0 L1 84 L43 84 Z" fillOpacity="0"></path>
+                  </svg>
+                </li>
+              </ul>
+            </li>
+            <li className="sideX">
+              <div className="elec__item glass__side"></div>
+              <ul>
+                <li className="elec__item mica__side"></li>
+                <li className="elec__item plate__side">
+                  <svg width="44" height="84">
+                    <path d="M22 0 L1 84 L43 84 Z" fillOpacity="0"></path>
+                  </svg>
+                </li>
+              </ul>
+            </li>
+          </LogoInner>
+        </LoaderLogo>
+
+        <LoaderNum>Loading ...</LoaderNum>
       </LoaderAnim>
     </Container>
   );
@@ -113,64 +141,11 @@ const SVG = styled.svg`
   left: 0;
 `;
 
-const Electrode = styled.img`
-  width: calc(240px * 2 / 3);
-  height: calc(320px * 2 / 3);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const LoaderAnim = styled.div`
-  width: 100%;
-  height: 100%;
-  .front {
-    animation: rotateFront 5000ms linear infinite;
-  }
-  .sideY {
-    animation: rotateSideY 5000ms linear infinite;
-    transform-origin: 0 60px;
-    transform: translateZ(60px);
-  }
-  .sideX {
-    animation: rotateSideX 5000ms linear infinite;
-    transform-origin: 0 60px;
-  }
-
-  @keyframes rotateFront {
-    from {
-      transform: rotateY(0deg);
-    }
-    to {
-      transform: rotateY(-359deg);
-    }
-  }
-
-  @keyframes rotateSideY {
-    from {
-      transform: rotateY(90deg) rotateX(0deg);
-    }
-    to {
-      transform: rotateY(449deg) rotateX(359deg);
-    }
-  }
-
-  @keyframes rotateSideX {
-    from {
-      transform: rotateY(90deg) rotateX(90deg);
-    }
-    to {
-      transform: rotateY(449deg) rotateX(449deg);
-    }
-  }
-`;
-
 const LoaderLogo = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  perspective: 400px;
+  perspective: 180px;
   position: absolute;
   background: #000;
 
@@ -178,7 +153,7 @@ const LoaderLogo = styled.div`
     position: absolute;
     width: 120px;
     height: 120px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     transform-style: preserve-3d;
   }
 
@@ -212,6 +187,60 @@ const LoaderLogo = styled.div`
   }
 `;
 
+const LoaderAnim = styled.div`
+  width: 100%;
+  height: 100%;
+
+  .front {
+    animation: rotateFront 4000ms linear infinite;
+  }
+  .sideY {
+    animation: rotateSideY 4000ms linear infinite;
+    transform-origin: 0 60px;
+    transform: translateZ(60px);
+  }
+  .sideX {
+    animation: rotateSideX 4000ms linear infinite;
+    transform-origin: 0 60px;
+  }
+
+  @keyframes rotateFront {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(-359deg);
+    }
+  }
+
+  @keyframes rotateSideY {
+    from {
+      transform: rotateY(90deg) rotateX(0deg);
+    }
+    to {
+      transform: rotateY(449deg) rotateX(359deg);
+    }
+  }
+
+  @keyframes rotateSideX {
+    from {
+      transform: rotateY(90deg) rotateX(90deg);
+    }
+    to {
+      transform: rotateY(449deg) rotateX(449deg);
+    }
+  }
+
+  @keyframes flushLetter {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 0.9;
+    }
+  }
+`;
+
 const LogoInner = styled.ol`
   list-style-type: none;
   transform: translateY(-60px) translateZ(-60px);
@@ -225,4 +254,15 @@ const LoaderNum = styled.div`
   width: 100%;
   text-align: center;
   font-size: 14px;
+  font-weight: normal;
+  animation: flushLetter 200ms linear infinite;
+
+  @keyframes flushLetter {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 0.9;
+    }
+  }
 `;

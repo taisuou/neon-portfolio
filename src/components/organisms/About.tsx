@@ -1,20 +1,25 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media, zIndex } from '../../utils/style';
+import { color, font, media } from '../../utils/style';
+import { motion } from 'framer-motion';
 
 export const About: VFC = () => {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
+      exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
+    >
       <PageTitle>
         <h1>ABOUT</h1>
       </PageTitle>
 
-        <SectionContainer>
-          <SectionTitle>
-            <h2>Profile</h2>
-          </SectionTitle>
-          <TextBox>
-            <Text>
+      <SectionContainer>
+        <SectionTitle>
+          <h2>Profile</h2>
+        </SectionTitle>
+        <TextBox>
+          <Text>
             <TextTitle>Taisho Ichikawa</TextTitle>
             <p>
               Born in 1991, graduated from the School of Social Sciences at Waseda University.
@@ -42,7 +47,7 @@ export const About: VFC = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   background: ${color.background.dark};
 `;
 
@@ -50,9 +55,9 @@ const PageTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  height: 40vh;
+  height: 30vh;
   padding: 59px 32px 0;
-  background-image: url('../images/bg_about.png');
+  background-image: url('../images/bg_about.jpg');
   background-size: cover;
   background-position: center;
   padding-bottom: 48px;
@@ -85,7 +90,7 @@ const SectionTitle = styled.div`
 
 const TextBox = styled.div`
   p {
-    ${font.Inter.body2};
+    ${font.replica.body2};
     font-size: 12px;
     line-height: 1.5;
   }
@@ -104,6 +109,6 @@ const Text = styled.div`
 `;
 
 const TextTitle = styled.div`
-  ${font.Inter.subtitle1};
+  ${font.replica.subtitle1};
   margin-bottom: 16px;
 `;

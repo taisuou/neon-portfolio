@@ -1,5 +1,6 @@
 // TODO update
 export type WorkPost = {
+    id:number
     titleEn: string
     titleJp: string
     tag: number

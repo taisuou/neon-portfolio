@@ -9,16 +9,12 @@ export const Loader: VFC = () => {
 
   const loaderPath = useRef(null);
   const loaderPathParent = useRef(null);
-  const counter = useRef<HTMLDivElement|null>(null);
+  const counter = useRef<HTMLDivElement | null>(null);
 
   const [isLoaderOpen, setLoaderOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const [hidden, setOcclude] = useState(false)
-
-
-
-  
+  const [hidden, setOcclude] = useState(false);
 
   const paths = {
     step1: {
@@ -27,7 +23,7 @@ export const Loader: VFC = () => {
         curve: 'M 0 0 V 50 Q 50 100 100 50 V 0 z',
       },
       filled: 'M 0 0 V 100 Q 50 100 100 100 V 0 z',
-    }
+    },
   };
 
   const loaderEnd = () => {
@@ -36,12 +32,12 @@ export const Loader: VFC = () => {
     setLoaderOpen(true);
 
     if (!loaderPath.current || !loaderPathParent.current) return;
-    
+
     gsap
       .timeline({
         onComplete: () => {
           setIsAnimating(false);
-          setOcclude(true)
+          setOcclude(true);
         },
       })
       .set(loaderPath.current, {
@@ -54,7 +50,7 @@ export const Loader: VFC = () => {
         loaderPath.current,
         {
           duration: 0.8,
-          delay:3.0,
+          delay: 3.0,
           ease: 'power4.in',
           attr: { d: paths.step1.inBetween.curve },
         },
@@ -67,24 +63,22 @@ export const Loader: VFC = () => {
       })
       .set(loaderPathParent.current, {
         visibility: 'hidden',
-      })
+      });
   };
 
-  
-  
-  
   //   return <Html center>{progress} % loaded</Html>
-  useEffect(()=>{
-    if(progress===100){loaderEnd()}
-  },[progress])
+  useEffect(() => {
+    if (progress === 100) {
+      loaderEnd();
+    }
+  }, [progress]);
   return (
-    <Html 
-        fullscreen
-        occlude={hidden}
-        style={{
-            visibility: hidden ? 'hidden':'visible',
-            
-          }} 
+    <Html
+      fullscreen
+      occlude={hidden}
+      style={{
+        visibility: hidden ? 'hidden' : 'visible',
+      }}
     >
       <SVG
         width="100vw"
@@ -133,22 +127,18 @@ export const Loader: VFC = () => {
         </LoaderLogo>
         {/* <LoaderNum ref={counter} data-from="0" data-to="4096">{progress}</LoaderNum> */}
         <LoaderNum>Loading...</LoaderNum>
-
       </LoaderAnim>
-      
     </Html>
   );
 };
 
-const SVG=styled.svg`
-    position: absolute;
-    visibility: hidden;
-    top: 0;
-    left: 0;
-
-`
+const SVG = styled.svg`
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+`;
 const LoaderAnim = styled.div`
-    
   .front {
     animation: rotateFront 5000ms linear infinite;
   }

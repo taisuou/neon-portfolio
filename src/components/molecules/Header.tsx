@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useRef, useState, VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, zIndex, media, font } from '../../utils/style';
+import { color, zIndex, font } from '../../utils/style';
 import { Link, useLocation } from 'wouter';
 import { useMedia } from '../../utils/useMedia';
 import { gsap } from 'gsap';
@@ -172,7 +172,7 @@ export const Header: VFC = () => {
       })
       .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
-        delay: 0.5,
+        delay: 0.1,
       })
       .to(overlayPath.current, {
         duration: 0.2,
@@ -224,25 +224,22 @@ export const Header: VFC = () => {
         />
       </SVG>
       <Link href="/">
-        <a
+        <Logo
+          className={'cursor-scale small'}
           onClick={() => {
             isMenuOpen && menuClose();
           }}
         >
-          <Logo className={'cursor-scale'}>
-            <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
-          </Logo>
-        </a>
+          <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
+        </Logo>
       </Link>
 
       {!isMobile ? (
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
-            <li key={index} className={'cursor-scale'}>
+            <li key={index} className={'cursor-scale small'}>
               <Link href={`/${menu}`}>
-                <a>
-                  <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
-                </a>
+                <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
               </Link>
             </li>
           ))}
@@ -352,7 +349,7 @@ const DesktopMenuContainer = styled.ul`
   display: flex;
   z-index: ${zIndex.elevation.ev8};
   li {
-    margin: 0 24px 0 0;
+    margin: 0 48px 0 0;
     a {
       color: ${color.content.HighEmphasis};
       text-decoration: none;
@@ -362,6 +359,9 @@ const DesktopMenuContainer = styled.ul`
         display: inline-block;
       }
     }
+  }
+  li:last-child {
+    margin: 0;
   }
 `;
 
