@@ -57,7 +57,7 @@ export const Header: VFC = () => {
         duratiuon: 1,
         delay: animConfig.DELAY_AFTER_READY,
         ease: 'power3.out',
-        stagger: 0.1,
+        stagger: 0.5,
       });
   };
   const menuOpen = () => {
@@ -66,12 +66,12 @@ export const Header: VFC = () => {
     setMenuOpen(true);
 
     if (!overlayPath.current || !overlayPathParent.current) return;
-    console.log('open');
     gsap
       .timeline()
       .set(spMenuListParent.current, { autoAlpha: 1 })
       .set(spMenuList.current, { autoAlpha: 0, y: -30 })
       .to(spMenuList.current, 0.2, { autoAlpha: 1, y: 0, stagger: 0.05, ease: 'power1.in' }, 0.8);
+
     gsap
       .timeline({
         onComplete: () => {

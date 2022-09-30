@@ -55,8 +55,115 @@ export const contents = {
     },
     {
       id: 1,
-      titleEn: 'Argon Dance',
+      titleEn: 'Distortion @SICF23 SPIRAL omotesando',
+      titleJp: 'Distortion @SICF23 SPIRAL 表参道',
+      // ART:0, Client:1
+      tag: 0,
+      thumb: '/images/posts/2022_distortion/2022_distortion_00.jpg',
+      year: '2022',
+      pjinfo: 'exhibition',
+      descriptionEn:
+        'An experimental work that reveals the aesthetics and emotionality that reside in events that would normally be overlooked, exhibited at SICF23.',
+      descriptionJp:
+        'distrotion - ねじれ、ひずみ。普段看過されてしまうような事象に宿る、審美性、情緒性を表出させる実験作品。SICF23に出展。',
+      images: [
+        '/images/posts/2022_distortion/2022_distortion_00.jpg',
+        '/images/posts/2022_distortion/2022_distortion_01.jpg',
+        '/images/posts/2022_distortion/2022_distortion_02.jpg',
+        '/images/posts/2022_distortion/2022_distortion_03.jpg',
+        '/images/posts/2022_distortion/2022_distortion_04.jpg',
+      ],
+    },
+    {
+      id: 2,
+      titleEn: '"Life Line"/ LUMINE meets ART AWARD2020-2021',
+      titleJp: '「Life Line」/ ルミネミーツアートアワード2020-2021',
+      // ART:0, Client:1
+      tag: 0,
+      thumb: '/images/posts/2021_lifeline/2021_lifeline_00.jpg',
+      year: '2021',
+      pjinfo: 'exhibition',
+      descriptionEn: 'LUMINE Meets Art Aword 2020-2021 Entries. The work won the Audience Award. / A picture of an everyday scene is drawn with a special line by a neon sign. I reaffirmed the appreciation of ordinary life, forced to change by the coronavirus.',
+      descriptionJp: 'LUMINE Meets Art Aword 2020-2021 応募作品。オーディエンス賞受賞作品。/日常のシーンを切り取った絵をネオンサインによって、特別な線で描く。コロナウイルスで変化を強いられた、普段の生活のありがたみを再認識する。',
+      images: [
+        '/images/posts/2021_lifeline/2021_lifeline_00.jpg',
+        '/images/posts/2021_lifeline/2021_lifeline_01.jpg',
+        '/images/posts/2021_lifeline/2021_lifeline_02.jpg',
+      ],
+    },
+    {
+      id: 3,
+      titleEn: 'Toy Neon',
       titleJp: '',
+      // ART:0, Client:1
+      tag: 0,
+      thumb: '/images/posts/2022_toyneon/2022_toyneon_00.jpg',
+      year: '2021',
+      pjinfo: 'private work',
+      descriptionEn: 'Toy neon / 3DCG graphic works',
+      descriptionJp: 'トイネオン / 3DCGグラフィックワーク',
+      images: [
+        '/images/posts/2022_toyneon/2022_toyneon_00.jpg',
+        '/images/posts/2022_toyneon/2022_toyneon_01.jpg',
+        '/images/posts/2022_toyneon/2022_toyneon_02.jpg',
+        '/images/posts/2022_toyneon/2022_toyneon_03.jpg',
+      ],
+    },
+    {
+      id: 4,
+      titleEn: '3DCG Neon typography and graphics',
+      titleJp: '3DCGネオンタイポグラフィ&グラフィック',
+      // ART:0, Client:1
+      tag: 0,
+      thumb: '/images/posts/2021_3dtypography/2021_3dtypography_00.jpg',
+      year: '2021',
+      pjinfo: 'private work',
+      descriptionEn: '3DCG Neon typography and graphics',
+      descriptionJp: 'トイネオン / 3DCGグラフィックワーク',
+      images: [
+        '/images/posts/2021_3dtypography/2021_3dtypography_00.jpg',
+        '/images/posts/2021_3dtypography/2021_3dtypography_01.jpg',
+        '/images/posts/2021_3dtypography/2021_3dtypography_02.jpg',
+      ],
+    },
+    {
+      id: 5,
+      titleEn: '"Chim↑Pom from Smappa! Group" logo neon sign',
+      titleJp: '"Chim↑Pom from Smappa! Group" ロゴネオンサイン',
+      // ART:0, Client:1
+      tag: 1,
+      thumb: '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
+      year: '2022',
+      pjinfo: 'order work',
+      descriptionEn: 'Neon sign of shared atelier "Ghost" / Yotsugi, Katsushika-ku, Tokyo',
+      descriptionJp: 'シェアアトリエ「Ghost」のネオンサイン/ 東京都葛飾区四つ木',
+      images: [
+        '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
+        '/images/posts/2022_chimpom/2022_chimpom_01.jpg',
+        '/images/posts/2022_chimpom/2022_chimpom_02.jpg',
+      ],
+    },
+    {
+      id: 6,
+      titleEn: 'Ghost Neon Sign, shared atelier ',
+      titleJp: 'シェアアトリエ Ghost ネオンサイン',
+      // ART:0, Client:1
+      tag: 1,
+      thumb: '/images/posts/2021_ghost/2021_ghost_00.jpg',
+      year: '2021',
+      pjinfo: 'order work',
+      descriptionEn: 'Neon sign of shared atelier "Ghost" / Yotsugi, Katsushika-ku, Tokyo',
+      descriptionJp: 'シェアアトリエ「Ghost」のネオンサイン/ 東京都葛飾区四つ木',
+      images: [
+        '/images/posts/2021_ghost/2021_ghost_00.jpg',
+        '/images/posts/2021_ghost/2021_ghost_01.jpg',
+        '/images/posts/2021_ghost/2021_ghost_02.jpg',
+      ],
+    },
+    {
+      id: 7,
+      titleEn: 'Argon Dance',
+      titleJp: 'アルゴンダンス',
       // ART:0, Client:1
       tag: 0,
       thumb: '/images/posts/2021_argondance/2021_argondance_00.jpg',
@@ -70,7 +177,7 @@ export const contents = {
       ],
     },
     {
-      id: 2,
+      id: 8,
       titleEn: 'Distortion',
       titleJp: '',
       // ART:0, Client:1
@@ -91,14 +198,14 @@ export const contents = {
       ],
     },
     {
-      id: 3,
+      id: 9,
       titleEn: 'NONAME neon sign',
       titleJp: 'NONAME ネオンサイン',
       // ART:0, Client:1
       tag: 1,
       thumb: '/images/posts/2020_noname/2020_noname_00.jpg',
       year: '2020',
-      pjinfo: 'order',
+      pjinfo: 'order work',
       descriptionEn: 'Neon sign of cafe & bar "NONAME" / Utsunomiya, Tochigi / Logo Designing',
       descriptionJp: 'カフェ&バー「NONAME」のネオンサイン / 栃木県宇都宮市 / ロゴデザイン設計',
       images: [
@@ -108,14 +215,14 @@ export const contents = {
       ],
     },
     {
-      id: 4,
+      id: 10,
       titleEn: 'Vase neon sign',
       titleJp: 'Vase ネオンサイン',
       // ART:0, Client:1
       tag: 1,
       thumb: '/images/posts/2019_vase/2019_vase_00.jpg',
       year: '2019',
-      pjinfo: 'order',
+      pjinfo: 'order work',
       descriptionEn: 'Neon sign for select store “Vase“/ Kamimeguro, Meguro-ku, Tokyo',
       descriptionJp: 'セレクトショップ 「Vase」のネオンサイン / 東京都目黒区上目黒',
       images: [
@@ -125,7 +232,7 @@ export const contents = {
       ],
     },
     {
-      id: 5,
+      id: 11,
       titleEn: 'Neon Flower',
       titleJp: '',
       // ART:0, Client:1
@@ -134,7 +241,7 @@ export const contents = {
       year: '2019',
       pjinfo: 'exhibition',
       descriptionEn: 'Neon and dried flower sign base',
-      descriptionJp: 'セレクトショップ 「Vase」のネオンサイン / 東京都目黒区上目黒',
+      descriptionJp: 'ネオンとドライフラーをモチーフとした作品',
       images: [
         '/images/posts/2019_neonflower/2019_neonflower_00.jpg',
         '/images/posts/2019_neonflower/2019_neonflower_01.jpg',
@@ -144,14 +251,14 @@ export const contents = {
       ],
     },
     {
-      id: 6,
+      id: 12,
       titleEn: 'Gampeki Music Festival neon sign',
       titleJp: '「岩壁音楽祭」ネオンサイン',
       // ART:0, Client:1
       tag: 1,
       thumb: '/images/posts/2019_gampeki/2019_gampeki_00.jpg',
       year: '2019',
-      pjinfo: 'event',
+      pjinfo: 'event,order work',
       descriptionEn: 'Neon sign for "Rock Wall Music Festival" music event',
       descriptionJp: '音楽イベント「岩壁音楽祭」のネオンサイン',
       images: [
@@ -160,7 +267,7 @@ export const contents = {
       ],
     },
     {
-      id: 7,
+      id: 13,
       titleEn: 'Campbell’s Banana',
       titleJp: '',
       // ART:0, Client:1
