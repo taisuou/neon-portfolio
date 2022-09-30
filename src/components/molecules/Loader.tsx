@@ -255,7 +255,9 @@ const LoaderNum = styled.div`
   text-align: center;
   font-size: 14px;
   font-weight: normal;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',;
   animation: flushLetter 200ms linear infinite;
+  
 
   @keyframes flushLetter {
     from {

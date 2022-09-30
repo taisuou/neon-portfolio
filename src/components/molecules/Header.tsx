@@ -23,6 +23,7 @@ export const Header: VFC = () => {
     createRef<HTMLSpanElement>(),
   ]);
   let desktopLogoRef = useRef<HTMLImageElement | null>(null);
+
   let spMenuList = useRef<HTMLElement[] | null[]>([]);
   const spMenuListParent = useRef(null);
 
@@ -45,7 +46,6 @@ export const Header: VFC = () => {
   };
   const showDesktopMenuLogo = () => {
     let menus = [desktopLogoRef.current, desktopMenuRef.current.map((card) => card.current)];
-
     gsap
       .timeline()
       .set(menus, {
@@ -66,12 +66,12 @@ export const Header: VFC = () => {
     setMenuOpen(true);
 
     if (!overlayPath.current || !overlayPathParent.current) return;
-    console.log('open');
     gsap
       .timeline()
       .set(spMenuListParent.current, { autoAlpha: 1 })
       .set(spMenuList.current, { autoAlpha: 0, y: -30 })
       .to(spMenuList.current, 0.2, { autoAlpha: 1, y: 0, stagger: 0.05, ease: 'power1.in' }, 0.8);
+
     gsap
       .timeline({
         onComplete: () => {
@@ -239,7 +239,7 @@ export const Header: VFC = () => {
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale small'}>
               <Link href={`/${menu}`}>
-                <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
+              <a><span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span></a>
               </Link>
             </li>
           ))}
