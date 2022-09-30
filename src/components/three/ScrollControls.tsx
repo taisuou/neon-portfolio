@@ -228,21 +228,21 @@ const ScrollHtml = React.forwardRef(
     const fiberState = React.useContext(fiberContext);
     //localeによってResetしたPositionを再描画するためのuseEffect
 
-    console.log(group.current);
+    //console.log(group.current);
 
-    React.useEffect(() => {
-      group.current.style.transform = `translate3d(${
-        state.horizontal ? -width * (state.pages - 1) * state.offset : 0
-      }px,${state.horizontal ? 0 : height * (state.pages - 1) * -state.offset}px,0)`;
-    }, [state.locale]);
+    // React.useEffect(() => {
+    //   group.current.style.transform = `translate3d(${
+    //     state.horizontal ? -width * (state.pages - 1) * state.offset : 0
+    //   }px,${state.horizontal ? 0 : height * (state.pages - 1) * -state.offset}px,0)`;
+    // }, [state.locale]);
 
-    useFrame(() => {
-      if (state.delta > state.eps) {
-        group.current.style.transform = `translate3d(${
-          state.horizontal ? -width * (state.pages - 1) * state.offset : 0
-        }px,${state.horizontal ? 0 : height * (state.pages - 1) * -state.offset}px,0)`;
-      }
-    });
+    // useFrame(() => {
+    //   if (state.delta > state.eps) {
+    //     group.current.style.transform = `translate3d(${
+    //       state.horizontal ? -width * (state.pages - 1) * state.offset : 0
+    //     }px,${state.horizontal ? 0 : height * (state.pages - 1) * -state.offset}px,0)`;
+    //   }
+    // });
 
     ReactDOM.render(
       <div
