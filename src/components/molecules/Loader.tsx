@@ -92,7 +92,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
         {/* <LoaderNum ref={counter} data-from="0" data-to="4096">{progress}</LoaderNum> */}
         <LoaderLogo>
           <LogoInner>
-            <li className="front">
+            {/* <li className="front">
               <div className="elec__item glass__front"></div>
               <div className="elec__item mica__front"></div>
             </li>
@@ -117,7 +117,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
                   </svg>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </LogoInner>
         </LoaderLogo>
 
@@ -256,7 +256,7 @@ const LoaderNum = styled.div`
   font-size: 14px;
   font-weight: normal;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',;
-  animation: flushLetter 200ms linear infinite;
+  // animation: flushLetter 200ms linear infinite;
   
 
   @keyframes flushLetter {
