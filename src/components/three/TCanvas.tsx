@@ -67,10 +67,10 @@ function Contents() {
 
   useEffect(() => {
     //need to be fixed later. Triggered only when
-    setTimeout(() => {
+    // setTimeout(() => {
       //コンテンツ落ちを防ぐために僅かに遅くしてる
       sceneState.height = elementRef.current!.getBoundingClientRect().height;
-    }, 500);
+    // }, 500);
   }, [size.height, elementRef, location, isWorksFiltered, currentCategory]);
 
   return (
