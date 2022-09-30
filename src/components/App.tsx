@@ -105,7 +105,7 @@ export const App: VFC = () => {
         </Helmet>
 
 
-         {/* <Helmet>
+         <Helmet>
            <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=G-9J3KG01S6V`}
@@ -118,7 +118,7 @@ export const App: VFC = () => {
               gtag('config', 'G-9J3KG01S6V');
             `}
           </script>
-         </Helmet> */}
+         </Helmet>
 
 
       <TCanvas />
