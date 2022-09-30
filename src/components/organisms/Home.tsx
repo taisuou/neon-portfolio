@@ -115,9 +115,6 @@ const Hero = styled.div`
 const Container = styled.div`
   /* background: ${color.background.dark}; */
   color: ${color.content.HighEmphasis};
-  img {
-    padding: 0 24px;
-  }
 `;
 
 const MainTitle = styled.div`

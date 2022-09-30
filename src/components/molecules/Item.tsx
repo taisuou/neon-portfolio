@@ -33,43 +33,36 @@ const Container = styled.a<{ isOdd: boolean }>`
   flex-direction: column;
   color: #fff;
   text-decoration: none;
-  // lg:Desktop /mdsp:tablet, mobile, / sp: mobile
-  // ${(props) => (props.isOdd ? `flex-direction:row;` : `flex-flow: row-reverse;`)}};
-  // cursor:pointer;
-  img {
-    padding: 0 24px;
-  }
   ${media.lg`
-    width:100%;
     align-items: center;
-    margin:0px 64px 128px 64px;
-    //justify-content:center;
+    margin:0px 64px 0 64px;
+    padding-bottom: 128px;
     flex-direction:row-reverse;
     :nth-of-type(2n){
       flex-direction: row;
     }
-    img{
-      transition: 0.5s ease-in-out;
-    }
-    &:hover img{
-      transform:scale(1.1,1.1);
-    }
   `}
 `;
 const Picture = styled.div`
-  overflow: hidden;
+  overflow: hidden; 
+  padding: 0 24px;
+
   & img {
     width: 100%;
     height: auto;
-    //object-fit: fill;
     margin-bottom: 24px;
+    
   }
   ${media.lg`
   width:60%;
-  &img{
+  padding: 0;
+  & img{
     margin-bottom: 0px;
+    transition: 0.6s ease-in-out;
   }
-    }
+  &:hover img{
+    transform:scale(1.05,1.05);
+  }
   `}
 `;
 const Info = styled.div`

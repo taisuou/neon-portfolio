@@ -91,7 +91,7 @@ const SectionTitle = styled.div`
 const TextBox = styled.div`
   p {
     ${font.replica.body2};
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
   }
   display: inline;
