@@ -23,6 +23,7 @@ export const Header: VFC = () => {
     createRef<HTMLSpanElement>(),
   ]);
   let desktopLogoRef = useRef<HTMLImageElement | null>(null);
+
   let spMenuList = useRef<HTMLElement[] | null[]>([]);
   const spMenuListParent = useRef(null);
 
@@ -45,7 +46,6 @@ export const Header: VFC = () => {
   };
   const showDesktopMenuLogo = () => {
     let menus = [desktopLogoRef.current, desktopMenuRef.current.map((card) => card.current)];
-
     gsap
       .timeline()
       .set(menus, {
@@ -57,7 +57,7 @@ export const Header: VFC = () => {
         duratiuon: 1,
         delay: animConfig.DELAY_AFTER_READY,
         ease: 'power3.out',
-        stagger: 0.5,
+        stagger: 0.1,
       });
   };
   const menuOpen = () => {
@@ -239,7 +239,7 @@ export const Header: VFC = () => {
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale small'}>
               <Link href={`/${menu}`}>
-                <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
+              <a><span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span></a>
               </Link>
             </li>
           ))}
