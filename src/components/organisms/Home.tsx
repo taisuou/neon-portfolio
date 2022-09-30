@@ -13,9 +13,12 @@ import { motion } from 'framer-motion';
 
 export const Home: VFC = () => {
   let heroTitle = useRef([createRef<HTMLSpanElement>(), createRef<HTMLSpanElement>()]);
+  let scrollIconRef = useRef<HTMLImageElement | null>(null);
+
   const { isReady } = useSnapshot(sceneState);
   const showHero = () => {
-    const titles = heroTitle.current.map((card) => card.current);
+    let titles = [heroTitle.current.map((card) => card.current), scrollIconRef.current];
+    // const titles = heroTitle.current.map((card) => card.current);
     gsap
       .timeline()
       .set(titles, {
@@ -53,11 +56,8 @@ export const Home: VFC = () => {
           <p>
             <span ref={heroTitle.current[1]}>Neon Arts</span>
           </p>
-          {/* <p>
-            <span ref={shuffletext}>Glass and Virtual</span>
-          </p> */}
         </MainTitle>
-        <ScrollArrow className="scrollIcon">
+        <ScrollArrow className="scrollIcon" ref={scrollIconRef}>
           <p>Scroll</p>
           <ScrollIcon>
             <svg
@@ -115,9 +115,6 @@ const Hero = styled.div`
 const Container = styled.div`
   /* background: ${color.background.dark}; */
   color: ${color.content.HighEmphasis};
-  img {
-    padding: 0 24px;
-  }
 `;
 
 const MainTitle = styled.div`

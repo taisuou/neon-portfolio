@@ -115,20 +115,22 @@ const PictureWrap = styled.div`
   display: flex;
   flex-direction: column;
   img {
-    margin-bottom: 24px;
+    margin-bottom: 40px;
   }
 `;
 
 const DescriptionEn = styled.p`
   margin-top: 6px;
+  ${font.replica.body1}
   &::after {
-    content: '-';
+    content: '---';
     display: block;
     margin: 8px 0;
   }
 `;
 const DescriptionJp = styled.p`
-  margin-bottom: 32px;
+  margin-bottom: 48px;
+  font-size:14px;
 `;
 
 const Picture = styled.img`

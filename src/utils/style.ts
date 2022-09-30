@@ -32,7 +32,7 @@ export const font = {
     h1: 'font-family:replica; font-weight: bold; font-size: calc(2rem + ((1vw - 0.2rem) * 2.6667)); min-height: 0vw;line-height: 1.1;',
     h2: 'font-family:replica; font-weight: bold; font-size: 2rem; line-height: 1.3;',
     h3: 'font-family:replica; font-weight: bold; font-size: 1.4rem; line-height: 1.3;',
-    subtitle1: 'font-family:replica; font-weight: normal; font-size: 14px; line-height: 1.3;',
+    subtitle1: 'font-family:replica; font-weight: bold; font-size: 14px; line-height: 1.3;',
     // subtitle2: 'font-family:replica; font-weight: 600; font-size: 14px; line-height: 1.3;',
     body1: 'font-family:replica; font-weight: normal; font-size: 14px; line-height: 1.3;',
     body2: 'font-family:replica; font-weight: normal; font-size: 12px; line-height: 1.3;',

@@ -33,7 +33,6 @@ export const App: VFC = () => {
     <>
       <Global
         styles={css`
-          /* TIPS:ページ全体へのCSSはここで定義 */
 
           @font-face {
             font-family: 'replica';
@@ -67,7 +66,7 @@ export const App: VFC = () => {
             margin: 0;
             padding: 0;
             font-family: replica, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', YuGothic, "Yu Gothic Medium", "Yu Gothic",sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overscroll-behavior: none;
@@ -84,23 +83,11 @@ export const App: VFC = () => {
         `}
       />
 
-      {!!process.env.GA_MEASUREMENT_ID && (
+       
         <Helmet
           title={contents.meta.title}
           meta={[{ name: 'description', content: contents.meta.description }]}
         >
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}
-          ></script>
-          <script>
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.GA_MEASUREMENT_ID}');
-            `}
-          </script>
           <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={'anonymous'} />
@@ -116,7 +103,23 @@ export const App: VFC = () => {
           <meta property="og:image" content={contents.meta.ogp} />
           <meta name="google" content="notranslate" />
         </Helmet>
-      )}
+
+
+         <Helmet>
+           <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=G-9J3KG01S6V`}
+          ></script>
+          <script>
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-9J3KG01S6V');
+            `}
+          </script>
+         </Helmet>
+
 
       <TCanvas />
       <Header />
