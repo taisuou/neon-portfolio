@@ -227,6 +227,9 @@ const ScrollHtml = React.forwardRef(
     const { width, height } = useThree((state) => state.size);
     const fiberState = React.useContext(fiberContext);
     //localeによってResetしたPositionを再描画するためのuseEffect
+
+    console.log(group.current);
+
     React.useEffect(() => {
       group.current.style.transform = `translate3d(${
         state.horizontal ? -width * (state.pages - 1) * state.offset : 0
@@ -240,6 +243,7 @@ const ScrollHtml = React.forwardRef(
         }px,${state.horizontal ? 0 : height * (state.pages - 1) * -state.offset}px,0)`;
       }
     });
+
     ReactDOM.render(
       <div
         ref={mergeRefs([ref, group])}
