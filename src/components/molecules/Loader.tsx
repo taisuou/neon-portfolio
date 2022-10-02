@@ -130,7 +130,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
 const Container = styled.div`
   width: 100vw;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: ${zIndex.elevation.ev16};
 `;

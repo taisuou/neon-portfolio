@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useRef, VFC } from 'react';
 import styled from '@emotion/styled';
-import { color, font, media } from '../../utils/style';
+import { color, font, media, zIndex } from '../../utils/style';
 import { contents } from '../../utils/store';
 import { Item } from '../molecules/Item';
 import { WorkPost } from '../../../@types/schema';
@@ -110,11 +110,14 @@ const Hero = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index:${zIndex.elevation.ev4}
 `;
 
 const Container = styled.div`
+  position:relative;
   /* background: ${color.background.dark}; */
   color: ${color.content.HighEmphasis};
+  z-index:${zIndex.elevation.ev4};
 `;
 
 const MainTitle = styled.div`
