@@ -19,7 +19,7 @@ import { contents } from '../../utils/store';
 import * as THREE from 'three';
 import { useControls } from 'leva';
 import { Footer } from '../molecules/Footer';
-import { AnimatePresence} from 'framer-motion';
+import { AnimatePresence, useScroll as useMotionScroll} from 'framer-motion';
 import { useMedia } from '../../utils/useMedia';
 
 
@@ -67,11 +67,11 @@ const Rig: FC<RigProps> = ({ children }) => {
   const ref = useRef<THREE.Group>();
   const vec = new THREE.Vector3();
   const { camera } = useThree();
-  const scroll = useScroll();
+  const scroll = useMotionScroll();
   const {isMobile, isTablet} = useMedia()
   const isDesktop = !isMobile&&!isTablet
   useFrame(() => {
-    const offset = 1;
+    const offset = 1-scroll.scrollYProgress.get();
     if (!ref.current || !sceneState.isReady) return;
     camera.position.lerp(
       vec.set(Math.sin(offset * Math.PI * 2) * 12, 0, Math.cos(offset * Math.PI * 2) * 12),
