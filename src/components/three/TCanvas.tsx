@@ -68,17 +68,14 @@ const Rig: FC<RigProps> = ({ children }) => {
   const vec = new THREE.Vector3();
   const { camera } = useThree();
   const scroll = useMotionScroll();
-  const {isMobile, isTablet} = useMedia()
-  const isDesktop = !isMobile&&!isTablet
+  let last = 0
   useFrame(() => {
-    const offset = 1-scroll.scrollYProgress.get();
+    const offset = scroll.scrollYProgress.get();
     if (!ref.current || !sceneState.isReady) return;
-    camera.position.lerp(
-      vec.set(Math.sin(offset * Math.PI * 2) * 12, 0, Math.cos(offset * Math.PI * 2) * 12),
-      0.05,
-    );
+    if (!ref.current || !sceneState.isReady) return;
+    ref.current!.position.lerp(vec.set(0, 0, 10),0.05,);
 
-    camera.lookAt(0, 0, 0);
+    ref.current!.rotation.y = THREE.MathUtils.lerp(last=ref.current!.rotation.y, - offset * Math.PI*2, 0.05)
   });
   return <group ref={ref}>{children}</group>;
 };
