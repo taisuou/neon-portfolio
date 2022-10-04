@@ -44,7 +44,7 @@ export const contents = {
       year: '2022',
       pjinfo: 'exhibition',
       descriptionEn:
-        'Works exhibited in "Kawakyu Art Exibition 2022: A Dream That Exists".Residence program at Hotel Kawakyu, Wakayama. Jury recommended artist.',
+        'Works exhibited in "Kawakyu Art Exibition 2022: A Dream That Exists". Residence program at Hotel Kawakyu, Wakayama. Jury recommended artist.',
       descriptionJp:
         '「Kawakyu Art Exibition 2022 実在する夢」 の出展作品。和歌山県ホテル川久で行われたレジデンスプログラム。審査員推薦アーティスト。',
       images: [
@@ -65,7 +65,7 @@ export const contents = {
       descriptionEn:
         'An experimental work that reveals the aesthetics and emotionality that reside in events that would normally be overlooked, exhibited at SICF23.',
       descriptionJp:
-        'distrotion - ねじれ、ひずみ。普段看過されてしまうような事象に宿る、審美性、情緒性を表出させる実験作品。SICF23に出展。',
+        'distrotion - ねじれ、ひずみ。普段看過されてしまうような事象に宿る、審美性、情緒性を表出させる実験作品。SICF23出展。',
       images: [
         '/images/posts/2022_distortion/2022_distortion_00.jpg',
         '/images/posts/2022_distortion/2022_distortion_01.jpg',
@@ -84,7 +84,7 @@ export const contents = {
       year: '2021',
       pjinfo: 'exhibition',
       descriptionEn: 'LUMINE Meets Art Aword 2020-2021 Entries. The work won the Audience Award. / A picture of an everyday scene is drawn with a special line by a neon sign. I reaffirmed the appreciation of ordinary life, forced to change by the coronavirus.',
-      descriptionJp: 'LUMINE Meets Art Aword 2020-2021 応募作品。オーディエンス賞受賞作品。/日常のシーンを切り取った絵をネオンサインによって、特別な線で描く。コロナウイルスで変化を強いられた、普段の生活のありがたみを再認識する。',
+      descriptionJp: 'LUMINE Meets Art Aword 2020-2021 オーディエンス賞受賞作品。/日常のシーンを切り取った絵を、ネオンサインよる特別な線で描く。コロナウイルスで変化を強いられた、普段の生活のありがたみを再認識する。',
       images: [
         '/images/posts/2021_lifeline/2021_lifeline_00.jpg',
         '/images/posts/2021_lifeline/2021_lifeline_01.jpg',
@@ -94,7 +94,7 @@ export const contents = {
     {
       id: 3,
       titleEn: 'Toy Neon',
-      titleJp: '',
+      titleJp: 'トイネオン / 3DCGグラフィックワーク',
       // ART:0, Client:1
       tag: 0,
       thumb: '/images/posts/2022_toyneon/2022_toyneon_00.jpg',
@@ -119,7 +119,7 @@ export const contents = {
       year: '2021',
       pjinfo: 'private work',
       descriptionEn: '3DCG Neon typography and graphics',
-      descriptionJp: 'トイネオン / 3DCGグラフィックワーク',
+      descriptionJp: '3DCGネオンタイポグラフィ&グラフィック',
       images: [
         '/images/posts/2021_3dtypography/2021_3dtypography_00.jpg',
         '/images/posts/2021_3dtypography/2021_3dtypography_01.jpg',
@@ -135,8 +135,8 @@ export const contents = {
       thumb: '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
       year: '2022',
       pjinfo: 'order work',
-      descriptionEn: 'Neon sign of shared atelier "Ghost" / Yotsugi, Katsushika-ku, Tokyo',
-      descriptionJp: 'シェアアトリエ「Ghost」のネオンサイン/ 東京都葛飾区四つ木',
+      descriptionEn: 'Chim↑Pom from Smappa! Group logo neon sign / @ ANOMALY Gallery / April 27, 2022 (Wed) - June 4, 2022 (Sat)',
+      descriptionJp: 'Chim↑Pom from Smappa! Group ロゴネオンサイン / 個展「Chim↑Pom from Smappa!Group」 / @ANOMALY Gallery / 2022年4月27日 (水) - 2022年6月4日 (土)',
       images: [
         '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
         '/images/posts/2022_chimpom/2022_chimpom_01.jpg',
@@ -188,7 +188,7 @@ export const contents = {
       descriptionEn:
         'Neon tube viewed through a filter that detects distortion of the glass.Experimenting with variations of the "drawing with light" technique.',
       descriptionJp:
-        'ガラスの歪みを検知するフィルターを通じて見たネオン管。「光で描画する」という手法のバリエーションを実験する',
+        'ガラスの歪みを検知するフィルターを通じて見たネオン管。「光で描画する」という手法を拡張する。',
       images: [
         '/images/posts/2020_distortion/2020_distortion_00.jpg',
         '/images/posts/2020_distortion/2020_distortion_01.jpg',
@@ -241,7 +241,7 @@ export const contents = {
       year: '2019',
       pjinfo: 'exhibition',
       descriptionEn: 'Neon and dried flower sign base',
-      descriptionJp: 'ネオンとドライフラーをモチーフとした作品',
+      descriptionJp: '',
       images: [
         '/images/posts/2019_neonflower/2019_neonflower_00.jpg',
         '/images/posts/2019_neonflower/2019_neonflower_01.jpg',
@@ -260,7 +260,7 @@ export const contents = {
       year: '2019',
       pjinfo: 'event,order work',
       descriptionEn: 'Neon sign for "Rock Wall Music Festival" music event',
-      descriptionJp: '音楽イベント「岩壁音楽祭」のネオンサイン',
+      descriptionJp: 'ライブイベント「岩壁音楽祭」のネオンサイン',
       images: [
         '/images/posts/2019_gampeki/2019_gampeki_00.jpg',
         '/images/posts/2019_gampeki/2019_gampeki_01.jpg',

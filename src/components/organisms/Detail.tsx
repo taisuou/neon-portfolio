@@ -101,14 +101,14 @@ const SectionContainer = styled.div`
 `;
 
 const TitleEn = styled.h1`
-  ${font.replica.h1}
-  margin-bottom:8px;
+  ${font.replica.h1};
+  margin-bottom:16px;
   ${media.lg`
   font-size: 3.2rem;
   `}
 `;
 const TitleJp = styled.h1`
-  ${font.replica.subtitle1}
+  ${font.Jp.subtitle};
   margin-bottom:32px;
 `;
 const PictureWrap = styled.div`
@@ -121,7 +121,7 @@ const PictureWrap = styled.div`
 
 const DescriptionEn = styled.p`
   margin-top: 6px;
-  ${font.replica.body1}
+  ${font.replica.body1};
   &::after {
     content: '---';
     display: block;

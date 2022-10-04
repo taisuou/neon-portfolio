@@ -113,8 +113,6 @@ const UiCategory = styled.div`
     border-radius: 4px;
   }
 
-  ul a:hover {
-  }
 `;
 const UiCategoryBtn = styled.p<{ isActive: boolean }>`
   cursor: pointer;
