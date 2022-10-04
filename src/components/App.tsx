@@ -80,6 +80,9 @@ export const App: VFC = () => {
             padding: 0;
             background-color: cyan;
           }
+          ::selection{
+            background-color:#219ddd;
+          }
         `}
       />
 

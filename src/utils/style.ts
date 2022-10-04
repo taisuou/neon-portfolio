@@ -14,6 +14,7 @@ export const color = {
     dark: '#1d1d1d',
     middleDark: '#333333',
     white: '#fff',
+    black: '#000',
   },
   utils: {
     error: '#FF5B37',

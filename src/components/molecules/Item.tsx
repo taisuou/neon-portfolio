@@ -29,7 +29,7 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
 
 const Container = styled.a<{ isOdd: boolean }>`
   display: flex;
-  margin: 0 0 64px;
+  padding-bottom:64px;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
