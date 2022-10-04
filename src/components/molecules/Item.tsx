@@ -30,13 +30,13 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
 
 const Container = styled.a<{ isOdd: boolean }>`
   display: flex;
-  padding-bottom:64px;
+  margin:0 0 64px 0;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
   ${media.lg`
     align-items: center;
-    margin:0px 64px 128px 64px;
+    margin:0 64px 128px 64px;
     flex-direction:row-reverse;
     :nth-of-type(2n){
       flex-direction: row;

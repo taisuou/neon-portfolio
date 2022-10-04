@@ -29,9 +29,9 @@ export const glassState = {
 export const contents = {
   meta: {
     title: 'electrode',
-    description: `electrode's portfolio`,
-    ogp: `/OGP.jpg`,
-    favicon: '/favicon.png',
+    description: `Glass and Virtual Neon Arts. electrode's portfolio site`,
+    ogp: `https://www.electrodeart.com/OGP.jpg`,
+    favicon: 'https://www.electrodeart.com/favicon.png',
   },
   works: [
     {
