@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
 import { Link } from 'wouter';
+import { font } from '../../utils/style';
 
 type ItemCardProps = {
   post: WorkPost;
@@ -29,7 +30,7 @@ export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
 
 const Container = styled.a<{ isOdd: boolean }>`
   display: flex;
-  /* padding-bottom:64px; */
+  padding-bottom:64px;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
@@ -79,7 +80,7 @@ const TitleEN = styled.p`
   border-bottom: 1px solid #fff;
 `;
 const TitleJP = styled.p`
-  font-size: 16px;
+  ${font.Jp.subtitle};
   margin-bottom: 24px;
 `;
 const Tag = styled.span`

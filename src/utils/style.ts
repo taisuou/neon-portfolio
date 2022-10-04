@@ -35,7 +35,7 @@ export const font = {
     h3: 'font-family:replica; font-weight: bold; font-size: 1.4rem; line-height: 1.3;',
     subtitle1: 'font-family:replica; font-weight: bold; font-size: 14px; line-height: 1.3;',
     // subtitle2: 'font-family:replica; font-weight: 600; font-size: 14px; line-height: 1.3;',
-    body1: 'font-family:replica; font-weight: normal; font-size: 14px; line-height: 1.3;',
+    body1: 'font-family:replica; font-weight: normal; font-size: 14px; line-height: 1.5;',
     body2: 'font-family:replica; font-weight: normal; font-size: 12px; line-height: 1.3;',
     // article1: 'font-family:replica; font-weight: 500; font-size: 16px; line-height: 1.5;',
     // article2: 'font-family:replica; font-weight: 500; font-size: 14px; line-height: 1.5;',
@@ -58,6 +58,10 @@ export const font = {
     caption: 'font-family:Inter; font-weight: normal; font-size: 12px; line-height: 1.2;',
     label: 'font-family:Inter; font-weight: normal; font-size: 12px; line-height: 1.2;',
     // overline: 'font-family:Inter; font-weight: 400; font-size: 10px; line-height: 1.5;',
+  },
+  Jp: {
+    subtitle: 'font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;font-size: 16px; line-height: 1.5; font-weight:normal',
+    body: 'font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;font-size: 14px; line-height: 1.5; font-weight:normal',
   },
 } as const;
 
