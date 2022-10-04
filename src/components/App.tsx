@@ -94,7 +94,7 @@ export const App: VFC = () => {
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: cyan;
+            background-color:${color.background.dark};
           }
         `}
       />

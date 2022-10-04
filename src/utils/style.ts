@@ -11,6 +11,7 @@ export const color = {
     red: '#B6645E',
   },
   background: {
+    canvasDark:'#040404',
     dark: '#1d1d1d',
     middleDark: '#333333',
     white: '#fff',

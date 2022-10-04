@@ -21,6 +21,7 @@ import { useControls } from 'leva';
 import { Footer } from '../molecules/Footer';
 import { AnimatePresence, useScroll as useMotionScroll} from 'framer-motion';
 import { useMedia } from '../../utils/useMedia';
+import { color } from '../../utils/style';
 
 
 function NeonScene() {
@@ -100,7 +101,7 @@ export const TCanvas: VFC = () => {
       // shadows
     >
       {/* scene */}
-      <color attach="background" args={['#040404']} />
+      <color attach="background" args={[color.background.canvasDark]} />
       {/* camera controller */}
 
       {helperControl.orbit ? (

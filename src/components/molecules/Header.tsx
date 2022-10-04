@@ -216,7 +216,7 @@ export const Header: VFC = () => {
         ref={overlayPathParent}
       >
         <path
-          fill={color.background.middleDark}
+          fill={color.background.canvasDark}
           id="overlay__path"
           vectorEffect="non-scaling-stroke"
           d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
