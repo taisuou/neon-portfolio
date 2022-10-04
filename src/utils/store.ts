@@ -27,12 +27,12 @@ export const glassState = {
 };
 
 export const contents = {
-  meta: {
-    title: 'electrode',
-    description: `Glass and Virtual Neon Arts. electrode's portfolio site`,
-    ogp: `https://www.electrodeart.com/OGP.jpg`,
-    favicon: 'https://www.electrodeart.com/favicon.png',
-  },
+  // meta: {
+  //   title: 'electrode',
+  //   description: `Glass and Virtual Neon Arts. electrode's portfolio site`,
+  //   ogp: `https://www.electrodeart.com/OGP.jpg`,
+  //   favicon: 'https://www.electrodeart.com/favicon.png',
+  // },
   works: [
     {
       id: 0,
@@ -65,7 +65,7 @@ export const contents = {
       descriptionEn:
         'An experimental work that reveals the aesthetics and emotionality that reside in events that would normally be overlooked, exhibited at SICF23.',
       descriptionJp:
-        'distrotion - ねじれ、ひずみ。普段看過されてしまうような事象に宿る、審美性、情緒性を表出させる実験作品。SICF23出展。',
+        'distrotion - ねじれ、ひずみ。普段看過されてしまうような事象に宿る、審美性、情緒性を表出させる。SICF23出展。',
       images: [
         '/images/posts/2022_distortion/2022_distortion_00.jpg',
         '/images/posts/2022_distortion/2022_distortion_01.jpg',
