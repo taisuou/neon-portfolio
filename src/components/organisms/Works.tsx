@@ -21,6 +21,7 @@ export const Works: VFC = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
       exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
+      key={'works'}
     >
       <PageTitle>
         <h1>WORKS</h1>
@@ -78,6 +79,7 @@ export const Works: VFC = () => {
 
 const Container = styled(motion.div)`
   background: ${color.background.dark};
+  overflow:hidden ;
 `;
 
 const PageTitle = styled.div`

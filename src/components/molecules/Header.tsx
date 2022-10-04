@@ -161,18 +161,18 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.unfilled },
       })
       .to(overlayPath.current, {
-        duration: 0.1,
+        duration: 0.2,
         ease: 'power4.in',
         attr: { d: paths.step1.inBetween.curve },
       })
       .to(overlayPath.current, {
-        duration: 0.2,
+        duration: .5,
         ease: 'power1',
         attr: { d: paths.step1.filled },
       })
       .set(overlayPath.current, {
         attr: { d: paths.step2.filled },
-        delay: 0.1,
+        delay: 0.05,
       })
       .to(overlayPath.current, {
         duration: 0.2,

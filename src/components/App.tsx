@@ -75,6 +75,7 @@ export const App: VFC = () => {
             height: 100%;
             margin: 0;
             padding: 0;
+            background-color:${color.background.dark };
           }
           body {
             width: 100%;
@@ -95,6 +96,9 @@ export const App: VFC = () => {
             margin: 0;
             padding: 0;
             background-color:${color.background.dark};
+          }
+          ::selection{
+            background-color:#219ddd;
           }
         `}
       />
@@ -137,7 +141,7 @@ export const App: VFC = () => {
          </Helmet>
 
 
-      <AnimatePresence initial={false}>
+      <AnimatePresence>
             <Router >
               <Route path="/">
                 <div style={{position:'fixed', width:'100vw', height:'100vh', zIndex:zIndex.base}}>
@@ -164,7 +168,7 @@ export const App: VFC = () => {
                 )}
               </Route>
             </Router>
-            <Footer key={location}/>
+            <Footer location={`${location}_footer`}/>
       </AnimatePresence>
       <Header />
       <Loader isReady={isReady} />

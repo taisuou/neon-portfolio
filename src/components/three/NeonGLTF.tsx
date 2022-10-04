@@ -48,12 +48,14 @@ export function NeonGLTF(props: JSX.IntrinsicElements['group']) {
     emissive: '#c4b072',
     offColor: '#0d0c08',
     activeColor: '#6d5b27',
-    inActiveColor: '#2e2815',
+    // inActiveColor: '#2e2815',
+    inActiveColor: '#1f1b0d',
   });
   const argonProps = useControls('ArgonMaterial', {
     offColor: '#0d0c08',
     activeColor: '#258291',
-    inActiveColor: '#0b2a2f',
+    //inActiveColor: '#0b2a2f',
+    inActiveColor: '#0b2b30',
   });
   const neonControl = useControls('Neon', {
     rotateX: { value: 0, min: -180, max: 180, step: 1 },
