@@ -5,13 +5,21 @@ import { Loader } from './molecules/Loader';
 import { Header } from './molecules/Header';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
-import { color } from '../utils/style';
+import { color, zIndex } from '../utils/style';
 import { Leva } from 'leva';
 import { Helmet } from 'react-helmet';
 import { contents } from '../utils/store';
 import { sceneState } from '../utils/sceneState';
 import { Cursor } from './atoms/Cursor';
 import { useProgress } from '@react-three/drei';
+import { AnimatePresence } from 'framer-motion';
+import { Route, Router, Switch, useLocation } from 'wouter';
+import { Home } from './organisms/Home';
+import { About } from './organisms/About';
+import { Works } from './organisms/Works';
+import { Contact } from './organisms/Contact';
+import { Detail } from './organisms/Detail';
+import { Footer } from './molecules/Footer';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
@@ -26,9 +34,17 @@ export const App: VFC = () => {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 
+  const [location] = useLocation();
+
   useEffect(() => {
     sceneState.isReady = isReady;
   }, [isReady]);
+
+  //scroll to top on each page routing
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
       <Global
@@ -78,7 +94,7 @@ export const App: VFC = () => {
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: cyan;
+            background-color:${color.background.dark};
           }
         `}
       />
@@ -121,7 +137,35 @@ export const App: VFC = () => {
          </Helmet>
 
 
-      <TCanvas />
+      <AnimatePresence initial={false}>
+            <Router >
+              <Route path="/">
+                <div style={{position:'fixed', width:'100vw', height:'100vh', zIndex:zIndex.base}}>
+                  <TCanvas />
+                </div>
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/works">
+                <Works />
+              </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/works/:id">
+                {(params) => (
+                  <Detail
+                    post={contents.works[Number(params.id)]}
+                    pageIndex={Number(params.id)}
+                    key={Number(params.id)}
+                  />
+                )}
+              </Route>
+            </Router>
+            <Footer key={location}/>
+      </AnimatePresence>
       <Header />
       <Loader isReady={isReady} />
       <Cursor />
