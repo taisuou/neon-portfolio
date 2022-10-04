@@ -81,7 +81,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
     <Container ref={loader}>
       <SVG width="100vw" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
         <path
-          fill={color.background.middleDark}
+          fill={color.background.dark}
           vectorEffect="non-scaling-stroke"
           d="M 0 0 V 100 Q 50 100 100 100 V 0 z"
           ref={loaderPath}
@@ -130,7 +130,7 @@ export const Loader: VFC<LoaderProps> = (props) => {
 const Container = styled.div`
   width: 100vw;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: ${zIndex.elevation.ev16};
 `;

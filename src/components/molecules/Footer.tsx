@@ -3,10 +3,20 @@ import styled from '@emotion/styled';
 import { color, zIndex } from '../../utils/style';
 import { Link } from 'wouter';
 import { menus } from '../../utils/store';
+import { motion } from 'framer-motion';
 
-export const Footer: VFC = () => {
+type Props={
+  location:string
+}
+
+export const Footer: VFC<Props> = ({location}) => {
   return (
-    <Container>
+    <Container
+    key={location}
+    initial={{ opacity: 0, y: -50 }}
+    animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
+    exit={{ opacity: 0, y: 50, transition: { duration: 0.5, delay: 0 } }}
+    >
       <MenuContainer>
         {menus.map((menu, index) => (
           <Menu key={index} className={'cursor-scale small'}>
@@ -30,8 +40,9 @@ export const Footer: VFC = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100vw;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
