@@ -23,12 +23,8 @@ export const About: VFC = () => {
           <Text>
             <TextTitle>Taisho Ichikawa</TextTitle>
             <p>
-              With a focus on "light as a medium" and "handcraft techniques," I bend neon glass
-              tubes by my hand and create works that utilize the characteristics of neon signs and .
-              I approache the ever-changing viewing experience and values from both analog and
-              digital perspectives, including the use of 3DCG as a method of expression. Awards:
-              LUMINE meets ART AWARD 2020-2021 Audience Award, recent exhibitions: SICF23, order
-              work: Chim↑Pom from Smappa! Group logo sign.
+            With a focus on "light as a medium" and "handcraft techniques," I bend neon glass tubes by my hand and create works that utilize the characteristics of neon signs. I approache the ever-changing viewing experience and values from both analog and digital perspectives, including the use of 3DCG as a method of expression.
+            Awards: LUMINE meets ART AWARD 2020-2021 Audience Award, recent exhibitions: SICF23, order work: Chim↑Pom from Smappa! Group logo sign.
             </p>
           </Text>
           <Text>
