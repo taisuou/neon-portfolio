@@ -13,7 +13,7 @@ import { sceneState } from '../utils/sceneState';
 import { Cursor } from './atoms/Cursor';
 import { useProgress } from '@react-three/drei';
 import { AnimatePresence } from 'framer-motion';
-import { Route, Router, Switch, useLocation } from 'wouter';
+import { BrowserRouter, Routes, Route, useLocation, ScrollRestoration } from "react-router-dom";
 import { Home } from './organisms/Home';
 import { About } from './organisms/About';
 import { Works } from './organisms/Works';
@@ -34,19 +34,27 @@ export const App: VFC = () => {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-  const [location] = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     sceneState.isReady = isReady;
   }, [isReady]);
 
-  //scroll to top on each page routing
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+  useEffect(()=>{
+    setTimeout(()=>{
+
+      window.scrollTo(0, 0);
+    },500)
+  },[location.pathname])
+
+
+  
 
   return (
     <>
+
+
+      
       <Global
         styles={css`
 
@@ -139,41 +147,30 @@ export const App: VFC = () => {
             `}
           </script>
          </Helmet>
-
-
-      <AnimatePresence>
-            <Router >
-              <Route path="/">
-                <div style={{position:'fixed', width:'100vw', height:'100vh', zIndex:zIndex.base}}>
-                  <TCanvas />
-                </div>
-                <Home />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/works">
-                <Works />
-              </Route>
-              <Route path="/contact">
-                <Contact />
-              </Route>
-              <Route path="/works/:id">
-                {(params) => (
-                  <Detail
-                    post={contents.works[Number(params.id)]}
-                    pageIndex={Number(params.id)}
-                    key={Number(params.id)}
-                  />
-                )}
-              </Route>
-            </Router>
-            <Footer location={`${location}_footer`}/>
-      </AnimatePresence>
-      <Header />
-      <Loader isReady={isReady} />
-      <Cursor />
-      <Leva hidden={true} />
+         
+        <AnimatePresence>
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={
+                  <div>
+                    
+                    <div style={{position:'fixed', width:'100vw', height:'100vh', zIndex:zIndex.base}}>
+                      <TCanvas />
+                    </div>
+                    <Home />
+                  </div>
+                }/>
+                <Route path="/about" element={<About />} />
+                <Route path="/works" element={<Works />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/works/:id" element={<Detail/>}/>
+              </Routes>
+              <Footer/>
+        </AnimatePresence>
+        
+        <Header />
+        <Loader isReady={isReady} />
+        <Cursor />
+        <Leva hidden={true} />
     </>
   );
 };

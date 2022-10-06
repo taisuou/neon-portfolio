@@ -14,7 +14,6 @@ import { Detail } from '../organisms/Detail';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
-import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
 import * as THREE from 'three';
 import { useControls } from 'leva';
@@ -38,9 +37,7 @@ function NeonScene() {
     <group>
       <ambientLight intensity={ambientProps.intensity} />
       <Rig>
-        <Route path="/">
           <NeonGLTF />
-        </Route>
         <Ground />
       </Rig>
       <EffectComposer multisampling={8}>

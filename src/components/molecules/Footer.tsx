@@ -1,15 +1,17 @@
 import React, { VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex } from '../../utils/style';
-import { Link } from 'wouter';
+
 import { menus } from '../../utils/store';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 type Props={
-  location:string
+  // location:string
 }
 
-export const Footer: VFC<Props> = ({location}) => {
+export const Footer: VFC<Props> = ({}) => {
+  const location = useLocation().pathname
   return (
     <Container
     key={location}
@@ -20,7 +22,7 @@ export const Footer: VFC<Props> = ({location}) => {
       <MenuContainer>
         {menus.map((menu, index) => (
           <Menu key={index} className={'cursor-scale small'}>
-            <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
+            <Link to={`/${menu}`}>{menu.toUpperCase()}</Link>
           </Menu>
         ))}
         <SnsBox className={'cursor-scale small'}>

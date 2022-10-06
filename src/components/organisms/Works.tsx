@@ -6,6 +6,7 @@ import { contents } from '../../utils/store';
 import { WorkPost } from '../../../@types/schema';
 import { sceneState } from '../../utils/sceneState';
 import { motion } from 'framer-motion';
+import { ScrollRestoration } from 'react-router-dom';
 
 export const Works: VFC = () => {
   const [currentCategory, setCurrentCategory] = useState(0);

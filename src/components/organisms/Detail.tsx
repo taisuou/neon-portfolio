@@ -1,24 +1,26 @@
-import React, { FC } from 'react';
+import React, { FC, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
 import { Helmet } from 'react-helmet';
-import { Link } from 'wouter';
+import { Link, ScrollRestoration } from 'react-router-dom';
 import { contents } from '../../utils/store';
 import { motion } from 'framer-motion';
+import { useParams } from 'react-router-dom';
 
-type DetailProps = {
-  post: WorkPost;
-  pageIndex: number;
-};
 
-export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
+
+export const Detail: VFC = () => {
+  const params = useParams();
+  const post = contents.works[Number(params.id)]
+  const pageIndex = Number(params.id)
   return (
     <Container
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
       exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
     >
+      
       <Helmet>
         <title>{post.titleEn}</title>
         <meta name="description" content={post.descriptionEn} />
@@ -62,7 +64,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
           <ul>
             <li className={'cursor-scale small'}>
               <Link
-                href={
+                to={
                   pageIndex === 0
                     ? `/works/${contents.works.length - 1}`
                     : `/works/${pageIndex - 1}`
@@ -73,7 +75,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
             </li>
             <li className={'cursor-scale small'}>
               <Link
-                href={
+                to={
                   pageIndex === contents.works.length - 1 ? `/works/0` : `/works/${pageIndex + 1}`
                 }
               >

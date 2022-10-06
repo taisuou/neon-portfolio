@@ -8,7 +8,7 @@ import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { gsap } from 'gsap';
 import { animConfig } from '../../utils/store';
-import { Link } from 'wouter';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export const Home: VFC = () => {
@@ -119,7 +119,7 @@ export const Home: VFC = () => {
           ))}
 
         <ButtonMore className={'cursor-scale'}>
-          <Link href="/works">view all works</Link>
+          <Link to="/works">view all works</Link>
         </ButtonMore>
       </Container>
     </motion.div>
