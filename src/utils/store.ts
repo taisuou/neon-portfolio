@@ -83,8 +83,10 @@ export const contents = {
       thumb: '/images/posts/2021_lifeline/2021_lifeline_00.jpg',
       year: '2021',
       pjinfo: 'exhibition',
-      descriptionEn: 'LUMINE Meets Art Aword 2020-2021 Entries. The work won the Audience Award. / A picture of an everyday scene is drawn with a special line by a neon sign. I reaffirmed the appreciation of ordinary life, forced to change by the coronavirus.',
-      descriptionJp: 'LUMINE Meets Art Aword 2020-2021 オーディエンス賞受賞作品。/日常のシーンを切り取った絵を、ネオンサインよる特別な線で描く。コロナウイルスで変化を強いられた、普段の生活のありがたみを再認識する。',
+      descriptionEn:
+        'LUMINE Meets Art Aword 2020-2021 Entries. The work won the Audience Award. / A picture of an everyday scene is drawn with a special line by a neon sign. I reaffirmed the appreciation of ordinary life, forced to change by the coronavirus.',
+      descriptionJp:
+        'LUMINE Meets Art Aword 2020-2021 オーディエンス賞受賞作品。/日常のシーンを切り取った絵を、ネオンサインよる特別な線で描く。コロナウイルスで変化を強いられた、普段の生活のありがたみを再認識する。',
       images: [
         '/images/posts/2021_lifeline/2021_lifeline_00.jpg',
         '/images/posts/2021_lifeline/2021_lifeline_01.jpg',
@@ -135,8 +137,10 @@ export const contents = {
       thumb: '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
       year: '2022',
       pjinfo: 'order work',
-      descriptionEn: 'Chim↑Pom from Smappa! Group logo neon sign / @ ANOMALY Gallery / April 27, 2022 (Wed) - June 4, 2022 (Sat)',
-      descriptionJp: 'Chim↑Pom from Smappa! Group ロゴネオンサイン / 個展「Chim↑Pom from Smappa!Group」 / @ANOMALY Gallery / 2022年4月27日 (水) - 2022年6月4日 (土)',
+      descriptionEn:
+        'Chim↑Pom from Smappa! Group logo neon sign / @ ANOMALY Gallery / April 27, 2022 (Wed) - June 4, 2022 (Sat)',
+      descriptionJp:
+        'Chim↑Pom from Smappa! Group ロゴネオンサイン / 個展「Chim↑Pom from Smappa!Group」 / @ANOMALY Gallery / 2022年4月27日 (水) - 2022年6月4日 (土)',
       images: [
         '/images/posts/2022_chimpom/2022_chimpom_00.jpg',
         '/images/posts/2022_chimpom/2022_chimpom_01.jpg',

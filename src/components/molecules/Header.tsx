@@ -166,7 +166,7 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.inBetween.curve },
       })
       .to(overlayPath.current, {
-        duration: .5,
+        duration: 0.5,
         ease: 'power1',
         attr: { d: paths.step1.filled },
       })
@@ -239,7 +239,9 @@ export const Header: VFC = () => {
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale small'}>
               <Link to={`/${menu}`}>
-              <a><span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span></a>
+                <a>
+                  <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
+                </a>
               </Link>
             </li>
           ))}

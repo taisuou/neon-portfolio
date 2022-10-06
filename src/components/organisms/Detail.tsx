@@ -8,19 +8,16 @@ import { contents } from '../../utils/store';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 
-
-
 export const Detail: VFC = () => {
   const params = useParams();
-  const post = contents.works[Number(params.id)]
-  const pageIndex = Number(params.id)
+  const post = contents.works[Number(params.id)];
+  const pageIndex = Number(params.id);
   return (
     <Container
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
       exit={{ opacity: 0, y: 50, transition: { duration: 0.5 } }}
     >
-      
       <Helmet>
         <title>{post.titleEn}</title>
         <meta name="description" content={post.descriptionEn} />
@@ -31,7 +28,7 @@ export const Detail: VFC = () => {
         <TitleEn>{post.titleEn}</TitleEn>
         <TitleJp>{post.titleJp}</TitleJp>
         <PictureWrap>
-          <Picture src={post.images[0]} width='1920' height='1080'/>
+          <Picture src={post.images[0]} width="1920" height="1080" />
         </PictureWrap>
         <DescriptionEn>{post.descriptionEn}</DescriptionEn>
         <DescriptionJp>{post.descriptionJp}</DescriptionJp>
@@ -40,7 +37,7 @@ export const Detail: VFC = () => {
           {post.images
             .filter((image, index) => 0 < index)
             .map((image, index) => (
-              <Picture src={image} key={index} width='1920' height='1080'/>
+              <Picture src={image} key={index} width="1920" height="1080" />
             ))}
         </PictureWrap>
 
@@ -104,14 +101,14 @@ const SectionContainer = styled.div`
 
 const TitleEn = styled.h1`
   ${font.replica.h1};
-  margin-bottom:16px;
+  margin-bottom: 16px;
   ${media.lg`
   font-size: 3.2rem;
   `}
 `;
 const TitleJp = styled.h1`
   ${font.Jp.subtitle};
-  margin-bottom:32px;
+  margin-bottom: 32px;
 `;
 const PictureWrap = styled.div`
   display: flex;
@@ -132,7 +129,7 @@ const DescriptionEn = styled.p`
 `;
 const DescriptionJp = styled.p`
   margin-bottom: 48px;
-  font-size:14px;
+  font-size: 14px;
 `;
 
 const Picture = styled.img`

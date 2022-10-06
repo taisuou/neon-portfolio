@@ -11,7 +11,7 @@ import { useControls } from 'leva';
 import gsap from 'gsap';
 import { sceneState } from '../../utils/sceneState';
 import { useSnapshot } from 'valtio';
-import {useScroll} from 'framer-motion'
+import { useScroll } from 'framer-motion';
 
 type GLTFResult = GLTF & {
   nodes: {

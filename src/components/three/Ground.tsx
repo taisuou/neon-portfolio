@@ -20,7 +20,7 @@ export const Ground: VFC = () => {
     posZ: { value: 0, min: -5, max: 5, step: 0.1 },
     blur: { value: 400, min: 0, max: 1000, step: 1 },
     mixBlur: { value: 93, min: 0, max: 500, step: 1 },
-    radius:{value: 2.5, min: 0, max: 10, step: 0.1 },
+    radius: { value: 2.5, min: 0, max: 10, step: 0.1 },
     scale: { value: 6, min: 0, max: 10, step: 1 },
     mixStrength: { value: 0.5, min: -5, max: 5, step: 0.1 },
     color: '#aaaaaa',

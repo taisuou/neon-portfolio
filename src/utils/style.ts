@@ -11,7 +11,7 @@ export const color = {
     red: '#B6645E',
   },
   background: {
-    canvasDark:'#040404',
+    canvasDark: '#040404',
     dark: '#1d1d1d',
     middleDark: '#333333',
     white: '#fff',
@@ -60,7 +60,8 @@ export const font = {
     // overline: 'font-family:Inter; font-weight: 400; font-size: 10px; line-height: 1.5;',
   },
   Jp: {
-    subtitle: 'font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;font-size: 16px; line-height: 1.5; font-weight:normal',
+    subtitle:
+      'font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;font-size: 16px; line-height: 1.5; font-weight:normal',
     body: 'font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;font-size: 14px; line-height: 1.5; font-weight:normal',
   },
 } as const;

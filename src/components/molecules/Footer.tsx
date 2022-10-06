@@ -6,18 +6,18 @@ import { menus } from '../../utils/store';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
-type Props={
+type Props = {
   // location:string
-}
+};
 
 export const Footer: VFC<Props> = ({}) => {
-  const location = useLocation().pathname
+  const location = useLocation().pathname;
   return (
     <Container
-    key={location}
-    initial={{ opacity: 0, y: -50 }}
-    animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
-    exit={{ opacity: 0, y: 50, transition: { duration: 0.5, delay: 0 } }}
+      key={location}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } }}
+      exit={{ opacity: 0, y: 50, transition: { duration: 0.5, delay: 0 } }}
     >
       <MenuContainer>
         {menus.map((menu, index) => (

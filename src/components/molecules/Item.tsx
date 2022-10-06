@@ -12,25 +12,23 @@ type ItemCardProps = {
 
 export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   return (
-    <Container to={`/works/${post.id}`} className={'cursor-scale'} >
-      
-        <Picture>
-          <img src={`${post.thumb}`} width="1920" height="1080" alt={`${post.thumb}`} />
-        </Picture>
-        <Info>
-          <TitleEN>{post.titleEn}</TitleEN>
-          <TitleJP>{post.titleJp}</TitleJP>
-          {/* TIPS : インラインの条件分岐記法  A?B:C */}
-          <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
-        </Info>
-      
+    <Container to={`/works/${post.id}`} className={'cursor-scale'}>
+      <Picture>
+        <img src={`${post.thumb}`} width="1920" height="1080" alt={`${post.thumb}`} />
+      </Picture>
+      <Info>
+        <TitleEN>{post.titleEn}</TitleEN>
+        <TitleJP>{post.titleJp}</TitleJP>
+        {/* TIPS : インラインの条件分岐記法  A?B:C */}
+        <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
+      </Info>
     </Container>
   );
 };
 
 const Container = styled(Link)`
   display: flex;
-  margin:0 0 64px 0;
+  margin: 0 0 64px 0;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
@@ -45,14 +43,13 @@ const Container = styled(Link)`
   `}
 `;
 const Picture = styled.div`
-  overflow: hidden; 
+  overflow: hidden;
   padding: 0 24px;
 
   & img {
     width: 100%;
     height: auto;
     margin-bottom: 24px;
-    
   }
   ${media.lg`
   width:60%;
