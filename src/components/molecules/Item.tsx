@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import { media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
-import { Link } from 'wouter';
+import { Link } from 'react-router-dom';
 import { font } from '../../utils/style';
 
 type ItemCardProps = {
@@ -12,25 +12,23 @@ type ItemCardProps = {
 
 export const Item: FC<ItemCardProps> = ({ post, indexNumber }) => {
   return (
-    <Link href={`/works/${post.id}`}>
-      <Container isOdd={indexNumber % 2 === 0 ? true : false} className={'cursor-scale'}>
-        <Picture>
-          <img src={`${post.thumb}`} width="1920" height="1080" alt={`${post.thumb}`} />
-        </Picture>
-        <Info>
-          <TitleEN>{post.titleEn}</TitleEN>
-          <TitleJP>{post.titleJp}</TitleJP>
-          {/* TIPS : インラインの条件分岐記法  A?B:C */}
-          <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
-        </Info>
-      </Container>
-    </Link>
+    <Container to={`/works/${post.id}`} className={'cursor-scale'}>
+      <Picture>
+        <img src={`${post.thumb}`} width="1920" height="1080" alt={`${post.thumb}`} />
+      </Picture>
+      <Info>
+        <TitleEN>{post.titleEn}</TitleEN>
+        <TitleJP>{post.titleJp}</TitleJP>
+        {/* TIPS : インラインの条件分岐記法  A?B:C */}
+        <Tag>{post.tag === 0 ? 'ART' : 'Client'}</Tag>
+      </Info>
+    </Container>
   );
 };
 
-const Container = styled.a<{ isOdd: boolean }>`
+const Container = styled(Link)`
   display: flex;
-  margin:0 0 64px 0;
+  margin: 0 0 64px 0;
   flex-direction: column;
   color: #fff;
   text-decoration: none;
@@ -38,20 +36,20 @@ const Container = styled.a<{ isOdd: boolean }>`
     align-items: center;
     margin:0 64px 128px 64px;
     flex-direction:row-reverse;
+    
     :nth-of-type(2n){
       flex-direction: row;
     }
   `}
 `;
 const Picture = styled.div`
-  overflow: hidden; 
+  overflow: hidden;
   padding: 0 24px;
 
   & img {
     width: 100%;
     height: auto;
     margin-bottom: 24px;
-    
   }
   ${media.lg`
   width:60%;

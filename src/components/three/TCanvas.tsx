@@ -14,15 +14,13 @@ import { Detail } from '../organisms/Detail';
 import { useWindowSize } from '../../utils/useWindowSize';
 import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
-import { Switch, Route, useLocation } from 'wouter';
 import { contents } from '../../utils/store';
 import * as THREE from 'three';
 import { useControls } from 'leva';
 import { Footer } from '../molecules/Footer';
-import { AnimatePresence, useScroll as useMotionScroll} from 'framer-motion';
+import { AnimatePresence, useScroll as useMotionScroll } from 'framer-motion';
 import { useMedia } from '../../utils/useMedia';
 import { color } from '../../utils/style';
-
 
 function NeonScene() {
   const ambientProps = useControls('AmbientLight', {
@@ -38,9 +36,7 @@ function NeonScene() {
     <group>
       <ambientLight intensity={ambientProps.intensity} />
       <Rig>
-        <Route path="/">
-          <NeonGLTF />
-        </Route>
+        <NeonGLTF />
         <Ground />
       </Rig>
       <EffectComposer multisampling={8}>
@@ -69,14 +65,18 @@ const Rig: FC<RigProps> = ({ children }) => {
   const vec = new THREE.Vector3();
   const { camera } = useThree();
   const scroll = useMotionScroll();
-  let last = 0
+  let last = 0;
   useFrame(() => {
     const offset = scroll.scrollYProgress.get();
     if (!ref.current || !sceneState.isReady) return;
     if (!ref.current || !sceneState.isReady) return;
-    ref.current!.position.lerp(vec.set(0, 0, 10),0.05,);
+    ref.current!.position.lerp(vec.set(0, 0, 10), 0.05);
 
-    ref.current!.rotation.y = THREE.MathUtils.lerp(last=ref.current!.rotation.y, - offset * Math.PI*2, 0.05)
+    ref.current!.rotation.y = THREE.MathUtils.lerp(
+      (last = ref.current!.rotation.y),
+      -offset * Math.PI * 2,
+      0.05,
+    );
   });
   return <group ref={ref}>{children}</group>;
 };
@@ -111,7 +111,7 @@ export const TCanvas: VFC = () => {
       {helperControl.axis ? <primitive object={new THREE.AxesHelper(10)} /> : null}
       <Suspense fallback={null}>
         <Preload all />
-        <NeonScene/>
+        <NeonScene />
       </Suspense>
       {/* helper */}
       {/* <Stats /> */}

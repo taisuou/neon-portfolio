@@ -6,6 +6,7 @@ import { contents } from '../../utils/store';
 import { WorkPost } from '../../../@types/schema';
 import { sceneState } from '../../utils/sceneState';
 import { motion } from 'framer-motion';
+import { ScrollRestoration } from 'react-router-dom';
 
 export const Works: VFC = () => {
   const [currentCategory, setCurrentCategory] = useState(0);
@@ -79,7 +80,7 @@ export const Works: VFC = () => {
 
 const Container = styled(motion.div)`
   background: ${color.background.dark};
-  overflow:hidden ;
+  overflow: hidden;
 `;
 
 const PageTitle = styled.div`
@@ -112,7 +113,6 @@ const UiCategory = styled.div`
     border: 1px solid #fff;
     border-radius: 4px;
   }
-
 `;
 const UiCategoryBtn = styled.p<{ isActive: boolean }>`
   cursor: pointer;

@@ -1,18 +1,17 @@
-import React, { FC } from 'react';
+import React, { FC, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media } from '../../utils/style';
 import { WorkPost } from '../../../@types/schema';
 import { Helmet } from 'react-helmet';
-import { Link } from 'wouter';
+import { Link, ScrollRestoration } from 'react-router-dom';
 import { contents } from '../../utils/store';
 import { motion } from 'framer-motion';
+import { useParams } from 'react-router-dom';
 
-type DetailProps = {
-  post: WorkPost;
-  pageIndex: number;
-};
-
-export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
+export const Detail: VFC = () => {
+  const params = useParams();
+  const post = contents.works[Number(params.id)];
+  const pageIndex = Number(params.id);
   return (
     <Container
       initial={{ opacity: 0, y: -50 }}
@@ -29,7 +28,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
         <TitleEn>{post.titleEn}</TitleEn>
         <TitleJp>{post.titleJp}</TitleJp>
         <PictureWrap>
-          <Picture src={post.images[0]} width='1920' height='1080'/>
+          <Picture src={post.images[0]} width="1920" height="1080" />
         </PictureWrap>
         <DescriptionEn>{post.descriptionEn}</DescriptionEn>
         <DescriptionJp>{post.descriptionJp}</DescriptionJp>
@@ -38,7 +37,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
           {post.images
             .filter((image, index) => 0 < index)
             .map((image, index) => (
-              <Picture src={image} key={index} width='1920' height='1080'/>
+              <Picture src={image} key={index} width="1920" height="1080" />
             ))}
         </PictureWrap>
 
@@ -62,7 +61,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
           <ul>
             <li className={'cursor-scale small'}>
               <Link
-                href={
+                to={
                   pageIndex === 0
                     ? `/works/${contents.works.length - 1}`
                     : `/works/${pageIndex - 1}`
@@ -73,7 +72,7 @@ export const Detail: FC<DetailProps> = ({ post, pageIndex }) => {
             </li>
             <li className={'cursor-scale small'}>
               <Link
-                href={
+                to={
                   pageIndex === contents.works.length - 1 ? `/works/0` : `/works/${pageIndex + 1}`
                 }
               >
@@ -102,14 +101,14 @@ const SectionContainer = styled.div`
 
 const TitleEn = styled.h1`
   ${font.replica.h1};
-  margin-bottom:16px;
+  margin-bottom: 16px;
   ${media.lg`
   font-size: 3.2rem;
   `}
 `;
 const TitleJp = styled.h1`
   ${font.Jp.subtitle};
-  margin-bottom:32px;
+  margin-bottom: 32px;
 `;
 const PictureWrap = styled.div`
   display: flex;
@@ -130,7 +129,7 @@ const DescriptionEn = styled.p`
 `;
 const DescriptionJp = styled.p`
   margin-bottom: 48px;
-  font-size:14px;
+  font-size: 14px;
 `;
 
 const Picture = styled.img`

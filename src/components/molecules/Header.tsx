@@ -1,7 +1,7 @@
 import React, { createRef, useEffect, useRef, useState, VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, zIndex, font } from '../../utils/style';
-import { Link, useLocation } from 'wouter';
+import { Link, useLocation } from 'react-router-dom';
 import { useMedia } from '../../utils/useMedia';
 import { gsap } from 'gsap';
 import { useSnapshot } from 'valtio';
@@ -166,7 +166,7 @@ export const Header: VFC = () => {
         attr: { d: paths.step1.inBetween.curve },
       })
       .to(overlayPath.current, {
-        duration: .5,
+        duration: 0.5,
         ease: 'power1',
         attr: { d: paths.step1.filled },
       })
@@ -190,7 +190,7 @@ export const Header: VFC = () => {
   };
   useEffect(() => {
     //triggers only when page load
-    if (location[0] !== '/') return;
+    if (location.pathname !== '/') return;
     let menus = [desktopLogoRef.current, desktopMenuRef.current.map((card) => card.current)];
     gsap.timeline().set(menus, {
       y: 75,
@@ -199,9 +199,9 @@ export const Header: VFC = () => {
   useEffect(() => {
     //triggers only when routing
     transitionAnimation();
-  }, [location[0]]);
+  }, [location.pathname]);
   useEffect(() => {
-    if (location[0] !== '/') return;
+    if (location.pathname !== '/') return;
     isReady && showDesktopMenuLogo();
   }, [isReady]);
 
@@ -223,7 +223,7 @@ export const Header: VFC = () => {
           ref={overlayPath}
         />
       </SVG>
-      <Link href="/">
+      <Link to="/">
         <Logo
           className={'cursor-scale small'}
           onClick={() => {
@@ -238,8 +238,10 @@ export const Header: VFC = () => {
         <DesktopMenuContainer>
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale small'}>
-              <Link href={`/${menu}`}>
-              <a><span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span></a>
+              <Link to={`/${menu}`}>
+                <a>
+                  <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
+                </a>
               </Link>
             </li>
           ))}
@@ -265,7 +267,7 @@ export const Header: VFC = () => {
                   menuClose();
                 }}
               >
-                <Link href={`/${menu}`}>{menu.toUpperCase()}</Link>
+                <Link to={`/${menu}`}>{menu.toUpperCase()}</Link>
               </li>
             ))}
           </SlideMenuContents>

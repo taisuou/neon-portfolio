@@ -8,7 +8,7 @@ import { useSnapshot } from 'valtio';
 import { sceneState } from '../../utils/sceneState';
 import { gsap } from 'gsap';
 import { animConfig } from '../../utils/store';
-import { Link } from 'wouter';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export const Home: VFC = () => {
@@ -93,20 +93,50 @@ export const Home: VFC = () => {
               />
               <circle cx="36" cy="36" r="35" stroke="white" strokeWidth="1" />
             </svg> */}
-            <svg width="72" height="95" viewBox="0 0 72 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="72"
+              height="95"
+              viewBox="0 0 72 95"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M71.5 59C71.5 78.6061 55.6061 94.5 36 94.5C16.3939 94.5 0.5 78.6061 0.5 59C0.5 39.3939 16.3939 23.5 36 23.5C55.6061 23.5 71.5 39.3939 71.5 59Z"
+                className="arrowCircle"
+                stroke="white"
+                strokeMiterlimit="10"
+              />
+              <path d="M40.5 75.2398L36 79.7398V36.2598" stroke="white" strokeMiterlimit="10" />
 
-            <path d="M71.5 59C71.5 78.6061 55.6061 94.5 36 94.5C16.3939 94.5 0.5 78.6061 0.5 59C0.5 39.3939 16.3939 23.5 36 23.5C55.6061 23.5 71.5 39.3939 71.5 59Z" className="arrowCircle" stroke="white" strokeMiterlimit="10"/>
-            <path d="M40.5 75.2398L36 79.7398V36.2598" stroke="white" strokeMiterlimit="10"/>
-
-            <g clipPath="url(#clip0_638_514)">
-            <path d="M19.9281 2.37973C18.8871 1.65198 17.6816 1.10616 16.4138 1.01297C15.146 0.919787 13.807 1.32804 12.9395 2.25548C12.0721 3.18291 11.7785 4.66504 12.3879 5.77886C13.0685 7.02136 14.5721 7.51392 15.9423 7.87336C17.3124 8.2328 18.8204 8.66767 19.5767 9.86136C20.364 11.1039 19.9993 12.87 18.9272 13.8773C17.8551 14.8846 16.2403 15.1908 14.799 14.8891C13.3577 14.5873 12.0721 13.7531 11 12.7457" stroke="white" strokeMiterlimit="10"/>
-            <path d="M35 5V15" stroke="white" strokeMiterlimit="10"/>
-            <path d="M57 15C55.3412 15 54 13.9049 54 12.5504V1" stroke="white" strokeMiterlimit="10"/>
-            <path d="M62 15C60.3412 15 59 13.9049 59 12.5504V1" stroke="white" strokeMiterlimit="10"/>
-            <path d="M46.0024 5H45.9976C43.7898 5 42 6.7313 42 8.86697V11.133C42 13.2687 43.7898 15 45.9976 15H46.0024C48.2102 15 50 13.2687 50 11.133V8.86697C50 6.7313 48.2102 5 46.0024 5Z" stroke="white" strokeMiterlimit="10"/>
-            <path d="M31 11.1313C31 13.2607 29.2017 15 27 15C24.7983 15 23 13.2607 23 11.1313V8.86875C23 6.73933 24.7983 5 27 5C29.2017 5 31 6.73933 31 8.86875" stroke="white" strokeMiterlimit="10"/>
-            <path d="M35 11C35 8.23792 37.2379 6 40 6" stroke="white" strokeMiterlimit="10"/>
-            </g>
+              <g clipPath="url(#clip0_638_514)">
+                <path
+                  d="M19.9281 2.37973C18.8871 1.65198 17.6816 1.10616 16.4138 1.01297C15.146 0.919787 13.807 1.32804 12.9395 2.25548C12.0721 3.18291 11.7785 4.66504 12.3879 5.77886C13.0685 7.02136 14.5721 7.51392 15.9423 7.87336C17.3124 8.2328 18.8204 8.66767 19.5767 9.86136C20.364 11.1039 19.9993 12.87 18.9272 13.8773C17.8551 14.8846 16.2403 15.1908 14.799 14.8891C13.3577 14.5873 12.0721 13.7531 11 12.7457"
+                  stroke="white"
+                  strokeMiterlimit="10"
+                />
+                <path d="M35 5V15" stroke="white" strokeMiterlimit="10" />
+                <path
+                  d="M57 15C55.3412 15 54 13.9049 54 12.5504V1"
+                  stroke="white"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M62 15C60.3412 15 59 13.9049 59 12.5504V1"
+                  stroke="white"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M46.0024 5H45.9976C43.7898 5 42 6.7313 42 8.86697V11.133C42 13.2687 43.7898 15 45.9976 15H46.0024C48.2102 15 50 13.2687 50 11.133V8.86697C50 6.7313 48.2102 5 46.0024 5Z"
+                  stroke="white"
+                  strokeMiterlimit="10"
+                />
+                <path
+                  d="M31 11.1313C31 13.2607 29.2017 15 27 15C24.7983 15 23 13.2607 23 11.1313V8.86875C23 6.73933 24.7983 5 27 5C29.2017 5 31 6.73933 31 8.86875"
+                  stroke="white"
+                  strokeMiterlimit="10"
+                />
+                <path d="M35 11C35 8.23792 37.2379 6 40 6" stroke="white" strokeMiterlimit="10" />
+              </g>
             </svg>
           </ScrollIcon>
         </ScrollArrow>
@@ -119,7 +149,7 @@ export const Home: VFC = () => {
           ))}
 
         <ButtonMore className={'cursor-scale'}>
-          <Link href="/works">view all works</Link>
+          <Link to="/works">view all works</Link>
         </ButtonMore>
       </Container>
     </motion.div>
@@ -136,14 +166,14 @@ const Hero = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index:${zIndex.elevation.ev4}
+  z-index: ${zIndex.elevation.ev4};
 `;
 
 const Container = styled.div`
-  position:relative;
+  position: relative;
   /* background: ${color.background.dark}; */
   color: ${color.content.HighEmphasis};
-  z-index:${zIndex.elevation.ev4};
+  z-index: ${zIndex.elevation.ev4};
 `;
 
 const MainTitle = styled.div`
@@ -203,33 +233,31 @@ const ScrollArrow = styled.div`
   }
 `;
 
-const ArrowCircle = styled.div`
-`;
+const ArrowCircle = styled.div``;
 
 const ScrollIcon = styled.div`
-  .arrowCircle{
+  .arrowCircle {
     fill: none;
-  stroke-dasharray: 220;
-  animation: rotateCircle 4000ms infinite;
+    stroke-dasharray: 220;
+    animation: rotateCircle 4000ms infinite;
 
-  @keyframes rotateCircle {
-    0% {
-      stroke-dashoffset: 220;
-      animation-timing-function: ease-out;
+    @keyframes rotateCircle {
+      0% {
+        stroke-dashoffset: 220;
+        animation-timing-function: ease-out;
+      }
+      25% {
+        stroke-dashoffset: 0;
+        animation-timing-function: ease-in;
+      }
+      50% {
+        stroke-dashoffset: 0;
+        animation-timing-function: ease-out;
+      }
+      100% {
+        stroke-dashoffset: -220;
+        animation-timing-function: ease-out;
+      }
     }
-    25% {
-      stroke-dashoffset: 0;
-      animation-timing-function: ease-in;
-    }
-    50% {
-      stroke-dashoffset: 0;
-      animation-timing-function: ease-out;
-    }
-    100% {
-      stroke-dashoffset: -220;
-      animation-timing-function: ease-out;
-    }
-  }
   }
 `;
-

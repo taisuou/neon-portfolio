@@ -13,7 +13,7 @@ import { sceneState } from '../utils/sceneState';
 import { Cursor } from './atoms/Cursor';
 import { useProgress } from '@react-three/drei';
 import { AnimatePresence } from 'framer-motion';
-import { Route, Router, Switch, useLocation } from 'wouter';
+import { BrowserRouter, Routes, Route, useLocation, ScrollRestoration } from 'react-router-dom';
 import { Home } from './organisms/Home';
 import { About } from './organisms/About';
 import { Works } from './organisms/Works';
@@ -34,22 +34,22 @@ export const App: VFC = () => {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-  const [location] = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     sceneState.isReady = isReady;
   }, [isReady]);
 
-  //scroll to top on each page routing
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }, [location.pathname]);
 
   return (
     <>
       <Global
         styles={css`
-
           @font-face {
             font-family: 'replica';
             src: url('/fonts/ReplicaLLSub-Regular.woff') format('woff');
@@ -75,7 +75,7 @@ export const App: VFC = () => {
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color:${color.background.dark };
+            background-color: ${color.background.dark};
           }
           body {
             width: 100%;
@@ -83,7 +83,8 @@ export const App: VFC = () => {
             margin: 0;
             padding: 0;
             font-family: replica, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', YuGothic, "Yu Gothic Medium", "Yu Gothic",sans-serif;
+              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', YuGothic,
+              'Yu Gothic Medium', 'Yu Gothic', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overscroll-behavior: none;
@@ -95,81 +96,74 @@ export const App: VFC = () => {
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color:${color.background.dark};
+            background-color: ${color.background.dark};
           }
-          ::selection{
-            background-color:#219ddd;
+          ::selection {
+            background-color: #219ddd;
           }
         `}
       />
 
-       
-        <Helmet
-          // title={contents.meta.title}
-          // meta={[{ name: 'description', content: contents.meta.description }]}
-        >
-          {/* <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
+      <Helmet
+      // title={contents.meta.title}
+      // meta={[{ name: 'description', content: contents.meta.description }]}
+      >
+        {/* <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
           <meta property="og:url" content="https://www.electrodeart.com/" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={contents.meta.title} />
           <meta property="og:description" content={contents.meta.description} />
           <meta property="og:site_name" content={contents.meta.title} />
           <meta property="og:image" content={contents.meta.ogp} /> */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={'anonymous'} />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
-          />
-          <meta name="google" content="notranslate" />
-        </Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={'anonymous'} />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <meta name="google" content="notranslate" />
+      </Helmet>
 
-
-         <Helmet>
-           <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=G-9J3KG01S6V`}
-          ></script>
-          <script>
-            {`
+      <Helmet>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=G-9J3KG01S6V`}></script>
+        <script>
+          {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-9J3KG01S6V');
             `}
-          </script>
-         </Helmet>
-
+        </script>
+      </Helmet>
 
       <AnimatePresence>
-            <Router >
-              <Route path="/">
-                <div style={{position:'fixed', width:'100vw', height:'100vh', zIndex:zIndex.base}}>
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <div>
+                <div
+                  style={{
+                    position: 'fixed',
+                    width: '100vw',
+                    height: '100vh',
+                    zIndex: zIndex.base,
+                  }}
+                >
                   <TCanvas />
                 </div>
                 <Home />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/works">
-                <Works />
-              </Route>
-              <Route path="/contact">
-                <Contact />
-              </Route>
-              <Route path="/works/:id">
-                {(params) => (
-                  <Detail
-                    post={contents.works[Number(params.id)]}
-                    pageIndex={Number(params.id)}
-                    key={Number(params.id)}
-                  />
-                )}
-              </Route>
-            </Router>
-            <Footer location={`${location}_footer`}/>
+              </div>
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/works" element={<Works />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/works/:id" element={<Detail />} />
+        </Routes>
+        <Footer />
       </AnimatePresence>
+
       <Header />
       <Loader isReady={isReady} />
       <Cursor />
