@@ -30,8 +30,6 @@ export const Detail: VFC = () => {
         <PictureWrap>
           <Picture src={post.images[0]} width="1920" height="1080" />
         </PictureWrap>
-        <DescriptionEn>{post.descriptionEn}</DescriptionEn>
-        <DescriptionJp>{post.descriptionJp}</DescriptionJp>
 
         <PictureWrap>
           {post.images
@@ -40,6 +38,9 @@ export const Detail: VFC = () => {
               <Picture src={image} key={index} width="1920" height="1080" />
             ))}
         </PictureWrap>
+
+        <DescriptionEn>{post.descriptionEn}</DescriptionEn>
+        <DescriptionJp>{post.descriptionJp}</DescriptionJp>
 
         <Caption>
           <ul>

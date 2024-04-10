@@ -67,10 +67,12 @@ export const Works: VFC = () => {
           </li>
         </ul>
       </UiCategory>
+      
       {contents.works
         .filter((work: WorkPost, childIndex) =>
           isFiltered ? work.tag === currentCategory : work.tag >= 0,
         )
+        .sort((a: WorkPost, b: WorkPost) => b.id - a.id)
         .map((work: WorkPost, childIndex) => (
           <Item post={work} key={childIndex} indexNumber={childIndex} />
         ))}
