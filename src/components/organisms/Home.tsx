@@ -142,8 +142,11 @@ export const Home: VFC = () => {
         </ScrollArrow>
       </Hero>
       <Container>
+        
         {contents.works
-          .filter((work: WorkPost, index) => index < 4)
+          .filter((work: WorkPost) => work.tag === 0)
+          .sort((a: WorkPost, b: WorkPost) => b.id - a.id)
+          .slice(0, 4)
           .map((work: WorkPost, index) => (
             <Item post={work} key={index} indexNumber={index} />
           ))}
