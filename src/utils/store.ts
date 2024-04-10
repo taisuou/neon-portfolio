@@ -294,7 +294,7 @@ export const contents = {
       titleJp: '"Diffusion" 個展 @DiEGO 表参道',
       // ART:0, Client:1
       tag: 0,
-      thumb: '/images/posts/2023_diffusion/2023_diffusion_00.JPG',
+      thumb: '/images/posts/2023_diffusion/2023_diffusion_00.jpg',
       year: '2023',
       pjinfo: 'exhibition',
       descriptionEn:
