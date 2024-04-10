@@ -23,15 +23,15 @@ export const About: VFC = () => {
           <Text>
             <TextTitle>Taisho Ichikawa</TextTitle>
             <p>
-            With a focus on "light as a medium" and "handcraft techniques," I bend neon glass tubes by my hand and create works that utilize the characteristics of neon signs. I approache the ever-changing viewing experience and values from both analog and digital perspectives, including the use of 3DCG as a method of expression. Awards: LUMINE meets ART AWARD 2020-2021 Audience Award, recent exhibitions: Solo Exhibition [Diffusion], order work: Chim↑Pom from Smappa! Group logo sign.
+            With a focus on "light as a medium" and "handcraft techniques," I bend neon glass tubes by my hand and create works that utilize the characteristics of neon signs. I approache the ever-changing viewing experience and values from both analog and digital perspectives, including the use of 3DCG as a method of expression. Awards: Brillia Art Award 2024 Selected, LUMINE meets ART AWARD 2020-2021 Audience Award, recent exhibitions: Solo Exhibition [Diffusion], order work: Chim↑Pom from Smappa! Group logo sign.
             </p>
           </Text>
           <Text>
             <TextTitle>市川大翔</TextTitle>
             <p>
-              「メディウムとしての光」「手工芸の技術」を軸に、ネオンサインの特性を活かした作品の制作、バーナーワークを手がける。表現手法として、3DCGを用いるなど、移りゆく鑑賞体験や価値観の変化に、アナログ・デジタル双方からアプローチする。受賞歴：LUMINE
+              「メディウムとしての光」「手工芸の技術」を軸に、ネオンサインの特性を活かした作品の制作、バーナーワークを手がける。表現手法として、3DCGを用いるなど、移りゆく鑑賞体験や価値観の変化に、アナログ・デジタル双方からアプローチする。受賞歴：Brillia Art Award 2024 入選、LUMINE
               meets ART AWARD 2020-2021
-              オーディエンス賞
+              オーディエンス賞 / 
               展示：個展「Diffusion」 (DiEGO 表参道)、SICF23、オーダーワーク:Chim↑Pom from Smappa! Group
               ロゴサイン。
             </p>
