@@ -63,11 +63,9 @@ export const Home: VFC = () => {
         </MainTitle> */}
         <MainTitle ref={heroTitle}>
           <p>
-            <span>Glass and Virtual</span>
+            <span>Neon Arts. electrode</span>
           </p>
-          <p>
-            <span>Neon Arts</span>
-          </p>
+          
         </MainTitle>
         <ScrollArrow className="scrollIcon" ref={scrollIconRef}>
           {/* <p>Scroll</p> */}
@@ -197,6 +195,7 @@ const MainTitle = styled.div`
   }
   span {
     display: inline-block;
+    text-shadow: 0 0 8px rgb(0,0,0,0.1);
   }
 `;
 
