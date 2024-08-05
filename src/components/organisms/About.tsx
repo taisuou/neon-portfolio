@@ -29,11 +29,20 @@ export const About: VFC = () => {
           <Text>
             <TextTitle>市川大翔</TextTitle>
             <p>
-              「メディウムとしての光」「手工芸の技術」を軸に、ネオンサインの特性を活かした作品の制作、バーナーワークを手がける。表現手法として、3DCGを用いるなど、移りゆく鑑賞体験や価値観の変化に、アナログ・デジタル双方からアプローチする。受賞歴：Brillia Art Award 2024 入選、LUMINE
-              meets ART AWARD 2020-2021
-              オーディエンス賞 / 
-              展示：個展「Diffusion」 (DiEGO 表参道)、SICF23、オーダーワーク:Chim↑Pom from Smappa! Group
-              ロゴサイン。
+            「メディウムとしての光」「手工芸の技術」を軸に、ネオンサインの特性を活かした作品の制作、バーナーワークを手がける。光が生み出す情緒性、光を生み出す科学技術の双方にアプローチをする。
+            <br/><br/>
+            -受賞歴-<br/>
+            2024年 / SICF25 EXHIBITION部門 廣川玉枝賞<br/>
+            2024年 / Brillia Art Award 2024 入選<br/>
+            2022年 / KAWAKYU ART Exhibition 2022 審査員推薦アーティスト<br/>
+            2021年 / LUMINE meets ART AWARD 2020-2021 オーディエンス賞<br/>
+            <br/><br/>
+            -活動歴-<br/>
+            2024年 / Brillia Art Award 2024入選展 (Brillia Lounge 「THE GALLERY」)<br/>
+            2024年 / SICF25(SPIRAL 表参道)<br/>
+            2023年 / 個展 「Diffusion」 (ギャラリーDiEGO 表参道)<br/>
+            2022年 / SICF23(SPIRAL 表参道)<br/>
+            2022年 / 『KAWAKYU ART Exhibition 2022』 (川久ミュージアム 南紀白浜)
             </p>
           </Text>
         </TextBox>
