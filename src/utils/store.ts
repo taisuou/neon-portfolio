@@ -310,6 +310,26 @@ export const contents = {
         '/images/posts/2023_diffusion/2023_diffusion_05.jpg',
       ],
     },
+    {
+      id: 15,
+      titleEn: 'Light Ways @SICF25 SPIRAL omotesando',
+      titleJp: 'Light Ways @SICF25 SPIRAL 表参道',
+      // ART:0, Client:1
+      tag: 0,
+      thumb: '/images/posts/2024_lightways/2024_lightways_00.jpg',
+      year: '2024',
+      pjinfo: 'exhibition',
+      descriptionEn:
+        'The title "Light Ways" plays on words, using "light," which is a homophone for "right" when pronounced in Japanese.In creating this piece, I view neon as a light source from both scientific and artistic perspectives. At the same time, expressing neon as the main focus also depends on the inherent beauty of natural phenomena and a nostalgia for the past. This complex context is likened to flickering light, positioning this work as a process in which I explore what is the "right path" for myself.',
+        descriptionJp:
+        '「Light Ways」というタイトルは、「right（正しい）」と日本語読みで同音異義語である「light（光）」を用いた言葉遊の表現です。ネオンという光源を、科学技術・芸術双方の立場から俯瞰して作品作りを進める一方で、ネオンを「絵の具」として扱うことは自然現象が持つ原初の美しさや、過去の郷愁に依存することでもあります。そうした複雑な内情を揺れる光になぞらえながら、今回の作品を自分にとっての「正しい道」を探る過程として位置づけています。',
+      images: [
+        '/images/posts/2024_lightways/2024_lightways_00.jpg',
+        '/images/posts/2024_lightways/2024_lightways_01.jpg',
+        '/images/posts/2024_lightways/2024_lightways_02.jpg',
+        '/images/posts/2024_lightways/2024_lightways_03.jpg',
+      ],
+    },
     
   ],
 };

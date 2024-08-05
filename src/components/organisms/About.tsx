@@ -23,17 +23,39 @@ export const About: VFC = () => {
           <Text>
             <TextTitle>Taisho Ichikawa</TextTitle>
             <p>
-            With a focus on "light as a medium" and "handcraft techniques," I bend neon glass tubes by my hand and create works that utilize the characteristics of neon signs. I approache the ever-changing viewing experience and values from both analog and digital perspectives, including the use of 3DCG as a method of expression. Awards: Brillia Art Award 2024 Selected, LUMINE meets ART AWARD 2020-2021 Audience Award, recent exhibitions: Solo Exhibition [Diffusion], order work: Chim↑Pom from Smappa! Group logo sign.
+            Centered on 'light as a medium' and 'artisanal craftsmanship', I engage in the creation of works that utilize the characteristics of neon signs, including burner work. I approach both the emotional aspects created by light and the scientific technology that produces it.
+            <br/><br/>
+            -Awards-<br/>
+            2024 / Hirokawa Tamae Prize, SICF25 EXHIBITION Division<br/>
+            2024 / Selected for the Brillia Art Award 2024<br/>
+            2022 / KAWAKYU ART Exhibition 2022 Jury Recommended Artist<br/>
+            2021 / LUMINE meets ART AWARD 2020-2021 Audience Award
+            <br/><br/>
+            -Exhibitions-<br/>
+            2024 / Brillia Art Award 2024 Finalists' Exhibition (Brillia Lounge "THE GALLERY")<br/>
+            2024 / SICF25 (SPIRAL, Omotesando)<br/>
+            2023 / Solo Exhibition "Diffusion" (Gallery DiEGO, Omotesando)<br/>
+            2022 / SICF23 (SPIRAL, Omotesando)<br/>
+            2022 / "KAWAKYU ART Exhibition 2022" (Kawakyu Museum, Shirahama, Wakayama)
             </p>
           </Text>
           <Text>
             <TextTitle>市川大翔</TextTitle>
             <p>
-              「メディウムとしての光」「手工芸の技術」を軸に、ネオンサインの特性を活かした作品の制作、バーナーワークを手がける。表現手法として、3DCGを用いるなど、移りゆく鑑賞体験や価値観の変化に、アナログ・デジタル双方からアプローチする。受賞歴：Brillia Art Award 2024 入選、LUMINE
-              meets ART AWARD 2020-2021
-              オーディエンス賞 / 
-              展示：個展「Diffusion」 (DiEGO 表参道)、SICF23、オーダーワーク:Chim↑Pom from Smappa! Group
-              ロゴサイン。
+            「メディウムとしての光」「手工芸の技術」を軸に、ネオンサインの特性を活かした作品の制作、バーナーワークを手がける。光が生み出す情緒性、光を生み出す科学技術の双方にアプローチをする。
+            <br/><br/>
+            -受賞歴-<br/>
+            2024年 / SICF25 EXHIBITION部門 廣川玉枝賞<br/>
+            2024年 / Brillia Art Award 2024 入選<br/>
+            2022年 / KAWAKYU ART Exhibition 2022 審査員推薦アーティスト<br/>
+            2021年 / LUMINE meets ART AWARD 2020-2021 オーディエンス賞
+            <br/><br/>
+            -活動歴-<br/>
+            2024年 / Brillia Art Award 2024入選展 (Brillia Lounge 「THE GALLERY」)<br/>
+            2024年 / SICF25(SPIRAL 表参道)<br/>
+            2023年 / 個展 「Diffusion」 (ギャラリーDiEGO 表参道)<br/>
+            2022年 / SICF23(SPIRAL 表参道)<br/>
+            2022年 / 『KAWAKYU ART Exhibition 2022』 (川久ミュージアム 南紀白浜)
             </p>
           </Text>
         </TextBox>
