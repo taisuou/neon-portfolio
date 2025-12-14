@@ -63,9 +63,9 @@ export const Home: VFC = () => {
         </MainTitle> */}
         <MainTitle ref={heroTitle}>
           <p>
-            <span>Neon Arts. electrode</span>
+            <span>Taisho Ichikawa</span>
+            <span>Art Works</span>
           </p>
-          
         </MainTitle>
         <ScrollArrow className="scrollIcon" ref={scrollIconRef}>
           {/* <p>Scroll</p> */}
@@ -140,7 +140,6 @@ export const Home: VFC = () => {
         </ScrollArrow>
       </Hero>
       <Container>
-        
         {contents.works
           .filter((work: WorkPost) => work.tag === 0)
           .sort((a: WorkPost, b: WorkPost) => b.id - a.id)
@@ -195,7 +194,7 @@ const MainTitle = styled.div`
   }
   span {
     display: inline-block;
-    text-shadow: 0 0 8px rgb(0,0,0,0.1);
+    text-shadow: 0 0 8px rgb(0, 0, 0, 0.1);
   }
 `;
 

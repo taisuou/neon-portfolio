@@ -45,7 +45,7 @@ export const Contact: VFC = () => {
                 @electrode_taisho
               </a>
             </li>
-            <li>
+            {/* <li>
               <p>
                 <span>Medium</span>
               </p>
@@ -70,7 +70,7 @@ export const Contact: VFC = () => {
               >
                 @electrodeart
               </a>
-            </li>
+            </li> */}
           </ul>
         </ColInfobox>
       </SectionContainer>
