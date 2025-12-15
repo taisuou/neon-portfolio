@@ -29,6 +29,7 @@ export const Footer: VFC<Props> = ({}) => {
           <a href="https://www.instagram.com/electrode_taisho/" target="_blank" rel="noreferrer">
             <img src="/images/header_sns_instagram.svg" alt="" />
           </a>
+
           {/* <a href="https://medium.com/@electrodeart" target="_blank" rel="noreferrer">
             <img src="/images/header_sns_medium.svg" alt="" />
           </a>
