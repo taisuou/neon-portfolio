@@ -8,7 +8,6 @@
     "@emotion/styled": "^11.10.0",
     "@react-three/drei": "^8.8.1",
     "@react-three/fiber": "^7.0.26",
-    "@react-three/flex": "^1.0.0",
     "@react-three/postprocessing": "^2.6.0",
     "@splinetool/loader": "0.9.80",
     "@splinetool/r3f-spline": "^1.0.1",
