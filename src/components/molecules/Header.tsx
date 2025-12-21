@@ -230,7 +230,12 @@ export const Header: VFC = () => {
             isMenuOpen && menuClose();
           }}
         >
-          <img src="/images/header_logo.svg" alt="electrode" width={105} ref={desktopLogoRef} />
+          <img
+            src="/images/header_logo.svg"
+            alt="Taisho Ichikawa"
+            width={150}
+            ref={desktopLogoRef}
+          />
         </Logo>
       </Link>
 

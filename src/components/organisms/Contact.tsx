@@ -47,28 +47,15 @@ export const Contact: VFC = () => {
             </li>
             <li>
               <p>
-                <span>Medium</span>
+                <span>X</span>
               </p>
               <a
-                href="https://medium.com/@electrodeart"
+                href="https://x.com/taisho_ichikawa"
                 target="_blank"
                 className={'cursor-scale small'}
                 rel="noreferrer"
               >
-                @electrodeart
-              </a>
-            </li>
-            <li>
-              <p>
-                <span>twitter</span>
-              </p>
-              <a
-                href="https://twitter.com/electrodeart"
-                target="_blank"
-                className={'cursor-scale small'}
-                rel="noreferrer"
-              >
-                @electrodeart
+                @taisho_ichikawa
               </a>
             </li>
           </ul>
