@@ -105,16 +105,21 @@ export const App: VFC = () => {
       />
 
       <Helmet
-      // title={contents.meta.title}
-      // meta={[{ name: 'description', content: contents.meta.description }]}
+        title={contents.meta.title}
+        meta={[{ name: 'description', content: contents.meta.description }]}
       >
-        {/* <link rel="icon" type="image/png" href={contents.meta.favicon} sizes="16x16" />
-          <meta property="og:url" content="https://www.electrodeart.com/" />
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content={contents.meta.title} />
-          <meta property="og:description" content={contents.meta.description} />
-          <meta property="og:site_name" content={contents.meta.title} />
-          <meta property="og:image" content={contents.meta.ogp} /> */}
+        <link rel="icon" href={contents.meta.favicon.ico} />
+        <link rel="icon" type="image/png" sizes="16x16" href={contents.meta.favicon.png16} />
+        <link rel="icon" type="image/png" sizes="32x32" href={contents.meta.favicon.png32} />
+        <link rel="apple-touch-icon" href={contents.meta.favicon.appleTouchIcon} />
+        <link rel="mask-icon" href={contents.meta.favicon.safariPinnedTab} color="#000000" />
+        <meta name="msapplication-TileImage" content={contents.meta.favicon.msTile} />
+        <meta property="og:url" content="https://www.electrodeart.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={contents.meta.title} />
+        <meta property="og:description" content={contents.meta.description} />
+        <meta property="og:site_name" content={contents.meta.title} />
+        <meta property="og:image" content={contents.meta.ogp} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={'anonymous'} />
         <link

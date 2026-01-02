@@ -109,9 +109,11 @@ export function ScrollControls({
     el.style.top = '0px';
     el.style.left = '0px';
 
-    for (const key in style) {
-      el.style[key] = style[key];
-    }
+    Object.entries(style).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        (el.style as any)[key] = value;
+      }
+    });
 
     fixed.style.position = 'sticky';
     fixed.style.top = '0px';
