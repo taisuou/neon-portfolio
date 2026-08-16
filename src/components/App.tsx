@@ -1,16 +1,13 @@
 import React, { useEffect, useState, VFC } from 'react';
-import { TCanvas } from './three/TCanvas';
-// import { Neon } from './three/Neon';
 import { Loader } from './molecules/Loader';
 import { Header } from './molecules/Header';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
-import { color, zIndex } from '../utils/style';
+import { color } from '../utils/style';
 import { Leva } from 'leva';
 import { Helmet } from 'react-helmet';
 import { contents } from '../utils/store';
 import { sceneState } from '../utils/sceneState';
-import { Cursor } from './atoms/Cursor';
 import { useProgress } from '@react-three/drei';
 import { AnimatePresence } from 'framer-motion';
 import { BrowserRouter, Routes, Route, useLocation, ScrollRestoration } from 'react-router-dom';
@@ -20,6 +17,7 @@ import { Works } from './organisms/Works';
 import { Contact } from './organisms/Contact';
 import { Detail } from './organisms/Detail';
 import { Footer } from './molecules/Footer';
+import { ScrollPreview } from './three/ScrollPreview';
 
 export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
@@ -147,16 +145,7 @@ export const App: VFC = () => {
             path="/"
             element={
               <div>
-                <div
-                  style={{
-                    position: 'fixed',
-                    width: '100vw',
-                    height: '100vh',
-                    zIndex: zIndex.base,
-                  }}
-                >
-                  <TCanvas />
-                </div>
+                <ScrollPreview />
                 <Home />
               </div>
             }
@@ -171,7 +160,6 @@ export const App: VFC = () => {
 
       <Header />
       <Loader isReady={isReady} />
-      <Cursor />
       <Leva hidden={true} />
     </>
   );

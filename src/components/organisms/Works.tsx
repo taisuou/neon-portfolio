@@ -68,14 +68,16 @@ export const Works: VFC = () => {
         </ul>
       </UiCategory>
       
-      {contents.works
-        .filter((work: WorkPost, childIndex) =>
-          isFiltered ? work.tag === currentCategory : work.tag >= 0,
-        )
-        .sort((a: WorkPost, b: WorkPost) => b.id - a.id)
-        .map((work: WorkPost, childIndex) => (
-          <Item post={work} key={childIndex} indexNumber={childIndex} />
-        ))}
+      <ItemsGrid>
+        {contents.works
+          .filter((work: WorkPost, childIndex) =>
+            isFiltered ? work.tag === currentCategory : work.tag >= 0,
+          )
+          .sort((a: WorkPost, b: WorkPost) => b.id - a.id)
+          .map((work: WorkPost, childIndex) => (
+            <Item post={work} key={childIndex} indexNumber={childIndex} compact />
+          ))}
+      </ItemsGrid>
     </Container>
   );
 };
@@ -83,6 +85,19 @@ export const Works: VFC = () => {
 const Container = styled(motion.div)`
   background: ${color.background.dark};
   overflow: hidden;
+`;
+
+const ItemsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px 12px;
+  padding: 0 16px 96px;
+
+  @media (min-width: 1040px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 72px 24px;
+    padding: 0 64px 128px;
+  }
 `;
 
 const PageTitle = styled.div`
