@@ -75,6 +75,8 @@ export const Loader: VFC<LoaderProps> = (props) => {
   //   return <Html center>{progress} % loaded</Html>
   useEffect(() => {
     props.isReady && loaderEnd();
+    // loaderEnd must run once when readiness changes, not on animation state updates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isReady]);
 
   return (

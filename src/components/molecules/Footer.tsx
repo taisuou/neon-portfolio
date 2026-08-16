@@ -6,11 +6,7 @@ import { menus } from '../../utils/store';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
-type Props = {
-  // location:string
-};
-
-export const Footer: VFC<Props> = ({}) => {
+export const Footer: VFC = () => {
   const location = useLocation().pathname;
   return (
     <Container

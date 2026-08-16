@@ -10,7 +10,7 @@ import { contents } from '../utils/store';
 import { sceneState } from '../utils/sceneState';
 import { useProgress } from '@react-three/drei';
 import { AnimatePresence } from 'framer-motion';
-import { BrowserRouter, Routes, Route, useLocation, ScrollRestoration } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './organisms/Home';
 import { About } from './organisms/About';
 import { Works } from './organisms/Works';
@@ -23,10 +23,12 @@ export const App: VFC = () => {
   const [isReady, setIsReady] = useState(false);
   const { active } = useProgress();
   useEffect(() => {
-    setTimeout(() => {
+    const readyTimer = window.setTimeout(() => {
       //check if 3d canvas is active
       !active && setIsReady(true);
     }, 3000);
+
+    return () => window.clearTimeout(readyTimer);
   }, [active]);
 
   let vh = window.innerHeight * 0.01;
@@ -39,9 +41,11 @@ export const App: VFC = () => {
   }, [isReady]);
 
   useEffect(() => {
-    setTimeout(() => {
+    const scrollTimer = window.setTimeout(() => {
       window.scrollTo(0, 0);
     }, 500);
+
+    return () => window.clearTimeout(scrollTimer);
   }, [location.pathname]);
 
   return (

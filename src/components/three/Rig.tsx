@@ -13,7 +13,6 @@ export const Rig: FC<RigProps> = ({ children }) => {
   const ref = useRef<THREE.Group>();
   const vec = new THREE.Vector3();
   const scroll = useMotionScroll();
-  let last = 0;
   const { isReady } = useSnapshot(sceneState);
 
   useFrame(() => {
@@ -22,7 +21,7 @@ export const Rig: FC<RigProps> = ({ children }) => {
     ref.current.position.lerp(vec.set(0, 0, 10), 0.05);
 
     ref.current.rotation.y = THREE.MathUtils.lerp(
-      (last = ref.current.rotation.y),
+      ref.current.rotation.y,
       -offset * Math.PI * 2,
       0.05,
     );

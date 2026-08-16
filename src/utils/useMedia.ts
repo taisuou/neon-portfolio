@@ -17,7 +17,7 @@ export const useMedia = () => {
     return () => {
       window.removeEventListener('resize', resizeEvent);
     };
-  }, []);
+  }, [resizeEvent]);
 
   return { isMobile, isTablet };
 };

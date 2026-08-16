@@ -1,9 +1,8 @@
-import React, { FC, VFC } from 'react';
+import React, { VFC } from 'react';
 import styled from '@emotion/styled';
 import { color, font, media } from '../../utils/style';
-import { WorkPost } from '../../../@types/schema';
 import { Helmet } from 'react-helmet';
-import { Link, ScrollRestoration } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { contents } from '../../utils/store';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';

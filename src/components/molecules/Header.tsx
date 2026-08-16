@@ -195,14 +195,18 @@ export const Header: VFC = () => {
     gsap.timeline().set(menus, {
       y: 75,
     });
-  }, []);
+  }, [location.pathname]);
   useEffect(() => {
     //triggers only when routing
     transitionAnimation();
+    // transitionAnimation intentionally runs only when the route changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
   useEffect(() => {
     if (location.pathname !== '/') return;
     isReady && showDesktopMenuLogo();
+    // The animation reads stable refs and should only react to readiness.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isReady]);
 
   return (
@@ -244,9 +248,7 @@ export const Header: VFC = () => {
           {menus.map((menu, index) => (
             <li key={index} className={'cursor-scale small'}>
               <Link to={`/${menu}`}>
-                <a>
-                  <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
-                </a>
+                <span ref={desktopMenuRef.current[index]}>{menu.toUpperCase()}</span>
               </Link>
             </li>
           ))}
